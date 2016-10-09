@@ -18,6 +18,13 @@
 		E54C7AF61DAA18D50063A10C /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54C7AF51DAA18D50063A10C /* ThirdViewController.swift */; };
 		E54C7AF81DAA18E20063A10C /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54C7AF71DAA18E20063A10C /* FourthViewController.swift */; };
 		E54C7AFB1DAA18F50063A10C /* FifthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54C7AFA1DAA18F50063A10C /* FifthViewController.swift */; };
+		E59657BA1DAB0A9200C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.05 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E59657B91DAB0A9200C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.05 PM.png */; };
+		E59657C11DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.06 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E59657BB1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.06 PM.png */; };
+		E59657C21DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.11 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E59657BC1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.11 PM.png */; };
+		E59657C31DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.14 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E59657BD1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.14 PM.png */; };
+		E59657C41DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.16 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E59657BE1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.16 PM.png */; };
+		E59657C51DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.18 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E59657BF1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.18 PM.png */; };
+		E59657C61DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.21 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E59657C01DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.21 PM.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +62,13 @@
 		E54C7AF51DAA18D50063A10C /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		E54C7AF71DAA18E20063A10C /* FourthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourthViewController.swift; sourceTree = "<group>"; };
 		E54C7AFA1DAA18F50063A10C /* FifthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FifthViewController.swift; sourceTree = "<group>"; };
+		E59657B91DAB0A9200C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.05 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Simulator Screen Shot Oct 9, 2016, 4.29.05 PM.png"; path = "../../../Desktop/Simulator Screen Shot Oct 9, 2016, 4.29.05 PM.png"; sourceTree = "<group>"; };
+		E59657BB1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.06 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Simulator Screen Shot Oct 9, 2016, 4.29.06 PM.png"; path = "../../../Desktop/Simulator Screen Shot Oct 9, 2016, 4.29.06 PM.png"; sourceTree = "<group>"; };
+		E59657BC1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.11 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Simulator Screen Shot Oct 9, 2016, 4.29.11 PM.png"; path = "../../../Desktop/Simulator Screen Shot Oct 9, 2016, 4.29.11 PM.png"; sourceTree = "<group>"; };
+		E59657BD1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.14 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Simulator Screen Shot Oct 9, 2016, 4.29.14 PM.png"; path = "../../../Desktop/Simulator Screen Shot Oct 9, 2016, 4.29.14 PM.png"; sourceTree = "<group>"; };
+		E59657BE1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.16 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Simulator Screen Shot Oct 9, 2016, 4.29.16 PM.png"; path = "../../../Desktop/Simulator Screen Shot Oct 9, 2016, 4.29.16 PM.png"; sourceTree = "<group>"; };
+		E59657BF1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.18 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Simulator Screen Shot Oct 9, 2016, 4.29.18 PM.png"; path = "../../../Desktop/Simulator Screen Shot Oct 9, 2016, 4.29.18 PM.png"; sourceTree = "<group>"; };
+		E59657C01DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.21 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Simulator Screen Shot Oct 9, 2016, 4.29.21 PM.png"; path = "../../../Desktop/Simulator Screen Shot Oct 9, 2016, 4.29.21 PM.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +99,7 @@
 		E50F86301DA998F2008165B9 = {
 			isa = PBXGroup;
 			children = (
+				E59657B81DAB09FC00C5C31E /* Screenshots */,
 				E50F863B1DA998F4008165B9 /* PhotoArchive */,
 				E50F86521DA998F5008165B9 /* PhotoArchiveTests */,
 				E50F865D1DA998F5008165B9 /* PhotoArchiveUITests */,
@@ -135,6 +150,20 @@
 				E50F86601DA998F5008165B9 /* Info.plist */,
 			);
 			path = PhotoArchiveUITests;
+			sourceTree = "<group>";
+		};
+		E59657B81DAB09FC00C5C31E /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				E59657BB1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.06 PM.png */,
+				E59657BC1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.11 PM.png */,
+				E59657BD1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.14 PM.png */,
+				E59657BE1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.16 PM.png */,
+				E59657BF1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.18 PM.png */,
+				E59657C01DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.21 PM.png */,
+				E59657B91DAB0A9200C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.05 PM.png */,
+			);
+			name = Screenshots;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,9 +273,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E59657C11DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.06 PM.png in Resources */,
+				E59657C61DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.21 PM.png in Resources */,
+				E59657C41DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.16 PM.png in Resources */,
 				E50F86491DA998F4008165B9 /* LaunchScreen.storyboard in Resources */,
+				E59657C31DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.14 PM.png in Resources */,
 				E50F86461DA998F4008165B9 /* Assets.xcassets in Resources */,
 				E50F86441DA998F4008165B9 /* Main.storyboard in Resources */,
+				E59657C21DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.11 PM.png in Resources */,
+				E59657C51DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.18 PM.png in Resources */,
+				E59657BA1DAB0A9200C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.05 PM.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,7 +463,7 @@
 		E50F86641DA998F5008165B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PhotoArchive/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = afpens.PhotoArchive;
@@ -439,7 +475,7 @@
 		E50F86651DA998F5008165B9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PhotoArchive/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = afpens.PhotoArchive;
