@@ -25,6 +25,7 @@
 		E59657C41DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.16 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E59657BE1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.16 PM.png */; };
 		E59657C51DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.18 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E59657BF1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.18 PM.png */; };
 		E59657C61DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.21 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E59657C01DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.21 PM.png */; };
+		E59657C81DAB0D1F00C5C31E /* emptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59657C71DAB0D1F00C5C31E /* emptyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		E59657BE1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.16 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Simulator Screen Shot Oct 9, 2016, 4.29.16 PM.png"; path = "../../../Desktop/Simulator Screen Shot Oct 9, 2016, 4.29.16 PM.png"; sourceTree = "<group>"; };
 		E59657BF1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.18 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Simulator Screen Shot Oct 9, 2016, 4.29.18 PM.png"; path = "../../../Desktop/Simulator Screen Shot Oct 9, 2016, 4.29.18 PM.png"; sourceTree = "<group>"; };
 		E59657C01DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.21 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Simulator Screen Shot Oct 9, 2016, 4.29.21 PM.png"; path = "../../../Desktop/Simulator Screen Shot Oct 9, 2016, 4.29.21 PM.png"; sourceTree = "<group>"; };
+		E59657C71DAB0D1F00C5C31E /* emptyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = emptyViewController.swift; path = PhotoArchive/emptyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 				E59657BF1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.18 PM.png */,
 				E59657C01DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.21 PM.png */,
 				E59657B91DAB0A9200C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.05 PM.png */,
+				E59657C71DAB0D1F00C5C31E /* emptyViewController.swift */,
 			);
 			name = Screenshots;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				E50F86411DA998F4008165B9 /* SecondViewController.swift in Sources */,
 				E50F863D1DA998F4008165B9 /* AppDelegate.swift in Sources */,
 				E54C7AF61DAA18D50063A10C /* ThirdViewController.swift in Sources */,
+				E59657C81DAB0D1F00C5C31E /* emptyViewController.swift in Sources */,
 				E50F863F1DA998F4008165B9 /* FirstViewController.swift in Sources */,
 				E54C7AF81DAA18E20063A10C /* FourthViewController.swift in Sources */,
 			);
