@@ -61,10 +61,10 @@
             </objects>
             <point key="canvasLocation" x="-271.19999999999999" y="-465.51724137931041"/>
         </scene>
-        <!--Fourth-->
+        <!--History-->
         <scene sceneID="Vbq-0G-gmy">
             <objects>
-                <viewController title="Fourth" id="cM1-fD-tEc" sceneMemberID="viewController">
+                <viewController title="History" id="cM1-fD-tEc" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JhW-LK-hVB"/>
                         <viewControllerLayoutGuide type="bottom" id="BSA-w6-UkH"/>
@@ -89,10 +89,10 @@
             </objects>
             <point key="canvasLocation" x="2540" y="-466"/>
         </scene>
-        <!--Fifth-->
+        <!--Settings-->
         <scene sceneID="YLs-75-gEo">
             <objects>
-                <viewController title="Fifth" id="U6f-h7-0UZ" sceneMemberID="viewController">
+                <viewController title="Settings" id="U6f-h7-0UZ" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="doW-o5-j8C"/>
                         <viewControllerLayoutGuide type="bottom" id="JwN-xY-05D"/>
@@ -160,10 +160,10 @@
             </objects>
             <point key="canvasLocation" x="708" y="-465"/>
         </scene>
-        <!--Third-->
+        <!--Camera-->
         <scene sceneID="lLx-1O-ye1">
             <objects>
-                <viewController title="Third" id="pDR-Il-jwr" sceneMemberID="viewController">
+                <viewController title="Camera" id="pDR-Il-jwr" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="l6P-PV-BMy"/>
                         <viewControllerLayoutGuide type="bottom" id="KYb-jI-Mdj"/>
