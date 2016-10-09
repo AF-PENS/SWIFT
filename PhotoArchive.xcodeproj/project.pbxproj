@@ -15,6 +15,9 @@
 		E50F86491DA998F4008165B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E50F86471DA998F4008165B9 /* LaunchScreen.storyboard */; };
 		E50F86541DA998F5008165B9 /* PhotoArchiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F86531DA998F5008165B9 /* PhotoArchiveTests.swift */; };
 		E50F865F1DA998F5008165B9 /* PhotoArchiveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F865E1DA998F5008165B9 /* PhotoArchiveUITests.swift */; };
+		E54C7AF61DAA18D50063A10C /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54C7AF51DAA18D50063A10C /* ThirdViewController.swift */; };
+		E54C7AF81DAA18E20063A10C /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54C7AF71DAA18E20063A10C /* FourthViewController.swift */; };
+		E54C7AFB1DAA18F50063A10C /* FifthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54C7AFA1DAA18F50063A10C /* FifthViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		E50F865A1DA998F5008165B9 /* PhotoArchiveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoArchiveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E50F865E1DA998F5008165B9 /* PhotoArchiveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoArchiveUITests.swift; sourceTree = "<group>"; };
 		E50F86601DA998F5008165B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E54C7AF51DAA18D50063A10C /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		E54C7AF71DAA18E20063A10C /* FourthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourthViewController.swift; sourceTree = "<group>"; };
+		E54C7AFA1DAA18F50063A10C /* FifthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FifthViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +108,9 @@
 				E50F863C1DA998F4008165B9 /* AppDelegate.swift */,
 				E50F863E1DA998F4008165B9 /* FirstViewController.swift */,
 				E50F86401DA998F4008165B9 /* SecondViewController.swift */,
+				E54C7AF51DAA18D50063A10C /* ThirdViewController.swift */,
+				E54C7AF71DAA18E20063A10C /* FourthViewController.swift */,
+				E54C7AFA1DAA18F50063A10C /* FifthViewController.swift */,
 				E50F86421DA998F4008165B9 /* Main.storyboard */,
 				E50F86451DA998F4008165B9 /* Assets.xcassets */,
 				E50F86471DA998F4008165B9 /* LaunchScreen.storyboard */,
@@ -262,9 +271,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E54C7AFB1DAA18F50063A10C /* FifthViewController.swift in Sources */,
 				E50F86411DA998F4008165B9 /* SecondViewController.swift in Sources */,
 				E50F863D1DA998F4008165B9 /* AppDelegate.swift in Sources */,
+				E54C7AF61DAA18D50063A10C /* ThirdViewController.swift in Sources */,
 				E50F863F1DA998F4008165B9 /* FirstViewController.swift in Sources */,
+				E54C7AF81DAA18E20063A10C /* FourthViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,6 +521,7 @@
 				E50F86651DA998F5008165B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E50F86661DA998F5008165B9 /* Build configuration list for PBXNativeTarget "PhotoArchiveTests" */ = {
 			isa = XCConfigurationList;
@@ -517,6 +530,7 @@
 				E50F86681DA998F5008165B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E50F86691DA998F5008165B9 /* Build configuration list for PBXNativeTarget "PhotoArchiveUITests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +539,7 @@
 				E50F866B1DA998F5008165B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
