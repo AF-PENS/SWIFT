@@ -18,14 +18,13 @@
 		E54C7AF61DAA18D50063A10C /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54C7AF51DAA18D50063A10C /* ThirdViewController.swift */; };
 		E54C7AF81DAA18E20063A10C /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54C7AF71DAA18E20063A10C /* FourthViewController.swift */; };
 		E54C7AFB1DAA18F50063A10C /* FifthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54C7AFA1DAA18F50063A10C /* FifthViewController.swift */; };
-		E59657BA1DAB0A9200C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.05 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E59657B91DAB0A9200C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.05 PM.png */; };
-		E59657C11DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.06 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E59657BB1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.06 PM.png */; };
-		E59657C21DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.11 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E59657BC1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.11 PM.png */; };
-		E59657C31DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.14 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E59657BD1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.14 PM.png */; };
-		E59657C41DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.16 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E59657BE1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.16 PM.png */; };
-		E59657C51DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.18 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E59657BF1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.18 PM.png */; };
-		E59657C61DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.21 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E59657C01DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.21 PM.png */; };
-		E59657C81DAB0D1F00C5C31E /* emptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59657C71DAB0D1F00C5C31E /* emptyViewController.swift */; };
+		E5DD12011DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.05 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E5DD11FA1DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.05 PM.png */; };
+		E5DD12021DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.06 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E5DD11FB1DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.06 PM.png */; };
+		E5DD12031DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.11 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E5DD11FC1DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.11 PM.png */; };
+		E5DD12041DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.14 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E5DD11FD1DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.14 PM.png */; };
+		E5DD12051DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.16 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E5DD11FE1DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.16 PM.png */; };
+		E5DD12061DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.18 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E5DD11FF1DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.18 PM.png */; };
+		E5DD12071DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.21 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E5DD12001DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.21 PM.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,14 +62,13 @@
 		E54C7AF51DAA18D50063A10C /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		E54C7AF71DAA18E20063A10C /* FourthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourthViewController.swift; sourceTree = "<group>"; };
 		E54C7AFA1DAA18F50063A10C /* FifthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FifthViewController.swift; sourceTree = "<group>"; };
-		E59657B91DAB0A9200C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.05 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Simulator Screen Shot Oct 9, 2016, 4.29.05 PM.png"; path = "../../../Desktop/Simulator Screen Shot Oct 9, 2016, 4.29.05 PM.png"; sourceTree = "<group>"; };
-		E59657BB1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.06 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Simulator Screen Shot Oct 9, 2016, 4.29.06 PM.png"; path = "../../../Desktop/Simulator Screen Shot Oct 9, 2016, 4.29.06 PM.png"; sourceTree = "<group>"; };
-		E59657BC1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.11 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Simulator Screen Shot Oct 9, 2016, 4.29.11 PM.png"; path = "../../../Desktop/Simulator Screen Shot Oct 9, 2016, 4.29.11 PM.png"; sourceTree = "<group>"; };
-		E59657BD1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.14 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Simulator Screen Shot Oct 9, 2016, 4.29.14 PM.png"; path = "../../../Desktop/Simulator Screen Shot Oct 9, 2016, 4.29.14 PM.png"; sourceTree = "<group>"; };
-		E59657BE1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.16 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Simulator Screen Shot Oct 9, 2016, 4.29.16 PM.png"; path = "../../../Desktop/Simulator Screen Shot Oct 9, 2016, 4.29.16 PM.png"; sourceTree = "<group>"; };
-		E59657BF1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.18 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Simulator Screen Shot Oct 9, 2016, 4.29.18 PM.png"; path = "../../../Desktop/Simulator Screen Shot Oct 9, 2016, 4.29.18 PM.png"; sourceTree = "<group>"; };
-		E59657C01DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.21 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Simulator Screen Shot Oct 9, 2016, 4.29.21 PM.png"; path = "../../../Desktop/Simulator Screen Shot Oct 9, 2016, 4.29.21 PM.png"; sourceTree = "<group>"; };
-		E59657C71DAB0D1F00C5C31E /* emptyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = emptyViewController.swift; path = PhotoArchive/emptyViewController.swift; sourceTree = "<group>"; };
+		E5DD11FA1DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.05 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot Oct 9, 2016, 4.29.05 PM.png"; sourceTree = "<group>"; };
+		E5DD11FB1DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.06 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot Oct 9, 2016, 4.29.06 PM.png"; sourceTree = "<group>"; };
+		E5DD11FC1DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.11 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot Oct 9, 2016, 4.29.11 PM.png"; sourceTree = "<group>"; };
+		E5DD11FD1DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.14 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot Oct 9, 2016, 4.29.14 PM.png"; sourceTree = "<group>"; };
+		E5DD11FE1DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.16 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot Oct 9, 2016, 4.29.16 PM.png"; sourceTree = "<group>"; };
+		E5DD11FF1DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.18 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot Oct 9, 2016, 4.29.18 PM.png"; sourceTree = "<group>"; };
+		E5DD12001DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.21 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot Oct 9, 2016, 4.29.21 PM.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +99,7 @@
 		E50F86301DA998F2008165B9 = {
 			isa = PBXGroup;
 			children = (
-				E59657B81DAB09FC00C5C31E /* Screenshots */,
+				E5DD11F91DAB0F38001EDCBC /* Screenshots */,
 				E50F863B1DA998F4008165B9 /* PhotoArchive */,
 				E50F86521DA998F5008165B9 /* PhotoArchiveTests */,
 				E50F865D1DA998F5008165B9 /* PhotoArchiveUITests */,
@@ -154,19 +152,18 @@
 			path = PhotoArchiveUITests;
 			sourceTree = "<group>";
 		};
-		E59657B81DAB09FC00C5C31E /* Screenshots */ = {
+		E5DD11F91DAB0F38001EDCBC /* Screenshots */ = {
 			isa = PBXGroup;
 			children = (
-				E59657BB1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.06 PM.png */,
-				E59657BC1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.11 PM.png */,
-				E59657BD1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.14 PM.png */,
-				E59657BE1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.16 PM.png */,
-				E59657BF1DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.18 PM.png */,
-				E59657C01DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.21 PM.png */,
-				E59657B91DAB0A9200C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.05 PM.png */,
-				E59657C71DAB0D1F00C5C31E /* emptyViewController.swift */,
+				E5DD11FA1DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.05 PM.png */,
+				E5DD11FB1DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.06 PM.png */,
+				E5DD11FC1DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.11 PM.png */,
+				E5DD11FD1DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.14 PM.png */,
+				E5DD11FE1DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.16 PM.png */,
+				E5DD11FF1DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.18 PM.png */,
+				E5DD12001DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.21 PM.png */,
 			);
-			name = Screenshots;
+			path = Screenshots;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,16 +273,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E59657C11DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.06 PM.png in Resources */,
-				E59657C61DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.21 PM.png in Resources */,
-				E59657C41DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.16 PM.png in Resources */,
+				E5DD12021DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.06 PM.png in Resources */,
+				E5DD12071DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.21 PM.png in Resources */,
+				E5DD12051DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.16 PM.png in Resources */,
 				E50F86491DA998F4008165B9 /* LaunchScreen.storyboard in Resources */,
-				E59657C31DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.14 PM.png in Resources */,
+				E5DD12041DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.14 PM.png in Resources */,
 				E50F86461DA998F4008165B9 /* Assets.xcassets in Resources */,
 				E50F86441DA998F4008165B9 /* Main.storyboard in Resources */,
-				E59657C21DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.11 PM.png in Resources */,
-				E59657C51DAB0A9E00C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.18 PM.png in Resources */,
-				E59657BA1DAB0A9200C5C31E /* Simulator Screen Shot Oct 9, 2016, 4.29.05 PM.png in Resources */,
+				E5DD12031DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.11 PM.png in Resources */,
+				E5DD12061DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.18 PM.png in Resources */,
+				E5DD12011DAB0F38001EDCBC /* Simulator Screen Shot Oct 9, 2016, 4.29.05 PM.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,7 +311,6 @@
 				E50F86411DA998F4008165B9 /* SecondViewController.swift in Sources */,
 				E50F863D1DA998F4008165B9 /* AppDelegate.swift in Sources */,
 				E54C7AF61DAA18D50063A10C /* ThirdViewController.swift in Sources */,
-				E59657C81DAB0D1F00C5C31E /* emptyViewController.swift in Sources */,
 				E50F863F1DA998F4008165B9 /* FirstViewController.swift in Sources */,
 				E54C7AF81DAA18E20063A10C /* FourthViewController.swift in Sources */,
 			);
