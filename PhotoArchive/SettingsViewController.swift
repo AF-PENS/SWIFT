@@ -1,14 +1,14 @@
 //
-//  FifthViewController.swift
+//  SettingsViewController.swift
 //  PhotoArchive
 //
-//  Created by Phillip Gulegin on 10/8/16.
+//  Created by Phillip Gulegin on 10/19/16.
 //  Copyright © 2016 AF-PENS. All rights reserved.
 //
 
 import UIKit
 
-class FifthViewController: UIViewController {
+class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

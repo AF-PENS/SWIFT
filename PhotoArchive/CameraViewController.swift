@@ -1,14 +1,14 @@
 //
-//  FourthViewController.swift
+//  CameraViewController.swift
 //  PhotoArchive
 //
-//  Created by Phillip Gulegin on 10/8/16.
+//  Created by Phillip Gulegin on 10/19/16.
 //  Copyright © 2016 AF-PENS. All rights reserved.
 //
 
 import UIKit
 
-class FourthViewController: UIViewController {
+class CameraViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
