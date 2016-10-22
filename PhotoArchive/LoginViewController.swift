@@ -17,7 +17,8 @@ class LoginViewController: UIViewController {
         //verifies login
         
         
-        // if user who just logged in, is not the user previously logged in
+        // if userWhoJustLoggedIn != previousUser
+        // delete previousUser
         
         // if login is successful and switch is on
         if rememberMeButton.isOn {
