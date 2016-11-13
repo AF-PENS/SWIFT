@@ -1,27 +1,15 @@
 //
-//  CameraViewController.swift
+//  AdminViewController.swift
 //  PhotoArchive
 //
-//  Created by Phillip Gulegin on 10/19/16.
+//  Created by Phillip Gulegin on 10/24/16.
 //  Copyright © 2016 AF-PENS. All rights reserved.
 //
 
 import UIKit
 
-class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AdminViewController: UIViewController {
 
-    @IBOutlet weak var imagePicked: UIImageView!
-    
-    @IBAction func openCameraButton(sender: AnyObject) {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
-            var imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.camera;
-            imagePicker.allowsEditing = false
-            self.present(imagePicker, animated: true, completion: nil)
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
