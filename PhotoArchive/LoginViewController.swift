@@ -2,30 +2,13 @@
 //  LoginViewController.swift
 //  PhotoArchive
 //
-//  Created by Phillip Gulegin on 10/19/16.
-//  Copyright © 2016 AF-PENS. All rights reserved.
+//  Created by Phillip Gulegin on 1/26/17.
+//  Copyright © 2017 Phillip Gulegin. All rights reserved.
 //
 
 import UIKit
 
 class LoginViewController: UIViewController {
-    
-    // remmeber me uiswitch
-    @IBOutlet weak var rememberMeButton: UISwitch!
-    
-    @IBAction func loginButtonAction(_ sender: UIButton) {
-        //verifies login
-        
-        
-        // if userWhoJustLoggedIn != previousUser
-        // delete previousUser
-        
-        // if login is successful and switch is on
-        if rememberMeButton.isOn {
-            // remember the user for a certain amount of time
-        }
-    }
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +21,31 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBOutlet weak var inputUsername: UITextField!
+    @IBOutlet weak var inputPassword: UITextField!
+    @IBOutlet weak var buttonLogin: UIButton!
+    
+    @IBAction func doLogin(_ sender: Any) {
+        
+        //basic check to see if login is working
+        if inputUsername.text == "" && inputPassword.text == ""{
+            print("CORRECT")
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let vc = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+//            self.present(vc, animated: true, completion: nil)
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            
+            let resultViewController = storyBoard.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+            
+            self.present(resultViewController, animated:true, completion:nil)
+        }
+        else{
+            print("INCORRECT")
+            let alert = UIAlertController(title: "Alert", message: "Please enter correct Information", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
 
     /*
     // MARK: - Navigation

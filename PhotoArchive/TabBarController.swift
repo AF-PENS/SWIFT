@@ -1,14 +1,14 @@
 //
-//  AdminViewController.swift
+//  TabBarController.swift
 //  PhotoArchive
 //
-//  Created by Phillip Gulegin on 10/24/16.
-//  Copyright © 2016 AF-PENS. All rights reserved.
+//  Created by Phillip Gulegin on 1/26/17.
+//  Copyright © 2017 Phillip Gulegin. All rights reserved.
 //
 
 import UIKit
 
-class AdminViewController: UIViewController {
+class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
