@@ -14,7 +14,6 @@ class DashboardImageViewController: UIViewController {
     
     var image = UIImage()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
