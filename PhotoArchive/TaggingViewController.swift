@@ -1,5 +1,5 @@
 //
-//  UploadViewController.swift
+//  TaggingViewController.swift
 //  PhotoArchive
 //
 //  Created by Phillip Gulegin on 1/26/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UploadViewController: UIViewController {
+class TaggingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
