@@ -302,7 +302,7 @@
 				TargetAttributes = {
 					E52EF2C11E3B136800FF37D2 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = DFSK92959A;
+						DevelopmentTeam = PJR55CN5SJ;
 						ProvisioningStyle = Automatic;
 					};
 					E52EF2D71E3B136800FF37D2 = {
@@ -545,10 +545,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = DFSK92959A;
+				DEVELOPMENT_TEAM = PJR55CN5SJ;
 				INFOPLIST_FILE = PhotoArchive/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = csula.PhotoArchive;
+				PRODUCT_BUNDLE_IDENTIFIER = "stephaniegdaley-gmail.com";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -558,10 +558,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = DFSK92959A;
+				DEVELOPMENT_TEAM = PJR55CN5SJ;
 				INFOPLIST_FILE = PhotoArchive/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = csula.PhotoArchive;
+				PRODUCT_BUNDLE_IDENTIFIER = "stephaniegdaley-gmail.com";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
