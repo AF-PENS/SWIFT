@@ -10,10 +10,8 @@ import UIKit
 
 class TaggingTableTableViewCell: UITableViewCell {
 
-    @IBAction func deleteButton(_ sender: Any) {
-    }
-    @IBAction func editButton(_ sender: Any) {
-    }
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var titledescription: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
