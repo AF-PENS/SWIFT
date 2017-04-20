@@ -8,19 +8,34 @@
 
 import UIKit
 
-class AttributeTableTableViewController: UITableViewController {
+class AttributeTableTableViewController: UITableViewController, UITextViewDelegate {
     
     // Passed in context
     @IBOutlet weak var contextTitle: UINavigationItem!
     
     // Attribute titles
-    var attributes = [String]()
+    var attributes = ["Title Goes Here1", "Title Goes Here2", "Title Goes Here3", "Title Goes Here4", "Title Goes Here5", "Title Goes Here6"]
     
     // Attribute descriptions
-    var descriptions = [String]()
+    var descriptions = ["Description Goes Here1", "Description Goes Here2", "Description Goes Here3", "Description Goes Here4", "Description Goes Here5", "Description Goes Here6"]
+    
+    // Attribute answers
+    var answers = ["User Types Answer Here1", "User Types Answer Here2", "User Types Answer Here3", "User Types Answer Here4", "User Types Answer Here5", "User Types Answer Here6"]
+    
     
     // save button to save the context attributes
-    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBAction func saveButton(_ sender: Any) {
+        
+        // creates a Context object with the title of the current context
+        let tempContext = Context(id: contextTitle.title!)
+        
+        for index in 0..<attributes.count {
+            let tempAttribute = Attribute(id: attributes[index], answer: answers[index])
+            tempContext.attributes.append(tempAttribute)
+        }
+        
+        globalObject.sharedInstance.Attributes.append(tempContext)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,18 +60,22 @@ class AttributeTableTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // 10 for debug purposes -- the commented out line should be the actual code
-        return 10
-        // return attributes.count
+        // total number of attributes
+        return attributes.count
     }
 
     // Configures the cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AttributeTableViewCell", for: indexPath) as! AttributeTableViewCell
-
+        
         // displays the title and the description of the attribute
-        cell.attributeTitle.text = "Title Goes Here"
-        cell.attributeDescription.text = "Description Goes Here"
+        cell.attributeTitle.text = attributes[indexPath.row]
+        cell.attributeDescription.text = descriptions[indexPath.row]
+        cell.attributeAnswer.text = answers[indexPath.row]
+        
+        // cell debug to save textview data
+        cell.attributeAnswer.tag = indexPath.row
+        cell.attributeAnswer.delegate = self
         
         // prevents the cell from being selectable
         cell.selectionStyle = UITableViewCellSelectionStyle.none
@@ -68,7 +87,10 @@ class AttributeTableTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         return nil
     }
- 
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        answers[textView.tag] = textView.text!
+    }
 
     /*
     // Override to support conditional editing of the table view.

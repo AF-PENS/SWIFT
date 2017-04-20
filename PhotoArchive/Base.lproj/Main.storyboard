@@ -385,8 +385,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Uo-vr-xEO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Uo-vr-xEO">
+                                                    <rect key="frame" x="0.0" y="1.0000000000000764" width="100" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                                                     <state key="normal" title="Button">
@@ -396,7 +396,7 @@
                                             </subviews>
                                         </view>
                                         <connections>
-                                            <outlet property="tagButton" destination="0Uo-vr-xEO" id="jDC-qc-Klt"/>
+                                            <outlet property="tagButton" destination="0Uo-vr-xEO" id="AcH-Tt-6O5"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -583,11 +583,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Context Title" id="LFP-0q-631">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="CNP-hX-6HF"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="CNP-hX-6HF">
+                            <connections>
+                                <action selector="saveButton:" destination="CR4-Ws-zBc" id="pdj-ZL-Q26"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="contextTitle" destination="LFP-0q-631" id="EVx-Z4-Dt9"/>
-                        <outlet property="saveButton" destination="CNP-hX-6HF" id="dWE-LU-5uw"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jaL-Y2-0Gl" userLabel="First Responder" sceneMemberID="firstResponder"/>

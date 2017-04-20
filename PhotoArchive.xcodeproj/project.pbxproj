@@ -29,6 +29,9 @@
 		E52EF3021E3B221E00FF37D2 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52EF3011E3B221E00FF37D2 /* CameraViewController.swift */; };
 		E52EF3041E3B223800FF37D2 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52EF3031E3B223800FF37D2 /* HistoryViewController.swift */; };
 		E52EF3061E3B224E00FF37D2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52EF3051E3B224E00FF37D2 /* SettingsViewController.swift */; };
+		E54B428D1EA8422F0049BA9F /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54B428C1EA8422F0049BA9F /* Global.swift */; };
+		E54B428F1EA8423B0049BA9F /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54B428E1EA8423B0049BA9F /* Attribute.swift */; };
+		E54B42911EA842880049BA9F /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54B42901EA842880049BA9F /* Context.swift */; };
 		E55B78F21E42FBC9001C7654 /* DashboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B78F11E42FBC9001C7654 /* DashboardCollectionViewCell.swift */; };
 		E55B78F41E42FBE5001C7654 /* DashboardImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B78F31E42FBE5001C7654 /* DashboardImageViewController.swift */; };
 		E55B78F81E431AA7001C7654 /* TaggingAppCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B78F71E431AA7001C7654 /* TaggingAppCollectionViewCell.swift */; };
@@ -90,6 +93,9 @@
 		E52EF3011E3B221E00FF37D2 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		E52EF3031E3B223800FF37D2 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		E52EF3051E3B224E00FF37D2 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E54B428C1EA8422F0049BA9F /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		E54B428E1EA8423B0049BA9F /* Attribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
+		E54B42901EA842880049BA9F /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		E55B78F11E42FBC9001C7654 /* DashboardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardCollectionViewCell.swift; sourceTree = "<group>"; };
 		E55B78F31E42FBE5001C7654 /* DashboardImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardImageViewController.swift; sourceTree = "<group>"; };
 		E55B78F71E431AA7001C7654 /* TaggingAppCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingAppCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -209,6 +215,7 @@
 		E52EF2C41E3B136800FF37D2 /* PhotoArchive */ = {
 			isa = PBXGroup;
 			children = (
+				E54B42891EA8415D0049BA9F /* Models */,
 				E52EF2C51E3B136800FF37D2 /* AppDelegate.swift */,
 				E52EF2CB1E3B136800FF37D2 /* Main.storyboard */,
 				E52EF2CE1E3B136800FF37D2 /* Assets.xcassets */,
@@ -241,6 +248,16 @@
 				E52EF2E91E3B136800FF37D2 /* Info.plist */,
 			);
 			path = PhotoArchiveUITests;
+			sourceTree = "<group>";
+		};
+		E54B42891EA8415D0049BA9F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E54B428C1EA8422F0049BA9F /* Global.swift */,
+				E54B428E1EA8423B0049BA9F /* Attribute.swift */,
+				E54B42901EA842880049BA9F /* Context.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		E5E31D1C1E9DAEE900DFC3A7 /* History */ = {
@@ -417,13 +434,16 @@
 				E51414421E5406B8000A2E3D /* TaggingGalleryOverviewCollectionViewCell.swift in Sources */,
 				E5839AE01EA70C1200B25C70 /* AttributeTableTableViewController.swift in Sources */,
 				E5839ADE1EA70BEA00B25C70 /* AttributeTableViewCell.swift in Sources */,
+				E54B42911EA842880049BA9F /* Context.swift in Sources */,
 				E514143A1E53F87B000A2E3D /* TaggingTagCollectionView.swift in Sources */,
+				E54B428F1EA8423B0049BA9F /* Attribute.swift in Sources */,
 				E51414331E53F3DD000A2E3D /* TaggingGalleryCollectionView.swift in Sources */,
 				E52EF2C61E3B136800FF37D2 /* AppDelegate.swift in Sources */,
 				E51414351E53F4AC000A2E3D /* TaggingGalleryCollectionViewCell.swift in Sources */,
 				E52EF3021E3B221E00FF37D2 /* CameraViewController.swift in Sources */,
 				E51414441E540AA3000A2E3D /* TaggingGalleryOverviewViewController.swift in Sources */,
 				E5E31D2B1E9DC9EE00DFC3A7 /* HistoryTagTableViewCell.swift in Sources */,
+				E54B428D1EA8422F0049BA9F /* Global.swift in Sources */,
 				E589A5BD1E5D0F1400AF944F /* TaggingTableTableViewController.swift in Sources */,
 				E52EF3041E3B223800FF37D2 /* HistoryViewController.swift in Sources */,
 				E51414401E54050D000A2E3D /* TaggingGalleryOverviewImageViewViewController.swift in Sources */,

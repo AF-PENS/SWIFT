@@ -57,38 +57,39 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
             }
         }
     }
-    //////////////////////////////////
+    
+    // Generates the buttons which contain the newly added contexts
+    func generateContextButtons() {
+        for context in 0..<globalObject.sharedInstance.Attributes.count {
+            let button = UIButton()
+            button.setTitle(globalObject.sharedInstance.Attributes[context].id, for: .normal)
+            tagButtonArray.append(button)
+        }
+        
+        // Clears out the elements in the globalObject, since they have already been added to tagButtonArray
+        globalObject.sharedInstance.Attributes.removeAll()
+    }
+    
+    // Do any additional setup after loading the view.
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        // Collection view for the images taken within the application
         appCollectionView.delegate = self
         appCollectionView.dataSource = self
         self.view.addSubview(appCollectionView)
         
+        // Collection view for the images taken outside the application
         galleryCollectionView.delegate = self
         galleryCollectionView.dataSource = self
         self.view.addSubview(galleryCollectionView)
         grabPhotos()
         
+        // Collection view for context buttons
         tagCollectionView.delegate = self
         tagCollectionView.dataSource = self
         self.view.addSubview(tagCollectionView)
-        
-        //setting button placeholders for testing
-        ///////////////////////
-        
-        tagButtonArray.append(UIButton())
-        tagButtonArray.append(UIButton())
-        tagButtonArray.append(UIButton())
-        tagButtonArray.append(UIButton())
-        tagButtonArray.append(UIButton())
-        tagButtonArray.append(UIButton())
-        tagButtonArray.append(UIButton())
-        tagButtonArray.append(UIButton())
-        tagButtonArray.append(UIButton())
-        tagButtonArray.append(UIButton())
-        ///////////////////////
+        generateContextButtons()
     }
     
     override func didReceiveMemoryWarning() {
@@ -106,6 +107,9 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+//        viewDidLoad()
+        generateContextButtons()
+        tagCollectionView.reloadData()
     }
     
     // for the inapp images and buttons
@@ -146,7 +150,8 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TaggingTagCell", for: indexPath) as! TaggingTagCollectionViewCell
             
 //            cell.imageView?.image = self.imageArray[indexPath.row]
-            cell.tagButton? = self.tagButtonArray[indexPath.row]
+            cell.tagButton = self.tagButtonArray[indexPath.row]
+            cell.tagButton.setTitle(tagButtonArray[indexPath.row].titleLabel!.text, for: .normal)
             
             return cell
         }
