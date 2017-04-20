@@ -19,6 +19,9 @@ class AttributeTableTableViewController: UITableViewController {
     // Attribute descriptions
     var descriptions = [String]()
     
+    // save button to save the context attributes
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

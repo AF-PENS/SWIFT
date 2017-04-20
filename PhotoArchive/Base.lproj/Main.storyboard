@@ -587,6 +587,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="contextTitle" destination="LFP-0q-631" id="EVx-Z4-Dt9"/>
+                        <outlet property="saveButton" destination="CNP-hX-6HF" id="dWE-LU-5uw"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jaL-Y2-0Gl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -963,7 +964,7 @@ If there are no tags selected, then the images taken will only be placed in the 
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6KI-b1-9Fk">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6KI-b1-9Fk">
                                             <rect key="frame" x="0.0" y="109" width="414" height="120"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.94023235100000002" green="0.94023235100000002" blue="0.94023235100000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
