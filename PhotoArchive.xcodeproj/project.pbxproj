@@ -32,11 +32,16 @@
 		E55B78F21E42FBC9001C7654 /* DashboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B78F11E42FBC9001C7654 /* DashboardCollectionViewCell.swift */; };
 		E55B78F41E42FBE5001C7654 /* DashboardImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B78F31E42FBE5001C7654 /* DashboardImageViewController.swift */; };
 		E55B78F81E431AA7001C7654 /* TaggingAppCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B78F71E431AA7001C7654 /* TaggingAppCollectionViewCell.swift */; };
+		E5839ADE1EA70BEA00B25C70 /* AttributeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5839ADD1EA70BEA00B25C70 /* AttributeTableViewCell.swift */; };
+		E5839AE01EA70C1200B25C70 /* AttributeTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5839ADF1EA70C1200B25C70 /* AttributeTableTableViewController.swift */; };
+		E5839AE21EA71D3100B25C70 /* HistoryAttributeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5839AE11EA71D3100B25C70 /* HistoryAttributeTableViewController.swift */; };
+		E5839AE41EA71D4E00B25C70 /* HistoryAttributeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5839AE31EA71D4E00B25C70 /* HistoryAttributeTableViewCell.swift */; };
 		E589A5BB1E5D0EF300AF944F /* TaggingTableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589A5BA1E5D0EF300AF944F /* TaggingTableTableViewCell.swift */; };
 		E589A5BD1E5D0F1400AF944F /* TaggingTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589A5BC1E5D0F1400AF944F /* TaggingTableTableViewController.swift */; };
-		E589A5BF1E5D33D700AF944F /* TaggingTableAttributeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589A5BE1E5D33D700AF944F /* TaggingTableAttributeViewController.swift */; };
-		E589A5C11E5D33FE00AF944F /* TaggingTableAttributeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589A5C01E5D33FE00AF944F /* TaggingTableAttributeTableView.swift */; };
-		E589A5C31E5D341E00AF944F /* TaggingTableAttributeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589A5C21E5D341E00AF944F /* TaggingTableAttributeTableViewCell.swift */; };
+		E5E31D241E9DB18F00DFC3A7 /* HistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E31D231E9DB18F00DFC3A7 /* HistoryCollectionViewCell.swift */; };
+		E5E31D261E9DB52300DFC3A7 /* HistoryImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E31D251E9DB52300DFC3A7 /* HistoryImageViewController.swift */; };
+		E5E31D291E9DC8BC00DFC3A7 /* HistoryTagTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E31D281E9DC8BC00DFC3A7 /* HistoryTagTableViewController.swift */; };
+		E5E31D2B1E9DC9EE00DFC3A7 /* HistoryTagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E31D2A1E9DC9EE00DFC3A7 /* HistoryTagTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,11 +93,16 @@
 		E55B78F11E42FBC9001C7654 /* DashboardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardCollectionViewCell.swift; sourceTree = "<group>"; };
 		E55B78F31E42FBE5001C7654 /* DashboardImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardImageViewController.swift; sourceTree = "<group>"; };
 		E55B78F71E431AA7001C7654 /* TaggingAppCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingAppCollectionViewCell.swift; sourceTree = "<group>"; };
+		E5839ADD1EA70BEA00B25C70 /* AttributeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeTableViewCell.swift; sourceTree = "<group>"; };
+		E5839ADF1EA70C1200B25C70 /* AttributeTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeTableTableViewController.swift; sourceTree = "<group>"; };
+		E5839AE11EA71D3100B25C70 /* HistoryAttributeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryAttributeTableViewController.swift; sourceTree = "<group>"; };
+		E5839AE31EA71D4E00B25C70 /* HistoryAttributeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryAttributeTableViewCell.swift; sourceTree = "<group>"; };
 		E589A5BA1E5D0EF300AF944F /* TaggingTableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingTableTableViewCell.swift; sourceTree = "<group>"; };
 		E589A5BC1E5D0F1400AF944F /* TaggingTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingTableTableViewController.swift; sourceTree = "<group>"; };
-		E589A5BE1E5D33D700AF944F /* TaggingTableAttributeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingTableAttributeViewController.swift; sourceTree = "<group>"; };
-		E589A5C01E5D33FE00AF944F /* TaggingTableAttributeTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingTableAttributeTableView.swift; sourceTree = "<group>"; };
-		E589A5C21E5D341E00AF944F /* TaggingTableAttributeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingTableAttributeTableViewCell.swift; sourceTree = "<group>"; };
+		E5E31D231E9DB18F00DFC3A7 /* HistoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		E5E31D251E9DB52300DFC3A7 /* HistoryImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryImageViewController.swift; sourceTree = "<group>"; };
+		E5E31D281E9DC8BC00DFC3A7 /* HistoryTagTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTagTableViewController.swift; sourceTree = "<group>"; };
+		E5E31D2A1E9DC9EE00DFC3A7 /* HistoryTagTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTagTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,9 +180,8 @@
 			children = (
 				E589A5BC1E5D0F1400AF944F /* TaggingTableTableViewController.swift */,
 				E589A5BA1E5D0EF300AF944F /* TaggingTableTableViewCell.swift */,
-				E589A5BE1E5D33D700AF944F /* TaggingTableAttributeViewController.swift */,
-				E589A5C01E5D33FE00AF944F /* TaggingTableAttributeTableView.swift */,
-				E589A5C21E5D341E00AF944F /* TaggingTableAttributeTableViewCell.swift */,
+				E5839ADF1EA70C1200B25C70 /* AttributeTableTableViewController.swift */,
+				E5839ADD1EA70BEA00B25C70 /* AttributeTableViewCell.swift */,
 			);
 			name = TaggingTag;
 			sourceTree = "<group>";
@@ -210,7 +219,7 @@
 				E51414281E53ED15000A2E3D /* Dashboard */,
 				E51414291E53ED1C000A2E3D /* Tagging */,
 				E52EF3011E3B221E00FF37D2 /* CameraViewController.swift */,
-				E52EF3031E3B223800FF37D2 /* HistoryViewController.swift */,
+				E5E31D1C1E9DAEE900DFC3A7 /* History */,
 				E52EF3051E3B224E00FF37D2 /* SettingsViewController.swift */,
 			);
 			path = PhotoArchive;
@@ -232,6 +241,28 @@
 				E52EF2E91E3B136800FF37D2 /* Info.plist */,
 			);
 			path = PhotoArchiveUITests;
+			sourceTree = "<group>";
+		};
+		E5E31D1C1E9DAEE900DFC3A7 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				E52EF3031E3B223800FF37D2 /* HistoryViewController.swift */,
+				E5E31D231E9DB18F00DFC3A7 /* HistoryCollectionViewCell.swift */,
+				E5E31D251E9DB52300DFC3A7 /* HistoryImageViewController.swift */,
+				E5E31D271E9DC88B00DFC3A7 /* HistoryTag */,
+			);
+			name = History;
+			sourceTree = "<group>";
+		};
+		E5E31D271E9DC88B00DFC3A7 /* HistoryTag */ = {
+			isa = PBXGroup;
+			children = (
+				E5E31D281E9DC8BC00DFC3A7 /* HistoryTagTableViewController.swift */,
+				E5E31D2A1E9DC9EE00DFC3A7 /* HistoryTagTableViewCell.swift */,
+				E5839AE11EA71D3100B25C70 /* HistoryAttributeTableViewController.swift */,
+				E5839AE31EA71D4E00B25C70 /* HistoryAttributeTableViewCell.swift */,
+			);
+			name = HistoryTag;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,7 +333,7 @@
 				TargetAttributes = {
 					E52EF2C11E3B136800FF37D2 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = PJR55CN5SJ;
+						DevelopmentTeam = DFSK92959A;
 						ProvisioningStyle = Automatic;
 					};
 					E52EF2D71E3B136800FF37D2 = {
@@ -370,27 +401,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				E51414461E540ACB000A2E3D /* TaggingGalleryOverviewCollectionView.swift in Sources */,
+				E5839AE21EA71D3100B25C70 /* HistoryAttributeTableViewController.swift in Sources */,
 				E52EF2FA1E3B18BE00FF37D2 /* LoginViewController.swift in Sources */,
 				E52EF2FE1E3B21D600FF37D2 /* DashboardViewController.swift in Sources */,
+				E5E31D241E9DB18F00DFC3A7 /* HistoryCollectionViewCell.swift in Sources */,
+				E5839AE41EA71D4E00B25C70 /* HistoryAttributeTableViewCell.swift in Sources */,
 				E55B78F41E42FBE5001C7654 /* DashboardImageViewController.swift in Sources */,
 				E589A5BB1E5D0EF300AF944F /* TaggingTableTableViewCell.swift in Sources */,
-				E589A5BF1E5D33D700AF944F /* TaggingTableAttributeViewController.swift in Sources */,
+				E5E31D261E9DB52300DFC3A7 /* HistoryImageViewController.swift in Sources */,
 				E52EF3061E3B224E00FF37D2 /* SettingsViewController.swift in Sources */,
 				E51414311E53F329000A2E3D /* TaggingAppCollectionView.swift in Sources */,
 				E55B78F81E431AA7001C7654 /* TaggingAppCollectionViewCell.swift in Sources */,
+				E5E31D291E9DC8BC00DFC3A7 /* HistoryTagTableViewController.swift in Sources */,
 				E55B78F21E42FBC9001C7654 /* DashboardCollectionViewCell.swift in Sources */,
 				E51414421E5406B8000A2E3D /* TaggingGalleryOverviewCollectionViewCell.swift in Sources */,
+				E5839AE01EA70C1200B25C70 /* AttributeTableTableViewController.swift in Sources */,
+				E5839ADE1EA70BEA00B25C70 /* AttributeTableViewCell.swift in Sources */,
 				E514143A1E53F87B000A2E3D /* TaggingTagCollectionView.swift in Sources */,
 				E51414331E53F3DD000A2E3D /* TaggingGalleryCollectionView.swift in Sources */,
 				E52EF2C61E3B136800FF37D2 /* AppDelegate.swift in Sources */,
 				E51414351E53F4AC000A2E3D /* TaggingGalleryCollectionViewCell.swift in Sources */,
-				E589A5C11E5D33FE00AF944F /* TaggingTableAttributeTableView.swift in Sources */,
 				E52EF3021E3B221E00FF37D2 /* CameraViewController.swift in Sources */,
 				E51414441E540AA3000A2E3D /* TaggingGalleryOverviewViewController.swift in Sources */,
+				E5E31D2B1E9DC9EE00DFC3A7 /* HistoryTagTableViewCell.swift in Sources */,
 				E589A5BD1E5D0F1400AF944F /* TaggingTableTableViewController.swift in Sources */,
 				E52EF3041E3B223800FF37D2 /* HistoryViewController.swift in Sources */,
 				E51414401E54050D000A2E3D /* TaggingGalleryOverviewImageViewViewController.swift in Sources */,
-				E589A5C31E5D341E00AF944F /* TaggingTableAttributeTableViewCell.swift in Sources */,
 				E52EF2FC1E3B1E2E00FF37D2 /* TabBarController.swift in Sources */,
 				E514143C1E53F88B000A2E3D /* TaggingTagCollectionViewCell.swift in Sources */,
 				E513F7E11E43273C009C03B5 /* TaggingViewController.swift in Sources */,
@@ -545,10 +581,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = PJR55CN5SJ;
+				DEVELOPMENT_TEAM = DFSK92959A;
 				INFOPLIST_FILE = PhotoArchive/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "stephaniegdaley-gmail.com";
+				PRODUCT_BUNDLE_IDENTIFIER = afpens.PhotoArchive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -558,10 +594,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = PJR55CN5SJ;
+				DEVELOPMENT_TEAM = DFSK92959A;
 				INFOPLIST_FILE = PhotoArchive/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "stephaniegdaley-gmail.com";
+				PRODUCT_BUNDLE_IDENTIFIER = afpens.PhotoArchive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

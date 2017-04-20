@@ -1,14 +1,17 @@
 //
-//  TaggingTableAttributeTableViewCell.swift
+//  HistoryTagTableViewCell.swift
 //  PhotoArchive
 //
-//  Created by Phillip Gulegin on 2/21/17.
+//  Created by Phillip Gulegin on 4/11/17.
 //  Copyright © 2017 Phillip Gulegin. All rights reserved.
 //
 
 import UIKit
 
-class TaggingTableAttributeTableViewCell: UITableViewCell {
+class HistoryTagTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var titledescription: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

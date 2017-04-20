@@ -1,15 +1,15 @@
 //
-//  TaggingTableTableViewController.swift
+//  HistoryTagTableViewController.swift
 //  PhotoArchive
 //
-//  Created by Phillip Gulegin on 2/21/17.
+//  Created by Phillip Gulegin on 4/11/17.
 //  Copyright © 2017 Phillip Gulegin. All rights reserved.
 //
 
 import UIKit
 
-class TaggingTableTableViewController: UITableViewController {
-
+class HistoryTagTableViewController: UITableViewController {
+    
     // Future note: May have to create a simple object/association which will tie together the titles and descriptions
     // because right now they are not
     // Array of strings with all of the Context Titles from the database
@@ -23,7 +23,7 @@ class TaggingTableTableViewController: UITableViewController {
     
     // Array of strongs with the sorted keys from the dictionary above
     var contextsSectionsSortedKeys = [String]()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,7 +65,7 @@ class TaggingTableTableViewController: UITableViewController {
         return contextsSections.count
     }
 
-    // Total number of rows for every section
+    // Total number of rows
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return contextsSections[contextsSectionsSortedKeys[section]]!
@@ -83,7 +83,7 @@ class TaggingTableTableViewController: UITableViewController {
 
     // Confirgures the cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TaggingTableTableViewCell", for: indexPath) as! TaggingTableTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryTagTableViewCell", for: indexPath) as! HistoryTagTableViewCell
         
         // finds which context is the one that needs to be printed
         var count = 0
@@ -102,7 +102,7 @@ class TaggingTableTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let vc = segue.destination as! AttributeTableTableViewController
+        let vc = segue.destination as! HistoryAttributeTableViewController
         
         let indexPath = tableView.indexPathForSelectedRow
         
@@ -115,7 +115,7 @@ class TaggingTableTableViewController: UITableViewController {
         
         vc.contextTitle.title = contexts[count]
     }
-    
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
