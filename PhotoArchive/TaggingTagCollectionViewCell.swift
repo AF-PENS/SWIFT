@@ -10,5 +10,5 @@ import UIKit
 
 class TaggingTagCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var tagButton: UIButton!
+    @IBOutlet weak var title: UILabel!
 }

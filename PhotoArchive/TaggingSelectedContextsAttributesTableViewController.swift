@@ -1,30 +1,27 @@
 //
-//  AttributeTableTableViewController.swift
+//  TaggingSelectedContextsAttributesTableViewController.swift
 //  PhotoArchive
 //
-//  Created by Phillip Gulegin on 4/18/17.
+//  Created by Phillip Gulegin on 4/20/17.
 //  Copyright © 2017 Phillip Gulegin. All rights reserved.
 //
 
 import UIKit
 
-class AttributeTableTableViewController: UITableViewController, UITextViewDelegate {
+class TaggingSelectedContextsAttributesTableViewController: UITableViewController, UITextViewDelegate {
     
-    // Passed in context
     @IBOutlet weak var contextTitle: UINavigationItem!
+    var context = 0
+    var currentContext:Context!
     
-    // Attribute titles
-    var attributes = ["Title Goes Here1", "Title Goes Here2", "Title Goes Here3", "Title Goes Here4", "Title Goes Here5", "Title Goes Here6"]
-    
-    // Attribute descriptions
-    var descriptions = ["Description Goes Here1", "Description Goes Here2", "Description Goes Here3", "Description Goes Here4", "Description Goes Here5", "Description Goes Here6"]
-    
-    // Attribute answers
-    var answers = ["User Types Answer Here1", "User Types Answer Here2", "User Types Answer Here3", "User Types Answer Here4", "User Types Answer Here5", "User Types Answer Here6"]
+    var attributes = [String]()
+    var descriptions = [String]()
+    var answers = [String]()
     
     
-    // save button to save the context attributes
     @IBAction func saveButton(_ sender: Any) {
+        
+        globalObject.sharedInstance.Attributes.remove(at: context)
         
         // creates a Context object with the title of the current context
         let tempContext = Context(id: contextTitle.title!)
@@ -33,12 +30,27 @@ class AttributeTableTableViewController: UITableViewController, UITextViewDelega
             let tempAttribute = Attribute(id: attributes[index], question: descriptions[index], value: answers[index])
             tempContext.attributes.append(tempAttribute)
         }
-        
-        globalObject.sharedInstance.Attributes.append(tempContext)
+
+        globalObject.sharedInstance.Attributes.insert(tempContext, at: context)
+    }
+    
+    @IBAction func deleteButton(_ sender: Any) {
+        globalObject.sharedInstance.Attributes.remove(at: context)
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        currentContext = globalObject.sharedInstance.Attributes[context]
+        contextTitle.title = globalObject.sharedInstance.Attributes[context].id
+        
+        for i in 0..<globalObject.sharedInstance.Attributes[context].attributes.count {
+            attributes.append(globalObject.sharedInstance.Attributes[context].attributes[i].id)
+            descriptions.append(globalObject.sharedInstance.Attributes[context].attributes[i].question)
+            answers.append(globalObject.sharedInstance.Attributes[context].attributes[i].value)
+        }
+        
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -60,14 +72,14 @@ class AttributeTableTableViewController: UITableViewController, UITextViewDelega
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // total number of attributes
-        return attributes.count
+        // #warning Incomplete implementation, return the number of rows
+        return currentContext.attributes.count
     }
 
-    // Configures the cell
+    // Configure the cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AttributeTableViewCell", for: indexPath) as! AttributeTableViewCell
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TaggingSelectedContextsAttributesTableViewCell", for: indexPath) as! TaggingSelectedContextsAttributesTableViewCell
+
         // displays the title and the description of the attribute
         cell.attributeTitle.text = attributes[indexPath.row]
         cell.attributeDescription.text = descriptions[indexPath.row]
@@ -79,6 +91,7 @@ class AttributeTableTableViewController: UITableViewController, UITextViewDelega
         
         // prevents the cell from being selectable
         cell.selectionStyle = UITableViewCellSelectionStyle.none
+        
 
         return cell
     }
@@ -91,6 +104,7 @@ class AttributeTableTableViewController: UITableViewController, UITextViewDelega
     func textViewDidEndEditing(_ textView: UITextView) {
         answers[textView.tag] = textView.text!
     }
+ 
 
     /*
     // Override to support conditional editing of the table view.

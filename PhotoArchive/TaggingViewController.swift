@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 
-class TaggingViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class TaggingViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var appCollectionView: UICollectionView!
     
@@ -21,7 +21,9 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     var galleryImageArray = [UIImage]()
     
-    var tagButtonArray = [UIButton]()
+    var tagButtonArray = ["AA Medium Title", "AA Medium Title", "AA Medium Title", "AA Medium Title"]
+    
+    var selectedTagContext = 0
     
     ///////////////////////////////////////
     func grabPhotos(){
@@ -60,14 +62,13 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     // Generates the buttons which contain the newly added contexts
     func generateContextButtons() {
-        for context in 0..<globalObject.sharedInstance.Attributes.count {
-            let button = UIButton()
-            button.setTitle(globalObject.sharedInstance.Attributes[context].id, for: .normal)
-            tagButtonArray.append(button)
-        }
         
-        // Clears out the elements in the globalObject, since they have already been added to tagButtonArray
-        globalObject.sharedInstance.Attributes.removeAll()
+        // Clears out the elements in tagButtonArray in order to not create duplicates
+        tagButtonArray.removeAll()
+        
+        for context in 0..<globalObject.sharedInstance.Attributes.count {
+            tagButtonArray.append(globalObject.sharedInstance.Attributes[context].id)
+        }
     }
     
     // Do any additional setup after loading the view.
@@ -107,7 +108,6 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-//        viewDidLoad()
         generateContextButtons()
         tagCollectionView.reloadData()
     }
@@ -125,6 +125,7 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
     }
     
+    // creates the cells for the 3 different collection views
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // checks to see which collection view is being called
         if collectionView == self.appCollectionView {
@@ -149,13 +150,51 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
             // creates the cell to display the image
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TaggingTagCell", for: indexPath) as! TaggingTagCollectionViewCell
             
-//            cell.imageView?.image = self.imageArray[indexPath.row]
-            cell.tagButton = self.tagButtonArray[indexPath.row]
-            cell.tagButton.setTitle(tagButtonArray[indexPath.row].titleLabel!.text, for: .normal)
+            cell.title.text = tagButtonArray[indexPath.row]
             
             return cell
         }
     }
+    
+    // changes the cell size for the images and the tags
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        // resizes the tag context cell based on the lenght of the name of the context
+        if collectionView == tagCollectionView {
+            
+            let label =  UILabel()
+            label.numberOfLines = 0
+            label.text = tagButtonArray[indexPath.row]
+            label.sizeToFit()
+            
+            return CGSize(width: label.frame.width+4, height: label.frame.height+4)
+        }
+        else {
+            // current defaults set in interface builder
+            return CGSize(width: 70, height: 70)
+        }
+        
+    }
+    
+    // gets the selected item to pass
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == tagCollectionView {
+            let currentCell = collectionView.cellForItem(at: indexPath) as! TaggingTagCollectionViewCell
+            selectedTagContext = indexPath.row
+            
+            performSegue(withIdentifier: "TaggingSelectedContextsAttributesSegue", sender: self)
+        }
+    }
+    
+    // prepares a segue to send data to the next view controller
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "TaggingSelectedContextsAttributesSegue" {
+            let vc = segue.destination as! TaggingSelectedContextsAttributesTableViewController
+            vc.context = selectedTagContext
+        }
+    }
+    
+    
     
     /*
      // MARK: - Navigation

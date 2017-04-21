@@ -10,10 +10,12 @@ import Foundation
 
 class Attribute: NSObject {
     var id = "default"
-    var answer = "default"
+    var question = "default"
+    var value = "default"
     
-    init(id: String, answer: String) {
+    init(id: String, question: String, value: String) {
         self.id = id
-        self.answer = answer
+        self.question = question
+        self.value = value
     }
 }

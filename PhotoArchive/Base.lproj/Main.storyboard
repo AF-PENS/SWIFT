@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -369,7 +370,7 @@
                             </textField>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceHorizontal="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="x4n-OO-kkm" customClass="TaggingTagCollectionView" customModule="PhotoArchive" customModuleProvider="target">
                                 <rect key="frame" x="20" y="486" width="374" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fk2-Z6-awB">
                                     <size key="itemSize" width="100" height="30"/>
@@ -379,24 +380,25 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TaggingTagCell" id="TRY-7M-KJ6" customClass="TaggingTagCollectionViewCell" customModule="PhotoArchive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="8.6666666666666661" width="100" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <rect key="frame" x="0.0" y="8.5" width="100" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Uo-vr-xEO">
-                                                    <rect key="frame" x="0.0" y="1.0000000000000764" width="100" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYa-NV-n8r">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <state key="normal" title="Button">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                </button>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
+                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         <connections>
-                                            <outlet property="tagButton" destination="0Uo-vr-xEO" id="AcH-Tt-6O5"/>
+                                            <outlet property="title" destination="bYa-NV-n8r" id="D6e-rf-llY"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -413,6 +415,7 @@
                         <outlet property="appCollectionView" destination="J5S-tO-7JC" id="Cki-h6-6Os"/>
                         <outlet property="galleryCollectionView" destination="oUC-ph-vEX" id="a3A-qV-XiI"/>
                         <outlet property="tagCollectionView" destination="x4n-OO-kkm" id="chZ-Zk-R8z"/>
+                        <segue destination="mGj-D4-kol" kind="show" identifier="TaggingSelectedContextsAttributesSegue" id="B4X-Yz-fzh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -523,7 +526,83 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bgl-IV-RTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2828.985507246377" y="-878.804347826087"/>
+            <point key="canvasLocation" x="2829" y="-801"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="Vtj-Qn-2F2">
+            <objects>
+                <tableViewController id="mGj-D4-kol" customClass="TaggingSelectedContextsAttributesTableViewController" customModule="PhotoArchive" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="221" sectionHeaderHeight="28" sectionFooterHeight="28" id="tcx-3n-1lf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaggingSelectedContextsAttributesTableViewCell" rowHeight="221" id="hDl-4N-kVe" customClass="TaggingSelectedContextsAttributesTableViewCell" customModule="PhotoArchive" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="221"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hDl-4N-kVe" id="tpT-xy-WEn">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="220.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7K-Lf-D0P">
+                                            <rect key="frame" x="8" y="0.0" width="398" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Attribute Description" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HxC-Ur-x4w">
+                                            <rect key="frame" x="0.0" y="29" width="414" height="64"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" notEnabled="YES"/>
+                                            </accessibility>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hMr-Gf-RBU">
+                                            <rect key="frame" x="0.0" y="101" width="414" height="120"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.94023235100000002" green="0.94023235100000002" blue="0.94023235100000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="attributeAnswer" destination="hMr-Gf-RBU" id="HSe-1q-URm"/>
+                                    <outlet property="attributeDescription" destination="HxC-Ur-x4w" id="3wF-U6-3P5"/>
+                                    <outlet property="attributeTitle" destination="r7K-Lf-D0P" id="52E-Yr-nW3"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="mGj-D4-kol" id="zK6-M5-hSJ"/>
+                            <outlet property="delegate" destination="mGj-D4-kol" id="a2N-9H-JgV"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="alt-YJ-Brx">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Save" id="q48-uB-HEk">
+                                <connections>
+                                    <action selector="saveButton:" destination="mGj-D4-kol" id="UjE-ZU-2tV"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Delete" id="Hqh-yH-PDb">
+                                <connections>
+                                    <action selector="deleteButton:" destination="mGj-D4-kol" id="57t-IG-tW5"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="contextTitle" destination="alt-YJ-Brx" id="0ZC-mP-BPd"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0I5-s7-VtN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2828.985507246377" y="-19.565217391304348"/>
         </scene>
         <!--Context Title-->
         <scene sceneID="dcr-65-gBc">
@@ -595,7 +674,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jaL-Y2-0Gl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3733.3333333333335" y="-878.804347826087"/>
+            <point key="canvasLocation" x="3732" y="-801"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="LAs-K2-muh">
@@ -775,7 +854,7 @@ If there are no tags selected, then the images taken will only be placed in the 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hLV-xM-2EV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="996" y="2"/>
+            <point key="canvasLocation" x="996" y="810"/>
         </scene>
         <!--History-->
         <scene sceneID="L4Z-k4-IZd">
@@ -849,7 +928,7 @@ If there are no tags selected, then the images taken will only be placed in the 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="28d-uN-voX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1902.8985507246377" y="809.51086956521749"/>
+            <point key="canvasLocation" x="1903" y="1802"/>
         </scene>
         <!--Title-->
         <scene sceneID="0ya-ac-yP8">
@@ -883,7 +962,7 @@ If there are no tags selected, then the images taken will only be placed in the 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xYE-NT-iUU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2828.985507246377" y="809.51086956521749"/>
+            <point key="canvasLocation" x="2829" y="1802"/>
         </scene>
         <!--History Tag Table View Controller-->
         <scene sceneID="bR1-1B-r9Z">
@@ -932,7 +1011,7 @@ If there are no tags selected, then the images taken will only be placed in the 
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p8u-X5-yxD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3733" y="810"/>
+            <point key="canvasLocation" x="3732" y="1802"/>
         </scene>
         <!--Context Title-->
         <scene sceneID="l6p-89-fvH">
@@ -995,7 +1074,7 @@ If there are no tags selected, then the images taken will only be placed in the 
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cDJ-Iu-9Kc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4709" y="810"/>
+            <point key="canvasLocation" x="4709" y="1802"/>
         </scene>
         <!--Settings-->
         <scene sceneID="b8V-l9-9qi">
@@ -1095,7 +1174,7 @@ If there are no tags selected, then the images taken will only be placed in the 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ugo-Y3-Wv5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="996" y="1593"/>
+            <point key="canvasLocation" x="996" y="2585"/>
         </scene>
         <!--Login-->
         <scene sceneID="tDE-bW-7YR">
@@ -1163,7 +1242,7 @@ If there are no tags selected, then the images taken will only be placed in the 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ycg-Ps-DOd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-846.37681159420299" y="1.6304347826086958"/>
+            <point key="canvasLocation" x="-909" y="810"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -1185,7 +1264,7 @@ If there are no tags selected, then the images taken will only be placed in the 
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="46" y="810"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="IEo-UZ-2uy">
@@ -1242,7 +1321,7 @@ If there are no tags selected, then the images taken will only be placed in the 
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AoE-xl-5sA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="995.65217391304361" y="809.51086956521749"/>
+            <point key="canvasLocation" x="996" y="1802"/>
         </scene>
     </scenes>
     <resources>

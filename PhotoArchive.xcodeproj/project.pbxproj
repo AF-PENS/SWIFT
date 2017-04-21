@@ -41,6 +41,8 @@
 		E5839AE41EA71D4E00B25C70 /* HistoryAttributeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5839AE31EA71D4E00B25C70 /* HistoryAttributeTableViewCell.swift */; };
 		E589A5BB1E5D0EF300AF944F /* TaggingTableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589A5BA1E5D0EF300AF944F /* TaggingTableTableViewCell.swift */; };
 		E589A5BD1E5D0F1400AF944F /* TaggingTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589A5BC1E5D0F1400AF944F /* TaggingTableTableViewController.swift */; };
+		E5CF3D571EA99C2500E0698C /* TaggingSelectedContextsAttributesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF3D561EA99C2500E0698C /* TaggingSelectedContextsAttributesTableViewController.swift */; };
+		E5CF3D591EA99C3200E0698C /* TaggingSelectedContextsAttributesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF3D581EA99C3200E0698C /* TaggingSelectedContextsAttributesTableViewCell.swift */; };
 		E5E31D241E9DB18F00DFC3A7 /* HistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E31D231E9DB18F00DFC3A7 /* HistoryCollectionViewCell.swift */; };
 		E5E31D261E9DB52300DFC3A7 /* HistoryImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E31D251E9DB52300DFC3A7 /* HistoryImageViewController.swift */; };
 		E5E31D291E9DC8BC00DFC3A7 /* HistoryTagTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E31D281E9DC8BC00DFC3A7 /* HistoryTagTableViewController.swift */; };
@@ -105,6 +107,8 @@
 		E5839AE31EA71D4E00B25C70 /* HistoryAttributeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryAttributeTableViewCell.swift; sourceTree = "<group>"; };
 		E589A5BA1E5D0EF300AF944F /* TaggingTableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingTableTableViewCell.swift; sourceTree = "<group>"; };
 		E589A5BC1E5D0F1400AF944F /* TaggingTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingTableTableViewController.swift; sourceTree = "<group>"; };
+		E5CF3D561EA99C2500E0698C /* TaggingSelectedContextsAttributesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingSelectedContextsAttributesTableViewController.swift; sourceTree = "<group>"; };
+		E5CF3D581EA99C3200E0698C /* TaggingSelectedContextsAttributesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingSelectedContextsAttributesTableViewCell.swift; sourceTree = "<group>"; };
 		E5E31D231E9DB18F00DFC3A7 /* HistoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		E5E31D251E9DB52300DFC3A7 /* HistoryImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryImageViewController.swift; sourceTree = "<group>"; };
 		E5E31D281E9DC8BC00DFC3A7 /* HistoryTagTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTagTableViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 				E51414361E53F4CC000A2E3D /* TaggingApp */,
 				E51414371E53F4EB000A2E3D /* TaggingGallery */,
 				E51414381E53F4F3000A2E3D /* TaggingTag */,
+				E5CF3D511EA99B2F00E0698C /* TaggingSelected */,
 			);
 			name = Tagging;
 			sourceTree = "<group>";
@@ -258,6 +263,15 @@
 				E54B42901EA842880049BA9F /* Context.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		E5CF3D511EA99B2F00E0698C /* TaggingSelected */ = {
+			isa = PBXGroup;
+			children = (
+				E5CF3D561EA99C2500E0698C /* TaggingSelectedContextsAttributesTableViewController.swift */,
+				E5CF3D581EA99C3200E0698C /* TaggingSelectedContextsAttributesTableViewCell.swift */,
+			);
+			name = TaggingSelected;
 			sourceTree = "<group>";
 		};
 		E5E31D1C1E9DAEE900DFC3A7 /* History */ = {
@@ -428,6 +442,7 @@
 				E5E31D261E9DB52300DFC3A7 /* HistoryImageViewController.swift in Sources */,
 				E52EF3061E3B224E00FF37D2 /* SettingsViewController.swift in Sources */,
 				E51414311E53F329000A2E3D /* TaggingAppCollectionView.swift in Sources */,
+				E5CF3D571EA99C2500E0698C /* TaggingSelectedContextsAttributesTableViewController.swift in Sources */,
 				E55B78F81E431AA7001C7654 /* TaggingAppCollectionViewCell.swift in Sources */,
 				E5E31D291E9DC8BC00DFC3A7 /* HistoryTagTableViewController.swift in Sources */,
 				E55B78F21E42FBC9001C7654 /* DashboardCollectionViewCell.swift in Sources */,
@@ -450,6 +465,7 @@
 				E52EF2FC1E3B1E2E00FF37D2 /* TabBarController.swift in Sources */,
 				E514143C1E53F88B000A2E3D /* TaggingTagCollectionViewCell.swift in Sources */,
 				E513F7E11E43273C009C03B5 /* TaggingViewController.swift in Sources */,
+				E5CF3D591EA99C3200E0698C /* TaggingSelectedContextsAttributesTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
