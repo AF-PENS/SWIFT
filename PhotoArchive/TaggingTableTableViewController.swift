@@ -13,7 +13,7 @@ class TaggingTableTableViewController: UITableViewController {
     // Future note: May have to create a simple object/association which will tie together the titles and descriptions
     // because right now they are not
     // Array of strings with all of the Context Titles from the database
-    var contexts = [Context]()
+    var contexts = globalObject.sharedInstance.dbContexts;
 
     
     // Array of string with all of the Context Descriptions from the database
@@ -25,8 +25,7 @@ class TaggingTableTableViewController: UITableViewController {
     // Array of strongs with the sorted keys from the dictionary above
     var contextsSectionsSortedKeys = [String]()
     
-    func updateUI(contextList: [Context]){
-        contexts = contextList;
+    func updateUI(){
         
         print("Updating UI");
         
@@ -63,38 +62,7 @@ class TaggingTableTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        
-        let client = delegate.client!;
-        
-        //        let client = MSClient(
-        //            applicationURLString:"https://boephotoarchive-dev.azurewebsites.net"
-        //        )
-        
-        let contextTable = client.table(withName: "Context");
-        
-        contextTable.read(completion: {
-            (result, error) in
-            if let err = error {
-                print("ERROR ", err)
-            } else if let contextResults = result?.items {
-                var contextList = [Context]()
-                
-                for context in contextResults {
-                    print("Context: ", context["id"])
-                    
-                    contextList.append(
-                        Context(
-                            id: context["id"] as! String,
-                            descriptor: context["descriptor"] as! String
-                        )
-                    )
-                }
-                
-                
-                self.updateUI(contextList: contextList);
-            }
-        })
+        updateUI();
         
     }
 

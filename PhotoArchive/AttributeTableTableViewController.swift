@@ -16,15 +16,6 @@ class AttributeTableTableViewController: UITableViewController, UITextViewDelega
     // Attribute titles
     var attributes = [Attribute]();
     
-//    var attributes = ["Title Goes Here1", "Title Goes Here2", "Title Goes Here3", "Title Goes Here4", "Title Goes Here5", "Title Goes Here6"]
-//    
-//    // Attribute descriptions
-//    var descriptions = ["Description Goes Here1", "Description Goes Here2", "Description Goes Here3", "Description Goes Here4", "Description Goes Here5", "Description Goes Here6"]
-//    
-//    // Attribute answers
-//    var answers = ["User Types Answer Here1", "User Types Answer Here2", "User Types Answer Here3", "User Types Answer Here4", "User Types Answer Here5", "User Types Answer Here6"]
-    
-    
     // save button to save the context attributes
     @IBAction func saveButton(_ sender: Any) {
         
@@ -35,6 +26,7 @@ class AttributeTableTableViewController: UITableViewController, UITextViewDelega
             let tempAttribute = attributes[index]
             tempContext.attributes.append(tempAttribute)
         }
+        
         globalObject.sharedInstance.Attributes.append(tempContext)
         
         performSegue(withIdentifier: "unwindToTaggingViewController", sender: self)

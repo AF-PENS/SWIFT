@@ -17,11 +17,40 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     
     let imageArray = [UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder")]
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tagsStatusText.text = "Syncing..."
 
-        // Do any additional setup after loading the view.
-        tagsStatusText.text = "Checking"
+        //Pull Contexts from DB and save to global variable
+        
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        
+        let client = delegate.client!;
+        
+        let contextTable = client.table(withName: "Context");
+        
+        contextTable.read(completion: {
+            (result, error) in
+            if let err = error {
+                print("ERROR ", err)
+            } else if let contextResults = result?.items {
+                for context in contextResults {
+                    print("Context: ", context["id"])
+                    
+                    globalObject.sharedInstance.dbContexts.append(
+                        Context(
+                            id: context["id"] as! String,
+                            descriptor: context["descriptor"] as! String
+                        )
+                    )
+                }
+                
+                self.tagsStatusText.text = "Up To Date"
+            }
+        })
+        
         permissionStatusText.text = "Correct"
     }
 

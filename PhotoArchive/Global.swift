@@ -18,4 +18,8 @@ class globalObject {
     
     // class variables
     var Attributes = [Context]()
+    
+    //global vars
+    var dbContexts = [Context]();
+    var dbAttributes = [Attribute]();
 }
