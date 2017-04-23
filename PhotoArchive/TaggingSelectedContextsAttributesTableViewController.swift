@@ -32,11 +32,14 @@ class TaggingSelectedContextsAttributesTableViewController: UITableViewControlle
         }
 
         globalObject.sharedInstance.Attributes.insert(tempContext, at: context)
+        
+        performSegue(withIdentifier: "unwindToTaggingViewController", sender: self)
     }
     
     @IBAction func deleteButton(_ sender: Any) {
         globalObject.sharedInstance.Attributes.remove(at: context)
 
+        performSegue(withIdentifier: "unwindToTaggingViewController", sender: self)
     }
     
     override func viewDidLoad() {

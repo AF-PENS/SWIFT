@@ -25,6 +25,9 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     var selectedTagContext = 0
     
+    // prepares for a segue transition from the Attribute pages
+    @IBAction func unwindToTaggingViewController(segue:UIStoryboardSegue) { }
+    
     ///////////////////////////////////////
     func grabPhotos(){
         
@@ -193,6 +196,11 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
             vc.context = selectedTagContext
         }
     }
+    
+//    // prepares for a segue transition from the Attribute pages
+//    override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+//        // no actual code necessary -- function just must exit in the controller
+//    }
     
     
     

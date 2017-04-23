@@ -33,8 +33,9 @@ class AttributeTableTableViewController: UITableViewController, UITextViewDelega
             let tempAttribute = Attribute(id: attributes[index], question: descriptions[index], value: answers[index])
             tempContext.attributes.append(tempAttribute)
         }
-        
         globalObject.sharedInstance.Attributes.append(tempContext)
+        
+        performSegue(withIdentifier: "unwindToTaggingViewController", sender: self)
     }
     
     override func viewDidLoad() {
