@@ -13,7 +13,8 @@ class TaggingTableTableViewController: UITableViewController {
     // Future note: May have to create a simple object/association which will tie together the titles and descriptions
     // because right now they are not
     // Array of strings with all of the Context Titles from the database
-    var contexts = ["A short", "AA medium title", "AAA very very very very very very very very long title and description", "Senior Design Meeting", "Project Alice", "Guardians of the Galaxy", "Water Permit", "Utility Permit", "Fleetmac Wood Concert", "Mayor Speech on 2/3", "Event - New Year 2017", "event - Chrisimas 2016", "Flood Damages", "Charter Planned Construction", "Project Sidewalk Restoration", "DocuDay LA 2/13", "LA Art Book Fair 2017", "Permit Applications", "Event - Valentine's Day 2017", "123456789", "0123456789", "9876543210"]
+    var contexts = [Context]()
+
     
     // Array of string with all of the Context Descriptions from the database
     var contextsDetails = [String]()
@@ -24,12 +25,17 @@ class TaggingTableTableViewController: UITableViewController {
     // Array of strongs with the sorted keys from the dictionary above
     var contextsSectionsSortedKeys = [String]()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func updateUI(contextList: [Context]){
+        contexts = contextList;
+        
+        print("Updating UI");
         
         for i in 0..<contexts.count {
+            print("Cycling Through Contexts")
             
-            let sectionLetter = String(contexts[i][contexts[i].startIndex]).uppercased()
+            let sectionLetter = String(contexts[i].id[contexts[i].id.startIndex]).uppercased()
+            
+            print("Section Letter: ", sectionLetter);
             
             if (contextsSections[sectionLetter] != nil) {
                 contextsSections[sectionLetter] = contextsSections[sectionLetter]! + 1
@@ -40,16 +46,56 @@ class TaggingTableTableViewController: UITableViewController {
         }
         
         // Sorts contexts into alphabetical order
-        contexts = contexts.sorted{$0.localizedCompare($1) == .orderedAscending}
+        contexts = contexts.sorted{$0.id.localizedCompare($1.id) == .orderedAscending}
         
         // Sorts keys into alphabetical order
         contextsSectionsSortedKeys = Array(contextsSections.keys).sorted(by: <)
-
+        
+        self.tableView.reloadData()
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        
+        let client = delegate.client!;
+        
+        //        let client = MSClient(
+        //            applicationURLString:"https://boephotoarchive-dev.azurewebsites.net"
+        //        )
+        
+        let contextTable = client.table(withName: "Context");
+        
+        contextTable.read(completion: {
+            (result, error) in
+            if let err = error {
+                print("ERROR ", err)
+            } else if let contextResults = result?.items {
+                var contextList = [Context]()
+                
+                for context in contextResults {
+                    print("Context: ", context["id"])
+                    
+                    contextList.append(
+                        Context(
+                            id: context["id"] as! String,
+                            descriptor: context["descriptor"] as! String
+                        )
+                    )
+                }
+                
+                
+                self.updateUI(contextList: contextList);
+            }
+        })
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -94,8 +140,8 @@ class TaggingTableTableViewController: UITableViewController {
         }
         
         // Configure the cell...
-        cell.title.text = contexts[count]
-        cell.titledescription.text = "Default context detail"
+        cell.title.text = contexts[count].id
+        cell.titledescription.text = contexts[count].descriptor
         
         return cell
     }
@@ -113,7 +159,7 @@ class TaggingTableTableViewController: UITableViewController {
             count = count + contextsSections[contextsSectionsSortedKeys[i]]!
         }
         
-        vc.contextTitle.title = contexts[count]
+        vc.contextTitle.title = contexts[count].id
     }
     
     /*

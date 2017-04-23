@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55F946921EAD269600E97DB6 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F946911EAD269600E97DB6 /* libxml2.2.dylib */; };
+		55F946941EAD26DF00E97DB6 /* MicrosoftAzureMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F946931EAD26DF00E97DB6 /* MicrosoftAzureMobile.framework */; };
+		55F9469A1EAD285000E97DB6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F946991EAD285000E97DB6 /* WebKit.framework */; };
+		55F9469C1EAD285400E97DB6 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F9469B1EAD285400E97DB6 /* SafariServices.framework */; };
 		E513F7E11E43273C009C03B5 /* TaggingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E513F7E01E43273C009C03B5 /* TaggingViewController.swift */; };
 		E51414311E53F329000A2E3D /* TaggingAppCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51414301E53F329000A2E3D /* TaggingAppCollectionView.swift */; };
 		E51414331E53F3DD000A2E3D /* TaggingGalleryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51414321E53F3DD000A2E3D /* TaggingGalleryCollectionView.swift */; };
@@ -67,6 +71,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		55F946911EAD269600E97DB6 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = ../../../../../usr/lib/libxml2.2.dylib; sourceTree = "<group>"; };
+		55F946931EAD26DF00E97DB6 /* MicrosoftAzureMobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MicrosoftAzureMobile.framework; path = PhotoArchive/MicrosoftAzureMobile.framework; sourceTree = "<group>"; };
+		55F946951EAD282B00E97DB6 /* PhotoArchive-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PhotoArchive-Bridging-Header.h"; sourceTree = "<group>"; };
+		55F946991EAD285000E97DB6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		55F9469B1EAD285400E97DB6 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		E513F7E01E43273C009C03B5 /* TaggingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingViewController.swift; sourceTree = "<group>"; };
 		E51414301E53F329000A2E3D /* TaggingAppCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingAppCollectionView.swift; sourceTree = "<group>"; };
 		E51414321E53F3DD000A2E3D /* TaggingGalleryCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingGalleryCollectionView.swift; sourceTree = "<group>"; };
@@ -120,6 +129,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55F9469C1EAD285400E97DB6 /* SafariServices.framework in Frameworks */,
+				55F9469A1EAD285000E97DB6 /* WebKit.framework in Frameworks */,
+				55F946921EAD269600E97DB6 /* libxml2.2.dylib in Frameworks */,
+				55F946941EAD26DF00E97DB6 /* MicrosoftAzureMobile.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +153,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55F946901EAD269600E97DB6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				55F9469B1EAD285400E97DB6 /* SafariServices.framework */,
+				55F946991EAD285000E97DB6 /* WebKit.framework */,
+				55F946931EAD26DF00E97DB6 /* MicrosoftAzureMobile.framework */,
+				55F946911EAD269600E97DB6 /* libxml2.2.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E51414281E53ED15000A2E3D /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +228,8 @@
 				E52EF2DB1E3B136800FF37D2 /* PhotoArchiveTests */,
 				E52EF2E61E3B136800FF37D2 /* PhotoArchiveUITests */,
 				E52EF2C31E3B136800FF37D2 /* Products */,
+				55F946901EAD269600E97DB6 /* Frameworks */,
+				55F946951EAD282B00E97DB6 /* PhotoArchive-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -364,7 +390,8 @@
 				TargetAttributes = {
 					E52EF2C11E3B136800FF37D2 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = DFSK92959A;
+						DevelopmentTeam = N3VHPKXGJ5;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					E52EF2D71E3B136800FF37D2 = {
@@ -617,11 +644,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = DFSK92959A;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = N3VHPKXGJ5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PhotoArchive",
+				);
 				INFOPLIST_FILE = PhotoArchive/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = afpens.PhotoArchive;
+				PRODUCT_BUNDLE_IDENTIFIER = vega.PhotoArchive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PhotoArchive-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -630,11 +664,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = DFSK92959A;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = N3VHPKXGJ5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PhotoArchive",
+				);
 				INFOPLIST_FILE = PhotoArchive/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = afpens.PhotoArchive;
+				PRODUCT_BUNDLE_IDENTIFIER = vega.PhotoArchive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PhotoArchive-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

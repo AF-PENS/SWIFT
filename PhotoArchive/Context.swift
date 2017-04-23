@@ -9,10 +9,17 @@
 import Foundation
 
 class Context: NSObject {
-    var id = "default"
     var attributes = [Attribute]()
     
-    init(id: String) {
-        self.id = id
+    var id: String;
+    var descriptor = "descriptor";
+    
+    init(id: String){
+        self.id = id;
+    }
+    
+    init(id: String, descriptor: String){
+        self.id = id;
+        self.descriptor = descriptor;
     }
 }

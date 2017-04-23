@@ -14,13 +14,15 @@ class AttributeTableTableViewController: UITableViewController, UITextViewDelega
     @IBOutlet weak var contextTitle: UINavigationItem!
     
     // Attribute titles
-    var attributes = ["Title Goes Here1", "Title Goes Here2", "Title Goes Here3", "Title Goes Here4", "Title Goes Here5", "Title Goes Here6"]
+    var attributes = [Attribute]();
     
-    // Attribute descriptions
-    var descriptions = ["Description Goes Here1", "Description Goes Here2", "Description Goes Here3", "Description Goes Here4", "Description Goes Here5", "Description Goes Here6"]
-    
-    // Attribute answers
-    var answers = ["User Types Answer Here1", "User Types Answer Here2", "User Types Answer Here3", "User Types Answer Here4", "User Types Answer Here5", "User Types Answer Here6"]
+//    var attributes = ["Title Goes Here1", "Title Goes Here2", "Title Goes Here3", "Title Goes Here4", "Title Goes Here5", "Title Goes Here6"]
+//    
+//    // Attribute descriptions
+//    var descriptions = ["Description Goes Here1", "Description Goes Here2", "Description Goes Here3", "Description Goes Here4", "Description Goes Here5", "Description Goes Here6"]
+//    
+//    // Attribute answers
+//    var answers = ["User Types Answer Here1", "User Types Answer Here2", "User Types Answer Here3", "User Types Answer Here4", "User Types Answer Here5", "User Types Answer Here6"]
     
     
     // save button to save the context attributes
@@ -30,7 +32,7 @@ class AttributeTableTableViewController: UITableViewController, UITextViewDelega
         let tempContext = Context(id: contextTitle.title!)
         
         for index in 0..<attributes.count {
-            let tempAttribute = Attribute(id: attributes[index], question: descriptions[index], value: answers[index])
+            let tempAttribute = attributes[index]
             tempContext.attributes.append(tempAttribute)
         }
         globalObject.sharedInstance.Attributes.append(tempContext)
@@ -38,8 +40,44 @@ class AttributeTableTableViewController: UITableViewController, UITextViewDelega
         performSegue(withIdentifier: "unwindToTaggingViewController", sender: self)
     }
     
+    func updateAttributeList(list: [Attribute]){
+        attributes = list;
+        
+        self.tableView.reloadData()
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        
+        let client = delegate.client!;
+        
+        let attributeTable = client.table(withName: "Attribute");
+        
+        attributeTable.read(completion: {
+            (result, error) in
+            if let err = error {
+                print("ERROR ", err)
+            } else if let attributeResults = result?.items {
+                var attributeList = [Attribute]()
+                
+                for attribute in attributeResults {
+                    print("Attribute: ", attribute["id"])
+                    
+                    attributeList.append(
+                        Attribute(
+                            id: attribute["id"] as! String,
+                            question: attribute["question"] as! String,
+                            value: ""
+                        )
+                    )
+                }
+                
+                self.updateAttributeList(list: attributeList);
+            }
+        })
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -66,13 +104,17 @@ class AttributeTableTableViewController: UITableViewController, UITextViewDelega
     }
 
     // Configures the cell
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->
+        UITableViewCell {
+            
+        print("Generating Table");
+            
         let cell = tableView.dequeueReusableCell(withIdentifier: "AttributeTableViewCell", for: indexPath) as! AttributeTableViewCell
         
         // displays the title and the description of the attribute
-        cell.attributeTitle.text = attributes[indexPath.row]
-        cell.attributeDescription.text = descriptions[indexPath.row]
-        cell.attributeAnswer.text = answers[indexPath.row]
+        cell.attributeTitle.text = attributes[indexPath.row].id
+        cell.attributeDescription.text = attributes[indexPath.row].question
+        cell.attributeAnswer.text = attributes[indexPath.row].value
         
         // cell debug to save textview data
         cell.attributeAnswer.tag = indexPath.row
@@ -90,7 +132,7 @@ class AttributeTableTableViewController: UITableViewController, UITextViewDelega
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        answers[textView.tag] = textView.text!
+        attributes[textView.tag].value = textView.text!
     }
 
     /*
