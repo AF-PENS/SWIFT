@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Photos
 
 class globalObject {
     // Declare class instance property
@@ -18,4 +19,5 @@ class globalObject {
     
     // class variables
     var Attributes = [Context]()
+    var GalleryImages = [PHAsset]()
 }

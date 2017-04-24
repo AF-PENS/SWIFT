@@ -24,6 +24,7 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
     var tagButtonArray = ["AA Medium Title", "AA Medium Title", "AA Medium Title", "AA Medium Title"]
     
     var selectedTagContext = 0
+    @IBOutlet weak var uploadImagesAndTagsButtonOutlet: UIButton!
     
     // prepares for a segue transition from the Attribute pages
     @IBAction func unwindToTaggingViewController(segue:UIStoryboardSegue) { }
@@ -113,6 +114,8 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         generateContextButtons()
         tagCollectionView.reloadData()
+        uploadImagesAndTagsButtonOutlet.setTitle("Upload \(globalObject.sharedInstance.GalleryImages.count) Images with \(globalObject.sharedInstance.Attributes.count) Tags", for: UIControlState.normal)
+        uploadImagesAndTagsButtonOutlet.titleLabel?.textAlignment = .center
     }
     
     // for the inapp images and buttons

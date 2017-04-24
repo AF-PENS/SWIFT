@@ -59,12 +59,10 @@ class AttributeTableTableViewController: UITableViewController, UITextViewDelega
         attributeTable.read(completion: {
             (result, error) in
             if let err = error {
-                print("ERROR ", err)
             } else if let attributeResults = result?.items {
                 var attributeList = [Attribute]()
                 
                 for attribute in attributeResults {
-                    print("Attribute: ", attribute["id"])
                     
                     attributeList.append(
                         Attribute(
@@ -106,8 +104,6 @@ class AttributeTableTableViewController: UITableViewController, UITextViewDelega
     // Configures the cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->
         UITableViewCell {
-            
-        print("Generating Table");
             
         let cell = tableView.dequeueReusableCell(withIdentifier: "AttributeTableViewCell", for: indexPath) as! AttributeTableViewCell
         

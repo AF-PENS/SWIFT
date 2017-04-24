@@ -28,14 +28,9 @@ class TaggingTableTableViewController: UITableViewController {
     func updateUI(contextList: [Context]){
         contexts = contextList;
         
-        print("Updating UI");
-        
         for i in 0..<contexts.count {
-            print("Cycling Through Contexts")
             
             let sectionLetter = String(contexts[i].id[contexts[i].id.startIndex]).uppercased()
-            
-            print("Section Letter: ", sectionLetter);
             
             if (contextsSections[sectionLetter] != nil) {
                 contextsSections[sectionLetter] = contextsSections[sectionLetter]! + 1
@@ -76,12 +71,10 @@ class TaggingTableTableViewController: UITableViewController {
         contextTable.read(completion: {
             (result, error) in
             if let err = error {
-                print("ERROR ", err)
             } else if let contextResults = result?.items {
                 var contextList = [Context]()
                 
                 for context in contextResults {
-                    print("Context: ", context["id"])
                     
                     contextList.append(
                         Context(

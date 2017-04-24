@@ -316,18 +316,6 @@
                                     <outlet property="delegate" destination="8rJ-Kc-sve" id="fcc-fI-mhW"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diL-Tv-qfQ">
-                                <rect key="frame" x="20" y="649" width="374" height="30"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Upload Selected Images with Selected Tags">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="doLogin:" destination="OaM-81-e3n" eventType="touchUpInside" id="gLO-cc-VWU"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JNH-i8-TFP">
                                 <rect key="frame" x="20" y="364" width="374" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -338,7 +326,7 @@
                                 </state>
                                 <connections>
                                     <action selector="doLogin:" destination="OaM-81-e3n" eventType="touchUpInside" id="dwI-lb-Dhi"/>
-                                    <segue destination="6S8-ey-MkP" kind="show" id="YSV-pH-kSU"/>
+                                    <segue destination="0fq-yz-jcp" kind="show" id="u1U-dA-LZG"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Tag Selection" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8OW-X2-eip">
@@ -407,6 +395,14 @@
                                     <outlet property="delegate" destination="8rJ-Kc-sve" id="yiX-2f-6LL"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IB2-zB-wep">
+                                <rect key="frame" x="20" y="649" width="374" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Upload Selected Images and Context Tags">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -415,6 +411,7 @@
                         <outlet property="appCollectionView" destination="J5S-tO-7JC" id="Cki-h6-6Os"/>
                         <outlet property="galleryCollectionView" destination="oUC-ph-vEX" id="a3A-qV-XiI"/>
                         <outlet property="tagCollectionView" destination="x4n-OO-kkm" id="chZ-Zk-R8z"/>
+                        <outlet property="uploadImagesAndTagsButtonOutlet" destination="IB2-zB-wep" id="oAi-IZ-7oe"/>
                         <segue destination="mGj-D4-kol" kind="show" identifier="TaggingSelectedContextsAttributesSegue" id="B4X-Yz-fzh"/>
                     </connections>
                 </viewController>
@@ -477,7 +474,42 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dZc-Vl-ecG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2828.985507246377" y="-1586.413043478261"/>
+            <point key="canvasLocation" x="5538" y="-1586"/>
+        </scene>
+        <!--Tagging Gallery Overview Image View View Controller-->
+        <scene sceneID="dG8-BM-y27">
+            <objects>
+                <viewController id="Ovk-km-nAb" customClass="TaggingGalleryOverviewImageViewViewController" customModule="PhotoArchive" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yXF-ue-3HA"/>
+                        <viewControllerLayoutGuide type="bottom" id="wm8-BN-oL0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9I7-sf-BX6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CV3-Bi-uGV">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="xAx-vb-QDX">
+                        <nil key="title"/>
+                        <progressView key="titleView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" id="KYx-5a-wR3">
+                            <rect key="frame" x="12" y="21" width="390" height="2.5"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </progressView>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="CV3-Bi-uGV" id="czZ-aW-hbm"/>
+                        <outlet property="progressView" destination="KYx-5a-wR3" id="oSQ-9l-fiD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5jV-5p-fXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3731.884057971015" y="-1587.2282608695652"/>
         </scene>
         <!--Tagging Table Table View Controller-->
         <scene sceneID="dOz-wU-Hft">
@@ -697,6 +729,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hlt-dB-MFI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2829" y="-2359"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="ecO-kc-mCx">
+            <objects>
+                <collectionViewController id="0fq-yz-jcp" customClass="TaggingGalleryOverviewCollectionViewController" customModule="PhotoArchive" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="WYc-fR-ZKX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="qua-Jw-kZn">
+                            <size key="itemSize" width="80" height="80"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TaggingGalleryOverviewCollectionViewCell" id="eUF-cI-iTf" customClass="TaggingGalleryOverviewCollectionViewCell" customModule="PhotoArchive" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ku8-ov-uFh">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <connections>
+                                    <outlet property="imageView" destination="ku8-ov-uFh" id="ad0-Fh-qu3"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="0fq-yz-jcp" id="J1a-aU-5Ic"/>
+                            <outlet property="delegate" destination="0fq-yz-jcp" id="RZc-Nl-473"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Title" id="XWE-Nh-fgQ">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Select" id="GPx-EE-kNl">
+                                <connections>
+                                    <action selector="selectButton:" destination="0fq-yz-jcp" id="zYA-GH-x9Z"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Deselect All" id="PeA-0U-iOB">
+                                <connections>
+                                    <action selector="deselectAllButton:" destination="0fq-yz-jcp" id="yB1-cO-Izm"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="deselectButtonOutlet" destination="PeA-0U-iOB" id="Fld-Vd-5d2"/>
+                        <outlet property="selectButtonOutlet" destination="GPx-EE-kNl" id="vai-h3-3d0"/>
+                        <outlet property="titleCount" destination="XWE-Nh-fgQ" id="5RP-oX-vdA"/>
+                        <segue destination="Ovk-km-nAb" kind="show" identifier="TaggingGalleryOverviewImageViewSegue" id="5wb-aW-PdC"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="woJ-tk-5ZB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2833.3333333333335" y="-1587.2282608695652"/>
         </scene>
         <!--Camera-->
         <scene sceneID="Yta-xe-gep">

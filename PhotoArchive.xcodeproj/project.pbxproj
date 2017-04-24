@@ -17,8 +17,7 @@
 		E51414351E53F4AC000A2E3D /* TaggingGalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51414341E53F4AC000A2E3D /* TaggingGalleryCollectionViewCell.swift */; };
 		E514143A1E53F87B000A2E3D /* TaggingTagCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51414391E53F87B000A2E3D /* TaggingTagCollectionView.swift */; };
 		E514143C1E53F88B000A2E3D /* TaggingTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E514143B1E53F88B000A2E3D /* TaggingTagCollectionViewCell.swift */; };
-		E51414401E54050D000A2E3D /* TaggingGalleryOverviewImageViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E514143F1E54050D000A2E3D /* TaggingGalleryOverviewImageViewViewController.swift */; };
-		E51414421E5406B8000A2E3D /* TaggingGalleryOverviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51414411E5406B8000A2E3D /* TaggingGalleryOverviewCollectionViewCell.swift */; };
+		E51414421E5406B8000A2E3D /* TaggingGalleryOverviewCollectionViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51414411E5406B8000A2E3D /* TaggingGalleryOverviewCollectionViewCell2.swift */; };
 		E51414441E540AA3000A2E3D /* TaggingGalleryOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51414431E540AA3000A2E3D /* TaggingGalleryOverviewViewController.swift */; };
 		E51414461E540ACB000A2E3D /* TaggingGalleryOverviewCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51414451E540ACB000A2E3D /* TaggingGalleryOverviewCollectionView.swift */; };
 		E52EF2C61E3B136800FF37D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52EF2C51E3B136800FF37D2 /* AppDelegate.swift */; };
@@ -45,8 +44,11 @@
 		E5839AE41EA71D4E00B25C70 /* HistoryAttributeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5839AE31EA71D4E00B25C70 /* HistoryAttributeTableViewCell.swift */; };
 		E589A5BB1E5D0EF300AF944F /* TaggingTableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589A5BA1E5D0EF300AF944F /* TaggingTableTableViewCell.swift */; };
 		E589A5BD1E5D0F1400AF944F /* TaggingTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589A5BC1E5D0F1400AF944F /* TaggingTableTableViewController.swift */; };
+		E597A15B1EAD895000CEF100 /* TaggingGalleryOverviewCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E597A15A1EAD895000CEF100 /* TaggingGalleryOverviewCollectionViewController.swift */; };
+		E597A15D1EAD89CF00CEF100 /* TaggingGalleryOverviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E597A15C1EAD89CF00CEF100 /* TaggingGalleryOverviewCollectionViewCell.swift */; };
 		E5CF3D571EA99C2500E0698C /* TaggingSelectedContextsAttributesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF3D561EA99C2500E0698C /* TaggingSelectedContextsAttributesTableViewController.swift */; };
 		E5CF3D591EA99C3200E0698C /* TaggingSelectedContextsAttributesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF3D581EA99C3200E0698C /* TaggingSelectedContextsAttributesTableViewCell.swift */; };
+		E5DC52911EAD8F7200D5FE66 /* TaggingGalleryOverviewImageViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DC52901EAD8F7200D5FE66 /* TaggingGalleryOverviewImageViewViewController.swift */; };
 		E5E31D241E9DB18F00DFC3A7 /* HistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E31D231E9DB18F00DFC3A7 /* HistoryCollectionViewCell.swift */; };
 		E5E31D261E9DB52300DFC3A7 /* HistoryImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E31D251E9DB52300DFC3A7 /* HistoryImageViewController.swift */; };
 		E5E31D291E9DC8BC00DFC3A7 /* HistoryTagTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E31D281E9DC8BC00DFC3A7 /* HistoryTagTableViewController.swift */; };
@@ -82,8 +84,7 @@
 		E51414341E53F4AC000A2E3D /* TaggingGalleryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingGalleryCollectionViewCell.swift; sourceTree = "<group>"; };
 		E51414391E53F87B000A2E3D /* TaggingTagCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingTagCollectionView.swift; sourceTree = "<group>"; };
 		E514143B1E53F88B000A2E3D /* TaggingTagCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingTagCollectionViewCell.swift; sourceTree = "<group>"; };
-		E514143F1E54050D000A2E3D /* TaggingGalleryOverviewImageViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingGalleryOverviewImageViewViewController.swift; sourceTree = "<group>"; };
-		E51414411E5406B8000A2E3D /* TaggingGalleryOverviewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingGalleryOverviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		E51414411E5406B8000A2E3D /* TaggingGalleryOverviewCollectionViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingGalleryOverviewCollectionViewCell2.swift; sourceTree = "<group>"; };
 		E51414431E540AA3000A2E3D /* TaggingGalleryOverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingGalleryOverviewViewController.swift; sourceTree = "<group>"; };
 		E51414451E540ACB000A2E3D /* TaggingGalleryOverviewCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingGalleryOverviewCollectionView.swift; sourceTree = "<group>"; };
 		E52EF2C21E3B136800FF37D2 /* PhotoArchive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoArchive.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,8 +117,11 @@
 		E5839AE31EA71D4E00B25C70 /* HistoryAttributeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryAttributeTableViewCell.swift; sourceTree = "<group>"; };
 		E589A5BA1E5D0EF300AF944F /* TaggingTableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingTableTableViewCell.swift; sourceTree = "<group>"; };
 		E589A5BC1E5D0F1400AF944F /* TaggingTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingTableTableViewController.swift; sourceTree = "<group>"; };
+		E597A15A1EAD895000CEF100 /* TaggingGalleryOverviewCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingGalleryOverviewCollectionViewController.swift; sourceTree = "<group>"; };
+		E597A15C1EAD89CF00CEF100 /* TaggingGalleryOverviewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingGalleryOverviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		E5CF3D561EA99C2500E0698C /* TaggingSelectedContextsAttributesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingSelectedContextsAttributesTableViewController.swift; sourceTree = "<group>"; };
 		E5CF3D581EA99C3200E0698C /* TaggingSelectedContextsAttributesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingSelectedContextsAttributesTableViewCell.swift; sourceTree = "<group>"; };
+		E5DC52901EAD8F7200D5FE66 /* TaggingGalleryOverviewImageViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingGalleryOverviewImageViewViewController.swift; sourceTree = "<group>"; };
 		E5E31D231E9DB18F00DFC3A7 /* HistoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		E5E31D251E9DB52300DFC3A7 /* HistoryImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryImageViewController.swift; sourceTree = "<group>"; };
 		E5E31D281E9DC8BC00DFC3A7 /* HistoryTagTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTagTableViewController.swift; sourceTree = "<group>"; };
@@ -204,8 +208,10 @@
 			children = (
 				E51414431E540AA3000A2E3D /* TaggingGalleryOverviewViewController.swift */,
 				E51414451E540ACB000A2E3D /* TaggingGalleryOverviewCollectionView.swift */,
-				E51414411E5406B8000A2E3D /* TaggingGalleryOverviewCollectionViewCell.swift */,
-				E514143F1E54050D000A2E3D /* TaggingGalleryOverviewImageViewViewController.swift */,
+				E51414411E5406B8000A2E3D /* TaggingGalleryOverviewCollectionViewCell2.swift */,
+				E597A15A1EAD895000CEF100 /* TaggingGalleryOverviewCollectionViewController.swift */,
+				E597A15C1EAD89CF00CEF100 /* TaggingGalleryOverviewCollectionViewCell.swift */,
+				E5DC52901EAD8F7200D5FE66 /* TaggingGalleryOverviewImageViewViewController.swift */,
 			);
 			name = TaggingGallery;
 			sourceTree = "<group>";
@@ -390,7 +396,7 @@
 				TargetAttributes = {
 					E52EF2C11E3B136800FF37D2 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = N3VHPKXGJ5;
+						DevelopmentTeam = DFSK92959A;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -459,11 +465,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E51414461E540ACB000A2E3D /* TaggingGalleryOverviewCollectionView.swift in Sources */,
+				E5DC52911EAD8F7200D5FE66 /* TaggingGalleryOverviewImageViewViewController.swift in Sources */,
 				E5839AE21EA71D3100B25C70 /* HistoryAttributeTableViewController.swift in Sources */,
 				E52EF2FA1E3B18BE00FF37D2 /* LoginViewController.swift in Sources */,
 				E52EF2FE1E3B21D600FF37D2 /* DashboardViewController.swift in Sources */,
 				E5E31D241E9DB18F00DFC3A7 /* HistoryCollectionViewCell.swift in Sources */,
 				E5839AE41EA71D4E00B25C70 /* HistoryAttributeTableViewCell.swift in Sources */,
+				E597A15B1EAD895000CEF100 /* TaggingGalleryOverviewCollectionViewController.swift in Sources */,
 				E55B78F41E42FBE5001C7654 /* DashboardImageViewController.swift in Sources */,
 				E589A5BB1E5D0EF300AF944F /* TaggingTableTableViewCell.swift in Sources */,
 				E5E31D261E9DB52300DFC3A7 /* HistoryImageViewController.swift in Sources */,
@@ -473,11 +481,12 @@
 				E55B78F81E431AA7001C7654 /* TaggingAppCollectionViewCell.swift in Sources */,
 				E5E31D291E9DC8BC00DFC3A7 /* HistoryTagTableViewController.swift in Sources */,
 				E55B78F21E42FBC9001C7654 /* DashboardCollectionViewCell.swift in Sources */,
-				E51414421E5406B8000A2E3D /* TaggingGalleryOverviewCollectionViewCell.swift in Sources */,
+				E51414421E5406B8000A2E3D /* TaggingGalleryOverviewCollectionViewCell2.swift in Sources */,
 				E5839AE01EA70C1200B25C70 /* AttributeTableTableViewController.swift in Sources */,
 				E5839ADE1EA70BEA00B25C70 /* AttributeTableViewCell.swift in Sources */,
 				E54B42911EA842880049BA9F /* Context.swift in Sources */,
 				E514143A1E53F87B000A2E3D /* TaggingTagCollectionView.swift in Sources */,
+				E597A15D1EAD89CF00CEF100 /* TaggingGalleryOverviewCollectionViewCell.swift in Sources */,
 				E54B428F1EA8423B0049BA9F /* Attribute.swift in Sources */,
 				E51414331E53F3DD000A2E3D /* TaggingGalleryCollectionView.swift in Sources */,
 				E52EF2C61E3B136800FF37D2 /* AppDelegate.swift in Sources */,
@@ -488,7 +497,6 @@
 				E54B428D1EA8422F0049BA9F /* Global.swift in Sources */,
 				E589A5BD1E5D0F1400AF944F /* TaggingTableTableViewController.swift in Sources */,
 				E52EF3041E3B223800FF37D2 /* HistoryViewController.swift in Sources */,
-				E51414401E54050D000A2E3D /* TaggingGalleryOverviewImageViewViewController.swift in Sources */,
 				E52EF2FC1E3B1E2E00FF37D2 /* TabBarController.swift in Sources */,
 				E514143C1E53F88B000A2E3D /* TaggingTagCollectionViewCell.swift in Sources */,
 				E513F7E11E43273C009C03B5 /* TaggingViewController.swift in Sources */,
@@ -645,14 +653,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = N3VHPKXGJ5;
+				DEVELOPMENT_TEAM = DFSK92959A;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PhotoArchive",
 				);
 				INFOPLIST_FILE = PhotoArchive/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = vega.PhotoArchive;
+				PRODUCT_BUNDLE_IDENTIFIER = csula.PhotoArchive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PhotoArchive-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -665,14 +673,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = N3VHPKXGJ5;
+				DEVELOPMENT_TEAM = DFSK92959A;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PhotoArchive",
 				);
 				INFOPLIST_FILE = PhotoArchive/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = vega.PhotoArchive;
+				PRODUCT_BUNDLE_IDENTIFIER = csula.PhotoArchive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PhotoArchive-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
