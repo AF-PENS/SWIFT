@@ -13,7 +13,7 @@ class TaggingTableTableViewController: UITableViewController {
     // Future note: May have to create a simple object/association which will tie together the titles and descriptions
     // because right now they are not
     // Array of strings with all of the Context Titles from the database
-    var contexts = [Context]()
+    var contexts = globalObject.sharedInstance.dbContexts;
 
     
     // Array of string with all of the Context Descriptions from the database
@@ -25,8 +25,7 @@ class TaggingTableTableViewController: UITableViewController {
     // Array of strongs with the sorted keys from the dictionary above
     var contextsSectionsSortedKeys = [String]()
     
-    func updateUI(contextList: [Context]){
-        contexts = contextList;
+    func updateUI(){
         
         for i in 0..<contexts.count {
             
