@@ -20,4 +20,8 @@ class globalObject {
     // class variables
     var Attributes = [Context]()
     var GalleryImages = [PHAsset]()
+    
+    //global vars
+    var dbContexts = [Context]();
+    var dbAttributes = [Attribute]();
 }
