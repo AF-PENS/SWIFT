@@ -396,7 +396,7 @@
 				TargetAttributes = {
 					E52EF2C11E3B136800FF37D2 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = DFSK92959A;
+						DevelopmentTeam = N3VHPKXGJ5;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -653,14 +653,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = DFSK92959A;
+				DEVELOPMENT_TEAM = N3VHPKXGJ5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PhotoArchive",
 				);
 				INFOPLIST_FILE = PhotoArchive/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = csula.PhotoArchive;
+				PRODUCT_BUNDLE_IDENTIFIER = vega.PhotoArchive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PhotoArchive-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -673,14 +673,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = DFSK92959A;
+				DEVELOPMENT_TEAM = N3VHPKXGJ5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PhotoArchive",
 				);
 				INFOPLIST_FILE = PhotoArchive/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = csula.PhotoArchive;
+				PRODUCT_BUNDLE_IDENTIFIER = vega.PhotoArchive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PhotoArchive-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

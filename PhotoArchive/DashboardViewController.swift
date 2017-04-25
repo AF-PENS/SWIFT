@@ -37,8 +37,6 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
                 print("ERROR ", err)
             } else if let contextResults = result?.items {
                 for context in contextResults {
-                    print("Context: ", context["id"])
-                    
                     globalObject.sharedInstance.dbContexts.append(
                         Context(
                             id: context["id"] as! String,
