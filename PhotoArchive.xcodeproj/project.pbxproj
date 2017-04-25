@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4AF03FBE1EAFD2EA0046A8CB /* WindowsAzureMobileServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AF03FBD1EAFD2EA0046A8CB /* WindowsAzureMobileServices.framework */; };
+		4AF03FC01EAFD85D0046A8CB /* AZSClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AF03FBF1EAFD85D0046A8CB /* AZSClient.framework */; };
 		55F946921EAD269600E97DB6 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F946911EAD269600E97DB6 /* libxml2.2.dylib */; };
 		55F946941EAD26DF00E97DB6 /* MicrosoftAzureMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F946931EAD26DF00E97DB6 /* MicrosoftAzureMobile.framework */; };
 		55F9469A1EAD285000E97DB6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F946991EAD285000E97DB6 /* WebKit.framework */; };
@@ -74,7 +74,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4AF03FBD1EAFD2EA0046A8CB /* WindowsAzureMobileServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WindowsAzureMobileServices.framework; sourceTree = "<group>"; };
+		4AF03FBF1EAFD85D0046A8CB /* AZSClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AZSClient.framework; sourceTree = "<group>"; };
 		55F946911EAD269600E97DB6 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = ../../../../../usr/lib/libxml2.2.dylib; sourceTree = "<group>"; };
 		55F946931EAD26DF00E97DB6 /* MicrosoftAzureMobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MicrosoftAzureMobile.framework; path = PhotoArchive/MicrosoftAzureMobile.framework; sourceTree = "<group>"; };
 		55F946951EAD282B00E97DB6 /* PhotoArchive-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PhotoArchive-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -138,8 +138,8 @@
 				55F9469C1EAD285400E97DB6 /* SafariServices.framework in Frameworks */,
 				55F9469A1EAD285000E97DB6 /* WebKit.framework in Frameworks */,
 				55F946921EAD269600E97DB6 /* libxml2.2.dylib in Frameworks */,
+				4AF03FC01EAFD85D0046A8CB /* AZSClient.framework in Frameworks */,
 				55F946941EAD26DF00E97DB6 /* MicrosoftAzureMobile.framework in Frameworks */,
-				4AF03FBE1EAFD2EA0046A8CB /* WindowsAzureMobileServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,7 +163,7 @@
 		55F946901EAD269600E97DB6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4AF03FBD1EAFD2EA0046A8CB /* WindowsAzureMobileServices.framework */,
+				4AF03FBF1EAFD85D0046A8CB /* AZSClient.framework */,
 				55F9469B1EAD285400E97DB6 /* SafariServices.framework */,
 				55F946991EAD285000E97DB6 /* WebKit.framework */,
 				55F946931EAD26DF00E97DB6 /* MicrosoftAzureMobile.framework */,
