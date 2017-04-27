@@ -10,6 +10,9 @@ import UIKit
 
 class AttributeTableTableViewController: UITableViewController, UITextViewDelegate {
     
+    let delegate = UIApplication.shared.delegate as! AppDelegate
+    var client: MSClient!
+    
     // Passed in context
     @IBOutlet weak var contextTitle: UINavigationItem!
     
@@ -32,43 +35,83 @@ class AttributeTableTableViewController: UITableViewController, UITextViewDelega
         performSegue(withIdentifier: "unwindToTaggingViewController", sender: self)
     }
     
-    func updateAttributeList(list: [Attribute]){
-        attributes = list;
+    func updateAttributeList(attribute: Attribute){
+        attributes.append(attribute);
         
         self.tableView.reloadData()
         
     }
     
+    //Function to create Attribute object list from list of IDs
+    func createAttributeList(list: [String]){
+        //create reference to attribute table
+        let attributeTable = client.table(withName: "Attribute");
+        
+        //create a query object
+        let attributeQuery = attributeTable.query();
+        
+        //limit it to pull only the question
+        attributeQuery.selectFields = ["question"];
+        
+        for attributeID in list{
+            //predicate forces ID to match current loop ID
+            //SHOULD ONLY RETURN ONE RECORD PER LOOP
+            attributeQuery.predicate = NSPredicate(format: "id == %@", attributeID);
+            
+            //run the query
+            attributeQuery.read(completion: {
+                (result, error) in
+                if let err = error {
+                    print("ERROR ", err)
+                } else if let attributeResults = result?.items {
+                    
+                    //create a new attribute object and set the id
+                    let newAttribute = Attribute(id: attributeID, question: "", value: "");
+                    
+                    //update the question
+                    for attribute in attributeResults {
+                        newAttribute.question = attribute["question"] as! String
+                    }
+                    
+                    //update UI (SLOW PART, since it's one at a time :/ )
+                    self.updateAttributeList(attribute: newAttribute);
+                }
+            })
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let delegate = UIApplication.shared.delegate as! AppDelegate
+        //store the client from delegate
+        client = delegate.client!;
         
-        let client = delegate.client!;
+        //create a Context_Attribute table object
+        let caTable = client.table(withName: "Context_Attribute");
         
-        let attributeTable = client.table(withName: "Attribute");
+        //create a query to only pull attribute IDs for the specific context
+        let caQuery = caTable.query();
+        caQuery.predicate = NSPredicate(format: "contextID == %@", contextTitle.title!);
         
-        attributeTable.read(completion: {
+        //create an array to store the pulled IDs
+        var attributeIDs = [String]();
+        
+        //run the query
+        caQuery.read(completion: {
             (result, error) in
-            if let err = error {
-            } else if let attributeResults = result?.items {
-                var attributeList = [Attribute]()
-                
-                for attribute in attributeResults {
-                    
-                    attributeList.append(
-                        Attribute(
-                            id: attribute["id"] as! String,
-                            question: attribute["question"] as! String,
-                            value: ""
-                        )
-                    )
+            
+            if let err = error{
+                print("ERROR ", err);
+            } else if let caResults = result?.items{
+                for caResult in caResults{
+                    attributeIDs.append(caResult["attributeID"] as! String);
                 }
-                
-                self.updateAttributeList(list: attributeList);
             }
+            
+            //after the query is done, create the attribute list from those IDs
+            self.createAttributeList(list: attributeIDs);
         })
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

@@ -25,8 +25,10 @@ class TaggingTableTableViewController: UITableViewController {
     // Array of strongs with the sorted keys from the dictionary above
     var contextsSectionsSortedKeys = [String]()
     
-    func updateUI(){
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
+        //use the global context array
         for i in 0..<contexts.count {
             
             let sectionLetter = String(contexts[i].id[contexts[i].id.startIndex]).uppercased()
@@ -45,6 +47,8 @@ class TaggingTableTableViewController: UITableViewController {
         // Sorts keys into alphabetical order
         contextsSectionsSortedKeys = Array(contextsSections.keys).sorted(by: <)
         
+<<<<<<< Updated upstream
+=======
         self.tableView.reloadData()
         
         // Uncomment the following line to preserve selection between presentations
@@ -89,6 +93,7 @@ class TaggingTableTableViewController: UITableViewController {
             }
         })
         
+>>>>>>> Stashed changes
     }
 
     override func didReceiveMemoryWarning() {
