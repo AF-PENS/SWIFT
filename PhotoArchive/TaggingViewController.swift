@@ -17,7 +17,7 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     @IBOutlet weak var tagCollectionView: UICollectionView!
     
-    let appImageArray = [UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder")]
+    var appImageArray = [UIImage]()
     
     var galleryImageArray = [UIImage]()
     
@@ -26,6 +26,47 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
     var selectedTagContext = 0
     @IBOutlet weak var uploadImagesAndTagsButtonOutlet: UIButton!
     
+    // saves the images and contexts
+    @IBAction func uploadImagesAndTagsButtonButton(_ sender: Any) {
+        
+        // function will not save anything if there are no contexts/images to be saved
+        if globalObject.sharedInstance.Attributes.count == 0 ||
+            (globalObject.sharedInstance.AppImages.count + globalObject.sharedInstance.GalleryImages.count) == 0 {
+            return
+        }
+        
+        var uploadObjects = [UploadObject]()
+        
+        for i in 0..<globalObject.sharedInstance.GalleryImages.count {
+            let temp = UploadObject(context: globalObject.sharedInstance.Attributes, imageLocalIdentifier: globalObject.sharedInstance.GalleryImages[i].localIdentifier, isAppImage: false, isGalleryImage: true)
+            uploadObjects.append(temp)
+        }
+        
+        for i in 0..<globalObject.sharedInstance.AppImages.count {
+            let temp = UploadObject.init(context: globalObject.sharedInstance.Attributes, imageLocalIdentifier: globalObject.sharedInstance.AppImages[i], isAppImage: true, isGalleryImage: false)
+            uploadObjects.append(temp)
+        }
+        
+        globalObject.sharedInstance.Attributes.removeAll()
+        globalObject.sharedInstance.GalleryImages.removeAll()
+        globalObject.sharedInstance.AppImages.removeAll()
+        
+        uploadImagesAndTagsButtonOutlet.setTitle("Upload \(globalObject.sharedInstance.GalleryImages.count + globalObject.sharedInstance.AppImages.count) Images with \(globalObject.sharedInstance.Attributes.count) Tags", for: UIControlState.normal)
+        uploadImagesAndTagsButtonOutlet.titleLabel?.textAlignment = .center
+        
+        var values = [UploadObject]()
+        
+        if (PersistenceManager.loadNSArray(.UploadObjects) as? [UploadObject]) != nil {
+            values = PersistenceManager.loadNSArray(.UploadObjects) as! [UploadObject]
+        }
+        
+        for object in uploadObjects {
+            values.append(object)
+        }
+        
+        PersistenceManager.saveNSArray(values as NSArray, path: .UploadObjects)
+        
+    }
     // prepares for a segue transition from the Attribute pages
     @IBAction func unwindToTaggingViewController(segue:UIStoryboardSegue) { }
     
@@ -114,8 +155,31 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         generateContextButtons()
         tagCollectionView.reloadData()
-        uploadImagesAndTagsButtonOutlet.setTitle("Upload \(globalObject.sharedInstance.GalleryImages.count) Images with \(globalObject.sharedInstance.Attributes.count) Tags", for: UIControlState.normal)
+        uploadImagesAndTagsButtonOutlet.setTitle("Upload \(globalObject.sharedInstance.GalleryImages.count + globalObject.sharedInstance.AppImages.count) Images with \(globalObject.sharedInstance.Attributes.count) Tags", for: UIControlState.normal)
         uploadImagesAndTagsButtonOutlet.titleLabel?.textAlignment = .center
+        
+        appImageArray.removeAll()
+        
+        // Get the document directory url
+        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        do {
+            // Get the directory contents urls (including subfolders urls)
+            let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil, options: [])
+            
+            // if you want to filter the directory contents you can do like this:
+            let files = directoryContents.filter{ $0.pathExtension == "jpg" }
+            
+            for file in files {
+
+                appImageArray.append(UIImage(contentsOfFile: file.path)!)
+                
+            }
+            
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        appCollectionView.reloadData()
     }
     
     // for the inapp images and buttons
@@ -179,7 +243,6 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
             // current defaults set in interface builder
             return CGSize(width: 70, height: 70)
         }
-        
     }
     
     // gets the selected item to pass

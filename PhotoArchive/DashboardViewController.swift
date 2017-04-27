@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Photos
+import PhotosUI
 
 class DashboardViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -15,11 +17,20 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let imageArray = [UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder"), UIImage(named: "imagePlaceholder")]
+    var imageArray = [UIImage]()
+    var fetchResult: PHFetchResult<PHAsset>!
+    fileprivate let imageManager = PHCachingImageManager()
+    fileprivate var thumbnailSize: CGSize!
     
+    var uploadObjects = [UploadObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Determine the size of the thumbnails to request from the PHCachingImageManager
+        let scale = UIScreen.main.scale
+        let cellSize = (collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize
+        thumbnailSize = CGSize(width: cellSize.width * scale, height: cellSize.height * scale)
         
         tagsStatusText.text = "Syncing..."
 
@@ -34,9 +45,12 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         contextTable.read(completion: {
             (result, error) in
             if let err = error {
-                print("ERROR ", err)
             } else if let contextResults = result?.items {
                 for context in contextResults {
+<<<<<<< Updated upstream
+=======
+                    
+>>>>>>> Stashed changes
                     globalObject.sharedInstance.dbContexts.append(
                         Context(
                             id: context["id"] as! String,
@@ -67,19 +81,66 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        if (PersistenceManager.loadNSArray(.UploadObjects) as? [UploadObject]) != nil {
+            uploadObjects = PersistenceManager.loadNSArray(.UploadObjects) as! [UploadObject]
+        }
+        
+        let allPhotosOption = PHFetchOptions()
+        allPhotosOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        
+        var localIdentifiers = [String]()
+        
+        for object in uploadObjects {
+            localIdentifiers.append(object.imageLocalIdentifier)
+        }
+        
+        fetchResult = PHAsset.fetchAssets(withLocalIdentifiers: localIdentifiers, options: allPhotosOption)
+        collectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.imageArray.count
+        return uploadObjects.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        let object = uploadObjects[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dashboardCell", for: indexPath) as! DashboardCollectionViewCell
+
         
-        cell.imageView?.image = self.imageArray[indexPath.row]
+        if object.isAppImage {
+            let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+            let url = NSURL(fileURLWithPath: path)
+            let filePath = url.appendingPathComponent(object.imageLocalIdentifier)?.path
+            let fileManager = FileManager.default
+            if fileManager.fileExists(atPath: filePath!) {
+                let image = UIImage(contentsOfFile: filePath!)!
+                cell.imageView.image = image
+            } else {
+                print("FILE NOT AVAILABLE")
+            }
+        }
+        else if object.isGalleryImage {
+            var asset: PHAsset!
+            
+            for i in 0..<fetchResult.count {
+                asset = fetchResult.object(at: i)
+                
+                if uploadObjects[indexPath.row].imageLocalIdentifier == asset.localIdentifier {
+                    break;
+                }
+            }
+            // Request an image for the asset from the PHCachingImageManager.
+            imageManager.requestImage(for: asset, targetSize: thumbnailSize, contentMode: .aspectFill, options: nil, resultHandler: { image, _ in
+                // The cell may have been recycled by the time this handler gets called;
+                // set the cell's thumbnail image only if it's still showing the same asset.
+                cell.imageView.image = image
+            })
+        }
         
         return cell
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -95,7 +156,53 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
             let indexPath = indexPaths[0] as NSIndexPath
             
             let vc = segue.destination as! DashboardImageViewController
-            vc.image = self.imageArray[indexPath.row]!            
+            
+            let object = uploadObjects[indexPath.row]
+            
+            if object.isAppImage {
+                let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+                let url = NSURL(fileURLWithPath: path)
+                let filePath = url.appendingPathComponent(object.imageLocalIdentifier)?.path
+                let fileManager = FileManager.default
+                if fileManager.fileExists(atPath: filePath!) {
+                    let image = UIImage(contentsOfFile: filePath!)!
+                    vc.image = image
+                } else {
+                    print("FILE NOT AVAILABLE")
+                }
+            }
+            else if object.isGalleryImage {
+                var asset: PHAsset!
+                
+                for i in 0..<fetchResult.count {
+                    asset = fetchResult.object(at: i)
+                    
+                    if uploadObjects[indexPath.row].imageLocalIdentifier == asset.localIdentifier {
+                        break;
+                    }
+                }
+                
+                let allPhotosOption = PHFetchOptions()
+                allPhotosOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+                
+                let tempfetchResult = PHAsset.fetchAssets(withLocalIdentifiers: [asset.localIdentifier], options: allPhotosOption)
+                
+                imageManager.requestImageData(for: tempfetchResult.firstObject!, options: nil, resultHandler: { image,_,_,_ in
+                    print(image!)
+                    // The cell may have been recycled by the time this handler gets called;
+                    // set the cell's thumbnail image only if it's still showing the same asset.
+                    let tempimage = UIImage(data: image!)!
+                    print(tempimage)
+                    vc.imageView.image = tempimage
+                })
+                
+//                // Request an image for the asset from the PHCachingImageManager.
+//                imageManager.requestImage(for: tempfetchResult.firstObject!, targetSize: imageSize, contentMode: .aspectFill, options: nil, resultHandler: { image, _ in
+//                    // The cell may have been recycled by the time this handler gets called;
+//                    // set the cell's thumbnail image only if it's still showing the same asset.
+//                    vc.image = image!
+//                })
+            }
         }
     }
     

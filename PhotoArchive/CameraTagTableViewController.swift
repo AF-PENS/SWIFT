@@ -1,20 +1,20 @@
 //
-//  TaggingTableTableViewController.swift
+//  CameraTagTableViewController.swift
 //  PhotoArchive
 //
-//  Created by Phillip Gulegin on 2/21/17.
+//  Created by Phillip Gulegin on 4/25/17.
 //  Copyright © 2017 Phillip Gulegin. All rights reserved.
 //
 
 import UIKit
 
-class TaggingTableTableViewController: UITableViewController {
+class CameraTagTableViewController: UITableViewController {
 
     // Future note: May have to create a simple object/association which will tie together the titles and descriptions
     // because right now they are not
     // Array of strings with all of the Context Titles from the database
     var contexts = globalObject.sharedInstance.dbContexts;
-
+    
     
     // Array of string with all of the Context Descriptions from the database
     var contextsDetails = [String]()
@@ -25,10 +25,8 @@ class TaggingTableTableViewController: UITableViewController {
     // Array of strongs with the sorted keys from the dictionary above
     var contextsSectionsSortedKeys = [String]()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func updateUI(){
         
-        //use the global context array
         for i in 0..<contexts.count {
             
             let sectionLetter = String(contexts[i].id[contexts[i].id.startIndex]).uppercased()
@@ -47,8 +45,6 @@ class TaggingTableTableViewController: UITableViewController {
         // Sorts keys into alphabetical order
         contextsSectionsSortedKeys = Array(contextsSections.keys).sorted(by: <)
         
-<<<<<<< Updated upstream
-=======
         self.tableView.reloadData()
         
         // Uncomment the following line to preserve selection between presentations
@@ -88,27 +84,26 @@ class TaggingTableTableViewController: UITableViewController {
                 }
                 
                 // Felipe, this produced an error
-//                self.updateUI(contextList: contextList);
+                //                self.updateUI(contextList: contextList);
                 self.updateUI()
             }
         })
         
->>>>>>> Stashed changes
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
-
+    
     // Total number of sections
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return contextsSections.count
     }
-
+    
     // Total number of rows for every section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -125,9 +120,9 @@ class TaggingTableTableViewController: UITableViewController {
         return contextsSectionsSortedKeys
     }
 
-    // Confirgures the cell
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TaggingTableTableViewCell", for: indexPath) as! TaggingTableTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CameraTagTableViewCell", for: indexPath) as! CameraTagTableViewCell
         
         // finds which context is the one that needs to be printed
         var count = 0
@@ -146,7 +141,7 @@ class TaggingTableTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let vc = segue.destination as! AttributeTableTableViewController
+        let vc = segue.destination as! CameraAttributeTableViewController
         
         let indexPath = tableView.indexPathForSelectedRow
         
@@ -159,7 +154,8 @@ class TaggingTableTableViewController: UITableViewController {
         
         vc.contextTitle.title = contexts[count].id
     }
-    
+ 
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
