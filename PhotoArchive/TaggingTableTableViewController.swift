@@ -46,54 +46,6 @@ class TaggingTableTableViewController: UITableViewController {
         
         // Sorts keys into alphabetical order
         contextsSectionsSortedKeys = Array(contextsSections.keys).sorted(by: <)
-        
-<<<<<<< Updated upstream
-=======
-        self.tableView.reloadData()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        
-        let client = delegate.client!;
-        
-        //        let client = MSClient(
-        //            applicationURLString:"https://boephotoarchive-dev.azurewebsites.net"
-        //        )
-        
-        let contextTable = client.table(withName: "Context");
-        
-        contextTable.read(completion: {
-            (result, error) in
-            if let err = error {
-            } else if let contextResults = result?.items {
-                var contextList = [Context]()
-                
-                for context in contextResults {
-                    
-                    contextList.append(
-                        Context(
-                            id: context["id"] as! String,
-                            descriptor: context["descriptor"] as! String
-                        )
-                    )
-                }
-                
-                // Felipe, this produced an error
-//                self.updateUI(contextList: contextList);
-                self.updateUI()
-            }
-        })
-        
->>>>>>> Stashed changes
     }
 
     override func didReceiveMemoryWarning() {
