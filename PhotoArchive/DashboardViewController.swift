@@ -47,10 +47,6 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
             if let err = error {
             } else if let contextResults = result?.items {
                 for context in contextResults {
-<<<<<<< Updated upstream
-=======
-                    
->>>>>>> Stashed changes
                     globalObject.sharedInstance.dbContexts.append(
                         Context(
                             id: context["id"] as! String,
