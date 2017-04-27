@@ -2,16 +2,13 @@
 //  SettingsViewController.swift
 //  PhotoArchive
 //
-//  Created by Phillip Gulegin on 10/19/16.
-//  Copyright © 2016 AF-PENS. All rights reserved.
+//  Created by Phillip Gulegin on 1/26/17.
+//  Copyright © 2017 Phillip Gulegin. All rights reserved.
 //
 
 import UIKit
-import AVFoundation
 
 class SettingsViewController: UIViewController {
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()

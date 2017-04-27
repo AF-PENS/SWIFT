@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  PhotoArchive
 //
-//  Created by Phillip Gulegin on 10/8/16.
-//  Copyright © 2016 AF-PENS. All rights reserved.
+//  Created by Phillip Gulegin on 1/26/17.
+//  Copyright © 2017 Phillip Gulegin. All rights reserved.
 //
 
 import UIKit
@@ -12,10 +12,16 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var client: MSClient?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        self.client = MSClient(
+            applicationURLString:"https://boephotoarchive-dev.azurewebsites.net"
+        )
+        
         return true
     }
 

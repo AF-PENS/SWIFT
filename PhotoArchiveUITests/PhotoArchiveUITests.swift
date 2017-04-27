@@ -2,8 +2,8 @@
 //  PhotoArchiveUITests.swift
 //  PhotoArchiveUITests
 //
-//  Created by Phillip Gulegin on 10/8/16.
-//  Copyright © 2016 AF-PENS. All rights reserved.
+//  Created by Phillip Gulegin on 1/26/17.
+//  Copyright © 2017 Phillip Gulegin. All rights reserved.
 //
 
 import XCTest
