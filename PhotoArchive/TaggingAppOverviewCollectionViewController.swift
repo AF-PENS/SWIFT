@@ -1,32 +1,29 @@
 //
-//  TaggingGalleryOverviewCollectionViewController.swift
+//  TaggingAppOverviewCollectionViewController.swift
 //  PhotoArchive
 //
-//  Created by Phillip Gulegin on 4/23/17.
+//  Created by Phillip Gulegin on 4/26/17.
 //  Copyright © 2017 Phillip Gulegin. All rights reserved.
 //
 
 import UIKit
-import Photos
-import PhotosUI
 
-private let reuseIdentifier = "TaggingGalleryOverviewCollectionViewCell"
+private let reuseIdentifier = "TaggingAppOverviewCollectionViewCell"
 
-class TaggingGalleryOverviewCollectionViewController: UICollectionViewController {
+class TaggingAppOverviewCollectionViewController: UICollectionViewController {
     
     @IBOutlet weak var titleCount: UINavigationItem!
     @IBOutlet var deselectButtonOutlet: UIBarButtonItem!
     @IBOutlet var selectButtonOutlet: UIBarButtonItem!
     var sharing = false
+    var imageArray = [UIImage]()
+    var selectedImage = [String]()
     
-    var fetchResult: PHFetchResult<PHAsset>!
-    var assetCollection: PHAssetCollection!
-    
-    fileprivate let imageManager = PHCachingImageManager()
+//    fileprivate let imageManager = PHCachingImageManager()
     fileprivate var thumbnailSize: CGSize!
-
-    var selectedAsset: PHAsset!
-    var selectedAssetCollection: PHAssetCollection!
+    
+//    var selectedAsset: PHAsset!
+//    var selectedAssetCollection: PHAssetCollection!
     
     @IBAction func selectButton(_ sender: Any) {
         
@@ -45,11 +42,11 @@ class TaggingGalleryOverviewCollectionViewController: UICollectionViewController
             navigationItem.rightBarButtonItems?.removeAll()
             navigationItem.rightBarButtonItems?.append(selectButtonOutlet)
             navigationItem.rightBarButtonItems?.append(deselectButtonOutlet)
-            titleCount.title = "\(globalObject.sharedInstance.GalleryImages.count) selected"
+            titleCount.title = "\(globalObject.sharedInstance.AppImages.count) selected"
             
             collectionView?.allowsMultipleSelection = true
         }
-        // if sharing was just turned off
+            // if sharing was just turned off
         else {
             navigationItem.rightBarButtonItems?.removeAll()
             navigationItem.rightBarButtonItems?.append(selectButtonOutlet)
@@ -60,31 +57,53 @@ class TaggingGalleryOverviewCollectionViewController: UICollectionViewController
         
     }
     @IBAction func deselectAllButton(_ sender: Any) {
-        globalObject.sharedInstance.GalleryImages.removeAll()
-        titleCount.title = "\(globalObject.sharedInstance.GalleryImages.count) selected"
+        globalObject.sharedInstance.AppImages.removeAll()
+        titleCount.title = "\(globalObject.sharedInstance.AppImages.count) selected"
         collectionView?.reloadData()
     }
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Determine the size of the thumbnails to request from the PHCachingImageManager
         let scale = UIScreen.main.scale
         let cellSize = (collectionViewLayout as! UICollectionViewFlowLayout).itemSize
         thumbnailSize = CGSize(width: cellSize.width * scale, height: cellSize.height * scale)
         
-        let allPhotosOptions = PHFetchOptions()
-        allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        fetchResult = PHAsset.fetchAssets(with: allPhotosOptions)
-
+//        let allPhotosOptions = PHFetchOptions()
+//        allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+//        fetchResult = PHAsset.fetchAssets(with: allPhotosOptions)
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Do any additional setup after loading the view.
         navigationItem.rightBarButtonItems?.removeAll()
         navigationItem.rightBarButtonItems?.append(selectButtonOutlet)
         titleCount.title = ""
+        
+        
+        // Get the document directory url
+        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        do {
+            // Get the directory contents urls (including subfolders urls)
+            let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil, options: [])
+            
+            // if you want to filter the directory contents you can do like this:
+            let files = directoryContents.filter{ $0.pathExtension == "jpg" }
+            
+            for file in files {
+                
+                var image = UIImage(contentsOfFile: file.path)!
+                image.accessibilityIdentifier = file.lastPathComponent
+                imageArray.append(image)
+            }
+            
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -92,19 +111,22 @@ class TaggingGalleryOverviewCollectionViewController: UICollectionViewController
         // Dispose of any resources that can be recreated.
     }
 
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
-        let destination = segue.destination as? TaggingGalleryOverviewImageViewViewController
+        let vc = segue.destination as! TaggingAppOverviewImageViewViewController
         
-        let indexPaths = collectionView?.indexPathsForSelectedItems
-        let indexPath = indexPaths?[0]
-        destination?.asset = fetchResult.object(at: (indexPath?.item)!)
-        destination?.assetCollection = assetCollection
+        let indexPaths = collectionView!.indexPathsForSelectedItems!
+        let indexPath = indexPaths[0] as NSIndexPath
+        
+        vc.image = imageArray[(indexPath.row)]
+        
     }
+    
 
     // MARK: UICollectionViewDataSource
 
@@ -116,35 +138,23 @@ class TaggingGalleryOverviewCollectionViewController: UICollectionViewController
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return fetchResult.count
+        return imageArray.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let asset = fetchResult.object(at: indexPath.item)
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! TaggingGalleryOverviewCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! TaggingAppOverviewCollectionViewCell
     
         // Configure the cell
-    
-        // Request an image for the asset from the PHCachingImageManager.
-        cell.representedAssetIdentifier = asset.localIdentifier
-        imageManager.requestImage(for: asset, targetSize: thumbnailSize, contentMode: .aspectFill, options: nil, resultHandler: { image, _ in
-            // The cell may have been recycled by the time this handler gets called;
-            // set the cell's thumbnail image only if it's still showing the same asset.
-            if cell.representedAssetIdentifier == asset.localIdentifier {
-                cell.thumbnailImage = image
-            }
-        })
+        cell.imageView.image = imageArray[indexPath.row]
         
-        if globalObject.sharedInstance.GalleryImages.contains(asset) {
+        if globalObject.sharedInstance.AppImages.contains(imageArray[indexPath.row].accessibilityIdentifier!) {
             cell.layer.borderWidth = 3
             cell.layer.borderColor = UIColor.blue.cgColor
         }
         else {
             cell.layer.borderWidth = 0
         }
-        
+    
         return cell
     }
     
@@ -152,22 +162,22 @@ class TaggingGalleryOverviewCollectionViewController: UICollectionViewController
         
         // only execute if sharing is currently on
         if sharing {
-            let asset = fetchResult.object(at: indexPath.row)
+            let image = imageArray[indexPath.row]
             
             // executes if global does not contain the asset
-            if !globalObject.sharedInstance.GalleryImages.contains(asset) {
-                globalObject.sharedInstance.GalleryImages.append(asset)
+            if !globalObject.sharedInstance.AppImages.contains(image.accessibilityIdentifier!) {
+                globalObject.sharedInstance.AppImages.append(image.accessibilityIdentifier!)
             }
-            // executes if global does contain the asset
+                // executes if global does contain the asset
             else {
-                globalObject.sharedInstance.GalleryImages.remove(at: globalObject.sharedInstance.GalleryImages.index(of: asset)!)
+                globalObject.sharedInstance.AppImages.remove(at: globalObject.sharedInstance.AppImages.index(of: image.accessibilityIdentifier!)!)
             }
             
-            titleCount.title = "\(globalObject.sharedInstance.GalleryImages.count) selected"
+            titleCount.title = "\(globalObject.sharedInstance.AppImages.count) selected"
             collectionView.reloadItems(at: [indexPath])
         }
         else {
-            performSegue(withIdentifier: "TaggingGalleryOverviewImageViewSegue", sender: self)
+            performSegue(withIdentifier: "TaggingAppOverviewImageViewSegue", sender: self)
         }
     }
 
