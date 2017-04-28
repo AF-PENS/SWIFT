@@ -19,6 +19,8 @@ class HistoryImageViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.imageView.image = self.image
+        
+        print(self.title!);
     }
 
     override func didReceiveMemoryWarning() {

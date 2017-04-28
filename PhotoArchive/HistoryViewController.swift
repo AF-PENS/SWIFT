@@ -13,6 +13,7 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var historyCollectionView: UICollectionView!
     
     var imageArray = [UIImage]();
+    var imageTitles = [String]();
     
     var blobClient: AZSCloudBlobClient = AZSCloudBlobClient();
     var blobContainer: AZSCloudBlobContainer = AZSCloudBlobContainer();
@@ -56,6 +57,9 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
                 for img in imgResults {
                     var path = img["id"] as! String
                     
+                    //add path to titles list
+                    self.imageTitles.append(path);
+                    
                     path = path.replacingOccurrences(
                         of: "_",
                         with: "/",
@@ -78,32 +82,20 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func loadImages(paths: [String]){
-//        var index = 0;
-        
         for path in paths{
+            //TODO
+            //Add completion handler
+            //to update step by step
+            
+            DispatchQueue.main.async{
+                //make sure data is not nil
+                if let data = NSData(contentsOf: URL(string: path)!) {
+                    let image = UIImage(data: data as Data!);
+                    self.imageArray.append(image!);
+                }
                 
-            DispatchQueue.main.async {
-                self.imageArray.append(UIImage(data: NSData(contentsOf: URL(string: path)!) as! Data)!)
                 self.historyCollectionView.reloadData()
             }
-            
-//            let image = blobContainer.blockBlobReference(fromName: path);
-//            
-//            image.downloadToData {
-//                (error, data) in
-//                    
-//                let uiImage = UIImage(data: data!)!
-//                
-//                print("Path: ", path, " At Index: ", index);
-//                
-//                self.imageArray.insert(uiImage, at: index)
-//                    
-//                DispatchQueue.main.async {
-//                    self.historyCollectionView.reloadData();
-//                }
-//                
-//                index += 1;
-//            }
         }
     }
 
@@ -150,7 +142,10 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
             let indexPath = indexPaths[0] as NSIndexPath
             
             let vc = segue.destination as! HistoryImageViewController
+            
             vc.image = self.imageArray[indexPath.row]
+            
+            vc.title = self.imageTitles[indexPath.row]
         }
     }
 
