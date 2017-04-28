@@ -42,7 +42,7 @@ class TaggingAppOverviewCollectionViewController: UICollectionViewController {
             navigationItem.rightBarButtonItems?.removeAll()
             navigationItem.rightBarButtonItems?.append(selectButtonOutlet)
             navigationItem.rightBarButtonItems?.append(deselectButtonOutlet)
-            titleCount.title = "\(globalObject.sharedInstance.AppImages.count) selected"
+            titleCount.title = "\(global.shared.appImages.count) selected"
             
             collectionView?.allowsMultipleSelection = true
         }
@@ -57,8 +57,8 @@ class TaggingAppOverviewCollectionViewController: UICollectionViewController {
         
     }
     @IBAction func deselectAllButton(_ sender: Any) {
-        globalObject.sharedInstance.AppImages.removeAll()
-        titleCount.title = "\(globalObject.sharedInstance.AppImages.count) selected"
+        global.shared.appImages.removeAll()
+        titleCount.title = "\(global.shared.appImages.count) selected"
         collectionView?.reloadData()
     }
 
@@ -147,7 +147,7 @@ class TaggingAppOverviewCollectionViewController: UICollectionViewController {
         // Configure the cell
         cell.imageView.image = imageArray[indexPath.row]
         
-        if globalObject.sharedInstance.AppImages.contains(imageArray[indexPath.row].accessibilityIdentifier!) {
+        if global.shared.appImages.contains(imageArray[indexPath.row].accessibilityIdentifier!) {
             cell.layer.borderWidth = 3
             cell.layer.borderColor = UIColor.blue.cgColor
         }
@@ -165,15 +165,15 @@ class TaggingAppOverviewCollectionViewController: UICollectionViewController {
             let image = imageArray[indexPath.row]
             
             // executes if global does not contain the asset
-            if !globalObject.sharedInstance.AppImages.contains(image.accessibilityIdentifier!) {
-                globalObject.sharedInstance.AppImages.append(image.accessibilityIdentifier!)
+            if !global.shared.appImages.contains(image.accessibilityIdentifier!) {
+                global.shared.appImages.append(image.accessibilityIdentifier!)
             }
                 // executes if global does contain the asset
             else {
-                globalObject.sharedInstance.AppImages.remove(at: globalObject.sharedInstance.AppImages.index(of: image.accessibilityIdentifier!)!)
+                global.shared.appImages.remove(at: global.shared.appImages.index(of: image.accessibilityIdentifier!)!)
             }
             
-            titleCount.title = "\(globalObject.sharedInstance.AppImages.count) selected"
+            titleCount.title = "\(global.shared.appImages.count) selected"
             collectionView.reloadItems(at: [indexPath])
         }
         else {

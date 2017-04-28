@@ -20,7 +20,7 @@ class CameraSelectedContextsAttributesTableTableViewController: UITableViewContr
     
     @IBAction func saveButton(_ sender: Any) {
         
-        globalObject.sharedInstance.cameraContexts.remove(at: context)
+        global.shared.cameraContexts.remove(at: context)
         
         // creates a Context object with the title of the current context
         let tempContext = Context(id: contextTitle.title!)
@@ -30,13 +30,13 @@ class CameraSelectedContextsAttributesTableTableViewController: UITableViewContr
             tempContext.attributes.append(tempAttribute)
         }
         
-        globalObject.sharedInstance.cameraContexts.insert(tempContext, at: context)
+        global.shared.cameraContexts.insert(tempContext, at: context)
         
         performSegue(withIdentifier: "unwindToCameraViewController", sender: self)
     }
     
     @IBAction func deleteButton(_ sender: Any) {
-        globalObject.sharedInstance.cameraContexts.remove(at: context)
+        global.shared.cameraContexts.remove(at: context)
         
         performSegue(withIdentifier: "unwindToCameraViewController", sender: self)
     }
@@ -49,13 +49,13 @@ class CameraSelectedContextsAttributesTableTableViewController: UITableViewContr
         
         view.addGestureRecognizer(tap)
         
-        currentContext = globalObject.sharedInstance.cameraContexts[context]
-        contextTitle.title = globalObject.sharedInstance.cameraContexts[context].id
+        currentContext = global.shared.cameraContexts[context]
+        contextTitle.title = global.shared.cameraContexts[context].id
         
-        for i in 0..<globalObject.sharedInstance.cameraContexts[context].attributes.count {
-            attributes.append(globalObject.sharedInstance.cameraContexts[context].attributes[i].id)
-            descriptions.append(globalObject.sharedInstance.cameraContexts[context].attributes[i].question)
-            answers.append(globalObject.sharedInstance.cameraContexts[context].attributes[i].value)
+        for i in 0..<global.shared.cameraContexts[context].attributes.count {
+            attributes.append(global.shared.cameraContexts[context].attributes[i].id)
+            descriptions.append(global.shared.cameraContexts[context].attributes[i].question)
+            answers.append(global.shared.cameraContexts[context].attributes[i].value)
         }
 
         // Uncomment the following line to preserve selection between presentations

@@ -45,7 +45,7 @@ class TaggingGalleryOverviewCollectionViewController: UICollectionViewController
             navigationItem.rightBarButtonItems?.removeAll()
             navigationItem.rightBarButtonItems?.append(selectButtonOutlet)
             navigationItem.rightBarButtonItems?.append(deselectButtonOutlet)
-            titleCount.title = "\(globalObject.sharedInstance.GalleryImages.count) selected"
+            titleCount.title = "\(global.shared.galleryImages.count) selected"
             
             collectionView?.allowsMultipleSelection = true
         }
@@ -60,8 +60,8 @@ class TaggingGalleryOverviewCollectionViewController: UICollectionViewController
         
     }
     @IBAction func deselectAllButton(_ sender: Any) {
-        globalObject.sharedInstance.GalleryImages.removeAll()
-        titleCount.title = "\(globalObject.sharedInstance.GalleryImages.count) selected"
+        global.shared.galleryImages.removeAll()
+        titleCount.title = "\(global.shared.galleryImages.count) selected"
         collectionView?.reloadData()
     }
     
@@ -137,7 +137,7 @@ class TaggingGalleryOverviewCollectionViewController: UICollectionViewController
             }
         })
         
-        if globalObject.sharedInstance.GalleryImages.contains(asset) {
+        if global.shared.galleryImages.contains(asset) {
             cell.layer.borderWidth = 3
             cell.layer.borderColor = UIColor.blue.cgColor
         }
@@ -155,15 +155,15 @@ class TaggingGalleryOverviewCollectionViewController: UICollectionViewController
             let asset = fetchResult.object(at: indexPath.row)
             
             // executes if global does not contain the asset
-            if !globalObject.sharedInstance.GalleryImages.contains(asset) {
-                globalObject.sharedInstance.GalleryImages.append(asset)
+            if !global.shared.galleryImages.contains(asset) {
+                global.shared.galleryImages.append(asset)
             }
             // executes if global does contain the asset
             else {
-                globalObject.sharedInstance.GalleryImages.remove(at: globalObject.sharedInstance.GalleryImages.index(of: asset)!)
+                global.shared.galleryImages.remove(at: global.shared.galleryImages.index(of: asset)!)
             }
             
-            titleCount.title = "\(globalObject.sharedInstance.GalleryImages.count) selected"
+            titleCount.title = "\(global.shared.galleryImages.count) selected"
             collectionView.reloadItems(at: [indexPath])
         }
         else {

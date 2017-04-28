@@ -69,8 +69,8 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         // Clears out the elements in tagButtonArray in order to not create duplicates
         tagButtonArray.removeAll()
         
-        for context in 0..<globalObject.sharedInstance.cameraContexts.count {
-            tagButtonArray.append(globalObject.sharedInstance.cameraContexts[context].id)
+        for context in 0..<global.shared.cameraContexts.count {
+            tagButtonArray.append(global.shared.cameraContexts[context].id)
         }
     }
     
@@ -97,10 +97,10 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         try! jpegimage?.write(to: imageURL)
         
         // executes if contexts are selected, then the image is also sent to the dashboard
-        if globalObject.sharedInstance.cameraContexts.count != 0 {
+        if global.shared.cameraContexts.count != 0 {
             var uploadObjects = [UploadObject]()
             
-            let temp = UploadObject(context: globalObject.sharedInstance.cameraContexts, imageLocalIdentifier: "\(dateFormatter.string(from: date as Date)).jpg", isAppImage: true, isGalleryImage: false)
+            let temp = UploadObject(context: global.shared.cameraContexts, imageLocalIdentifier: "\(dateFormatter.string(from: date as Date)).jpg", isAppImage: true, isGalleryImage: false)
             uploadObjects.append(temp)
             
             var values = [UploadObject]()

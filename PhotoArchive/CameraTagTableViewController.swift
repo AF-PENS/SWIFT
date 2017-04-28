@@ -13,7 +13,7 @@ class CameraTagTableViewController: UITableViewController {
     // Future note: May have to create a simple object/association which will tie together the titles and descriptions
     // because right now they are not
     // Array of strings with all of the Context Titles from the database
-    var contexts = globalObject.sharedInstance.dbContexts;
+    var contexts = global.shared.dbContexts;
     
     
     // Array of string with all of the Context Descriptions from the database

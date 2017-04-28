@@ -27,7 +27,7 @@ class CameraAttributeTableViewController: UITableViewController, UITextViewDeleg
             tempContext.attributes.append(tempAttribute)
         }
         
-        globalObject.sharedInstance.cameraContexts.append(tempContext)
+        global.shared.cameraContexts.append(tempContext)
         
         performSegue(withIdentifier: "unwindToCameraViewController", sender: self)
     }

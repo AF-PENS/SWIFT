@@ -30,7 +30,7 @@ class AttributeTableTableViewController: UITableViewController, UITextViewDelega
             tempContext.attributes.append(tempAttribute)
         }
         
-        globalObject.sharedInstance.Attributes.append(tempContext)
+        global.shared.tagContexts.append(tempContext)
         
         performSegue(withIdentifier: "unwindToTaggingViewController", sender: self)
     }

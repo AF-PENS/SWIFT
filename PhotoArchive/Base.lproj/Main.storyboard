@@ -380,7 +380,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="uploadImagesAndTagsButtonButton:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="EQN-rc-CMD"/>
+                                                    <action selector="uploadImagesAndTagsButton:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="djx-L2-xZ9"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1470,7 +1470,7 @@ If there are no tags selected, then the images taken will only be placed in the 
                                     <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="doLogin:" destination="OaM-81-e3n" eventType="touchUpInside" id="IsG-sR-ki4"/>
+                                    <action selector="loginButton:" destination="OaM-81-e3n" eventType="touchUpInside" id="9h8-Xg-n21"/>
                                 </connections>
                             </button>
                         </subviews>

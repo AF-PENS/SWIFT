@@ -38,7 +38,7 @@ class Context: NSObject, NSCoding {
     }
     
     required convenience init(coder decoder: NSCoder) {
-        var attributes = decoder.decodeObject(forKey: "attributes") as? [Attribute]
+        let attributes = decoder.decodeObject(forKey: "attributes") as? [Attribute]
         let id = decoder.decodeObject(forKey: "id") as? String
         let descriptor = decoder.decodeObject(forKey: "descriptor") as? String
         

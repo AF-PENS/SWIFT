@@ -11,47 +11,82 @@ import Photos
 
 class TaggingViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    @IBOutlet weak var appCollectionView: UICollectionView!
+    // Three main collection views on the view
+    @IBOutlet weak var appCollectionView: UICollectionView!         // Responsible for images taken within application
+    @IBOutlet weak var galleryCollectionView: UICollectionView!     // Responsible for images taken outside application
+    @IBOutlet weak var tagCollectionView: UICollectionView!         // Responsible for contexts selected
     
-    @IBOutlet weak var galleryCollectionView: UICollectionView!
-    
-    @IBOutlet weak var tagCollectionView: UICollectionView!
-    
-    var appImageArray = [UIImage]()
-    
-    var galleryImageArray = [UIImage]()
-    
-    var tagButtonArray = ["AA Medium Title", "AA Medium Title", "AA Medium Title", "AA Medium Title"]
-    
-    var selectedTagContext = 0
+    // Outlet displays how many images and contexts are about to be uploaded
     @IBOutlet weak var uploadImagesAndTagsButtonOutlet: UIButton!
     
-    // saves the images and contexts
-    @IBAction func uploadImagesAndTagsButtonButton(_ sender: Any) {
+    // Three arrays which contain images/contexts for three main collection views
+    var appImageArray = [UIImage]()         // Responsible for holding images for appCollectionView
+    var galleryImageArray = [UIImage]()     // Responsible for holding images for galleryCollectionView
+    var tagButtonArray = [String]()         // Responsible for holding contexts for tagCollectionView
+    
+    // Variable to pass to the TaggingSelected View Controllers
+    // Set to '-1' because indexPaths can never have a row that is negative
+    var selectedTagContext = -1
+    
+    // Action which pairs up the selected contexts with the selected images
+    @IBAction func uploadImagesAndTagsButton(_ sender: Any) {
         
-        // function will not save anything if there are no contexts/images to be saved
-        if globalObject.sharedInstance.Attributes.count == 0 ||
-            (globalObject.sharedInstance.AppImages.count + globalObject.sharedInstance.GalleryImages.count) == 0 {
-            return
+        // Creates an alert to notify user if images/contexts have not been selected -- Will not save anything
+        // Executes if the user has not selected any contexts
+        if global.shared.tagContexts.count == 0 {
+            
+            // Create alert
+            let alert = UIAlertController(title: "Tags", message: "There are currently no selected tags. Please select a tag and upload again.", preferredStyle: UIAlertControllerStyle.alert)
+            
+            // Add the 'OK' button
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            
+            // Present the alert
+            self.present(alert, animated: true, completion: nil)
+        }
+        // Executes if the user has not selected any images
+        else if global.shared.appImages.count + global.shared.galleryImages.count == 0 {
+            
+            // Create alert
+            let alert = UIAlertController(title: "Images", message: "There are currently no selected images. Please select an image and upload again.", preferredStyle: UIAlertControllerStyle.alert)
+            
+            // Add the 'OK' button
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            
+            // Present the alert
+            self.present(alert, animated: true, completion: nil)
+        }
+        // Executes if the user has not selected any contexts or images
+        else if global.shared.tagContexts.count == 0 ||
+            global.shared.appImages.count + global.shared.galleryImages.count == 0{
+            
+            // Create alert
+            let alert = UIAlertController(title: "Images and Tags", message: "There are currently no selected images or tags. Please select an image or tag and upload again.", preferredStyle: UIAlertControllerStyle.alert)
+            
+            // Add the 'OK' button
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            
+            // Present the alert
+            self.present(alert, animated: true, completion: nil)
         }
         
         var uploadObjects = [UploadObject]()
         
-        for i in 0..<globalObject.sharedInstance.GalleryImages.count {
-            let temp = UploadObject(context: globalObject.sharedInstance.Attributes, imageLocalIdentifier: globalObject.sharedInstance.GalleryImages[i].localIdentifier, isAppImage: false, isGalleryImage: true)
+        for i in 0..<global.shared.galleryImages.count {
+            let temp = UploadObject(context: global.shared.tagContexts, imageLocalIdentifier: global.shared.galleryImages[i].localIdentifier, isAppImage: false, isGalleryImage: true)
             uploadObjects.append(temp)
         }
         
-        for i in 0..<globalObject.sharedInstance.AppImages.count {
-            let temp = UploadObject.init(context: globalObject.sharedInstance.Attributes, imageLocalIdentifier: globalObject.sharedInstance.AppImages[i], isAppImage: true, isGalleryImage: false)
+        for i in 0..<global.shared.appImages.count {
+            let temp = UploadObject.init(context: global.shared.tagContexts, imageLocalIdentifier: global.shared.appImages[i], isAppImage: true, isGalleryImage: false)
             uploadObjects.append(temp)
         }
         
-        globalObject.sharedInstance.Attributes.removeAll()
-        globalObject.sharedInstance.GalleryImages.removeAll()
-        globalObject.sharedInstance.AppImages.removeAll()
+        global.shared.tagContexts.removeAll()
+        global.shared.galleryImages.removeAll()
+        global.shared.appImages.removeAll()
         
-        uploadImagesAndTagsButtonOutlet.setTitle("Upload \(globalObject.sharedInstance.GalleryImages.count + globalObject.sharedInstance.AppImages.count) Images with \(globalObject.sharedInstance.Attributes.count) Tags", for: UIControlState.normal)
+        uploadImagesAndTagsButtonOutlet.setTitle("Upload \(global.shared.galleryImages.count + global.shared.appImages.count) Images with \(global.shared.tagContexts.count) Tags", for: UIControlState.normal)
         uploadImagesAndTagsButtonOutlet.titleLabel?.textAlignment = .center
         
         var values = [UploadObject]()
@@ -111,8 +146,8 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
         // Clears out the elements in tagButtonArray in order to not create duplicates
         tagButtonArray.removeAll()
         
-        for context in 0..<globalObject.sharedInstance.Attributes.count {
-            tagButtonArray.append(globalObject.sharedInstance.Attributes[context].id)
+        for context in 0..<global.shared.tagContexts.count {
+            tagButtonArray.append(global.shared.tagContexts[context].id)
         }
     }
     
@@ -157,7 +192,7 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         generateContextButtons()
         tagCollectionView.reloadData()
-        uploadImagesAndTagsButtonOutlet.setTitle("Upload \(globalObject.sharedInstance.GalleryImages.count + globalObject.sharedInstance.AppImages.count) Images with \(globalObject.sharedInstance.Attributes.count) Tags", for: UIControlState.normal)
+        uploadImagesAndTagsButtonOutlet.setTitle("Upload \(global.shared.galleryImages.count + global.shared.appImages.count) Images with \(global.shared.tagContexts.count) Tags", for: UIControlState.normal)
         uploadImagesAndTagsButtonOutlet.titleLabel?.textAlignment = .center
         
         appImageArray.removeAll()
