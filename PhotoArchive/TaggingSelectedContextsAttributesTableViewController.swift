@@ -44,6 +44,12 @@ class TaggingSelectedContextsAttributesTableViewController: UITableViewControlle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        
+        view.addGestureRecognizer(tap)
+        
         currentContext = globalObject.sharedInstance.Attributes[context]
         contextTitle.title = globalObject.sharedInstance.Attributes[context].id
         
@@ -104,8 +110,13 @@ class TaggingSelectedContextsAttributesTableViewController: UITableViewControlle
         return nil
     }
     
-    func textViewDidEndEditing(_ textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         answers[textView.tag] = textView.text!
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
  
 

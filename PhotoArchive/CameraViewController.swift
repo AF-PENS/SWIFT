@@ -72,7 +72,6 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         for context in 0..<globalObject.sharedInstance.cameraContexts.count {
             tagButtonArray.append(globalObject.sharedInstance.cameraContexts[context].id)
         }
-        print("Generate: ", tagButtonArray.count)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -132,7 +131,6 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CameraCollectionViewCell", for: indexPath as IndexPath) as! CameraCollectionViewCell
         
         cell.title.text = tagButtonArray[indexPath.row]
-        print("Currently creating: ", tagButtonArray[indexPath.row])
         return cell
     }
     
@@ -143,7 +141,6 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         label.numberOfLines = 0
         label.text = tagButtonArray[indexPath.row]
         label.sizeToFit()
-        print(label.text!)
         return CGSize(width: label.frame.width+10, height: label.frame.height)
     }
     

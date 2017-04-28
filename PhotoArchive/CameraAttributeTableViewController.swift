@@ -42,6 +42,11 @@ class CameraAttributeTableViewController: UITableViewController, UITextViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        
+        view.addGestureRecognizer(tap)
+        
         let delegate = UIApplication.shared.delegate as! AppDelegate
         
         let client = delegate.client!;
@@ -118,7 +123,7 @@ class CameraAttributeTableViewController: UITableViewController, UITextViewDeleg
         return nil
     }
     
-    func textViewDidEndEditing(_ textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         attributes[textView.tag].value = textView.text!
     }
     

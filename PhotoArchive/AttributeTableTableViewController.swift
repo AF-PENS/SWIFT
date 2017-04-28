@@ -83,6 +83,11 @@ class AttributeTableTableViewController: UITableViewController, UITextViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        
+        view.addGestureRecognizer(tap)
+        
         //store the client from delegate
         client = delegate.client!;
         
@@ -162,8 +167,13 @@ class AttributeTableTableViewController: UITableViewController, UITextViewDelega
         return nil
     }
     
-    func textViewDidEndEditing(_ textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         attributes[textView.tag].value = textView.text!
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
 
     /*
