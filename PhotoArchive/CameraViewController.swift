@@ -14,13 +14,15 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     var tagButtonArray = [String]()
     var selectedTagContext = 0
 
-    @IBOutlet weak var collectionView: TaggingTagCollectionView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     // prepares for a segue transition from the Attribute pages
     @IBAction func unwindToCameraViewController(segue:UIStoryboardSegue) { }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.automaticallyAdjustsScrollViewInsets = false
 
         // Do any additional setup after loading the view.
         picker.delegate = self
@@ -28,7 +30,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         // Collection view for context buttons
         collectionView.delegate = self
         collectionView.dataSource = self
-        self.view.addSubview(collectionView)
+//        self.view.addSubview(collectionView)
         generateContextButtons()
     }
 
@@ -70,6 +72,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         for context in 0..<globalObject.sharedInstance.cameraContexts.count {
             tagButtonArray.append(globalObject.sharedInstance.cameraContexts[context].id)
         }
+        print("Generate: ", tagButtonArray.count)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -129,7 +132,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CameraCollectionViewCell", for: indexPath as IndexPath) as! CameraCollectionViewCell
         
         cell.title.text = tagButtonArray[indexPath.row]
-        
+        print("Currently creating: ", tagButtonArray[indexPath.row])
         return cell
     }
     
@@ -140,8 +143,8 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         label.numberOfLines = 0
         label.text = tagButtonArray[indexPath.row]
         label.sizeToFit()
-        
-        return CGSize(width: label.frame.width+4, height: label.frame.height+4)
+        print(label.text!)
+        return CGSize(width: label.frame.width+10, height: label.frame.height)
     }
     
 //    // gets the selected item to pass
