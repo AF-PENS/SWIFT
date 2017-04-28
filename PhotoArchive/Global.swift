@@ -15,7 +15,9 @@ class global {
     
     // Declare an initializer
     // Because this class is singleton only one instance of this class can be created
-    init() {}
+    init() {
+        
+    }
     
     // class variables
     var tagContexts = [Context]()
