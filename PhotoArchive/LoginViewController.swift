@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
         
         //basic check to see if login is working
         if inputUsername.text == "" && inputPassword.text == ""{
-            print("CORRECT")
+//            print("CORRECT")
 //            let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //            let vc = storyboard.instantiateViewController(withIdentifier: "TabBarController")
 //            self.present(vc, animated: true, completion: nil)
@@ -40,7 +40,7 @@ class LoginViewController: UIViewController {
             self.present(resultViewController, animated:true, completion:nil)
         }
         else{
-            print("INCORRECT")
+//            print("INCORRECT")
             let alert = UIAlertController(title: "Alert", message: "Please enter correct Information", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)

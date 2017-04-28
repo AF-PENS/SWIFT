@@ -120,21 +120,23 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.automaticallyAdjustsScrollViewInsets = false
+        
         // Collection view for the images taken within the application
         appCollectionView.delegate = self
         appCollectionView.dataSource = self
-        self.view.addSubview(appCollectionView)
+//        self.view.addSubview(appCollectionView)
         
         // Collection view for the images taken outside the application
         galleryCollectionView.delegate = self
         galleryCollectionView.dataSource = self
-        self.view.addSubview(galleryCollectionView)
+//        self.view.addSubview(galleryCollectionView)
         grabPhotos()
         
         // Collection view for context buttons
         tagCollectionView.delegate = self
         tagCollectionView.dataSource = self
-        self.view.addSubview(tagCollectionView)
+//        self.view.addSubview(tagCollectionView)
         generateContextButtons()
     }
     
@@ -237,7 +239,7 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
             label.text = tagButtonArray[indexPath.row]
             label.sizeToFit()
             
-            return CGSize(width: label.frame.width+4, height: label.frame.height+4)
+            return CGSize(width: label.frame.width+10, height: label.frame.height)
         }
         else {
             // current defaults set in interface builder
