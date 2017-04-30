@@ -20,26 +20,34 @@ class LoginViewController: UIViewController {
     // Action 'Login' button on screen
     @IBAction func loginButton(_ sender: Any) {
         
-        // Continues executing if login was correct
-        // Currently, to log in, leave input fields blank
-        if !(inputUsername.text == "" && inputPassword.text == "") {
-            
-            // Creates an alert to notify user login was incorrect
-            let alert = UIAlertController(title: "Alert", message: "Please enter correct Information", preferredStyle: UIAlertControllerStyle.alert)
-            
-            // Creates button prompt for the alert
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { action in
-                
-                // Dismiss alert once user acknowledges
-                alert.dismiss(animated: true, completion: nil)
-            }))
-            
-            // Present alert to the user
-            self.present(alert, animated: true, completion: nil)
-            
-            // Return to the Login view
-            return
-        }
+        // ----- START DEBUG MODE -----
+        // DELETE DEBUG MODE IN PRODUCTION
+        // Delete this block for normal functionality
+        // Uncomment the next comment block for normal functionality
+        inputUsername.text = "iOSrockzURsockz"
+        // DELETE DEBUG MODE IN PRODUCTION
+        // ----- END DEBUG MODE -----
+        
+//        // Continues executing if login was correct
+//        // Currently, to log in, leave input fields blank
+//        if !(inputUsername.text == "" && inputPassword.text == "") {
+//            
+//            // Creates an alert to notify user login was incorrect
+//            let alert = UIAlertController(title: "Alert", message: "Please enter correct Information", preferredStyle: UIAlertControllerStyle.alert)
+//            
+//            // Creates button prompt for the alert
+//            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { action in
+//                
+//                // Dismiss alert once user acknowledges
+//                alert.dismiss(animated: true, completion: nil)
+//            }))
+//            
+//            // Present alert to the user
+//            self.present(alert, animated: true, completion: nil)
+//            
+//            // Return to the Login view
+//            return
+//        }
         
         // Establish defaults object to load persistent data
         let defaults = UserDefaults.standard
@@ -67,7 +75,7 @@ class LoginViewController: UIViewController {
             // DELETE DEBUG MODE IN PRODUCTION
             // Will not execute this entire if statement
             // Delete this block for normal functionality
-            // Uncomment line 62 for normal functionality
+            // Uncomment above line for normal functionality
             if false {
             // DELETE DEBUG MODE IN PRODUCTION
             // ----- END DEBUG MODE -----
@@ -169,24 +177,70 @@ class LoginViewController: UIViewController {
         // Establish path to 'Documents'
         let docPath = fileMngr.urls(for: .documentDirectory, in: .userDomainMask)[0]
         
+        // Establish URL for 'CameraImages' in 'Documents'
+        let cameraImagesURL = docPath.appendingPathComponent("CameraImages")
+        
         // Establish path for 'CameraImages' in 'Documents'
         let cameraImagesPath = docPath.appendingPathComponent("CameraImages").path
         
-        // Create the 'CameraImages' Folder
+        // Establish path for 'FullImage' in 'CameraImages'
+        let cameraFullImagePath = cameraImagesURL.appendingPathComponent("FullImage").path
+        
+        // Establish path for 'Thumbnail' in 'CameraImages'
+        let cameraThumbnailPath = cameraImagesURL.appendingPathComponent("Thumbnail").path
+        
+        // Create 'CameraImages' directory
         do {
             try fileMngr.createDirectory(atPath: cameraImagesPath, withIntermediateDirectories: true, attributes: nil)
         } catch {
             print("Error creating 'CameraImages' directory.")
         }
         
+        // Create 'FullImage' directory within 'CameraImage'
+        do {
+            try fileMngr.createDirectory(atPath: cameraFullImagePath, withIntermediateDirectories: true, attributes: nil)
+        } catch {
+            print("Error creating 'FullImage' directory.")
+        }
+        
+        // Create 'Thumbnail' directory within 'CameraImage'
+        do {
+            try fileMngr.createDirectory(atPath: cameraThumbnailPath, withIntermediateDirectories: true, attributes: nil)
+        } catch {
+            print("Error creating 'Thumbnail' directory.")
+        }
+        
+        // Establish URL for 'UploadImages' in 'Documents'
+        let uploadImagesURL = docPath.appendingPathComponent("UploadImages")
+        
         // Establish path for 'UploadImages' in 'Documents'
         let uploadImagesPath = docPath.appendingPathComponent("UploadImages").path
         
-        // Create the 'UploadImages' Folder
+        // Establish path for 'FullImage' in 'UploadImages'
+        let uploadFullImagePath = uploadImagesURL.appendingPathComponent("FullImage").path
+        
+        // Establish path for 'Thumbnail' in 'UploadImages'
+        let uploadThumbnailPath = uploadImagesURL.appendingPathComponent("Thumbnail").path
+        
+        // Create the 'UploadImages' directory
         do {
             try fileMngr.createDirectory(atPath: uploadImagesPath, withIntermediateDirectories: true, attributes: nil)
         } catch {
             print("Error creating 'UploadImages' directory.")
+        }
+        
+        // Create 'FullImage' directory within 'UploadImages'
+        do {
+            try fileMngr.createDirectory(atPath: uploadFullImagePath, withIntermediateDirectories: true, attributes: nil)
+        } catch {
+            print("Error creating 'FullImage' directory.")
+        }
+        
+        // Create 'Thumbnail' directory within 'UploadImages'
+        do {
+            try fileMngr.createDirectory(atPath: uploadThumbnailPath, withIntermediateDirectories: true, attributes: nil)
+        } catch {
+            print("Error creating 'Thumbnail' directory.")
         }
     }
     
@@ -210,30 +264,62 @@ class LoginViewController: UIViewController {
         // Establish path to 'Documents'
         let docPath = fileMngr.urls(for: .documentDirectory, in: .userDomainMask)[0]
         
-        // Establish path for 'CameraImages' in 'Documents'
-        let cameraImagesPath = docPath.appendingPathComponent("CameraImages").path
+        // Establish URL for 'CameraImages' in 'Documents'
+        let cameraImagesURL = docPath.appendingPathComponent("CameraImages")
         
-        // Delete everything in 'CameraImages' Folder
+        // Establish path for 'FullImage' in 'CameraImages'
+        let cameraFullImagePath = cameraImagesURL.appendingPathComponent("FullImage").path
+        
+        // Establish path for 'Thumbnail' in 'CameraImages'
+        let cameraThumbnailPath = cameraImagesURL.appendingPathComponent("Thumbnail").path
+        
+        // Delete everything in 'FullImage' directory within 'CameraImages' directory
         do {
-            let filePaths = try fileMngr.contentsOfDirectory(atPath: cameraImagesPath)
+            let filePaths = try fileMngr.contentsOfDirectory(atPath: cameraFullImagePath)
             for filePath in filePaths {
-                try fileMngr.removeItem(atPath: cameraImagesPath + "/" + filePath)
+                try fileMngr.removeItem(atPath: cameraFullImagePath + "/" + filePath)
             }
         } catch {
-            print("Error deleting files in 'CameraImages' directory")
+            print("Error deleting files in 'FullImage' directory")
         }
         
-        // Establish path for 'UploadImages' in 'Documents'
-        let uploadImagesPath = docPath.appendingPathComponent("UploadImages").path
-        
-        // Delete everything in 'UploadImages' Folder
+        // Delete everything in 'Thumbnail' directory within 'CameraImages' directory
         do {
-            let filePaths = try fileMngr.contentsOfDirectory(atPath: uploadImagesPath)
+            let filePaths = try fileMngr.contentsOfDirectory(atPath: cameraThumbnailPath)
             for filePath in filePaths {
-                try fileMngr.removeItem(atPath: uploadImagesPath + "/" + filePath)
+                try fileMngr.removeItem(atPath: cameraThumbnailPath + "/" + filePath)
             }
         } catch {
-            print("Error deleting files in 'UploadImages' directory")
+            print("Error deleting files in 'Thumbnail' directory")
+        }
+        
+        // Establish URL for 'UploadImages' in 'Documents'
+        let uploadImagesURL = docPath.appendingPathComponent("UploadImages")
+        
+        // Establish path for 'FullImage' in 'UploadImages'
+        let uploadFullImagePath = uploadImagesURL.appendingPathComponent("FullImage").path
+        
+        // Establish path for 'Thumbnail' in 'UploadImages'
+        let uploadThumbnailPath = uploadImagesURL.appendingPathComponent("Thumbnail").path
+        
+        // Delete everything in 'FullImage' directory within 'UploadImages' directory
+        do {
+            let filePaths = try fileMngr.contentsOfDirectory(atPath: uploadFullImagePath)
+            for filePath in filePaths {
+                try fileMngr.removeItem(atPath: uploadFullImagePath + "/" + filePath)
+            }
+        } catch {
+            print("Error deleting files in 'FullImage' directory")
+        }
+        
+        // Delete everything in 'Thumbnail' directory within 'UploadImages' directory
+        do {
+            let filePaths = try fileMngr.contentsOfDirectory(atPath: uploadThumbnailPath)
+            for filePath in filePaths {
+                try fileMngr.removeItem(atPath: uploadThumbnailPath + "/" + filePath)
+            }
+        } catch {
+            print("Error deleting files in 'Thumbnail' directory")
         }
     }
 }

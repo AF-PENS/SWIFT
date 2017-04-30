@@ -201,28 +201,28 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="J5S-tO-7JC" customClass="TaggingAppCollectionView" customModule="PhotoArchive" customModuleProvider="target">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="J5S-tO-7JC">
                                                 <rect key="frame" x="8" y="101" width="398" height="90"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="90" id="Z3K-9J-xLE"/>
                                                 </constraints>
-                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HSc-HH-goh">
-                                                    <size key="itemSize" width="70" height="70"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="1" minimumInteritemSpacing="1" id="HSc-HH-goh">
+                                                    <size key="itemSize" width="75" height="75"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                                    <inset key="sectionInset" minX="1" minY="1" maxX="1" maxY="1"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TaggingAppCell" id="uq4-vj-yQG" customClass="TaggingAppCollectionViewCell" customModule="PhotoArchive" customModuleProvider="target">
-                                                        <rect key="frame" x="10" y="10" width="70" height="70"/>
+                                                        <rect key="frame" x="1" y="7.666666666666667" width="75" height="75"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                            <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tM9-LR-p4m">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 </imageView>
                                                             </subviews>
@@ -255,28 +255,28 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oUC-ph-vEX" customClass="TaggingGalleryCollectionView" customModule="PhotoArchive" customModuleProvider="target">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oUC-ph-vEX">
                                                 <rect key="frame" x="8" y="262" width="398" height="90"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="90" id="ne9-5z-05D"/>
                                                 </constraints>
-                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NT3-zz-78J">
-                                                    <size key="itemSize" width="70" height="70"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="1" minimumInteritemSpacing="1" id="NT3-zz-78J">
+                                                    <size key="itemSize" width="75" height="75"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                                    <inset key="sectionInset" minX="1" minY="1" maxX="1" maxY="1"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TaggingGalleryCell" id="qEi-3N-kNz" customClass="TaggingGalleryCollectionViewCell" customModule="PhotoArchive" customModuleProvider="target">
-                                                        <rect key="frame" x="10" y="10" width="70" height="70"/>
+                                                        <rect key="frame" x="1" y="7.666666666666667" width="75" height="75"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                            <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h0p-H7-QcW">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 </imageView>
                                                             </subviews>
@@ -327,7 +327,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="x4n-OO-kkm" customClass="TaggingTagCollectionView" customModule="PhotoArchive" customModuleProvider="target">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="x4n-OO-kkm">
                                                 <rect key="frame" x="8" y="493" width="398" height="45"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -380,7 +380,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="uploadImagesAndTagsButton:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="djx-L2-xZ9"/>
+                                                    <action selector="uploadButton:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="2by-1T-LOa"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -450,8 +450,8 @@
                     <connections>
                         <outlet property="appCollectionView" destination="J5S-tO-7JC" id="Cki-h6-6Os"/>
                         <outlet property="galleryCollectionView" destination="oUC-ph-vEX" id="a3A-qV-XiI"/>
-                        <outlet property="tagCollectionView" destination="x4n-OO-kkm" id="chZ-Zk-R8z"/>
-                        <outlet property="uploadImagesAndTagsButtonOutlet" destination="IB2-zB-wep" id="oAi-IZ-7oe"/>
+                        <outlet property="tagCollectionView" destination="x4n-OO-kkm" id="Nh6-Nv-OTH"/>
+                        <outlet property="uploadButtonOutlet" destination="IB2-zB-wep" id="paA-UC-OhE"/>
                         <segue destination="mGj-D4-kol" kind="show" identifier="TaggingSelectedContextsAttributesSegue" id="B4X-Yz-fzh"/>
                     </connections>
                 </viewController>

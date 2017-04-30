@@ -13,10 +13,7 @@
 		55F9469A1EAD285000E97DB6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F946991EAD285000E97DB6 /* WebKit.framework */; };
 		55F9469C1EAD285400E97DB6 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F9469B1EAD285400E97DB6 /* SafariServices.framework */; };
 		E513F7E11E43273C009C03B5 /* TaggingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E513F7E01E43273C009C03B5 /* TaggingViewController.swift */; };
-		E51414311E53F329000A2E3D /* TaggingAppCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51414301E53F329000A2E3D /* TaggingAppCollectionView.swift */; };
-		E51414331E53F3DD000A2E3D /* TaggingGalleryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51414321E53F3DD000A2E3D /* TaggingGalleryCollectionView.swift */; };
 		E51414351E53F4AC000A2E3D /* TaggingGalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51414341E53F4AC000A2E3D /* TaggingGalleryCollectionViewCell.swift */; };
-		E514143A1E53F87B000A2E3D /* TaggingTagCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51414391E53F87B000A2E3D /* TaggingTagCollectionView.swift */; };
 		E514143C1E53F88B000A2E3D /* TaggingTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E514143B1E53F88B000A2E3D /* TaggingTagCollectionViewCell.swift */; };
 		E52EF2C61E3B136800FF37D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52EF2C51E3B136800FF37D2 /* AppDelegate.swift */; };
 		E52EF2CD1E3B136800FF37D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E52EF2CB1E3B136800FF37D2 /* Main.storyboard */; };
@@ -91,10 +88,7 @@
 		55F946991EAD285000E97DB6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		55F9469B1EAD285400E97DB6 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		E513F7E01E43273C009C03B5 /* TaggingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingViewController.swift; sourceTree = "<group>"; };
-		E51414301E53F329000A2E3D /* TaggingAppCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingAppCollectionView.swift; sourceTree = "<group>"; };
-		E51414321E53F3DD000A2E3D /* TaggingGalleryCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingGalleryCollectionView.swift; sourceTree = "<group>"; };
 		E51414341E53F4AC000A2E3D /* TaggingGalleryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingGalleryCollectionViewCell.swift; sourceTree = "<group>"; };
-		E51414391E53F87B000A2E3D /* TaggingTagCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingTagCollectionView.swift; sourceTree = "<group>"; };
 		E514143B1E53F88B000A2E3D /* TaggingTagCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		E52EF2C21E3B136800FF37D2 /* PhotoArchive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoArchive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E52EF2C51E3B136800FF37D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -206,11 +200,8 @@
 			isa = PBXGroup;
 			children = (
 				E513F7E01E43273C009C03B5 /* TaggingViewController.swift */,
-				E51414301E53F329000A2E3D /* TaggingAppCollectionView.swift */,
 				E55B78F71E431AA7001C7654 /* TaggingAppCollectionViewCell.swift */,
-				E51414321E53F3DD000A2E3D /* TaggingGalleryCollectionView.swift */,
 				E51414341E53F4AC000A2E3D /* TaggingGalleryCollectionViewCell.swift */,
-				E51414391E53F87B000A2E3D /* TaggingTagCollectionView.swift */,
 				E514143B1E53F88B000A2E3D /* TaggingTagCollectionViewCell.swift */,
 				E51414361E53F4CC000A2E3D /* TaggingApp */,
 				E51414371E53F4EB000A2E3D /* TaggingGallery */,
@@ -539,7 +530,6 @@
 				E5874FD01EAEC9D2001DC13F /* UploadObject.swift in Sources */,
 				E52EF3061E3B224E00FF37D2 /* SettingsViewController.swift in Sources */,
 				E573F3391EB05EA800603222 /* CameraTagTableViewController.swift in Sources */,
-				E51414311E53F329000A2E3D /* TaggingAppCollectionView.swift in Sources */,
 				E5CF3D571EA99C2500E0698C /* TaggingSelectedContextsAttributesTableViewController.swift in Sources */,
 				E55B78F81E431AA7001C7654 /* TaggingAppCollectionViewCell.swift in Sources */,
 				E5E31D291E9DC8BC00DFC3A7 /* HistoryTagTableViewController.swift in Sources */,
@@ -552,10 +542,8 @@
 				E5839ADE1EA70BEA00B25C70 /* AttributeTableViewCell.swift in Sources */,
 				E54B42911EA842880049BA9F /* Context.swift in Sources */,
 				E573F33D1EB05F6400603222 /* CameraAttributeTableViewController.swift in Sources */,
-				E514143A1E53F87B000A2E3D /* TaggingTagCollectionView.swift in Sources */,
 				E597A15D1EAD89CF00CEF100 /* TaggingGalleryOverviewCollectionViewCell.swift in Sources */,
 				E54B428F1EA8423B0049BA9F /* Attribute.swift in Sources */,
-				E51414331E53F3DD000A2E3D /* TaggingGalleryCollectionView.swift in Sources */,
 				E52EF2C61E3B136800FF37D2 /* AppDelegate.swift in Sources */,
 				E573F3431EB1428900603222 /* TaggingAppOverviewCollectionViewController.swift in Sources */,
 				E51414351E53F4AC000A2E3D /* TaggingGalleryCollectionViewCell.swift in Sources */,

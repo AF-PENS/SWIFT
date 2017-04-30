@@ -10,47 +10,41 @@ import Foundation
 import Photos
 
 class UploadObject: NSObject, NSCoding {
-//class UploadObject: NSObject {
-    var context = [Context]()
-    var imageLocalIdentifier: String
-    var isAppImage: Bool
-    var isGalleryImage: Bool
     
-    init(context: [Context], imageLocalIdentifier: String, isAppImage: Bool, isGalleryImage: Bool) {
-        for i in 0..<context.count {
-            self.context.append(context[i])
-        }
-        self.imageLocalIdentifier = imageLocalIdentifier
-        self.isAppImage = isAppImage
-        self.isGalleryImage = isGalleryImage
+    var imageName: String
+    var latitude: Double
+    var longitude: Double
+    var contexts = [Context]()
+    
+    init(imageName: String, latitude: Double, longitude: Double, contexts: [Context]) {
+        self.imageName = imageName
+        self.latitude = latitude
+        self.longitude = longitude
+        self.contexts = contexts
     }
     
     func info() {
-        print("identifier:     ", imageLocalIdentifier)
-        print("isAppImage:     ", isAppImage)
-        print("isGalleryImage: ", isGalleryImage)
+        print("imageName: ", imageName)
+        print("latitude:  ", latitude)
+        print("longitude: ", longitude)
+        print("contexts:  ", contexts)
     }
     
     // MARK: - NSCoding
     func encode(with coder: NSCoder) {
-        coder.encode(self.context, forKey: "context")
-        coder.encode(self.imageLocalIdentifier, forKey: "imageLocalIdentifier")
-        coder.encode(self.isAppImage, forKey: "isAppImage")
-        coder.encode(self.isGalleryImage, forKey: "isGalleryImage")
+        coder.encode(self.imageName, forKey: "imageName")
+        coder.encode(self.latitude, forKey: "latitude")
+        coder.encode(self.longitude, forKey: "longitude")
+        coder.encode(self.contexts, forKey: "contexts")
     }
     
     required convenience init(coder decoder: NSCoder) {
-        let context                 = decoder.decodeObject(forKey: "context") as! [Context]
-        let imageLocalIdentifier    = decoder.decodeObject(forKey: "imageLocalIdentifier") as? String
-        let isAppImage              = decoder.decodeBool(forKey: "isAppImage")
-        let isGalleryImage          = decoder.decodeBool(forKey: "isGalleryImage")
-
-//        let isAppImage              = decoder.decodeObject(forKey: "isAppImage") as! Bool
-//        let isGalleryImage          = decoder.decodeObject(forKey: "isGalleryImage") as! Bool
-        
-        self.init(context: context, imageLocalIdentifier: imageLocalIdentifier!, isAppImage: isAppImage, isGalleryImage: isGalleryImage)
+        let imageName = decoder.decodeObject(forKey: "imageName") as! String
+        let latitude = decoder.decodeDouble(forKey: "latitude")
+        let longitude = decoder.decodeDouble(forKey: "longitude")
+        let contexts = decoder.decodeObject(forKey: "contexts") as! [Context]
+        self.init(imageName: imageName, latitude: latitude, longitude: longitude, contexts: contexts)
     }
-
 }
 
 

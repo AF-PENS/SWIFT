@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ImageIO
 
 class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, FileManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -82,40 +83,86 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         image = info[UIImagePickerControllerOriginalImage] as! UIImage
         let jpegimage = UIImageJPEGRepresentation(image, 1)
         
-        // saving image to 'Images' Directory
-        let docDir = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        let d = Date()
+        let df = DateFormatter()
+        df.dateFormat = "y-MM-dd-H:m:ss.SSSS"
+        let name = df.string(from: d)
         
-        let date :NSDate = NSDate()
+        // Establish FileManager object
+        let fileMngr = FileManager.default
         
-        let dateFormatter = DateFormatter()
-        //dateFormatter.dateFormat = "yyyy-MM-dd'_'HH:mm:ss"
-        dateFormatter.dateFormat = "yyyy-MM-dd'_'HH_mm_ss"
+        // Establish path to 'Documents'
+        let docURL = fileMngr.urls(for: .documentDirectory, in: .userDomainMask)[0]
         
-        dateFormatter.timeZone = NSTimeZone(name: "GMT")! as TimeZone
+        // Establish URL for 'CameraImages' in 'Documents'
+        let cameraImagesURL = docURL.appendingPathComponent("CameraImages")
         
-        let imageURL = docDir.appendingPathComponent("\(dateFormatter.string(from: date as Date)).jpg")
-        try! jpegimage?.write(to: imageURL)
+        // Establish URL for 'FullImage' in 'CameraImages'
+        let cameraFullImageDirectoryURL = cameraImagesURL.appendingPathComponent("FullImage")
+        
+        // Establish URL for the file in 'FullImage'
+        let cameraFullImageFileURL = cameraFullImageDirectoryURL.appendingPathComponent("\(name).jpg")
+        
+        // Establish URL for 'FullImage' in 'CameraImages'
+        let cameraThumbnaileDirectoryURL = cameraImagesURL.appendingPathComponent("Thumbnail")
+        
+        // Establish URL for the file in 'FullImage'
+        let cameraThumbnailFileURL = cameraThumbnaileDirectoryURL.appendingPathComponent("\(name).jpg")
+        
+        
+
+        try! jpegimage?.write(to: cameraFullImageFileURL)
+        
+        let size = image.size
+        
+        let thumbnailSize = CGSize(width: 256,height: 256)
+        
+        let widthRatio  = thumbnailSize.width  / image.size.width
+        let heightRatio = thumbnailSize.height / image.size.height
+        
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+        } else {
+            newSize = CGSize(width: size.width * widthRatio, height: size.height * widthRatio)
+        }
+        
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+        
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        let jpegimagethumbnail = UIImageJPEGRepresentation(newImage!, 1)
+        
+        try! jpegimagethumbnail?.write(to: cameraThumbnailFileURL)
+        
+        
         
         // executes if contexts are selected, then the image is also sent to the dashboard
-        if global.shared.cameraContexts.count != 0 {
-            var uploadObjects = [UploadObject]()
-            
-            let temp = UploadObject(context: global.shared.cameraContexts, imageLocalIdentifier: "\(dateFormatter.string(from: date as Date)).jpg", isAppImage: true, isGalleryImage: false)
-            uploadObjects.append(temp)
-            
-            var values = [UploadObject]()
-            
-            if (PersistenceManager.loadNSArray(.UploadObjects) as? [UploadObject]) != nil {
-                values = PersistenceManager.loadNSArray(.UploadObjects) as! [UploadObject]
-            }
-            
-            for object in uploadObjects {
-                values.append(object)
-            }
-            
-            PersistenceManager.saveNSArray(values as NSArray, path: .UploadObjects)
-
-        }
+//        if global.shared.cameraContexts.count != 0 {
+//            var uploadObjects = [UploadObject]()
+//
+//            let temp = UploadObject(context: global.shared.cameraContexts, imageLocalIdentifier: "\(dateFormatter.string(from: date as Date)).jpg", isAppImage: true, isGalleryImage: false)
+//            uploadObjects.append(temp)
+//            
+//            var values = [UploadObject]()
+//            
+//            if (PersistenceManager.loadNSArray(.UploadObjects) as? [UploadObject]) != nil {
+//                values = PersistenceManager.loadNSArray(.UploadObjects) as! [UploadObject]
+//            }
+//            
+//            for object in uploadObjects {
+//                values.append(object)
+//            }
+//            
+//            PersistenceManager.saveNSArray(values as NSArray, path: .UploadObjects)
+//
+//        }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
