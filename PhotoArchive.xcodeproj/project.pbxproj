@@ -63,6 +63,7 @@
 		E5E31D261E9DB52300DFC3A7 /* HistoryImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E31D251E9DB52300DFC3A7 /* HistoryImageViewController.swift */; };
 		E5E31D291E9DC8BC00DFC3A7 /* HistoryTagTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E31D281E9DC8BC00DFC3A7 /* HistoryTagTableViewController.swift */; };
 		E5E31D2B1E9DC9EE00DFC3A7 /* HistoryTagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E31D2A1E9DC9EE00DFC3A7 /* HistoryTagTableViewCell.swift */; };
+		F0F2E86530950E6297B516A5 /* Pods_PhotoArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F4406048CE6C3F4DEB216D /* Pods_PhotoArchive.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,12 +84,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B4C553DC3ABB51D926B6EEE /* Pods-PhotoArchive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoArchive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoArchive/Pods-PhotoArchive.debug.xcconfig"; sourceTree = "<group>"; };
 		4AF03FBF1EAFD85D0046A8CB /* AZSClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AZSClient.framework; sourceTree = "<group>"; };
 		55F946911EAD269600E97DB6 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = ../../../../../usr/lib/libxml2.2.dylib; sourceTree = "<group>"; };
 		55F946931EAD26DF00E97DB6 /* MicrosoftAzureMobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MicrosoftAzureMobile.framework; path = PhotoArchive/MicrosoftAzureMobile.framework; sourceTree = "<group>"; };
 		55F946951EAD282B00E97DB6 /* PhotoArchive-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PhotoArchive-Bridging-Header.h"; sourceTree = "<group>"; };
 		55F946991EAD285000E97DB6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		55F9469B1EAD285400E97DB6 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		843622CAFB4BEEC2D40BBF25 /* Pods-PhotoArchive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoArchive.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoArchive/Pods-PhotoArchive.release.xcconfig"; sourceTree = "<group>"; };
+		D9F4406048CE6C3F4DEB216D /* Pods_PhotoArchive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoArchive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E513F7E01E43273C009C03B5 /* TaggingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingViewController.swift; sourceTree = "<group>"; };
 		E51414301E53F329000A2E3D /* TaggingAppCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingAppCollectionView.swift; sourceTree = "<group>"; };
 		E51414321E53F3DD000A2E3D /* TaggingGalleryCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingGalleryCollectionView.swift; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 				55F946921EAD269600E97DB6 /* libxml2.2.dylib in Frameworks */,
 				4AF03FC01EAFD85D0046A8CB /* AZSClient.framework in Frameworks */,
 				55F946941EAD26DF00E97DB6 /* MicrosoftAzureMobile.framework in Frameworks */,
+				F0F2E86530950E6297B516A5 /* Pods_PhotoArchive.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +183,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4235AC6F768C26059A6960D0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3B4C553DC3ABB51D926B6EEE /* Pods-PhotoArchive.debug.xcconfig */,
+				843622CAFB4BEEC2D40BBF25 /* Pods-PhotoArchive.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		55F946901EAD269600E97DB6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +200,7 @@
 				55F946991EAD285000E97DB6 /* WebKit.framework */,
 				55F946931EAD26DF00E97DB6 /* MicrosoftAzureMobile.framework */,
 				55F946911EAD269600E97DB6 /* libxml2.2.dylib */,
+				D9F4406048CE6C3F4DEB216D /* Pods_PhotoArchive.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -258,6 +273,7 @@
 				E52EF2C31E3B136800FF37D2 /* Products */,
 				55F946901EAD269600E97DB6 /* Frameworks */,
 				55F946951EAD282B00E97DB6 /* PhotoArchive-Bridging-Header.h */,
+				4235AC6F768C26059A6960D0 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -390,9 +406,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E52EF2EC1E3B136800FF37D2 /* Build configuration list for PBXNativeTarget "PhotoArchive" */;
 			buildPhases = (
+				79A15CD2F0E23C7D7BF7C9C1 /* [CP] Check Pods Manifest.lock */,
 				E52EF2BE1E3B136800FF37D2 /* Sources */,
 				E52EF2BF1E3B136800FF37D2 /* Frameworks */,
 				E52EF2C01E3B136800FF37D2 /* Resources */,
+				5FB92789C31F1BBAB227AECB /* [CP] Embed Pods Frameworks */,
+				414F6C6A0144EAA741E0F42F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -513,6 +532,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		414F6C6A0144EAA741E0F42F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoArchive/Pods-PhotoArchive-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5FB92789C31F1BBAB227AECB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoArchive/Pods-PhotoArchive-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		79A15CD2F0E23C7D7BF7C9C1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E52EF2BE1E3B136800FF37D2 /* Sources */ = {
@@ -714,6 +781,7 @@
 		};
 		E52EF2ED1E3B136800FF37D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B4C553DC3ABB51D926B6EEE /* Pods-PhotoArchive.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -735,6 +803,7 @@
 		};
 		E52EF2EE1E3B136800FF37D2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 843622CAFB4BEEC2D40BBF25 /* Pods-PhotoArchive.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

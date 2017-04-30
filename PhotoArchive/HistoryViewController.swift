@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class HistoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -14,6 +15,7 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     var imageArray = [UIImage]();
     var imageTitles = [String]();
+    var imagePaths = [String]();
     
     var blobClient: AZSCloudBlobClient = AZSCloudBlobClient();
     var blobContainer: AZSCloudBlobContainer = AZSCloudBlobContainer();
@@ -37,8 +39,6 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
         let client = delegate.client!;
         
         let imageTable = client.table(withName: "Image");
-        
-        var imagePaths = [String]();
         
         //REPLACE WITH GLOBAL!
         let userID = "user";
@@ -73,10 +73,13 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
                         + "?"
                         + sas;
                     
-                    imagePaths.append(path);
+                    self.imagePaths.append(path);
+                    print("Reloading");
+                    print(self.imagePaths.count);
+                    self.historyCollectionView.reloadData()
                 }
                 
-                self.loadImages(paths: imagePaths);
+//                self.loadImages(paths: self.imagePaths);
             }
         })
     }
@@ -124,7 +127,11 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "historyCell", for: indexPath) as! HistoryCollectionViewCell
         
-        cell.imageView?.image = self.imageArray[indexPath.row]
+        let url = URL(string: self.imagePaths[indexPath.row]);
+        print(url);
+        cell.imageView?.kf.setImage(with: url);
+        
+//        cell.imageView?.image = self.imageArray[indexPath.row]
         
         return cell
     }
