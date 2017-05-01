@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1445,25 +1446,22 @@ If there are no tags selected, then the images taken will only be placed in the 
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BOELogo" translatesAutoresizingMaskIntoConstraints="NO" id="6vk-mL-rCC">
-                                <rect key="frame" x="20" y="20" width="374" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="dRl-Sb-jqt"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="20" width="374" height="294.33333333333331"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tuw-HO-XSF">
-                                <rect key="frame" x="20" y="228" width="374" height="30"/>
+                                <rect key="frame" x="20" y="322.33333333333331" width="374" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d6c-ji-Hon">
-                                <rect key="frame" x="20" y="266" width="374" height="30"/>
+                                <rect key="frame" x="20" y="360.33333333333331" width="374" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HK6-6w-6ut">
-                                <rect key="frame" x="20" y="304" width="374" height="30"/>
+                                <rect key="frame" x="20" y="445.33333333333331" width="374" height="30"/>
                                 <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1473,20 +1471,37 @@ If there are no tags selected, then the images taken will only be placed in the 
                                     <action selector="loginButton:" destination="OaM-81-e3n" eventType="touchUpInside" id="9h8-Xg-n21"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0MQ-YJ-XeX">
+                                <rect key="frame" x="345" y="398.33333333333331" width="51" height="31"/>
+                                <connections>
+                                    <action selector="rememberMeSwitchAction:" destination="OaM-81-e3n" eventType="valueChanged" id="5W5-n1-z7h"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBd-hq-jbm">
+                                <rect key="frame" x="20" y="403.33333333333331" width="111.66666666666666" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="tuw-HO-XSF" firstAttribute="top" secondItem="6vk-mL-rCC" secondAttribute="bottom" constant="8" id="0zs-9P-iSe"/>
                             <constraint firstItem="tuw-HO-XSF" firstAttribute="trailing" secondItem="9H8-eD-nKG" secondAttribute="trailingMargin" id="91y-C7-Lmk"/>
+                            <constraint firstItem="HK6-6w-6ut" firstAttribute="top" secondItem="0MQ-YJ-XeX" secondAttribute="bottom" constant="16" id="GIN-yi-05U"/>
                             <constraint firstItem="HK6-6w-6ut" firstAttribute="leading" secondItem="9H8-eD-nKG" secondAttribute="leadingMargin" id="Mqq-KJ-OPs"/>
+                            <constraint firstItem="0MQ-YJ-XeX" firstAttribute="top" secondItem="d6c-ji-Hon" secondAttribute="bottom" constant="8" id="Nka-LH-Zci"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0MQ-YJ-XeX" secondAttribute="trailing" id="OOD-5C-iOA"/>
+                            <constraint firstItem="EBd-hq-jbm" firstAttribute="top" secondItem="d6c-ji-Hon" secondAttribute="bottom" constant="13" id="PNZ-Ai-l7q"/>
                             <constraint firstItem="6vk-mL-rCC" firstAttribute="top" secondItem="3hJ-ES-ufe" secondAttribute="bottom" id="QD2-IA-7ln"/>
-                            <constraint firstItem="HK6-6w-6ut" firstAttribute="top" secondItem="d6c-ji-Hon" secondAttribute="bottom" constant="8" id="Yij-p6-0qp"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="EBd-hq-jbm" secondAttribute="leading" id="TEY-Ew-d4L"/>
                             <constraint firstItem="6vk-mL-rCC" firstAttribute="trailing" secondItem="9H8-eD-nKG" secondAttribute="trailingMargin" id="adG-sW-Eq9"/>
                             <constraint firstItem="6vk-mL-rCC" firstAttribute="leading" secondItem="9H8-eD-nKG" secondAttribute="leadingMargin" id="bVG-KC-u6f"/>
                             <constraint firstItem="d6c-ji-Hon" firstAttribute="leading" secondItem="9H8-eD-nKG" secondAttribute="leadingMargin" id="c7u-hl-U30"/>
                             <constraint firstItem="tuw-HO-XSF" firstAttribute="leading" secondItem="9H8-eD-nKG" secondAttribute="leadingMargin" id="gRB-e5-KNs"/>
                             <constraint firstItem="d6c-ji-Hon" firstAttribute="top" secondItem="tuw-HO-XSF" secondAttribute="bottom" constant="8" id="rqA-pz-tzF"/>
                             <constraint firstItem="d6c-ji-Hon" firstAttribute="trailing" secondItem="9H8-eD-nKG" secondAttribute="trailingMargin" id="w9C-vA-CrV"/>
+                            <constraint firstItem="6vk-mL-rCC" firstAttribute="height" secondItem="9H8-eD-nKG" secondAttribute="height" multiplier="0.4" id="ynL-pR-Jmb"/>
                             <constraint firstItem="HK6-6w-6ut" firstAttribute="trailing" secondItem="9H8-eD-nKG" secondAttribute="trailingMargin" id="z83-9Y-rcP"/>
                         </constraints>
                     </view>
@@ -1494,11 +1509,12 @@ If there are no tags selected, then the images taken will only be placed in the 
                         <outlet property="buttonLogin" destination="HK6-6w-6ut" id="FE5-1U-o0F"/>
                         <outlet property="inputPassword" destination="d6c-ji-Hon" id="nci-wv-65h"/>
                         <outlet property="inputUsername" destination="tuw-HO-XSF" id="qmK-i2-cKp"/>
+                        <outlet property="rememberMeSwitchOutlet" destination="0MQ-YJ-XeX" id="MMb-W4-r9h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ycg-Ps-DOd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1652" y="-20"/>
+            <point key="canvasLocation" x="-1652.1739130434785" y="-20.380434782608699"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">

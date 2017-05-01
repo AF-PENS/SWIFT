@@ -16,6 +16,12 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var inputUsername: UITextField!
     @IBOutlet weak var inputPassword: UITextField!
     @IBOutlet weak var buttonLogin: UIButton!
+    @IBOutlet weak var rememberMeSwitchOutlet: UISwitch!
+    
+    // Action for the 'Remeber Me' switch
+    @IBAction func rememberMeSwitchAction(_ sender: Any) {
+        
+    }
     
     // Action 'Login' button on screen
     @IBAction func loginButton(_ sender: Any) {
@@ -115,21 +121,42 @@ class LoginViewController: UIViewController {
             // Executes if current user is previous user
             else {
                 
+                // Save the settings for 'rememberMeSwitch'
+                saveRememberMe()
+                
                 // Load as normal because current user is previous user
                 presentMain()
             }
         }
     }
     
+    // Do any additional setup after loading the view.
     override func viewDidLoad() {
+        
+        // Forces the view to load
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        // Sets the 'RememberMeSwitchOutlet' to be turned on by default
+        rememberMeSwitchOutlet.isOn = true
     }
 
+    // Sent to the view controller when the app receives a memory warning.
     override func didReceiveMemoryWarning() {
+        
+        // Message which gives the memory warning
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        // Dispose of any resources that can be recreated
+    }
+    
+    // Notifies the view controller that its view was added to a view hierarchy.
+    override func viewDidAppear(_ animated: Bool) {
+        
+        // Forces the view to appear
+        super.viewWillAppear(animated)
+        
+        // Logs in the user immediately, if not using the app for the first time
+        quickLogin()
     }
 
     /*
@@ -148,6 +175,7 @@ class LoginViewController: UIViewController {
      Presents the next view to the main application.
     */
     func presentMain() {
+        
         // Opens up the main storyboard
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         
@@ -164,11 +192,15 @@ class LoginViewController: UIViewController {
      - Parameter user: The username of the user.
      */
     func setupFirstTime(user: String) {
+        
         // Establish defaults object to load persistent data
         let defaults = UserDefaults.standard
         
         // Save the user to defaults
         defaults.set(user, forKey: UD.username)
+        
+        // Save the settings for 'rememberMeSwitch'
+        saveRememberMe()
         
         // Create new directory in the 'Documents' directory
         // Establish FileManager object
@@ -257,6 +289,9 @@ class LoginViewController: UIViewController {
         // Save the new user to defaults
         defaults.set(user, forKey: UD.username)
         
+        // Save the settings for 'rememberMeSwitch'
+        saveRememberMe()
+        
         // Deleting everything in the 'CameraImages' and 'UploadImages' directories
         // Establish FileManager object
         let fileMngr = FileManager.default
@@ -321,5 +356,72 @@ class LoginViewController: UIViewController {
         } catch {
             print("Error deleting files in 'Thumbnail' directory")
         }
+    }
+    
+    /**
+     Immediately logs in the user based on a time stamp.
+     Will not execute if this is the first time the application is being used.
+     */
+    func quickLogin() {
+        
+        // Establish defaults object to load persistent data
+        let defaults = UserDefaults.standard
+        
+        // Gets the pervious username, if there is one
+        let previousUser = defaults.object(forKey: UD.username) as? String
+        
+        // Gets the status of the 'rememberMeSwitch'
+        let statusRememberMe = defaults.object(forKey: UD.rememberMe) as? Bool
+        
+        // Establishes the current date
+        let currentDate = Date()
+        
+        // Gets the expiration date for the 'rememberMeSwitch'
+        let rememberMeExpiresOn = defaults.object(forKey: UD.rememberMeExpiresOn) as? Date
+        
+        // Executes if this is not first time a user has ever used the application
+        if previousUser != nil && statusRememberMe != nil && rememberMeExpiresOn != nil {
+            
+            // Executes if previous user set the 'rememberMeSwitch' to true
+            if statusRememberMe! && currentDate < rememberMeExpiresOn! {
+                
+                // Load as normal because current user is previous user
+                presentMain()
+            }
+                // Executes if previous user never set 'rememberMeSwitch' to true
+            else {
+                
+                // Does not automatically log user in
+                return
+            }
+        }
+            // Executes if this is the first itme a user has ever used the application
+        else {
+            
+            // Does not automatically log user in
+            return
+        }
+    }
+    
+    /**
+     Saves the date and switch setting for when the automatic login expires. 
+     If it expires, the login page will force the user to login again.
+     */
+    func saveRememberMe() {
+        
+        // Establish defaults object to load persistent data
+        let defaults = UserDefaults.standard
+        
+        // Sets the option for the 'rememberMe' switch
+        defaults.set(rememberMeSwitchOutlet.isOn, forKey: UD.rememberMe)
+        
+        // Gets the current date
+        let currentDate = Date()
+        
+        // Adds a month to the current date -- This is the interval for when the login will expire
+        let newDate = currentDate.addingTimeInterval(60 * 60 * 24 * 30)
+        
+        // Sets the date to expire for 'rememberMe' switch
+        defaults.set(newDate, forKey: UD.rememberMeExpiresOn)
     }
 }

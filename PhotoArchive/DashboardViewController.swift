@@ -78,9 +78,9 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         
-        if (PersistenceManager.loadNSArray(.UploadObjects) as? [UploadObject]) != nil {
-            uploadObjects = PersistenceManager.loadNSArray(.UploadObjects) as! [UploadObject]
-        }
+//        if (PersistenceManager.loadNSArray(.UploadObjects) as? [UploadObject]) != nil {
+//            uploadObjects = PersistenceManager.loadNSArray(.UploadObjects) as! [UploadObject]
+//        }
         
         let allPhotosOption = PHFetchOptions()
         allPhotosOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]

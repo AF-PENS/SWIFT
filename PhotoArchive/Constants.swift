@@ -10,4 +10,6 @@ import Foundation
 
 struct UD {
     static let username = "username"
+    static let rememberMe = "rememberMe"
+    static let rememberMeExpiresOn = "rememberMeExpiresOn"
 }
