@@ -86,6 +86,9 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         
         // Reloads Dashboard collection view
         collectionView.reloadData()
+        
+        // Refreshes WIFI status
+        isWIFIOn()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -163,5 +166,16 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    // MARK: - User Functions
+    
+    /**
+        Informs the user of the current status of wifi availability.
+     
+        - Returns: Bool: true if wifi is active; false if it is not
+     */
+    func isWIFIOn() -> Bool {
+        
+        return false
+    }
 }

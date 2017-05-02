@@ -1372,6 +1372,9 @@ If there are no tags selected, then the images taken will only be placed in the 
                             </textField>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7SS-ks-78a">
                                 <rect key="frame" x="344" y="77" width="51" height="31"/>
+                                <connections>
+                                    <action selector="wifiOnlyAction:" destination="iTV-i6-hhX" eventType="valueChanged" id="jde-Wu-bxL"/>
+                                </connections>
                             </switch>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Delete Photos Automatically" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FnK-Ig-ovD">
                                 <rect key="frame" x="20" y="116" width="317" height="30"/>
@@ -1381,6 +1384,9 @@ If there are no tags selected, then the images taken will only be placed in the 
                             </textField>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Tl-JO-rnd">
                                 <rect key="frame" x="344" y="116" width="51" height="31"/>
+                                <connections>
+                                    <action selector="autoImageDeleteAction:" destination="iTV-i6-hhX" eventType="valueChanged" id="Bl0-xS-T9W"/>
+                                </connections>
                             </switch>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Delete After __ Days" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1JB-xZ-G9J">
                                 <rect key="frame" x="20" y="154" width="317" height="30"/>
@@ -1396,6 +1402,9 @@ If there are no tags selected, then the images taken will only be placed in the 
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="imageExpiresInEditingDidEndAction:" destination="iTV-i6-hhX" eventType="editingDidEnd" id="Jgi-FP-zy8"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1428,6 +1437,11 @@ If there are no tags selected, then the images taken will only be placed in the 
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="tabBarIconSettings" id="qNm-w9-6po"/>
+                    <connections>
+                        <outlet property="autoImageDeleteOutlet" destination="4Tl-JO-rnd" id="oOA-n0-Ruj"/>
+                        <outlet property="imageExpiresIn" destination="1GR-6P-N7O" id="aCo-Ol-Hz2"/>
+                        <outlet property="wifiOnlyOutlet" destination="7SS-ks-78a" id="Jo3-mS-CJ9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ugo-Y3-Wv5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

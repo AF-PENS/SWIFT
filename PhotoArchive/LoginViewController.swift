@@ -274,6 +274,15 @@ class LoginViewController: UIViewController {
         } catch {
             print("Error creating 'Thumbnail' directory.")
         }
+        
+        // Sets the wifi only upload setting to true by default
+        defaults.set(true, forKey: UD.isWIFIOnly)
+        
+        // Sets the setting for images to expire
+        defaults.set(true, forKey: UD.isAutoImageExpires)
+        
+        // Sets the time for when images will be deleted to the default 90 days
+        defaults.set(90, forKey: UD.imageExpiresIn)
     }
     
     /**

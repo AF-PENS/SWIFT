@@ -61,6 +61,8 @@ class TaggingAppOverviewCollectionViewController: UICollectionViewController {
     @IBAction func deselectAllButton(_ sender: Any) {
         global.shared.appImages.removeAll()
         titleCounter.title = "\(global.shared.appImages.count) selected"
+        
+        collectionView?.reloadItems(at: (collectionView?.indexPathsForVisibleItems)!)
         collectionView?.reloadData()
     }
 
@@ -84,6 +86,21 @@ class TaggingAppOverviewCollectionViewController: UICollectionViewController {
             cameraObjects = PersistenceManager.loadNSArray(.CameraObjects) as! [CameraObject]
         }
         
+        // Deletes elements which have expired
+        for object in cameraObjects {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "y-MM-dd-H-m-ss-SSSS"
+            let date = dateFormatter.date(from: object.imageName)!
+            let timeInterval = UserDefaults.standard.object(forKey: UD.imageExpiresIn) as! Int
+            let expireDate = date.addingTimeInterval(TimeInterval(60 * 60 * 24 * timeInterval))
+            
+            if Date() > expireDate {
+                cameraObjects.remove(at: cameraObjects.index(of: object)!)
+            }
+        }
+        
+        // Saves the UploadObjects to memory
+        PersistenceManager.saveNSArray(cameraObjects as NSArray, path: .CameraObjects)
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,12 +115,20 @@ class TaggingAppOverviewCollectionViewController: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
-//        let vc = segue.destination as! TaggingAppOverviewImageViewViewController
-//        
-//        let indexPaths = collectionView!.indexPathsForSelectedItems!
-//        let indexPath = indexPaths[0] as NSIndexPath
-//        
-//        vc.image = imageArray[(indexPath.row)]
+        let vc = segue.destination as! TaggingAppOverviewImageViewViewController
+        
+        let indexPaths = collectionView!.indexPathsForSelectedItems!
+        let indexPath = indexPaths[0] as NSIndexPath
+        
+        let object = cameraObjects[indexPath.row]
+
+        // Gets the location of the image
+        let fullImagePath = docURL.appendingPathComponent(object.imageLocation)
+        
+        // Imports the image
+        let fullImage = UIImage(contentsOfFile: fullImagePath.path)!
+        
+        vc.image = fullImage
         
     }
     
@@ -137,34 +162,43 @@ class TaggingAppOverviewCollectionViewController: UICollectionViewController {
 
         cell.imageView.image = thumbnailImage
         
-        if global.shared.appImages.contains(object) {
-            cell.layer.borderWidth = 3
-            cell.layer.borderColor = UIColor.blue.cgColor
-        }
-        else {
-            cell.layer.borderWidth = 0
+        for cameraObject in global.shared.appImages {
+            if object.imageName == cameraObject.imageName {
+                cell.layer.borderWidth = 3
+                cell.layer.borderColor = UIColor.blue.cgColor
+            }
         }
     
         return cell
     }
     
+    // Currently broken -- need to fix later
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         // only execute if selecting is currently on
         if selecting {
             let object = cameraObjects[indexPath.row]
             
-            // executes if global does not contain the asset
-            if !global.shared.appImages.contains(object) {
-                global.shared.appImages.append(object)
+            var contains = false
+            var tempObject: CameraObject?
+            
+            for appObject in global.shared.appImages {
+                if object.imageName == appObject.imageName {
+                    contains = true
+                    tempObject = appObject
+                }
             }
-                // executes if global does contain the asset
+            
+            if contains {
+                global.shared.appImages.remove(at: global.shared.appImages.index(of: tempObject!)!)
+            }
             else {
-                global.shared.appImages.remove(at: global.shared.appImages.index(of: object)!)
+                global.shared.appImages.append(object)
             }
             
             titleCounter.title = "\(global.shared.appImages.count) selected"
             collectionView.reloadItems(at: [indexPath])
+            collectionView.reloadData()
         }
         else {
             performSegue(withIdentifier: "TaggingAppOverviewImageViewSegue", sender: self)
