@@ -9,6 +9,7 @@
 import UIKit
 import Photos
 import ImageIO
+import CoreLocation
 
 class TaggingViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -30,7 +31,7 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
     var selectedTagContext = -1
     
     // Sets the size of the images in the cell thumbnails -- Current defaults set in the interface builder
-    let thumbnailSize = CGSize(width: 80,height: 80)
+    let thumbnailSize = CGSize(width: 80, height: 80)
     
     // Action which pairs up the selected contexts with the selected images
     @IBAction func uploadButton(_ sender: Any) {
@@ -272,8 +273,14 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
      
     // Prepares a segue to send data to the next view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // Prepares a segue to TaggingSelectedContextsAttributesTableViewController
         if segue.identifier == "TaggingSelectedContextsAttributesSegue" {
+            
+            // Sets the seague to go to TaggingSelectedContextsAttributesTableViewController
             let vc = segue.destination as! TaggingSelectedContextsAttributesTableViewController
+            
+            // Prepares the context for the next page
             vc.context = selectedTagContext
         }
     }
@@ -285,36 +292,167 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
      */
     func createUploadObjects() {
         
-//        var uploadObjects = [UploadObject]()
-//        
-//        for i in 0..<global.shared.galleryImages.count {
-////            let temp = UploadObject(context: global.shared.tagContexts, imageLocalIdentifier: global.shared.galleryImages[i].localIdentifier, isAppImage: false, isGalleryImage: true)
-////            uploadObjects.append(temp)
-//        }
-//        
-//        for i in 0..<global.shared.appImages.count {
-////            let temp = UploadObject.init(context: global.shared.tagContexts, imageLocalIdentifier: global.shared.appImages[i], isAppImage: true, isGalleryImage: false)
-////            uploadObjects.append(temp)
-//        }
-//        
-//        global.shared.tagContexts.removeAll()
-//        global.shared.galleryImages.removeAll()
-//        global.shared.appImages.removeAll()
-//        
-//        uploadButtonOutlet.setTitle("Upload \(global.shared.galleryImages.count + global.shared.appImages.count) Images with \(global.shared.tagContexts.count) Tags", for: UIControlState.normal)
-//        uploadButtonOutlet.titleLabel?.textAlignment = .center
-//        
-//        var values = [UploadObject]()
-//        
-//        if (PersistenceManager.loadNSArray(.UploadObjects) as? [UploadObject]) != nil {
-//            values = PersistenceManager.loadNSArray(.UploadObjects) as! [UploadObject]
-//        }
-//        
-//        for object in uploadObjects {
-//            values.append(object)
-//        }
-//        
-//        PersistenceManager.saveNSArray(values as NSArray, path: .UploadObjects)
+        // Create a variable to hold all of the UploadObjects
+        var uploadObjects = [UploadObject]()
+        
+        // Retrieve all import object from memory
+        if (PersistenceManager.loadNSArray(.UploadObjects) as? [UploadObject]) != nil {
+            uploadObjects = PersistenceManager.loadNSArray(.UploadObjects) as! [UploadObject]
+        }
+        
+        // Establish FileManager object
+        let fileMngr = FileManager.default
+        
+        // Establish path to 'Documents'
+        let docURL = fileMngr.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        
+        // Cycles through every item selected from the app images
+        for i in 0..<global.shared.appImages.count {
+            
+            // Gets the current date
+            let date = Date()
+            
+            // Creates a date format
+            let dateFormat = DateFormatter()
+            
+            // Sets up the date format
+            dateFormat.dateFormat = "y-MM-dd-H-m-ss-SSSS"
+            
+            // Creates a name from the date format
+            let name = dateFormat.string(from: date)
+            
+            // Gets the location of thumbnail image
+            let thumbnailPath = docURL.appendingPathComponent(global.shared.appImages[i].thumbnailLocation)
+            
+            // Gets the location of full resolution image
+            let fullImagePath = docURL.appendingPathComponent(global.shared.appImages[i].imageLocation)
+            
+            // Imports thumbnail image
+            let thumbnailImage = UIImage(contentsOfFile: thumbnailPath.path)!
+            
+            // Imports full resolution image
+            let fullImage = UIImage(contentsOfFile: fullImagePath.path)!
+            
+            // Establish URL for 'UploadImages' in 'Documents'
+            let uploadImagesURL = docURL.appendingPathComponent("UploadImages")
+            
+            // Establish URL for 'FullImage' in 'UploadImages'
+            let uploadFullImageDirectoryURL = uploadImagesURL.appendingPathComponent("FullImage")
+            
+            // Establish URL for the file in 'FullImage'
+            let uploadFullImageFileURL = uploadFullImageDirectoryURL.appendingPathComponent("\(name).jpg")
+            
+            // Establish URL for 'FullImage' in 'UploadImages'
+            let uploadThumbnaileDirectoryURL = uploadImagesURL.appendingPathComponent("Thumbnail")
+            
+            // Establish URL for the file in 'FullImage'
+            let uploadThumbnailFileURL = uploadThumbnaileDirectoryURL.appendingPathComponent("\(name).jpg")
+            
+            // Establish string path for full resolution image in uploadObject
+            let uploadFullImageFilePath = "UploadImages/FullImage/\(name).jpg"
+            
+            // Establish string path for thumbnail image in uploadObject
+            let uploadThumbnailFilePath = "UploadImages/Thumbnail/\(name).jpg"
+            
+            // Write the full resolution image to file
+            try! UIImageJPEGRepresentation(fullImage, 1)?.write(to: uploadFullImageFileURL)
+            
+            // Write the thumbnail image to file
+            try! UIImageJPEGRepresentation(thumbnailImage, 1)?.write(to: uploadThumbnailFileURL)
+            
+            // Create the new UploadObject and append it to the array
+            uploadObjects.append(UploadObject(
+                imageName:          name,
+                imageLocation:      uploadFullImageFilePath,
+                thumbnailLocation:  uploadThumbnailFilePath,
+                latitude:           global.shared.appImages[i].latitude,
+                longitude:          global.shared.appImages[i].longitude,
+                contexts:           global.shared.tagContexts))
+        }
+        
+        // Manages the images from the iPhone photo library
+        let imageMngr = PHImageManager()
+        
+        // Sets the image options for the request
+        let imageOptions = PHImageRequestOptions()      // Creates new option manager
+        imageOptions.version = .current                 // Gets the current version of the image
+        imageOptions.deliveryMode = .highQualityFormat  // Gets the highest quality available
+        imageOptions.isNetworkAccessAllowed = true      // Downloads image from iCloud, if it has to
+        imageOptions.isSynchronous = true               // Runs synchronously
+        
+        // Cycles through every item selected from the app images
+        for i in 0..<global.shared.galleryImages.count {
+            
+            // Gets the current date
+            let date = Date()
+            
+            // Creates a date format
+            let dateFormat = DateFormatter()
+            
+            // Sets up the date format
+            dateFormat.dateFormat = "y-MM-dd-H-m-ss-SSSS"
+            
+            // Creates a name from the date format
+            let name = dateFormat.string(from: date)
+
+            // Establish URL for 'UploadImages' in 'Documents'
+            let uploadImagesURL = docURL.appendingPathComponent("UploadImages")
+            
+            // Establish URL for 'FullImage' in 'UploadImages'
+            let uploadFullImageDirectoryURL = uploadImagesURL.appendingPathComponent("FullImage")
+            
+            // Establish URL for the file in 'FullImage'
+            let uploadFullImageFileURL = uploadFullImageDirectoryURL.appendingPathComponent("\(name).jpg")
+            
+            // Establish URL for 'FullImage' in 'UploadImages'
+            let uploadThumbnaileDirectoryURL = uploadImagesURL.appendingPathComponent("Thumbnail")
+            
+            // Establish URL for the file in 'FullImage'
+            let uploadThumbnailFileURL = uploadThumbnaileDirectoryURL.appendingPathComponent("\(name).jpg")
+            
+            // Establish string path for full resolution image in uploadObject
+            let uploadFullImageFilePath = "UploadImages/FullImage/\(name).jpg"
+            
+            // Establish string path for thumbnail image in uploadObject
+            let uploadThumbnailFilePath = "UploadImages/Thumbnail/\(name).jpg"
+
+            // Gets the image and writes it to file
+            imageMngr.requestImageData(for: global.shared.galleryImages[i], options: imageOptions, resultHandler: { imageData, _, _, _ in
+                
+                // Write full resolution image to file
+                try! imageData!.write(to: uploadFullImageFileURL)
+            })
+            
+            // Gets the image again, but at a specific size -- faster than having to resize the image
+            imageMngr.requestImage(for: global.shared.galleryImages[i], targetSize: CGSize(width: 256, height: 256), contentMode: .aspectFit, options: imageOptions, resultHandler: { image, _ in
+            
+                // Writes thumbnail image to file
+                try! UIImageJPEGRepresentation(image!, 0.8)?.write(to: uploadThumbnailFileURL)
+            })
+           
+            // Create the new UploadObject and append it to the array
+            uploadObjects.append(UploadObject(
+                imageName:          name,
+                imageLocation:      uploadFullImageFilePath,
+                thumbnailLocation:  uploadThumbnailFilePath,
+                latitude:           global.shared.galleryImages[i].location?.coordinate.latitude ?? 0.0,
+                longitude:          global.shared.galleryImages[i].location?.coordinate.longitude ?? 0.0,
+                contexts:           global.shared.tagContexts))
+            
+            
+            
+        }
+        
+        // Clears out all of the global variables since the UploadObjects have been created
+        global.shared.tagContexts.removeAll()
+        global.shared.galleryImages.removeAll()
+        global.shared.appImages.removeAll()
+        
+        // Saves the UploadObjects to memory
+        PersistenceManager.saveNSArray(uploadObjects as NSArray, path: .UploadObjects)
+        
+        // Refresh the upload button
+        refreshUploadButton()
     }
     
     /**
@@ -325,45 +463,50 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
         // Removes all images from 'appImageArray' in case new images were taken
         appImageArray.removeAll()
         
+        // Establishes an array of 'CameraObject'
+        var cameraObjects = [CameraObject]()
+        
+        // Checks to see if 'CameraObject' array exists in memory
+        if (PersistenceManager.loadNSArray(.CameraObjects) as? [CameraObject]) != nil {
+            
+            // Loads 'CameraObject' array
+            cameraObjects = PersistenceManager.loadNSArray(.CameraObjects) as! [CameraObject]
+        }
+        
+        // Sets the amount of cells to display on the horizontal scroll
+        var itemDisplay = 15
+        
+        // Checks to see if 'cameraObjects.count' contains less items than 'itemDisplay'
+        if cameraObjects.count < itemDisplay {
+            
+            // Sets the interval for the images
+            itemDisplay = cameraObjects.count
+            
+            // Validates to make sure we do not go into negative indices
+            if itemDisplay < 0 {
+                
+                // Sets the smallest index to 0
+                itemDisplay = 0
+            }
+        }
+        
         // Establish FileManager object
         let fileMngr = FileManager.default
         
         // Establish path to 'Documents'
-        let docPath = fileMngr.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let docURL = fileMngr.urls(for: .documentDirectory, in: .userDomainMask)[0]
         
-        // Establish URL for 'CameraImages' in 'Documents'
-        let cameraImagesURL = docPath.appendingPathComponent("CameraImages")
-        
-        // Establish URL for 'Thumbnail' in 'CameraImages'
-        let cameraThumbnailURL = URL(string: cameraImagesURL.appendingPathComponent("Thumbnail").path)!
-        
-        // Cycles through every file in 'CameraImages' directory and adds them to the 'appImageArray'
-        do {
-            // Grabs every file in 'Thumbnail' directory in 'CameraImages' directory
-            let files = try fileMngr.contentsOfDirectory(at: cameraThumbnailURL, includingPropertiesForKeys: nil, options: .skipsSubdirectoryDescendants)
+        // Cycles through the array backwards to specified limit
+        for i in stride(from: cameraObjects.count-1, through: cameraObjects.count - itemDisplay, by: -1) {
             
-            // Sorts the files to display the most recent first
-            let sortedFiles = files.sorted(by: { s1, s2 in s1.absoluteString > s2.absoluteString })
+            // Gets the location of the image
+            let thumbnailPath = docURL.appendingPathComponent(cameraObjects[i].imageLocation)
             
-            // Sets the amount of cells to display on the horizontal scroll
-            var itemDisplay = 15
+            // Imports the image
+            let image = UIImage(contentsOfFile: thumbnailPath.path)!
             
-            // Checks to see if 'files' contains less items than 'itemDisplay'
-            if files.count < itemDisplay {
-                itemDisplay = sortedFiles.count
-            }
-            
-            // Cycles through every single file
-            for i in 0..<itemDisplay {
-                
-                // Creates an image and appends it to 'appImageArray'
-                let image = UIImage(contentsOfFile: sortedFiles[i].path)!
-                
-                // Append in image to 'appImageArray'
-                appImageArray.append(image)
-            }
-        } catch  {
-            print("Eroor attempting to get images from 'CameraImages' Directory")
+            // Appends the image
+            appImageArray.append(image)
         }
         
         // Reloads data in 'appCollectionView'

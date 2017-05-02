@@ -64,22 +64,22 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="R1W-3Y-G1f">
                                 <rect key="frame" x="0.0" y="139" width="414" height="548"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cwR-r5-f94">
-                                    <size key="itemSize" width="70" height="70"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="cwR-r5-f94">
+                                    <size key="itemSize" width="80" height="80"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                    <inset key="sectionInset" minX="1" minY="1" maxX="1" maxY="1"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="dashboardCell" id="P3d-Ph-d4w" customClass="DashboardCollectionViewCell" customModule="PhotoArchive" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="10" width="70" height="70"/>
+                                        <rect key="frame" x="1" y="1" width="80" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QqA-sw-DoX">
-                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -795,7 +795,7 @@
                     <connections>
                         <outlet property="deselectButtonOutlet" destination="C0p-st-LRH" id="XXb-qv-cgo"/>
                         <outlet property="selectButtonOutlet" destination="rTG-uU-Nqy" id="xM3-Vz-xu8"/>
-                        <outlet property="titleCount" destination="xMI-6Y-riy" id="ZSa-5P-UvY"/>
+                        <outlet property="titleCounter" destination="xMI-6Y-riy" id="1Hj-3J-aSX"/>
                         <segue destination="ieq-Rp-eG7" kind="show" identifier="TaggingAppOverviewImageViewSegue" id="h33-6G-cb0"/>
                     </connections>
                 </collectionViewController>

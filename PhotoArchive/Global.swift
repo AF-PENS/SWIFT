@@ -22,7 +22,7 @@ class global {
     // class variables
     var tagContexts = [Context]()
     var galleryImages = [PHAsset]()
-    var appImages = [String]()
+    var appImages = [CameraObject]()
     var cameraContexts = [Context]()
     
     

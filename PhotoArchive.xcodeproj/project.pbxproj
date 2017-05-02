@@ -54,6 +54,7 @@
 		E597A15B1EAD895000CEF100 /* TaggingGalleryOverviewCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E597A15A1EAD895000CEF100 /* TaggingGalleryOverviewCollectionViewController.swift */; };
 		E597A15D1EAD89CF00CEF100 /* TaggingGalleryOverviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E597A15C1EAD89CF00CEF100 /* TaggingGalleryOverviewCollectionViewCell.swift */; };
 		E5B852BA1EB2FA9200A752E7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B852B91EB2FA9200A752E7 /* Constants.swift */; };
+		E5B852BE1EB6C23600A752E7 /* CameraObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B852BD1EB6C23600A752E7 /* CameraObject.swift */; };
 		E5CF3D571EA99C2500E0698C /* TaggingSelectedContextsAttributesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF3D561EA99C2500E0698C /* TaggingSelectedContextsAttributesTableViewController.swift */; };
 		E5CF3D591EA99C3200E0698C /* TaggingSelectedContextsAttributesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF3D581EA99C3200E0698C /* TaggingSelectedContextsAttributesTableViewCell.swift */; };
 		E5DC52911EAD8F7200D5FE66 /* TaggingGalleryOverviewImageViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DC52901EAD8F7200D5FE66 /* TaggingGalleryOverviewImageViewViewController.swift */; };
@@ -135,6 +136,7 @@
 		E597A15A1EAD895000CEF100 /* TaggingGalleryOverviewCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingGalleryOverviewCollectionViewController.swift; sourceTree = "<group>"; };
 		E597A15C1EAD89CF00CEF100 /* TaggingGalleryOverviewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingGalleryOverviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		E5B852B91EB2FA9200A752E7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E5B852BD1EB6C23600A752E7 /* CameraObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraObject.swift; sourceTree = "<group>"; };
 		E5CF3D561EA99C2500E0698C /* TaggingSelectedContextsAttributesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingSelectedContextsAttributesTableViewController.swift; sourceTree = "<group>"; };
 		E5CF3D581EA99C3200E0698C /* TaggingSelectedContextsAttributesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingSelectedContextsAttributesTableViewCell.swift; sourceTree = "<group>"; };
 		E5DC52901EAD8F7200D5FE66 /* TaggingGalleryOverviewImageViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingGalleryOverviewImageViewViewController.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				E5874FCF1EAEC9D2001DC13F /* UploadObject.swift */,
 				E563BA5A1EAED0F600F715D7 /* PersistenceManager.swift */,
 				E5B852B91EB2FA9200A752E7 /* Constants.swift */,
+				E5B852BD1EB6C23600A752E7 /* CameraObject.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				E5839AE01EA70C1200B25C70 /* AttributeTableTableViewController.swift in Sources */,
 				E573F33F1EB05F7200603222 /* CameraAttributeTableViewCell.swift in Sources */,
 				E5839ADE1EA70BEA00B25C70 /* AttributeTableViewCell.swift in Sources */,
+				E5B852BE1EB6C23600A752E7 /* CameraObject.swift in Sources */,
 				E54B42911EA842880049BA9F /* Context.swift in Sources */,
 				E573F33D1EB05F6400603222 /* CameraAttributeTableViewController.swift in Sources */,
 				E597A15D1EAD89CF00CEF100 /* TaggingGalleryOverviewCollectionViewCell.swift in Sources */,

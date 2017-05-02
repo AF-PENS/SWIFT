@@ -10,6 +10,7 @@ import Foundation
 
 enum Path: String {
     case UploadObjects = "UploadObjects"
+    case CameraObjects = "CameraObjects"
 }
 
 class PersistenceManager {
