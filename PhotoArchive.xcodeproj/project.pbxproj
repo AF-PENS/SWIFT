@@ -13,10 +13,7 @@
 		55F9469A1EAD285000E97DB6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F946991EAD285000E97DB6 /* WebKit.framework */; };
 		55F9469C1EAD285400E97DB6 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F9469B1EAD285400E97DB6 /* SafariServices.framework */; };
 		E513F7E11E43273C009C03B5 /* TaggingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E513F7E01E43273C009C03B5 /* TaggingViewController.swift */; };
-		E51414311E53F329000A2E3D /* TaggingAppCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51414301E53F329000A2E3D /* TaggingAppCollectionView.swift */; };
-		E51414331E53F3DD000A2E3D /* TaggingGalleryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51414321E53F3DD000A2E3D /* TaggingGalleryCollectionView.swift */; };
 		E51414351E53F4AC000A2E3D /* TaggingGalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51414341E53F4AC000A2E3D /* TaggingGalleryCollectionViewCell.swift */; };
-		E514143A1E53F87B000A2E3D /* TaggingTagCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51414391E53F87B000A2E3D /* TaggingTagCollectionView.swift */; };
 		E514143C1E53F88B000A2E3D /* TaggingTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E514143B1E53F88B000A2E3D /* TaggingTagCollectionViewCell.swift */; };
 		E52EF2C61E3B136800FF37D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52EF2C51E3B136800FF37D2 /* AppDelegate.swift */; };
 		E52EF2CD1E3B136800FF37D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E52EF2CB1E3B136800FF37D2 /* Main.storyboard */; };
@@ -56,6 +53,8 @@
 		E589A5BD1E5D0F1400AF944F /* TaggingTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589A5BC1E5D0F1400AF944F /* TaggingTableTableViewController.swift */; };
 		E597A15B1EAD895000CEF100 /* TaggingGalleryOverviewCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E597A15A1EAD895000CEF100 /* TaggingGalleryOverviewCollectionViewController.swift */; };
 		E597A15D1EAD89CF00CEF100 /* TaggingGalleryOverviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E597A15C1EAD89CF00CEF100 /* TaggingGalleryOverviewCollectionViewCell.swift */; };
+		E5B852BA1EB2FA9200A752E7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B852B91EB2FA9200A752E7 /* Constants.swift */; };
+		E5B852BE1EB6C23600A752E7 /* CameraObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B852BD1EB6C23600A752E7 /* CameraObject.swift */; };
 		E5CF3D571EA99C2500E0698C /* TaggingSelectedContextsAttributesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF3D561EA99C2500E0698C /* TaggingSelectedContextsAttributesTableViewController.swift */; };
 		E5CF3D591EA99C3200E0698C /* TaggingSelectedContextsAttributesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF3D581EA99C3200E0698C /* TaggingSelectedContextsAttributesTableViewCell.swift */; };
 		E5DC52911EAD8F7200D5FE66 /* TaggingGalleryOverviewImageViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DC52901EAD8F7200D5FE66 /* TaggingGalleryOverviewImageViewViewController.swift */; };
@@ -90,10 +89,7 @@
 		55F946991EAD285000E97DB6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		55F9469B1EAD285400E97DB6 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		E513F7E01E43273C009C03B5 /* TaggingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingViewController.swift; sourceTree = "<group>"; };
-		E51414301E53F329000A2E3D /* TaggingAppCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingAppCollectionView.swift; sourceTree = "<group>"; };
-		E51414321E53F3DD000A2E3D /* TaggingGalleryCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingGalleryCollectionView.swift; sourceTree = "<group>"; };
 		E51414341E53F4AC000A2E3D /* TaggingGalleryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingGalleryCollectionViewCell.swift; sourceTree = "<group>"; };
-		E51414391E53F87B000A2E3D /* TaggingTagCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingTagCollectionView.swift; sourceTree = "<group>"; };
 		E514143B1E53F88B000A2E3D /* TaggingTagCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		E52EF2C21E3B136800FF37D2 /* PhotoArchive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoArchive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E52EF2C51E3B136800FF37D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +135,8 @@
 		E589A5BC1E5D0F1400AF944F /* TaggingTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingTableTableViewController.swift; sourceTree = "<group>"; };
 		E597A15A1EAD895000CEF100 /* TaggingGalleryOverviewCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingGalleryOverviewCollectionViewController.swift; sourceTree = "<group>"; };
 		E597A15C1EAD89CF00CEF100 /* TaggingGalleryOverviewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingGalleryOverviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		E5B852B91EB2FA9200A752E7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E5B852BD1EB6C23600A752E7 /* CameraObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraObject.swift; sourceTree = "<group>"; };
 		E5CF3D561EA99C2500E0698C /* TaggingSelectedContextsAttributesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingSelectedContextsAttributesTableViewController.swift; sourceTree = "<group>"; };
 		E5CF3D581EA99C3200E0698C /* TaggingSelectedContextsAttributesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingSelectedContextsAttributesTableViewCell.swift; sourceTree = "<group>"; };
 		E5DC52901EAD8F7200D5FE66 /* TaggingGalleryOverviewImageViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingGalleryOverviewImageViewViewController.swift; sourceTree = "<group>"; };
@@ -204,11 +202,8 @@
 			isa = PBXGroup;
 			children = (
 				E513F7E01E43273C009C03B5 /* TaggingViewController.swift */,
-				E51414301E53F329000A2E3D /* TaggingAppCollectionView.swift */,
 				E55B78F71E431AA7001C7654 /* TaggingAppCollectionViewCell.swift */,
-				E51414321E53F3DD000A2E3D /* TaggingGalleryCollectionView.swift */,
 				E51414341E53F4AC000A2E3D /* TaggingGalleryCollectionViewCell.swift */,
-				E51414391E53F87B000A2E3D /* TaggingTagCollectionView.swift */,
 				E514143B1E53F88B000A2E3D /* TaggingTagCollectionViewCell.swift */,
 				E51414361E53F4CC000A2E3D /* TaggingApp */,
 				E51414371E53F4EB000A2E3D /* TaggingGallery */,
@@ -317,6 +312,8 @@
 				E54B42901EA842880049BA9F /* Context.swift */,
 				E5874FCF1EAEC9D2001DC13F /* UploadObject.swift */,
 				E563BA5A1EAED0F600F715D7 /* PersistenceManager.swift */,
+				E5B852B91EB2FA9200A752E7 /* Constants.swift */,
+				E5B852BD1EB6C23600A752E7 /* CameraObject.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -451,7 +448,7 @@
 				TargetAttributes = {
 					E52EF2C11E3B136800FF37D2 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = N3VHPKXGJ5;
+						DevelopmentTeam = DFSK92959A;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -536,22 +533,21 @@
 				E5874FD01EAEC9D2001DC13F /* UploadObject.swift in Sources */,
 				E52EF3061E3B224E00FF37D2 /* SettingsViewController.swift in Sources */,
 				E573F3391EB05EA800603222 /* CameraTagTableViewController.swift in Sources */,
-				E51414311E53F329000A2E3D /* TaggingAppCollectionView.swift in Sources */,
 				E5CF3D571EA99C2500E0698C /* TaggingSelectedContextsAttributesTableViewController.swift in Sources */,
 				E55B78F81E431AA7001C7654 /* TaggingAppCollectionViewCell.swift in Sources */,
 				E5E31D291E9DC8BC00DFC3A7 /* HistoryTagTableViewController.swift in Sources */,
 				E55B78F21E42FBC9001C7654 /* DashboardCollectionViewCell.swift in Sources */,
 				E563BA5B1EAED0F600F715D7 /* PersistenceManager.swift in Sources */,
 				E573F3411EB0643F00603222 /* CameraCollectionViewCell.swift in Sources */,
+				E5B852BA1EB2FA9200A752E7 /* Constants.swift in Sources */,
 				E5839AE01EA70C1200B25C70 /* AttributeTableTableViewController.swift in Sources */,
 				E573F33F1EB05F7200603222 /* CameraAttributeTableViewCell.swift in Sources */,
 				E5839ADE1EA70BEA00B25C70 /* AttributeTableViewCell.swift in Sources */,
+				E5B852BE1EB6C23600A752E7 /* CameraObject.swift in Sources */,
 				E54B42911EA842880049BA9F /* Context.swift in Sources */,
 				E573F33D1EB05F6400603222 /* CameraAttributeTableViewController.swift in Sources */,
-				E514143A1E53F87B000A2E3D /* TaggingTagCollectionView.swift in Sources */,
 				E597A15D1EAD89CF00CEF100 /* TaggingGalleryOverviewCollectionViewCell.swift in Sources */,
 				E54B428F1EA8423B0049BA9F /* Attribute.swift in Sources */,
-				E51414331E53F3DD000A2E3D /* TaggingGalleryCollectionView.swift in Sources */,
 				E52EF2C61E3B136800FF37D2 /* AppDelegate.swift in Sources */,
 				E573F3431EB1428900603222 /* TaggingAppOverviewCollectionViewController.swift in Sources */,
 				E51414351E53F4AC000A2E3D /* TaggingGalleryCollectionViewCell.swift in Sources */,
@@ -717,7 +713,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = N3VHPKXGJ5;
+				DEVELOPMENT_TEAM = DFSK92959A;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PhotoArchive",
@@ -725,7 +721,7 @@
 				);
 				INFOPLIST_FILE = PhotoArchive/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = vega.PhotoArchive;
+				PRODUCT_BUNDLE_IDENTIFIER = csula.PhotoArchive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PhotoArchive-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -738,7 +734,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = N3VHPKXGJ5;
+				DEVELOPMENT_TEAM = DFSK92959A;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PhotoArchive",
@@ -746,7 +742,7 @@
 				);
 				INFOPLIST_FILE = PhotoArchive/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = vega.PhotoArchive;
+				PRODUCT_BUNDLE_IDENTIFIER = csula.PhotoArchive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PhotoArchive-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

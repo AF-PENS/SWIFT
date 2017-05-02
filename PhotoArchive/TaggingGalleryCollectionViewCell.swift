@@ -11,4 +11,10 @@ import UIKit
 class TaggingGalleryCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
+    
+    var thumbnailImage: UIImage! {
+        didSet {
+            imageView.image = thumbnailImage
+        }
+    }
 }

@@ -20,7 +20,7 @@ class CameraSelectedContextsAttributesTableTableViewController: UITableViewContr
     
     @IBAction func saveButton(_ sender: Any) {
         
-        globalObject.sharedInstance.cameraContexts.remove(at: context)
+        global.shared.cameraContexts.remove(at: context)
         
         // creates a Context object with the title of the current context
         let tempContext = Context(id: contextTitle.title!)
@@ -30,26 +30,32 @@ class CameraSelectedContextsAttributesTableTableViewController: UITableViewContr
             tempContext.attributes.append(tempAttribute)
         }
         
-        globalObject.sharedInstance.cameraContexts.insert(tempContext, at: context)
+        global.shared.cameraContexts.insert(tempContext, at: context)
         
         performSegue(withIdentifier: "unwindToCameraViewController", sender: self)
     }
     
     @IBAction func deleteButton(_ sender: Any) {
-        globalObject.sharedInstance.cameraContexts.remove(at: context)
+        global.shared.cameraContexts.remove(at: context)
         
         performSegue(withIdentifier: "unwindToCameraViewController", sender: self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentContext = globalObject.sharedInstance.cameraContexts[context]
-        contextTitle.title = globalObject.sharedInstance.cameraContexts[context].id
         
-        for i in 0..<globalObject.sharedInstance.cameraContexts[context].attributes.count {
-            attributes.append(globalObject.sharedInstance.cameraContexts[context].attributes[i].id)
-            descriptions.append(globalObject.sharedInstance.cameraContexts[context].attributes[i].question)
-            answers.append(globalObject.sharedInstance.cameraContexts[context].attributes[i].value)
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        
+        view.addGestureRecognizer(tap)
+        
+        currentContext = global.shared.cameraContexts[context]
+        contextTitle.title = global.shared.cameraContexts[context].id
+        
+        for i in 0..<global.shared.cameraContexts[context].attributes.count {
+            attributes.append(global.shared.cameraContexts[context].attributes[i].id)
+            descriptions.append(global.shared.cameraContexts[context].attributes[i].question)
+            answers.append(global.shared.cameraContexts[context].attributes[i].value)
         }
 
         // Uncomment the following line to preserve selection between presentations
@@ -100,8 +106,13 @@ class CameraSelectedContextsAttributesTableTableViewController: UITableViewContr
         return nil
     }
     
-    func textViewDidEndEditing(_ textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         answers[textView.tag] = textView.text!
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
 

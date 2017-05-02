@@ -21,7 +21,7 @@ class TaggingSelectedContextsAttributesTableViewController: UITableViewControlle
     
     @IBAction func saveButton(_ sender: Any) {
         
-        globalObject.sharedInstance.Attributes.remove(at: context)
+        global.shared.tagContexts.remove(at: context)
         
         // creates a Context object with the title of the current context
         let tempContext = Context(id: contextTitle.title!)
@@ -31,26 +31,32 @@ class TaggingSelectedContextsAttributesTableViewController: UITableViewControlle
             tempContext.attributes.append(tempAttribute)
         }
 
-        globalObject.sharedInstance.Attributes.insert(tempContext, at: context)
+        global.shared.tagContexts.insert(tempContext, at: context)
         
         performSegue(withIdentifier: "unwindToTaggingViewController", sender: self)
     }
     
     @IBAction func deleteButton(_ sender: Any) {
-        globalObject.sharedInstance.Attributes.remove(at: context)
+        global.shared.tagContexts.remove(at: context)
 
         performSegue(withIdentifier: "unwindToTaggingViewController", sender: self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentContext = globalObject.sharedInstance.Attributes[context]
-        contextTitle.title = globalObject.sharedInstance.Attributes[context].id
         
-        for i in 0..<globalObject.sharedInstance.Attributes[context].attributes.count {
-            attributes.append(globalObject.sharedInstance.Attributes[context].attributes[i].id)
-            descriptions.append(globalObject.sharedInstance.Attributes[context].attributes[i].question)
-            answers.append(globalObject.sharedInstance.Attributes[context].attributes[i].value)
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        
+        view.addGestureRecognizer(tap)
+        
+        currentContext = global.shared.tagContexts[context]
+        contextTitle.title = global.shared.tagContexts[context].id
+        
+        for i in 0..<global.shared.tagContexts[context].attributes.count {
+            attributes.append(global.shared.tagContexts[context].attributes[i].id)
+            descriptions.append(global.shared.tagContexts[context].attributes[i].question)
+            answers.append(global.shared.tagContexts[context].attributes[i].value)
         }
         
         
@@ -104,8 +110,13 @@ class TaggingSelectedContextsAttributesTableViewController: UITableViewControlle
         return nil
     }
     
-    func textViewDidEndEditing(_ textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         answers[textView.tag] = textView.text!
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
  
 

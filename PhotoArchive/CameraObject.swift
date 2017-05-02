@@ -1,5 +1,5 @@
 //
-//  UploadObject.swift
+//  CameraObject.swift
 //  PhotoArchive
 //
 //  Created by Phillip Gulegin on 4/24/17.
@@ -9,31 +9,29 @@
 import Foundation
 import Photos
 
-class UploadObject: NSObject, NSCoding {
+class CameraObject: NSObject, NSCoding {
     
-    var imageName: String
-    var imageLocation: String
-    var thumbnailLocation: String
-    var latitude: Double
-    var longitude: Double
-    var contexts = [Context]()
+    // Object variable
+    var imageName: String           // name of the image
+    var imageLocation: String       // location of full resolution image
+    var thumbnailLocation: String   // location of thumbnail image
+    var latitude: Double            // latitude of where image was taken
+    var longitude: Double           // longitude of where image was taken
     
-    init(imageName: String, imageLocation: String, thumbnailLocation: String, latitude: Double, longitude: Double, contexts: [Context]) {
+    init(imageName: String, imageLocation: String, thumbnailLocation: String, latitude: Double, longitude: Double) {
         self.imageName = imageName
         self.imageLocation = imageLocation
         self.thumbnailLocation = thumbnailLocation
         self.latitude = latitude
         self.longitude = longitude
-        self.contexts = contexts
     }
     
     func info() {
-        print("imageName: ", imageName)
-        print("imageLocation: ", imageLocation)
+        print("imageName:         ", imageName)
+        print("imageLocation:     ", imageLocation)
         print("thumbnailLocation: ", thumbnailLocation)
-        print("latitude:  ", latitude)
-        print("longitude: ", longitude)
-        print("contexts:  ", contexts)
+        print("latitude:          ", latitude)
+        print("longitude:         ", longitude)
     }
     
     // MARK: - NSCoding
@@ -43,7 +41,6 @@ class UploadObject: NSObject, NSCoding {
         coder.encode(self.thumbnailLocation, forKey: "thumbnailLocation")
         coder.encode(self.latitude, forKey: "latitude")
         coder.encode(self.longitude, forKey: "longitude")
-        coder.encode(self.contexts, forKey: "contexts")
     }
     
     required convenience init(coder decoder: NSCoder) {
@@ -52,7 +49,6 @@ class UploadObject: NSObject, NSCoding {
         let thumbnailLocation = decoder.decodeObject(forKey: "thumbnailLocation") as! String
         let latitude = decoder.decodeDouble(forKey: "latitude")
         let longitude = decoder.decodeDouble(forKey: "longitude")
-        let contexts = decoder.decodeObject(forKey: "contexts") as! [Context]
-        self.init(imageName: imageName, imageLocation: imageLocation, thumbnailLocation: thumbnailLocation, latitude: latitude, longitude: longitude, contexts: contexts)
+        self.init(imageName: imageName, imageLocation: imageLocation, thumbnailLocation: thumbnailLocation, latitude: latitude, longitude: longitude)
     }
 }
