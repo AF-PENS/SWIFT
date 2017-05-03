@@ -11,4 +11,10 @@ import UIKit
 class TaggingTagCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var title: UILabel!
+    
+    var contextName: String! {
+        didSet {
+            title.text = contextName
+        }
+    }
 }

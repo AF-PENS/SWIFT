@@ -7,14 +7,20 @@
 //
 
 import UIKit
+import ImageIO
+import CoreLocation
 
-class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, FileManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, FileManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
     
     let picker = UIImagePickerController()
     var tagButtonArray = [String]()
     var selectedTagContext = 0
 
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    let locationManager = CLLocationManager()
+    var startLocation: CLLocation!
+    var latestLocation: CLLocation!
     
     // prepares for a segue transition from the Attribute pages
     @IBAction func unwindToCameraViewController(segue:UIStoryboardSegue) { }
@@ -32,6 +38,12 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         collectionView.dataSource = self
 //        self.view.addSubview(collectionView)
         generateContextButtons()
+        
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        startLocation = nil
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,10 +81,9 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         // Clears out the elements in tagButtonArray in order to not create duplicates
         tagButtonArray.removeAll()
         
-        for context in 0..<globalObject.sharedInstance.cameraContexts.count {
-            tagButtonArray.append(globalObject.sharedInstance.cameraContexts[context].id)
+        for context in 0..<global.shared.cameraContexts.count {
+            tagButtonArray.append(global.shared.cameraContexts[context].id)
         }
-        print("Generate: ", tagButtonArray.count)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -83,38 +94,140 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         image = info[UIImagePickerControllerOriginalImage] as! UIImage
         let jpegimage = UIImageJPEGRepresentation(image, 1)
         
-        // saving image to 'Images' Directory
-        let docDir = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        let d = Date()
+        let df = DateFormatter()
+        df.dateFormat = "y-MM-dd-H-m-ss-SSSS"
+        let name = df.string(from: d)
         
-        let date :NSDate = NSDate()
+        // Establish FileManager object
+        let fileMngr = FileManager.default
         
-        let dateFormatter = DateFormatter()
-        //dateFormatter.dateFormat = "yyyy-MM-dd'_'HH:mm:ss"
-        dateFormatter.dateFormat = "yyyy-MM-dd'_'HH_mm_ss"
+        // Establish path to 'Documents'
+        let docURL = fileMngr.urls(for: .documentDirectory, in: .userDomainMask)[0]
         
-        dateFormatter.timeZone = NSTimeZone(name: "GMT")! as TimeZone
+        // Establish URL for 'CameraImages' in 'Documents'
+        let cameraImagesURL = docURL.appendingPathComponent("CameraImages")
         
-        let imageURL = docDir.appendingPathComponent("\(dateFormatter.string(from: date as Date)).jpg")
-        try! jpegimage?.write(to: imageURL)
+        // Establish URL for 'FullImage' in 'CameraImages'
+        let cameraFullImageDirectoryURL = cameraImagesURL.appendingPathComponent("FullImage")
+        
+        // Establish URL for the file in 'FullImage'
+        let cameraFullImageFileURL = cameraFullImageDirectoryURL.appendingPathComponent("\(name).jpg")
+        
+        // Establish URL for 'FullImage' in 'CameraImages'
+        let cameraThumbnaileDirectoryURL = cameraImagesURL.appendingPathComponent("Thumbnail")
+        
+        // Establish URL for the file in 'FullImage'
+        let cameraThumbnailFileURL = cameraThumbnaileDirectoryURL.appendingPathComponent("\(name).jpg")
+        
+        let cameraFullImageFilePath = "CameraImages/FullImage/\(name).jpg"
+        
+        let cameraThumbnailFilePath = "CameraImages/Thumbnail/\(name).jpg"
+        
+
+        try! jpegimage?.write(to: cameraFullImageFileURL)
+        
+        let size = image.size
+        
+        let thumbnailSize = CGSize(width: 256,height: 256)
+        
+        let widthRatio  = thumbnailSize.width  / image.size.width
+        let heightRatio = thumbnailSize.height / image.size.height
+        
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+        } else {
+            newSize = CGSize(width: size.width * widthRatio, height: size.height * widthRatio)
+        }
+        
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+        
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        let jpegimagethumbnail = UIImageJPEGRepresentation(newImage!, 1)
+        
+        try! jpegimagethumbnail?.write(to: cameraThumbnailFileURL)
+        
+        let latitude = latestLocation.coordinate.latitude
+        
+        let longitude = latestLocation.coordinate.longitude
+        
+        var cameraObjects = [CameraObject]()
+        
+        if (PersistenceManager.loadNSArray(.CameraObjects) as? [CameraObject]) != nil {
+            cameraObjects = PersistenceManager.loadNSArray(.CameraObjects) as! [CameraObject]
+        }
+        
+        cameraObjects.append(CameraObject(imageName: name, imageLocation: cameraFullImageFilePath, thumbnailLocation: cameraThumbnailFilePath, latitude: latitude, longitude: longitude))
+        
+        PersistenceManager.saveNSArray(cameraObjects as NSArray, path: .CameraObjects)
+
+
         
         // executes if contexts are selected, then the image is also sent to the dashboard
-        if globalObject.sharedInstance.cameraContexts.count != 0 {
+        if global.shared.cameraContexts.count != 0 {
             var uploadObjects = [UploadObject]()
             
-            let temp = UploadObject(context: globalObject.sharedInstance.cameraContexts, imageLocalIdentifier: "\(dateFormatter.string(from: date as Date)).jpg", isAppImage: true, isGalleryImage: false)
-            uploadObjects.append(temp)
-            
-            var values = [UploadObject]()
-            
             if (PersistenceManager.loadNSArray(.UploadObjects) as? [UploadObject]) != nil {
-                values = PersistenceManager.loadNSArray(.UploadObjects) as! [UploadObject]
+                uploadObjects = PersistenceManager.loadNSArray(.UploadObjects) as! [UploadObject]
             }
             
-            for object in uploadObjects {
-                values.append(object)
-            }
+            // Gets the current date
+            let date = Date()
             
-            PersistenceManager.saveNSArray(values as NSArray, path: .UploadObjects)
+            // Creates a date format
+            let dateFormat = DateFormatter()
+            
+            // Sets up the date format
+            dateFormat.dateFormat = "y-MM-dd-H-m-ss-SSSS"
+            
+            // Creates a name from the date format
+            let name = dateFormat.string(from: date)
+
+            // Establish URL for 'UploadImages' in 'Documents'
+            let uploadImagesURL = docURL.appendingPathComponent("UploadImages")
+            
+            // Establish URL for 'FullImage' in 'UploadImages'
+            let uploadFullImageDirectoryURL = uploadImagesURL.appendingPathComponent("FullImage")
+            
+            // Establish URL for the file in 'FullImage'
+            let uploadFullImageFileURL = uploadFullImageDirectoryURL.appendingPathComponent("\(name).jpg")
+            
+            // Establish URL for 'FullImage' in 'UploadImages'
+            let uploadThumbnaileDirectoryURL = uploadImagesURL.appendingPathComponent("Thumbnail")
+            
+            // Establish URL for the file in 'FullImage'
+            let uploadThumbnailFileURL = uploadThumbnaileDirectoryURL.appendingPathComponent("\(name).jpg")
+            
+            // Establish string path for full resolution image in uploadObject
+            let uploadFullImageFilePath = "UploadImages/FullImage/\(name).jpg"
+            
+            // Establish string path for thumbnail image in uploadObject
+            let uploadThumbnailFilePath = "UploadImages/Thumbnail/\(name).jpg"
+            
+            // Write the full resolution image to file
+            try! jpegimage?.write(to: uploadFullImageFileURL)
+            
+            // Write the thumbnail image to file
+            try! jpegimagethumbnail?.write(to: uploadThumbnailFileURL)
+            
+            // Create the new UploadObject and append it to the array
+            uploadObjects.append(UploadObject(
+                imageName:          name,
+                imageLocation:      uploadFullImageFilePath,
+                thumbnailLocation:  uploadThumbnailFilePath,
+                latitude:           latitude,
+                longitude:          longitude,
+                contexts:           global.shared.cameraContexts))
+            
+            PersistenceManager.saveNSArray(uploadObjects as NSArray, path: .UploadObjects)
 
         }
     }
@@ -132,7 +245,6 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CameraCollectionViewCell", for: indexPath as IndexPath) as! CameraCollectionViewCell
         
         cell.title.text = tagButtonArray[indexPath.row]
-        print("Currently creating: ", tagButtonArray[indexPath.row])
         return cell
     }
     
@@ -143,8 +255,16 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         label.numberOfLines = 0
         label.text = tagButtonArray[indexPath.row]
         label.sizeToFit()
-        print(label.text!)
         return CGSize(width: label.frame.width+10, height: label.frame.height)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("There was an error with location services.")
+        print(error)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        latestLocation = locations[locations.count - 1]
     }
     
 //    // gets the selected item to pass

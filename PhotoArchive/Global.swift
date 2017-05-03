@@ -9,18 +9,20 @@
 import Foundation
 import Photos
 
-class globalObject {
+class global {
     // Declare class instance property
-    static let sharedInstance = globalObject()
+    static let shared = global()
     
     // Declare an initializer
     // Because this class is singleton only one instance of this class can be created
-    init() {}
+    init() {
+        
+    }
     
     // class variables
-    var Attributes = [Context]()
-    var GalleryImages = [PHAsset]()
-    var AppImages = [String]()
+    var tagContexts = [Context]()
+    var galleryImages = [PHAsset]()
+    var appImages = [CameraObject]()
     var cameraContexts = [Context]()
     
     
