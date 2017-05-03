@@ -156,12 +156,21 @@
                             <constraint firstItem="2LM-YT-Kjw" firstAttribute="leading" secondItem="BG9-27-QE6" secondAttribute="leading" id="OHM-l9-C5I"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="U5z-MJ-qny">
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="EOH-My-vv9">
+                            <connections>
+                                <action selector="deleteAction:" destination="0Ow-h1-FwT" id="1aV-gq-3z1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="imageView" destination="2LM-YT-Kjw" id="Nmc-Be-BB2"/>
+                        <segue destination="vRT-OK-nNX" kind="unwind" identifier="unwindToDashboardViewController" unwindAction="unwindToDashboardViewControllerWithSegue:" id="uUV-7T-HfB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zwp-nR-Xe8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="vRT-OK-nNX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2828.985507246377" y="-3214.402173913044"/>
         </scene>

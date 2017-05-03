@@ -22,7 +22,7 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     // Sets the size of the images in the cell thumbnails -- Current defaults set in the interface builder
     let thumbnailSize = CGSize(width: 80, height: 80)
     
-    // All of th objects to be uploaded
+    // All objects to be uploaded
     var uploadObjects = [UploadObject]()
     
     override func viewDidLoad() {
@@ -55,7 +55,13 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
             }
         })
         
-        permissionStatusText.text = "Correct"
+        
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(DashboardViewController.applicationDidBecomeActive(_:)),
+            name: NSNotification.Name.UIApplicationDidBecomeActive,
+            object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,16 +69,14 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         // Dispose of any resources that can be recreated.
     }
     
-    // Hides the navigation controller
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         // Hides the navigation controller
-        self.navigationController?.setNavigationBarHidden(false, animated: animated);
-
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        
     }
     
-    // Hides the navigation controller
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -87,14 +91,25 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         // Reloads Dashboard collection view
         collectionView.reloadData()
         
-        // Refreshes WIFI status
-        isWIFIOn()
+        // Updates permissions
+        updatePermissions()
     }
     
+    // Function is specifically called if the application is interrupted
+    @objc private func applicationDidBecomeActive(_ notification: NSNotification) {
+        
+        // Updates permissions
+        updatePermissions()
+    }
+    
+    // Asks your data source object for the number of items in the specified section
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        // The amount of objects to be displayed
         return uploadObjects.count
     }
     
+    // Asks your data source object for the cell that corresponds to the specified item in the collection view
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         // Establish current object of this cell
@@ -117,65 +132,162 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         
         // Adds image to cell
         cell.imageView.image = image
-                
+        
+        // Returns the cell to be loaded
         return cell
         
     }
     
+    // Tells the delegate that the item at the specified index path was selected
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         // Performs the segue to view the main object
         self.performSegue(withIdentifier: "dashboardShowImage", sender: self)
     }
     
+    
+    // MARK: - Navigation
+    
+    /**
+     Prepares for a segue transition from the Dashboard to the ImageViewer.
+     */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        // -- Double check to see if this is necessary --
-        if segue.identifier == "dashboardShowImage" {
-            let indexPaths = self.collectionView.indexPathsForSelectedItems!
-            let indexPath = indexPaths[0] as NSIndexPath
-            
-            // Establishes next view controller to be 'DashboardImageViewController'
-            let vc = segue.destination as! DashboardImageViewController
-            
-            // Establish FileManager object
-            let fileMngr = FileManager.default
-            
-            // Establish path to 'Documents'
-            let docURL = fileMngr.urls(for: .documentDirectory, in: .userDomainMask)[0]
-            
-            // Gets the location of the image from the appropriate 'UploaObject'
-            let thumbnailPath = docURL.appendingPathComponent(uploadObjects[indexPath.row].imageLocation)
-            
-            // Imports the image
-            let image = UIImage(contentsOfFile: thumbnailPath.path)!
-            
-            // Sets the image to be displayed
-            vc.image = image
-        }
+        // Gets the indexPath of the selected cell
+        let indexPath = collectionView.indexPathsForSelectedItems![0]
+        
+        // Establishes next view controller to be 'DashboardImageViewController'
+        let nextViewController = segue.destination as! DashboardImageViewController
+        
+        // Passes in the obect to be displayed
+        nextViewController.uploadObject = uploadObjects[indexPath.row]
     }
     
+    // Prepares for a segue transition from the Attribute pages
+    @IBAction func unwindToDashboardViewController(segue:UIStoryboardSegue) {}
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     // MARK: - User Functions
     
     /**
-        Informs the user of the current status of wifi availability.
+        Check to see if wifi is available.
      
         - Returns: Bool: true if wifi is active; false if it is not
      */
     func isWIFIOn() -> Bool {
         
-        return false
+        // Checks to see what the user has set on the Settings page
+        // Executes if user has only wifi turned to on
+        if UserDefaults.standard.object(forKey: UD.isWIFIOnly) as! Bool {
+            
+            // Establish object to check status of wifi
+            let reachability = Reachability()!
+            
+            // Executes if wifi is connected
+            if reachability.isReachableViaWiFi {
+                
+                // Returns true
+                return true
+            }
+            // Executes if wifi is not connected
+            else {
+                
+                // Returns false
+                return false
+            }
+        }
+        // Executes if user is willing to upload over any connection
+        else {
+            
+            // Returns true
+            return true
+        }
+    }
+    
+    /**
+     Check to see if GPS is available.
+     
+     - Returns: Bool: true if GPS is active; false if it is not
+     */
+    func isGPSOn() -> Bool {
+        
+        if CLLocationManager.locationServicesEnabled() {
+            switch(CLLocationManager.authorizationStatus()) {
+            case .notDetermined, .restricted, .denied:
+                return false
+            case .authorizedAlways, .authorizedWhenInUse:
+                return true
+            }
+        }
+        else {
+            return false
+        }
+    }
+    
+    /**
+     Check to see if Photos are available.
+     
+     - Returns: Bool: true if Photos are active; false if it is not
+     */
+    func isPhotosOn() -> Bool {
+        
+        if PHPhotoLibrary.authorizationStatus() == .authorized {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    /**
+     Check to see if Camera is available.
+     
+     - Returns: Bool: true if Camera is active; false if it is not
+     */
+    func isCameraOn() -> Bool {
+        
+        if AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) ==  AVAuthorizationStatus.authorized
+        {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    /**
+        This should be called whenever there is a check to make sure the permissions are set up correctly.
+     */
+    func updatePermissions() {
+        
+        // Executes if the wifi is not turned on
+        if !isWIFIOn() {
+        
+            // Informs the user that wifi is turned off
+            permissionStatusText.text = "Wifi is off"
+            
+        }
+        // Executes if the GPS is not turned on within the application
+        else if !isGPSOn() {
+            
+            // Informs the user that GPS is turned off
+            permissionStatusText.text = "GPS is turned off"
+        }
+        // Executes if the GPS is not turned on within the application
+        else if !isPhotosOn() {
+            
+            // Informs the user that there is no access to iPhone photos
+            permissionStatusText.text = "No photos access"
+        }
+        // Executes if the GPS is not turned on within the application
+        else if !isCameraOn() {
+            
+            // Informs user that camera functionality is not allowed
+            permissionStatusText.text = "No camera access"
+        }
+        // Executes if everything is set up correctly
+        else {
+            permissionStatusText.text = "Correct"
+        }
     }
 }

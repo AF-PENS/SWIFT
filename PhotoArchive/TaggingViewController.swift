@@ -322,16 +322,10 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
             let name = dateFormat.string(from: date)
             
             // Gets the location of thumbnail image
-            let thumbnailPath = docURL.appendingPathComponent(global.shared.appImages[i].thumbnailLocation)
+            let thumbnailURL = docURL.appendingPathComponent(global.shared.appImages[i].thumbnailLocation)
             
             // Gets the location of full resolution image
-            let fullImagePath = docURL.appendingPathComponent(global.shared.appImages[i].imageLocation)
-            
-            // Imports thumbnail image
-            let thumbnailImage = UIImage(contentsOfFile: thumbnailPath.path)!
-            
-            // Imports full resolution image
-            let fullImage = UIImage(contentsOfFile: fullImagePath.path)!
+            let fullImageURL = docURL.appendingPathComponent(global.shared.appImages[i].imageLocation)
             
             // Establish URL for 'UploadImages' in 'Documents'
             let uploadImagesURL = docURL.appendingPathComponent("UploadImages")
@@ -354,11 +348,19 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
             // Establish string path for thumbnail image in uploadObject
             let uploadThumbnailFilePath = "UploadImages/Thumbnail/\(name).jpg"
             
-            // Write the full resolution image to file
-            try! UIImageJPEGRepresentation(fullImage, 1)?.write(to: uploadFullImageFileURL)
+            // Copies the full image
+            do {
+                try fileMngr.copyItem(at: fullImageURL, to: uploadFullImageFileURL)
+            } catch {
+                print("Unable to copy file.")
+            }
             
-            // Write the thumbnail image to file
-            try! UIImageJPEGRepresentation(thumbnailImage, 1)?.write(to: uploadThumbnailFileURL)
+            // Copies the thumbnail image
+            do {
+                try fileMngr.copyItem(at: thumbnailURL, to: uploadThumbnailFileURL)
+            } catch {
+                print("Unable to copy file.")
+            }
             
             // Create the new UploadObject and append it to the array
             uploadObjects.append(UploadObject(

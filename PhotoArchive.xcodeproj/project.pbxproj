@@ -51,6 +51,7 @@
 		E5874FD01EAEC9D2001DC13F /* UploadObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5874FCF1EAEC9D2001DC13F /* UploadObject.swift */; };
 		E589A5BB1E5D0EF300AF944F /* TaggingTableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589A5BA1E5D0EF300AF944F /* TaggingTableTableViewCell.swift */; };
 		E589A5BD1E5D0F1400AF944F /* TaggingTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589A5BC1E5D0F1400AF944F /* TaggingTableTableViewController.swift */; };
+		E58BC1B81EB94F5C00474FF5 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58BC1B71EB94F5C00474FF5 /* Reachability.swift */; };
 		E597A15B1EAD895000CEF100 /* TaggingGalleryOverviewCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E597A15A1EAD895000CEF100 /* TaggingGalleryOverviewCollectionViewController.swift */; };
 		E597A15D1EAD89CF00CEF100 /* TaggingGalleryOverviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E597A15C1EAD89CF00CEF100 /* TaggingGalleryOverviewCollectionViewCell.swift */; };
 		E5B852BA1EB2FA9200A752E7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B852B91EB2FA9200A752E7 /* Constants.swift */; };
@@ -133,6 +134,7 @@
 		E5874FCF1EAEC9D2001DC13F /* UploadObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadObject.swift; sourceTree = "<group>"; };
 		E589A5BA1E5D0EF300AF944F /* TaggingTableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingTableTableViewCell.swift; sourceTree = "<group>"; };
 		E589A5BC1E5D0F1400AF944F /* TaggingTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingTableTableViewController.swift; sourceTree = "<group>"; };
+		E58BC1B71EB94F5C00474FF5 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		E597A15A1EAD895000CEF100 /* TaggingGalleryOverviewCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingGalleryOverviewCollectionViewController.swift; sourceTree = "<group>"; };
 		E597A15C1EAD89CF00CEF100 /* TaggingGalleryOverviewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingGalleryOverviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		E5B852B91EB2FA9200A752E7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				55F946991EAD285000E97DB6 /* WebKit.framework */,
 				55F946931EAD26DF00E97DB6 /* MicrosoftAzureMobile.framework */,
 				55F946911EAD269600E97DB6 /* libxml2.2.dylib */,
+				E58BC1B71EB94F5C00474FF5 /* Reachability.swift */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -192,8 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				E52EF2FD1E3B21D600FF37D2 /* DashboardViewController.swift */,
-				E55B78F31E42FBE5001C7654 /* DashboardImageViewController.swift */,
 				E55B78F11E42FBC9001C7654 /* DashboardCollectionViewCell.swift */,
+				E55B78F31E42FBE5001C7654 /* DashboardImageViewController.swift */,
 			);
 			name = Dashboard;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				E52EF3021E3B221E00FF37D2 /* CameraViewController.swift in Sources */,
 				E573F34B1EB1782500603222 /* CameraSelectedContextsAttributesTableTableViewController.swift in Sources */,
 				E5E31D2B1E9DC9EE00DFC3A7 /* HistoryTagTableViewCell.swift in Sources */,
+				E58BC1B81EB94F5C00474FF5 /* Reachability.swift in Sources */,
 				E54B428D1EA8422F0049BA9F /* Global.swift in Sources */,
 				E589A5BD1E5D0F1400AF944F /* TaggingTableTableViewController.swift in Sources */,
 				E52EF3041E3B223800FF37D2 /* HistoryViewController.swift in Sources */,
