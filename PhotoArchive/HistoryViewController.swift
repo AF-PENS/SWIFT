@@ -17,6 +17,9 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
     var imageTitles = [String]();
     var imagePaths = [String]();
     
+    var imageForSeque: UIImage?
+    var titleForSeque: String?
+    
     var blobClient: AZSCloudBlobClient = AZSCloudBlobClient();
     var blobContainer: AZSCloudBlobContainer = AZSCloudBlobContainer();
     
@@ -24,6 +27,10 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadImages();
+    }
+    
+    func loadImages(){
         let sas = "sv=2016-05-31&ss=b&srt=o&sp=rw&se=2027-02-24T00:00:00Z&st=2017-02-24T00:00:00Z&spr=https&sig=kChTx0B8faa43g%2F%2F2G5LIWBCOKMxq1eIgqOUn9Ds9s4%3D"
         
         let account = try! AZSCloudStorageAccount(fromConnectionString: "SharedAccessSignature=" + sas + ";BlobEndpoint=https://boephotostore.blob.core.windows.net")
@@ -74,32 +81,11 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
                         + sas;
                     
                     self.imagePaths.append(path);
-                    print("Reloading");
-                    print(self.imagePaths.count);
-                    self.historyCollectionView.reloadData()
-                }
-                
-//                self.loadImages(paths: self.imagePaths);
-            }
-        })
-    }
-    
-    func loadImages(paths: [String]){
-        for path in paths{
-            //TODO
-            //Add completion handler
-            //to update step by step
-            
-            DispatchQueue.main.async{
-                //make sure data is not nil
-                if let data = NSData(contentsOf: URL(string: path)!) {
-                    let image = UIImage(data: data as Data!);
-                    self.imageArray.append(image!);
                 }
                 
                 self.historyCollectionView.reloadData()
             }
-        }
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -120,7 +106,8 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.imageArray.count
+        return self.imagePaths.count
+//        return self.imageArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -128,31 +115,49 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "historyCell", for: indexPath) as! HistoryCollectionViewCell
         
         let url = URL(string: self.imagePaths[indexPath.row]);
-        print(url);
-        cell.imageView?.kf.setImage(with: url);
         
-//        cell.imageView?.image = self.imageArray[indexPath.row]
+        cell.imageView?.kf.indicatorType = .activity
+        
+        cell.imageView?.kf.setImage(with: url, options: [.transition(.fade(0.2))]);
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "historyShowImageSegue", sender: self)
+        
+        if(retrieveImageFromCache()){
+            performSegue(withIdentifier: "historyShowImageSegue", sender: self)
+        }
+    }
+    
+    func retrieveImageFromCache()->Bool{
+        var validSeque = true;
+        
+        let indexPaths = self.historyCollectionView.indexPathsForSelectedItems!
+        let indexPath = indexPaths[0] as NSIndexPath
+        
+        ImageCache.default.retrieveImage(forKey: self.imagePaths[indexPath.row], options: nil) {
+            image, cacheType in
+            if let image = image {
+                self.imageForSeque = image
+                self.titleForSeque = self.imageTitles[indexPath.row]
+                
+                validSeque = true;
+            } else {
+                validSeque = false;
+            }
+        }
+        
+        return validSeque;
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        
         if segue.identifier == "historyShowImageSegue"
         {
-            let indexPaths = self.historyCollectionView.indexPathsForSelectedItems!
-            let indexPath = indexPaths[0] as NSIndexPath
-            
             let vc = segue.destination as! HistoryImageViewController
             
-            vc.image = self.imageArray[indexPath.row]
-            
-            vc.title = self.imageTitles[indexPath.row]
+            vc.image = imageForSeque!;
+            vc.title = titleForSeque!;
         }
     }
 
