@@ -42,7 +42,11 @@ class HistoryImageViewController: UIViewController {
                 print(contextResults.count);
                 
                 for row in contextResults {
-                    self.imageContexts.append(row["contextID"] as! String)
+                    let context = row["contextID"] as! String;
+                    
+                    if(!self.imageContexts.contains(context)){
+                        self.imageContexts.append(context)
+                    }
                 }
             }
         })

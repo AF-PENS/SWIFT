@@ -114,41 +114,33 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "historyCell", for: indexPath) as! HistoryCollectionViewCell
         
+        //prevent user interaction while loading
+        cell.isUserInteractionEnabled = false;
+        
         let url = URL(string: self.imagePaths[indexPath.row]);
         
         cell.imageView?.kf.indicatorType = .activity
         
-        cell.imageView?.kf.setImage(with: url, options: [.transition(.fade(0.2))]);
+        cell.imageView?.kf.setImage(with: url, options: [.transition(.fade(0.2))],completionHandler: {
+            (image, error, cacheType, imageUrl) in
+                if(image != nil){
+                    cell.isUserInteractionEnabled = true;
+                }
+        });
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        if(retrieveImageFromCache()){
-            performSegue(withIdentifier: "historyShowImageSegue", sender: self)
-        }
-    }
     
-    func retrieveImageFromCache()->Bool{
-        var validSeque = true;
-        
-        let indexPaths = self.historyCollectionView.indexPathsForSelectedItems!
-        let indexPath = indexPaths[0] as NSIndexPath
-        
         ImageCache.default.retrieveImage(forKey: self.imagePaths[indexPath.row], options: nil) {
             image, cacheType in
             if let image = image {
-                self.imageForSeque = image
-                self.titleForSeque = self.imageTitles[indexPath.row]
-                
-                validSeque = true;
-            } else {
-                validSeque = false;
+                self.imageForSeque = image;
+                self.titleForSeque = self.imageTitles[indexPath.row];
+                self.performSegue(withIdentifier: "historyShowImageSegue", sender: self)
             }
         }
-        
-        return validSeque;
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -156,19 +148,8 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
         {
             let vc = segue.destination as! HistoryImageViewController
             
-            vc.image = imageForSeque!;
-            vc.title = titleForSeque!;
+            vc.image = self.imageForSeque!;
+            vc.title = self.titleForSeque!;
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
