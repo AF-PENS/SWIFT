@@ -836,11 +836,20 @@
                             <constraint firstItem="tau-ny-IKY" firstAttribute="leading" secondItem="dDy-3A-Hdq" secondAttribute="leading" id="d6z-C2-AN1"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="czQ-Oc-rKk">
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="WD6-Mw-ONd">
+                            <connections>
+                                <action selector="deleteAction:" destination="ieq-Rp-eG7" id="fdb-uF-kHU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="tau-ny-IKY" id="rjS-eU-WZG"/>
+                        <segue destination="Dop-bb-4Dw" kind="unwind" identifier="unwindToTaggingAppOverviewCollectionView" unwindAction="unwindToTaggingAppOverviewCollectionViewWithSegue:" id="1EO-F1-De7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LKS-zE-u5a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Dop-bb-4Dw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3734.7826086956525" y="-2410.5978260869565"/>
         </scene>
