@@ -15,4 +15,5 @@ struct UD {
     static let imageExpiresIn = "imageExpiresIn"
     static let isAutoImageExpires = "isAutoImageExpires"
     static let isWIFIOnly = "isWIFIOnly"
+    static let themeIndex = "themeIndex"
 }

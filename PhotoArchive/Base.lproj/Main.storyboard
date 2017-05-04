@@ -1424,6 +1424,24 @@ If there are no tags selected, then the images taken will only be placed in the 
                                     <action selector="imageExpiresInEditingDidEndAction:" destination="iTV-i6-hhX" eventType="editingDidEnd" id="Jgi-FP-zy8"/>
                                 </connections>
                             </textField>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nA5-RJ-7qt">
+                                <rect key="frame" x="273" y="192" width="121" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Default"/>
+                                    <segment title="Dark"/>
+                                </segments>
+                                <connections>
+                                    <action selector="themeSelectionControlAction:" destination="iTV-i6-hhX" eventType="valueChanged" id="RCs-5A-Zhg"/>
+                                </connections>
+                            </segmentedControl>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Theme Selection:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="41U-BS-YAs">
+                                <rect key="frame" x="20" y="191" width="118" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1458,12 +1476,13 @@ If there are no tags selected, then the images taken will only be placed in the 
                     <connections>
                         <outlet property="autoImageDeleteOutlet" destination="4Tl-JO-rnd" id="oOA-n0-Ruj"/>
                         <outlet property="imageExpiresIn" destination="1GR-6P-N7O" id="aCo-Ol-Hz2"/>
+                        <outlet property="themeSelectionControlOutlet" destination="nA5-RJ-7qt" id="Jeb-fY-8CW"/>
                         <outlet property="wifiOnlyOutlet" destination="7SS-ks-78a" id="Jo3-mS-CJ9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ugo-Y3-Wv5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="996" y="3238"/>
+            <point key="canvasLocation" x="995.65217391304361" y="3237.2282608695655"/>
         </scene>
         <!--Login-->
         <scene sceneID="tDE-bW-7YR">

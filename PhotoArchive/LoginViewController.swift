@@ -283,6 +283,9 @@ class LoginViewController: UIViewController {
         
         // Sets the time for when images will be deleted to the default 90 days
         defaults.set(90, forKey: UD.imageExpiresIn)
+        
+        // Sets the starting theme of the app to default
+        defaults.set(0, forKey: UD.themeIndex)
     }
     
     /**
@@ -365,6 +368,18 @@ class LoginViewController: UIViewController {
         } catch {
             print("Error deleting files in 'Thumbnail' directory")
         }
+        
+        // Sets the wifi only upload setting to true by default
+        defaults.set(true, forKey: UD.isWIFIOnly)
+        
+        // Sets the setting for images to expire
+        defaults.set(true, forKey: UD.isAutoImageExpires)
+        
+        // Sets the time for when images will be deleted to the default 90 days
+        defaults.set(90, forKey: UD.imageExpiresIn)
+        
+        // Sets the starting theme of the app to default
+        defaults.set(0, forKey: UD.themeIndex)
     }
     
     /**

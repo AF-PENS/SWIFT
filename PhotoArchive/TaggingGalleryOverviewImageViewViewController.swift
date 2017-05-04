@@ -25,6 +25,7 @@ class TaggingGalleryOverviewImageViewViewController: UIViewController {
         let options = PHImageRequestOptions()
         options.deliveryMode = .highQualityFormat
         options.isNetworkAccessAllowed = true
+        options.isSynchronous = true
         options.progressHandler = { progress, _, _, _ in
             // Handler might not be called on the main queue, so re-dispatch for UI work.
             DispatchQueue.main.sync {

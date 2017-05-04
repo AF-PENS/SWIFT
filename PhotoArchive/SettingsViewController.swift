@@ -16,6 +16,15 @@ class SettingsViewController: UIViewController {
     
     var defaults = UserDefaults()
     
+    @IBOutlet weak var themeSelectionControlOutlet: UISegmentedControl!
+    
+    @IBAction func themeSelectionControlAction(_ sender: Any) {
+        defaults.set(themeSelectionControlOutlet.selectedSegmentIndex, forKey: UD.themeIndex)
+        
+        UILabel.appearance().backgroundColor = UIColor.black
+        
+        // Refresh the entire view
+    }
     
     @IBAction func autoImageDeleteAction(_ sender: Any) {
         
@@ -72,6 +81,9 @@ class SettingsViewController: UIViewController {
         
         // Establish defaults object to load persistent data
         defaults = UserDefaults.standard
+        
+        // Sets the segmented control to the current active theme
+        themeSelectionControlOutlet.selectedSegmentIndex = defaults.object(forKey: UD.themeIndex) as! Int
     }
 
     override func didReceiveMemoryWarning() {
