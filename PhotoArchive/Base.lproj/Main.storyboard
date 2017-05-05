@@ -24,13 +24,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="DASHBOARD" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lNa-bq-abV">
-                                <rect key="frame" x="0.0" y="20" width="414" height="36"/>
-                                <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QTa-qD-9UA">
                                 <rect key="frame" x="386" y="64" width="8" height="17"/>
                                 <nil key="textColor"/>
@@ -94,29 +87,34 @@
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="Nui-yI-8k4"/>
                                 </connections>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DASHBOARD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50j-er-mQx" customClass="HeaderLabel" customModule="PhotoArchive" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="414" height="36"/>
+                                <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="OCy-F3-mx5" secondAttribute="leading" id="1Ys-Jg-Sx0"/>
-                            <constraint firstItem="lNa-bq-abV" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="29u-Kj-gCr"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="lNa-bq-abV" secondAttribute="trailing" constant="-20" id="53c-Zq-07Q"/>
-                            <constraint firstItem="K8D-hL-C1l" firstAttribute="top" secondItem="lNa-bq-abV" secondAttribute="bottom" constant="8" id="64a-gA-Ox4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FQN-3D-g9R" secondAttribute="trailing" id="85H-gd-lSw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="R1W-3Y-G1f" secondAttribute="trailing" constant="-20" id="BZ4-i3-bXH"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="R1W-3Y-G1f" secondAttribute="bottom" id="CtB-0P-bWr"/>
-                            <constraint firstItem="lNa-bq-abV" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-20" id="Cxb-sr-31x"/>
+                            <constraint firstAttribute="trailing" secondItem="50j-er-mQx" secondAttribute="trailing" id="JNT-9s-j5H"/>
                             <constraint firstAttribute="trailingMargin" secondItem="OCy-F3-mx5" secondAttribute="trailing" id="Kok-Yw-fhg"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Ael-E4-1UV" secondAttribute="leading" id="Nng-ad-5EE"/>
                             <constraint firstItem="R1W-3Y-G1f" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-20" id="Pgv-Lj-Y1W"/>
-                            <constraint firstItem="QTa-qD-9UA" firstAttribute="top" secondItem="lNa-bq-abV" secondAttribute="bottom" constant="8" id="YNd-f4-M2T"/>
+                            <constraint firstItem="QTa-qD-9UA" firstAttribute="top" secondItem="50j-er-mQx" secondAttribute="bottom" constant="8" id="U4u-bm-97d"/>
+                            <constraint firstItem="K8D-hL-C1l" firstAttribute="top" secondItem="50j-er-mQx" secondAttribute="bottom" constant="8" id="UuA-dV-953"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QTa-qD-9UA" secondAttribute="trailing" id="dWQ-zL-WHq"/>
                             <constraint firstItem="FQN-3D-g9R" firstAttribute="top" secondItem="QTa-qD-9UA" secondAttribute="bottom" constant="8" id="edA-2T-gLL"/>
+                            <constraint firstItem="50j-er-mQx" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="eqW-dR-kYK"/>
                             <constraint firstItem="R1W-3Y-G1f" firstAttribute="top" secondItem="OCy-F3-mx5" secondAttribute="bottom" constant="8" id="gAF-Ia-8Ps"/>
                             <constraint firstAttribute="leadingMargin" secondItem="K8D-hL-C1l" secondAttribute="leading" id="gLX-K3-KDw"/>
                             <constraint firstItem="OCy-F3-mx5" firstAttribute="top" secondItem="Ael-E4-1UV" secondAttribute="bottom" constant="8" id="ifL-2k-lUJ"/>
+                            <constraint firstItem="50j-er-mQx" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="jq5-YI-mh5"/>
                             <constraint firstItem="Ael-E4-1UV" firstAttribute="top" secondItem="K8D-hL-C1l" secondAttribute="bottom" constant="8" id="lpE-7v-XS5"/>
-                            <constraint firstItem="lNa-bq-abV" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="nrn-3p-edx"/>
-                            <constraint firstItem="lNa-bq-abV" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="v7C-IX-gHx"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Lxq-UV-yju"/>
@@ -192,13 +190,6 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FtN-pN-Dia">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="599"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TAGS" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZdK-xc-G93">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="36"/>
-                                                <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
                                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Image Selection" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9sJ-qP-lOo">
                                                 <rect key="frame" x="8" y="44" width="398" height="24"/>
                                                 <nil key="textColor"/>
@@ -247,7 +238,7 @@
                                                     <outlet property="delegate" destination="8rJ-Kc-sve" id="hse-o8-Mbm"/>
                                                 </connections>
                                             </collectionView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9s-LS-8VA">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9s-LS-8VA" customClass="Button" customModule="PhotoArchive" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="199" width="398" height="30"/>
                                                 <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="View Images Taken with In-App Camera ">
@@ -301,7 +292,7 @@
                                                     <outlet property="delegate" destination="8rJ-Kc-sve" id="fcc-fI-mhW"/>
                                                 </connections>
                                             </collectionView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JNH-i8-TFP" userLabel="View Images Imported Through Photos">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JNH-i8-TFP" userLabel="View Images Imported Through Photos" customClass="Button" customModule="PhotoArchive" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="360" width="398" height="30"/>
                                                 <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="View Images Imported Through Photos ">
@@ -319,7 +310,7 @@
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cC-CM-CKD">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cC-CM-CKD" customClass="Button" customModule="PhotoArchive" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="430" width="398" height="30"/>
                                                 <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Select Context and Add Tags">
@@ -357,7 +348,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYa-NV-n8r">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYa-NV-n8r" customClass="TagLabel" customModule="PhotoArchive" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
                                                                     <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -383,7 +374,7 @@
                                                     <outlet property="delegate" destination="8rJ-Kc-sve" id="yiX-2f-6LL"/>
                                                 </connections>
                                             </collectionView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IB2-zB-wep">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IB2-zB-wep" customClass="Button" customModule="PhotoArchive" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="546" width="398" height="30"/>
                                                 <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Upload Selected Images and Context Tags">
@@ -393,6 +384,13 @@
                                                     <action selector="uploadButton:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="2by-1T-LOa"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAGS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Krj-ez-RWq" customClass="HeaderLabel" customModule="PhotoArchive" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="36"/>
+                                                <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="XRh-3d-CPq" firstAttribute="top" secondItem="9sJ-qP-lOo" secondAttribute="bottom" constant="8" id="10p-7w-JeE"/>
@@ -405,18 +403,20 @@
                                             <constraint firstItem="O81-WP-Msl" firstAttribute="top" secondItem="a9s-LS-8VA" secondAttribute="bottom" constant="8" id="6hq-KR-UT9"/>
                                             <constraint firstAttribute="trailing" secondItem="IB2-zB-wep" secondAttribute="trailing" constant="8" id="80d-KM-6uz"/>
                                             <constraint firstItem="0Kp-Jv-Jm9" firstAttribute="leading" secondItem="FtN-pN-Dia" secondAttribute="leading" constant="8" id="92Q-n6-rXW"/>
-                                            <constraint firstAttribute="trailing" secondItem="ZdK-xc-G93" secondAttribute="trailing" id="9pe-c9-Bss"/>
                                             <constraint firstItem="0cC-CM-CKD" firstAttribute="leading" secondItem="FtN-pN-Dia" secondAttribute="leading" constant="8" id="A5w-IV-RUM"/>
                                             <constraint firstItem="8OW-X2-eip" firstAttribute="leading" secondItem="FtN-pN-Dia" secondAttribute="leading" constant="8" id="ASC-mt-H7W"/>
                                             <constraint firstAttribute="trailing" secondItem="JNH-i8-TFP" secondAttribute="trailing" constant="8" id="Bgf-4P-qRM"/>
+                                            <constraint firstAttribute="trailing" secondItem="Krj-ez-RWq" secondAttribute="trailing" id="Cfc-PU-naE"/>
                                             <constraint firstAttribute="trailing" secondItem="O81-WP-Msl" secondAttribute="trailing" constant="8" id="CzB-4m-1Yp"/>
                                             <constraint firstItem="IB2-zB-wep" firstAttribute="leading" secondItem="FtN-pN-Dia" secondAttribute="leading" constant="8" id="DR3-HQ-5wg"/>
                                             <constraint firstAttribute="trailing" secondItem="XRh-3d-CPq" secondAttribute="trailing" constant="8" id="GTb-wH-Dy5"/>
+                                            <constraint firstItem="Krj-ez-RWq" firstAttribute="leading" secondItem="FtN-pN-Dia" secondAttribute="leading" id="Go9-Sm-RqQ"/>
                                             <constraint firstItem="x4n-OO-kkm" firstAttribute="top" secondItem="0Kp-Jv-Jm9" secondAttribute="bottom" constant="8" id="J72-YM-ioV"/>
-                                            <constraint firstItem="ZdK-xc-G93" firstAttribute="top" secondItem="FtN-pN-Dia" secondAttribute="top" id="JG1-CF-KFc"/>
                                             <constraint firstItem="0Kp-Jv-Jm9" firstAttribute="top" secondItem="0cC-CM-CKD" secondAttribute="bottom" constant="8" id="Jt6-gn-Tx9"/>
+                                            <constraint firstItem="9sJ-qP-lOo" firstAttribute="top" secondItem="Krj-ez-RWq" secondAttribute="bottom" constant="8" id="LIV-C1-fOr"/>
                                             <constraint firstAttribute="trailing" secondItem="8OW-X2-eip" secondAttribute="trailing" constant="8" id="O8V-dY-ek3"/>
                                             <constraint firstAttribute="trailing" secondItem="a9s-LS-8VA" secondAttribute="trailing" constant="8" id="P6Y-f8-WYC"/>
+                                            <constraint firstItem="Krj-ez-RWq" firstAttribute="top" secondItem="FtN-pN-Dia" secondAttribute="top" id="V8M-Ih-zmg"/>
                                             <constraint firstItem="a9s-LS-8VA" firstAttribute="top" secondItem="J5S-tO-7JC" secondAttribute="bottom" constant="8" id="YWb-3i-QIQ"/>
                                             <constraint firstAttribute="trailing" secondItem="x4n-OO-kkm" secondAttribute="trailing" constant="8" id="Ziu-SC-hj3"/>
                                             <constraint firstAttribute="trailing" secondItem="9sJ-qP-lOo" secondAttribute="trailing" constant="8" id="cz1-tN-f6P"/>
@@ -429,12 +429,10 @@
                                             <constraint firstItem="J5S-tO-7JC" firstAttribute="leading" secondItem="FtN-pN-Dia" secondAttribute="leading" constant="8" id="mYK-r3-UdH"/>
                                             <constraint firstAttribute="trailing" secondItem="0Kp-Jv-Jm9" secondAttribute="trailing" constant="8" id="oJR-KJ-n9E"/>
                                             <constraint firstItem="8OW-X2-eip" firstAttribute="top" secondItem="JNH-i8-TFP" secondAttribute="bottom" constant="8" id="oew-Qx-mZf"/>
-                                            <constraint firstItem="ZdK-xc-G93" firstAttribute="leading" secondItem="FtN-pN-Dia" secondAttribute="leading" id="on5-xh-s5X"/>
                                             <constraint firstAttribute="trailing" secondItem="J5S-tO-7JC" secondAttribute="trailing" constant="8" id="pS2-38-y68"/>
                                             <constraint firstItem="JNH-i8-TFP" firstAttribute="top" secondItem="oUC-ph-vEX" secondAttribute="bottom" constant="8" id="qAr-1F-VCa"/>
                                             <constraint firstItem="9sJ-qP-lOo" firstAttribute="leading" secondItem="FtN-pN-Dia" secondAttribute="leading" constant="8" id="tqw-CG-k6o"/>
                                             <constraint firstAttribute="trailing" secondItem="0cC-CM-CKD" secondAttribute="trailing" constant="8" id="vRj-sR-IVF"/>
-                                            <constraint firstItem="9sJ-qP-lOo" firstAttribute="top" secondItem="ZdK-xc-G93" secondAttribute="bottom" constant="8" id="wo3-pG-XeV"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -525,13 +523,13 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOz-23-SCu">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOz-23-SCu" customClass="ContextLabel" customModule="PhotoArchive" customModuleProvider="target">
                                             <rect key="frame" x="20" y="8" width="336" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9pl-MK-avG">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9pl-MK-avG" customClass="ContextLabel" customModule="PhotoArchive" customModuleProvider="target">
                                             <rect key="frame" x="21" y="24" width="335" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -582,13 +580,13 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="220.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7K-Lf-D0P">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7K-Lf-D0P" customClass="AttributeLabel" customModule="PhotoArchive" customModuleProvider="target">
                                             <rect key="frame" x="8" y="0.0" width="398" height="21"/>
                                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Attribute Description" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HxC-Ur-x4w">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Attribute Description" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HxC-Ur-x4w" customClass="AttributeTextView" customModule="PhotoArchive" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="29" width="414" height="64"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <accessibility key="accessibilityConfiguration">
@@ -600,7 +598,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hMr-Gf-RBU">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hMr-Gf-RBU" customClass="AttributeAnswerTextView" customModule="PhotoArchive" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="101" width="414" height="120"/>
                                             <color key="backgroundColor" red="0.94023235100000002" green="0.94023235100000002" blue="0.94023235100000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -673,7 +671,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="228.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Attribute Description" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YlC-25-phe">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Attribute Description" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YlC-25-phe" customClass="AttributeTextView" customModule="PhotoArchive" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="37" width="414" height="64"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <accessibility key="accessibilityConfiguration">
@@ -685,13 +683,13 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0Q-4o-5LO">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0Q-4o-5LO" customClass="AttributeLabel" customModule="PhotoArchive" customModuleProvider="target">
                                             <rect key="frame" x="8" y="8" width="398" height="21"/>
                                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sZK-JY-HZR">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sZK-JY-HZR" customClass="AttributeAnswerTextView" customModule="PhotoArchive" customModuleProvider="target">
                                             <rect key="frame" x="-1" y="108" width="414" height="122"/>
                                             <color key="backgroundColor" red="0.94023235103626945" green="0.94023235103626945" blue="0.94023235103626945" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -940,20 +938,13 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QwD-4N-cV6">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="411"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="CAMERA" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gnV-Nq-ZJh">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="36"/>
-                                                <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
                                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Tag Selection" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ynK-i5-tqG">
                                                 <rect key="frame" x="8" y="44" width="398" height="24"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SgM-we-nfy">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SgM-we-nfy" customClass="Button" customModule="PhotoArchive" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="159" width="398" height="30"/>
                                                 <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Select Context and Add Tags">
@@ -991,7 +982,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzu-6E-GHf">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzu-6E-GHf" customClass="TagLabel" customModule="PhotoArchive" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
                                                                     <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1026,7 +1017,7 @@ If there are no tags selected, then the images taken will only be placed in the 
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HgY-Xy-Sgu">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HgY-Xy-Sgu" customClass="Button" customModule="PhotoArchive" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="361" width="398" height="30"/>
                                                 <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Open Camera">
@@ -1038,25 +1029,31 @@ If there are no tags selected, then the images taken will only be placed in the 
                                                     <action selector="openCameraButton:" destination="uRA-kz-7Fl" eventType="touchUpInside" id="fps-mv-TgY"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CAMERA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0G-Ty-852" customClass="HeaderLabel" customModule="PhotoArchive" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="36"/>
+                                                <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="i0G-Ty-852" firstAttribute="top" secondItem="QwD-4N-cV6" secondAttribute="top" id="2X5-XM-ciU"/>
                                             <constraint firstItem="weN-U2-1TG" firstAttribute="leading" secondItem="QwD-4N-cV6" secondAttribute="leading" constant="8" id="3cS-Tx-SKR"/>
                                             <constraint firstItem="SgM-we-nfy" firstAttribute="top" secondItem="weN-U2-1TG" secondAttribute="bottom" constant="8" id="3mf-Fh-8OM"/>
                                             <constraint firstItem="HgY-Xy-Sgu" firstAttribute="top" secondItem="1eO-ZH-0aS" secondAttribute="bottom" constant="8" id="8bf-Zv-paN"/>
                                             <constraint firstItem="weN-U2-1TG" firstAttribute="top" secondItem="hMG-0g-Lmh" secondAttribute="bottom" constant="8" id="Czt-yo-afk"/>
-                                            <constraint firstItem="gnV-Nq-ZJh" firstAttribute="top" secondItem="QwD-4N-cV6" secondAttribute="top" id="Dqt-Fg-afX"/>
-                                            <constraint firstItem="ynK-i5-tqG" firstAttribute="top" secondItem="gnV-Nq-ZJh" secondAttribute="bottom" constant="8" id="EWo-mQ-cUr"/>
-                                            <constraint firstAttribute="trailing" secondItem="gnV-Nq-ZJh" secondAttribute="trailing" id="Ev7-8k-dr6"/>
+                                            <constraint firstItem="ynK-i5-tqG" firstAttribute="top" secondItem="i0G-Ty-852" secondAttribute="bottom" constant="8" id="Jef-aC-fhj"/>
                                             <constraint firstAttribute="trailing" secondItem="SgM-we-nfy" secondAttribute="trailing" constant="8" id="NMe-mJ-EaO"/>
                                             <constraint firstItem="HgY-Xy-Sgu" firstAttribute="leading" secondItem="QwD-4N-cV6" secondAttribute="leading" constant="8" id="Q5f-Og-Yaw"/>
                                             <constraint firstAttribute="trailing" secondItem="HgY-Xy-Sgu" secondAttribute="trailing" constant="8" id="V8B-mo-uni"/>
-                                            <constraint firstItem="ynK-i5-tqG" firstAttribute="top" secondItem="gnV-Nq-ZJh" secondAttribute="bottom" constant="8" id="Zf9-q4-llZ"/>
                                             <constraint firstAttribute="bottom" secondItem="HgY-Xy-Sgu" secondAttribute="bottom" constant="20" id="a2o-iv-M6t"/>
                                             <constraint firstItem="1eO-ZH-0aS" firstAttribute="top" secondItem="SgM-we-nfy" secondAttribute="bottom" constant="8" id="a9g-Rl-lMC"/>
                                             <constraint firstItem="HgY-Xy-Sgu" firstAttribute="top" secondItem="1eO-ZH-0aS" secondAttribute="bottom" constant="8" id="cQG-vx-GEi"/>
                                             <constraint firstItem="hMG-0g-Lmh" firstAttribute="top" secondItem="ynK-i5-tqG" secondAttribute="bottom" constant="8" id="dph-nZ-XS0"/>
+                                            <constraint firstAttribute="trailing" secondItem="i0G-Ty-852" secondAttribute="trailing" id="etT-Hf-s6r"/>
                                             <constraint firstItem="SgM-we-nfy" firstAttribute="leading" secondItem="QwD-4N-cV6" secondAttribute="leading" constant="8" id="fl1-CJ-Jz8"/>
-                                            <constraint firstItem="gnV-Nq-ZJh" firstAttribute="leading" secondItem="QwD-4N-cV6" secondAttribute="leading" id="iU7-px-dN0"/>
+                                            <constraint firstItem="i0G-Ty-852" firstAttribute="leading" secondItem="QwD-4N-cV6" secondAttribute="leading" id="l1c-MM-h9e"/>
                                             <constraint firstItem="ynK-i5-tqG" firstAttribute="leading" secondItem="QwD-4N-cV6" secondAttribute="leading" constant="8" id="npb-Fp-DTI"/>
                                             <constraint firstAttribute="trailing" secondItem="ynK-i5-tqG" secondAttribute="trailing" constant="8" id="oa5-wn-sWO"/>
                                             <constraint firstAttribute="trailing" secondItem="1eO-ZH-0aS" secondAttribute="trailing" constant="8" id="oco-1K-SYg"/>
@@ -1098,7 +1095,7 @@ If there are no tags selected, then the images taken will only be placed in the 
         <!--History-->
         <scene sceneID="L4Z-k4-IZd">
             <objects>
-                <viewController title="History" id="0dQ-SV-tKB" customClass="HistoryViewController" customModule="PhotoArchive" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="History" automaticallyAdjustsScrollViewInsets="NO" id="0dQ-SV-tKB" customClass="HistoryViewController" customModule="PhotoArchive" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jYT-HB-Qub"/>
                         <viewControllerLayoutGuide type="bottom" id="6pE-V3-AFI"/>
@@ -1107,18 +1104,8 @@ If there are no tags selected, then the images taken will only be placed in the 
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="HISTORY" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Wp-9w-aGJ">
-                                <rect key="frame" x="0.0" y="20" width="414" height="49"/>
-                                <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="Bwr-MQ-HFK"/>
-                                </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="g3C-QO-AdW">
-                                <rect key="frame" x="0.0" y="69" width="414" height="618"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="631"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="9qs-ba-Ec8">
                                     <size key="itemSize" width="80" height="80"/>
@@ -1155,16 +1142,24 @@ If there are no tags selected, then the images taken will only be placed in the 
                                     <outlet property="delegate" destination="0dQ-SV-tKB" id="611-gV-0ge"/>
                                 </connections>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HISTORY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZB-BJ-gmk" customClass="HeaderLabel" customModule="PhotoArchive" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="414" height="36"/>
+                                <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6Wp-9w-aGJ" firstAttribute="leading" secondItem="g3C-QO-AdW" secondAttribute="leading" id="0UQ-mY-5VS"/>
-                            <constraint firstItem="g3C-QO-AdW" firstAttribute="bottom" secondItem="6pE-V3-AFI" secondAttribute="top" id="ACI-DQ-Yfw"/>
-                            <constraint firstItem="6Wp-9w-aGJ" firstAttribute="top" secondItem="jYT-HB-Qub" secondAttribute="bottom" id="IDU-a8-CfB"/>
-                            <constraint firstItem="6Wp-9w-aGJ" firstAttribute="leading" secondItem="x7q-Oh-HQ5" secondAttribute="leading" id="Wmx-Ej-Q89"/>
-                            <constraint firstItem="6Wp-9w-aGJ" firstAttribute="trailing" secondItem="g3C-QO-AdW" secondAttribute="trailing" id="Zud-6X-Zp3"/>
-                            <constraint firstItem="g3C-QO-AdW" firstAttribute="top" secondItem="6Wp-9w-aGJ" secondAttribute="bottom" id="bNN-kX-w4H"/>
-                            <constraint firstAttribute="trailing" secondItem="6Wp-9w-aGJ" secondAttribute="trailing" id="wal-1T-UKP"/>
+                            <constraint firstItem="g3C-QO-AdW" firstAttribute="top" secondItem="dZB-BJ-gmk" secondAttribute="bottom" id="87r-au-lpt"/>
+                            <constraint firstItem="g3C-QO-AdW" firstAttribute="leading" secondItem="x7q-Oh-HQ5" secondAttribute="leading" id="CwY-hb-uv4"/>
+                            <constraint firstItem="6pE-V3-AFI" firstAttribute="top" secondItem="g3C-QO-AdW" secondAttribute="bottom" id="IhS-qk-xKG"/>
+                            <constraint firstItem="dZB-BJ-gmk" firstAttribute="leading" secondItem="x7q-Oh-HQ5" secondAttribute="leading" id="MzR-G5-kHQ"/>
+                            <constraint firstAttribute="trailing" secondItem="dZB-BJ-gmk" secondAttribute="trailing" id="N7f-bm-hUX"/>
+                            <constraint firstAttribute="trailing" secondItem="g3C-QO-AdW" secondAttribute="trailing" id="h4L-y0-7gS"/>
+                            <constraint firstItem="dZB-BJ-gmk" firstAttribute="top" secondItem="jYT-HB-Qub" secondAttribute="bottom" id="sQB-zI-HuD"/>
+                            <constraint firstItem="g3C-QO-AdW" firstAttribute="top" secondItem="dZB-BJ-gmk" secondAttribute="bottom" id="ys8-YD-Pir"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dLd-wo-DgV"/>
@@ -1234,13 +1229,13 @@ If there are no tags selected, then the images taken will only be placed in the 
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gho-du-A5X">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gho-du-A5X" customClass="ContextLabel" customModule="PhotoArchive" customModuleProvider="target">
                                             <rect key="frame" x="8" y="27" width="371" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKD-u8-98u">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKD-u8-98u" customClass="ContextLabel" customModule="PhotoArchive" customModuleProvider="target">
                                             <rect key="frame" x="8" y="11" width="371" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -1290,7 +1285,7 @@ If there are no tags selected, then the images taken will only be placed in the 
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="228.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Attribute Description" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4VJ-4S-MQC">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Attribute Description" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4VJ-4S-MQC" customClass="AttributeTextView" customModule="PhotoArchive" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="37" width="414" height="64"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <accessibility key="accessibilityConfiguration">
@@ -1302,13 +1297,13 @@ If there are no tags selected, then the images taken will only be placed in the 
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8i1-99-CSR">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8i1-99-CSR" customClass="AttributeLabel" customModule="PhotoArchive" customModuleProvider="target">
                                             <rect key="frame" x="8" y="8" width="398" height="21"/>
                                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6KI-b1-9Fk">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6KI-b1-9Fk" customClass="AttributeAnswerTextView" customModule="PhotoArchive" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="109" width="414" height="120"/>
                                             <color key="backgroundColor" red="0.94023235100000002" green="0.94023235100000002" blue="0.94023235100000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1361,7 +1356,67 @@ If there are no tags selected, then the images taken will only be placed in the 
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y7K-0C-hl7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SETTINGS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgv-1o-JLC" customClass="HeaderLabel" customModule="PhotoArchive" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="414" height="36"/>
+                                <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Use Wifi Only for Uploads" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Xc-DM-LrY">
+                                <rect key="frame" x="20" y="65" width="317" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7SS-ks-78a">
+                                <rect key="frame" x="344" y="64" width="51" height="31"/>
+                                <connections>
+                                    <action selector="wifiOnlyAction:" destination="iTV-i6-hhX" eventType="valueChanged" id="jde-Wu-bxL"/>
+                                </connections>
+                            </switch>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Delete Photos Automatically" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FnK-Ig-ovD">
+                                <rect key="frame" x="20" y="103" width="317" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Tl-JO-rnd">
+                                <rect key="frame" x="344" y="103" width="51" height="31"/>
+                                <connections>
+                                    <action selector="autoImageDeleteAction:" destination="iTV-i6-hhX" eventType="valueChanged" id="Bl0-xS-T9W"/>
+                                </connections>
+                            </switch>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Delete After __ Days" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1JB-xZ-G9J">
+                                <rect key="frame" x="20" y="141" width="317" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="90" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1GR-6P-N7O">
+                                <rect key="frame" x="344" y="147" width="49" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="SgV-aT-z6D"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="imageExpiresInEditingDidEndAction:" destination="iTV-i6-hhX" eventType="editingDidEnd" id="Jgi-FP-zy8"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGc-Vz-z0I" customClass="Button" customModule="PhotoArchive" customModuleProvider="target">
+                                <rect key="frame" x="20" y="179" width="374" height="30"/>
+                                <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Change Theme">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="az7-2A-GzS" kind="presentation" id="WQd-k4-brz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y7K-0C-hl7" customClass="Button" customModule="PhotoArchive" customModuleProvider="target">
                                 <rect key="frame" x="20" y="649" width="374" height="30"/>
                                 <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Logout">
@@ -1370,119 +1425,107 @@ If there are no tags selected, then the images taken will only be placed in the 
                                 </state>
                                 <connections>
                                     <action selector="doLogin:" destination="OaM-81-e3n" eventType="touchUpInside" id="N9t-bz-fM4"/>
+                                    <action selector="logoutAction:" destination="iTV-i6-hhX" eventType="touchUpInside" id="oJ8-XM-bHb"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="SETTINGS" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MUH-rn-3yJ">
-                                <rect key="frame" x="0.0" y="20" width="414" height="49"/>
-                                <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="HTl-bV-Ee1"/>
-                                </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Use Wifi Only for Uploads" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Xc-DM-LrY">
-                                <rect key="frame" x="20" y="78" width="317" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7SS-ks-78a">
-                                <rect key="frame" x="344" y="77" width="51" height="31"/>
-                                <connections>
-                                    <action selector="wifiOnlyAction:" destination="iTV-i6-hhX" eventType="valueChanged" id="jde-Wu-bxL"/>
-                                </connections>
-                            </switch>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Delete Photos Automatically" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FnK-Ig-ovD">
-                                <rect key="frame" x="20" y="116" width="317" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Tl-JO-rnd">
-                                <rect key="frame" x="344" y="116" width="51" height="31"/>
-                                <connections>
-                                    <action selector="autoImageDeleteAction:" destination="iTV-i6-hhX" eventType="valueChanged" id="Bl0-xS-T9W"/>
-                                </connections>
-                            </switch>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Delete After __ Days" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1JB-xZ-G9J">
-                                <rect key="frame" x="20" y="154" width="317" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="U3K-Ml-T6f"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="90" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1GR-6P-N7O">
-                                <rect key="frame" x="344" y="160" width="49" height="24"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="imageExpiresInEditingDidEndAction:" destination="iTV-i6-hhX" eventType="editingDidEnd" id="Jgi-FP-zy8"/>
-                                </connections>
-                            </textField>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nA5-RJ-7qt">
-                                <rect key="frame" x="273" y="192" width="121" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Default"/>
-                                    <segment title="Dark"/>
-                                </segments>
-                                <connections>
-                                    <action selector="themeSelectionControlAction:" destination="iTV-i6-hhX" eventType="valueChanged" id="RCs-5A-Zhg"/>
-                                </connections>
-                            </segmentedControl>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Theme Selection:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="41U-BS-YAs">
-                                <rect key="frame" x="20" y="191" width="118" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="MUH-rn-3yJ" secondAttribute="trailing" id="0Zi-Be-ErN"/>
-                            <constraint firstItem="MUH-rn-3yJ" firstAttribute="top" secondItem="TQM-uY-oAT" secondAttribute="bottom" id="0lh-S0-lTx"/>
-                            <constraint firstItem="FnK-Ig-ovD" firstAttribute="trailing" secondItem="1JB-xZ-G9J" secondAttribute="trailing" id="1Zr-pR-T5P"/>
-                            <constraint firstItem="tcU-eH-Gv9" firstAttribute="top" secondItem="y7K-0C-hl7" secondAttribute="bottom" constant="8" symbolic="YES" id="1ce-UV-txQ"/>
-                            <constraint firstItem="9Xc-DM-LrY" firstAttribute="leading" secondItem="FnK-Ig-ovD" secondAttribute="leading" id="2e0-kI-hvw"/>
-                            <constraint firstItem="4Tl-JO-rnd" firstAttribute="leading" secondItem="1GR-6P-N7O" secondAttribute="leading" id="4Po-9U-nFx"/>
-                            <constraint firstItem="4Tl-JO-rnd" firstAttribute="top" secondItem="7SS-ks-78a" secondAttribute="bottom" constant="8" symbolic="YES" id="8jV-WY-IeU"/>
-                            <constraint firstItem="FnK-Ig-ovD" firstAttribute="leading" secondItem="1JB-xZ-G9J" secondAttribute="leading" id="CIp-Mx-uC5"/>
-                            <constraint firstItem="7SS-ks-78a" firstAttribute="leading" secondItem="9Xc-DM-LrY" secondAttribute="trailing" constant="7" id="Chq-oL-VNA"/>
-                            <constraint firstItem="MUH-rn-3yJ" firstAttribute="leading" secondItem="H66-PN-TWs" secondAttribute="leading" id="JyI-40-x9U"/>
-                            <constraint firstItem="4Tl-JO-rnd" firstAttribute="trailing" secondItem="1GR-6P-N7O" secondAttribute="trailing" id="LIX-WB-PTq"/>
-                            <constraint firstItem="1JB-xZ-G9J" firstAttribute="top" secondItem="FnK-Ig-ovD" secondAttribute="bottom" constant="8" symbolic="YES" id="Let-6w-npa"/>
-                            <constraint firstItem="9Xc-DM-LrY" firstAttribute="centerY" secondItem="7SS-ks-78a" secondAttribute="centerY" id="NIT-EA-mPX"/>
-                            <constraint firstItem="9Xc-DM-LrY" firstAttribute="leading" secondItem="H66-PN-TWs" secondAttribute="leadingMargin" id="THJ-2z-B8l"/>
-                            <constraint firstItem="7SS-ks-78a" firstAttribute="top" secondItem="MUH-rn-3yJ" secondAttribute="bottom" constant="8" symbolic="YES" id="Uik-86-iJ1"/>
-                            <constraint firstItem="7SS-ks-78a" firstAttribute="leading" secondItem="4Tl-JO-rnd" secondAttribute="leading" id="VDg-rf-tsi"/>
-                            <constraint firstItem="1JB-xZ-G9J" firstAttribute="leading" secondItem="y7K-0C-hl7" secondAttribute="leading" id="ahw-5b-3jl"/>
-                            <constraint firstItem="FnK-Ig-ovD" firstAttribute="top" secondItem="4Tl-JO-rnd" secondAttribute="top" id="d8i-u9-ysJ"/>
-                            <constraint firstItem="9Xc-DM-LrY" firstAttribute="trailing" secondItem="FnK-Ig-ovD" secondAttribute="trailing" id="exJ-Hb-uD2"/>
-                            <constraint firstItem="MUH-rn-3yJ" firstAttribute="centerX" secondItem="y7K-0C-hl7" secondAttribute="centerX" id="hHF-TO-rmk"/>
-                            <constraint firstItem="1JB-xZ-G9J" firstAttribute="bottom" secondItem="1GR-6P-N7O" secondAttribute="bottom" id="hru-y1-h6A"/>
-                            <constraint firstItem="FnK-Ig-ovD" firstAttribute="centerY" secondItem="4Tl-JO-rnd" secondAttribute="centerY" id="jch-Ih-9AJ"/>
-                            <constraint firstItem="FnK-Ig-ovD" firstAttribute="top" secondItem="9Xc-DM-LrY" secondAttribute="bottom" constant="8" symbolic="YES" id="lLN-rM-Pfa"/>
-                            <constraint firstItem="1JB-xZ-G9J" firstAttribute="baseline" secondItem="1GR-6P-N7O" secondAttribute="baseline" id="mk7-UC-25K"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="7SS-ks-78a" secondAttribute="trailing" constant="1" id="tBx-5L-HfG"/>
+                            <constraint firstAttribute="trailing" secondItem="zgv-1o-JLC" secondAttribute="trailing" id="0wk-SR-Rzw"/>
+                            <constraint firstItem="FnK-Ig-ovD" firstAttribute="top" secondItem="4Tl-JO-rnd" secondAttribute="top" id="1XU-eP-oGh"/>
+                            <constraint firstItem="FnK-Ig-ovD" firstAttribute="centerY" secondItem="4Tl-JO-rnd" secondAttribute="centerY" id="3zT-xj-yKO"/>
+                            <constraint firstItem="tcU-eH-Gv9" firstAttribute="top" secondItem="y7K-0C-hl7" secondAttribute="bottom" constant="8" symbolic="YES" id="CBx-kF-NRr"/>
+                            <constraint firstItem="zgv-1o-JLC" firstAttribute="top" secondItem="TQM-uY-oAT" secondAttribute="bottom" id="GPd-MQ-yRH"/>
+                            <constraint firstItem="7SS-ks-78a" firstAttribute="top" secondItem="zgv-1o-JLC" secondAttribute="bottom" constant="8" symbolic="YES" id="IKo-9A-qQY"/>
+                            <constraint firstItem="7SS-ks-78a" firstAttribute="leading" secondItem="4Tl-JO-rnd" secondAttribute="leading" id="Ij6-tj-7sX"/>
+                            <constraint firstItem="1JB-xZ-G9J" firstAttribute="top" secondItem="FnK-Ig-ovD" secondAttribute="bottom" constant="8" symbolic="YES" id="K1O-lr-S8q"/>
+                            <constraint firstItem="EGc-Vz-z0I" firstAttribute="top" secondItem="1GR-6P-N7O" secondAttribute="bottom" constant="8" symbolic="YES" id="Omf-f0-zTP"/>
+                            <constraint firstItem="4Tl-JO-rnd" firstAttribute="leading" secondItem="1GR-6P-N7O" secondAttribute="leading" id="Pan-yH-9ts"/>
+                            <constraint firstItem="4Tl-JO-rnd" firstAttribute="trailing" secondItem="1GR-6P-N7O" secondAttribute="trailing" id="T1m-tB-0bx"/>
+                            <constraint firstItem="zgv-1o-JLC" firstAttribute="centerX" secondItem="EGc-Vz-z0I" secondAttribute="centerX" id="Tuk-Vp-6nc"/>
+                            <constraint firstItem="1JB-xZ-G9J" firstAttribute="leading" secondItem="EGc-Vz-z0I" secondAttribute="leading" id="VUA-cz-7Bx"/>
+                            <constraint firstItem="FnK-Ig-ovD" firstAttribute="top" secondItem="9Xc-DM-LrY" secondAttribute="bottom" constant="8" symbolic="YES" id="a7e-Yk-GFx"/>
+                            <constraint firstItem="EGc-Vz-z0I" firstAttribute="top" secondItem="1JB-xZ-G9J" secondAttribute="bottom" constant="8" symbolic="YES" id="aUW-er-nnu"/>
+                            <constraint firstItem="9Xc-DM-LrY" firstAttribute="leading" secondItem="FnK-Ig-ovD" secondAttribute="leading" id="amP-Up-RDt"/>
+                            <constraint firstItem="EGc-Vz-z0I" firstAttribute="trailing" secondItem="y7K-0C-hl7" secondAttribute="trailing" id="bfp-2F-djS"/>
+                            <constraint firstItem="7SS-ks-78a" firstAttribute="leading" secondItem="9Xc-DM-LrY" secondAttribute="trailing" constant="7" id="d1a-My-mBt"/>
+                            <constraint firstItem="FnK-Ig-ovD" firstAttribute="trailing" secondItem="1JB-xZ-G9J" secondAttribute="trailing" id="dTI-R6-uWI"/>
+                            <constraint firstItem="9Xc-DM-LrY" firstAttribute="leading" secondItem="H66-PN-TWs" secondAttribute="leadingMargin" id="hM7-ur-lNZ"/>
+                            <constraint firstItem="zgv-1o-JLC" firstAttribute="leading" secondItem="H66-PN-TWs" secondAttribute="leading" id="iQm-2b-rJc"/>
+                            <constraint firstItem="9Xc-DM-LrY" firstAttribute="trailing" secondItem="FnK-Ig-ovD" secondAttribute="trailing" id="ikE-0s-sVS"/>
+                            <constraint firstItem="FnK-Ig-ovD" firstAttribute="leading" secondItem="1JB-xZ-G9J" secondAttribute="leading" id="n0T-qp-9BY"/>
+                            <constraint firstItem="1GR-6P-N7O" firstAttribute="top" secondItem="4Tl-JO-rnd" secondAttribute="bottom" constant="13" id="n82-6F-bgv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7SS-ks-78a" secondAttribute="trailing" constant="1" id="pch-V0-gzn"/>
+                            <constraint firstItem="9Xc-DM-LrY" firstAttribute="centerY" secondItem="7SS-ks-78a" secondAttribute="centerY" id="sWz-r1-I6j"/>
+                            <constraint firstItem="4Tl-JO-rnd" firstAttribute="top" secondItem="7SS-ks-78a" secondAttribute="bottom" constant="8" symbolic="YES" id="uW2-N6-xv8"/>
+                            <constraint firstItem="EGc-Vz-z0I" firstAttribute="leading" secondItem="y7K-0C-hl7" secondAttribute="leading" id="xGy-bF-to6"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="tabBarIconSettings" id="qNm-w9-6po"/>
+                    <navigationItem key="navigationItem" id="e5D-vW-PLh"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="autoImageDeleteOutlet" destination="4Tl-JO-rnd" id="oOA-n0-Ruj"/>
                         <outlet property="imageExpiresIn" destination="1GR-6P-N7O" id="aCo-Ol-Hz2"/>
-                        <outlet property="themeSelectionControlOutlet" destination="nA5-RJ-7qt" id="Jeb-fY-8CW"/>
                         <outlet property="wifiOnlyOutlet" destination="7SS-ks-78a" id="Jo3-mS-CJ9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ugo-Y3-Wv5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="995.65217391304361" y="3237.2282608695655"/>
+            <point key="canvasLocation" x="1902.8985507246377" y="3237.2282608695655"/>
+        </scene>
+        <!--Settings Theme View Controller-->
+        <scene sceneID="d0N-yr-rDP">
+            <objects>
+                <viewController id="az7-2A-GzS" customClass="SettingsThemeViewController" customModule="PhotoArchive" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JgN-PI-8fz"/>
+                        <viewControllerLayoutGuide type="bottom" id="e5b-F5-4oL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tzN-jF-ZG3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHF-Jz-i4w" customClass="Button" customModule="PhotoArchive" customModuleProvider="target">
+                                <rect key="frame" x="20" y="228" width="374" height="30"/>
+                                <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Apply">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="applyAction:" destination="az7-2A-GzS" eventType="touchUpInside" id="a6w-Lf-Taw"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="icc-5U-8Sc">
+                                <rect key="frame" x="20" y="114" width="374" height="29"/>
+                                <segments>
+                                    <segment title="Default"/>
+                                    <segment title="InvaderGreen"/>
+                                    <segment title="Envy"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentAction:" destination="az7-2A-GzS" eventType="valueChanged" id="OIm-yo-ezN"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="icc-5U-8Sc" firstAttribute="trailing" secondItem="CHF-Jz-i4w" secondAttribute="trailing" id="0yA-Hs-TcA"/>
+                            <constraint firstItem="icc-5U-8Sc" firstAttribute="top" secondItem="JgN-PI-8fz" secondAttribute="bottom" constant="94" id="7l4-bv-Njm"/>
+                            <constraint firstItem="icc-5U-8Sc" firstAttribute="trailing" secondItem="tzN-jF-ZG3" secondAttribute="trailingMargin" id="FkZ-0U-6lm"/>
+                            <constraint firstItem="CHF-Jz-i4w" firstAttribute="top" secondItem="icc-5U-8Sc" secondAttribute="bottom" constant="86" id="d8s-Nj-aYU"/>
+                            <constraint firstItem="icc-5U-8Sc" firstAttribute="leading" secondItem="tzN-jF-ZG3" secondAttribute="leadingMargin" id="qwa-z9-YEP"/>
+                            <constraint firstItem="icc-5U-8Sc" firstAttribute="leading" secondItem="CHF-Jz-i4w" secondAttribute="leading" id="vKV-o1-hBX"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="segmentOutlet" destination="icc-5U-8Sc" id="Zhw-g9-iaF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SIV-8B-OMb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2830.434782608696" y="3236.413043478261"/>
         </scene>
         <!--Login-->
         <scene sceneID="tDE-bW-7YR">
@@ -1511,7 +1554,7 @@ If there are no tags selected, then the images taken will only be placed in the 
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HK6-6w-6ut">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HK6-6w-6ut" customClass="Button" customModule="PhotoArchive" customModuleProvider="target">
                                 <rect key="frame" x="20" y="445.33333333333331" width="374" height="30"/>
                                 <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Login">
@@ -1582,7 +1625,7 @@ If there are no tags selected, then the images taken will only be placed in the 
                         <segue destination="Zhn-4S-dEB" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="9Y7-9k-XeD" kind="relationship" relationship="viewControllers" id="APf-rD-btW"/>
                         <segue destination="o2x-tq-cet" kind="relationship" relationship="viewControllers" id="RXq-xi-fUg"/>
-                        <segue destination="iTV-i6-hhX" kind="relationship" relationship="viewControllers" id="Bg8-xG-onz"/>
+                        <segue destination="kyt-kx-a0W" kind="relationship" relationship="viewControllers" id="Bg8-xG-onz"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -1662,13 +1705,13 @@ If there are no tags selected, then the images taken will only be placed in the 
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLZ-PY-mHH">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLZ-PY-mHH" customClass="ContextLabel" customModule="PhotoArchive" customModuleProvider="target">
                                             <rect key="frame" x="20" y="8" width="289" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRq-Qz-eeS">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRq-Qz-eeS" customClass="ContextLabel" customModule="PhotoArchive" customModuleProvider="target">
                                             <rect key="frame" x="21" y="24" width="288" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -1719,7 +1762,7 @@ If there are no tags selected, then the images taken will only be placed in the 
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="228.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Attribute Description" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Al8-Gc-W8C">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Attribute Description" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Al8-Gc-W8C" customClass="AttributeTextView" customModule="PhotoArchive" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="37" width="414" height="64"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <accessibility key="accessibilityConfiguration">
@@ -1731,13 +1774,13 @@ If there are no tags selected, then the images taken will only be placed in the 
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMz-cN-W35">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMz-cN-W35" customClass="AttributeLabel" customModule="PhotoArchive" customModuleProvider="target">
                                             <rect key="frame" x="8" y="8" width="398" height="21"/>
                                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PWC-IT-kkh">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PWC-IT-kkh" customClass="AttributeAnswerTextView" customModule="PhotoArchive" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="109" width="414" height="120"/>
                                             <color key="backgroundColor" red="0.94023235100000002" green="0.94023235100000002" blue="0.94023235100000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1825,13 +1868,13 @@ If there are no tags selected, then the images taken will only be placed in the 
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="220.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGJ-u2-j77">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGJ-u2-j77" customClass="AttributeLabel" customModule="PhotoArchive" customModuleProvider="target">
                                             <rect key="frame" x="8" y="0.0" width="398" height="21"/>
                                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Attribute Description" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6H2-LB-PQ0">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Attribute Description" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6H2-LB-PQ0" customClass="AttributeTextView" customModule="PhotoArchive" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="29" width="414" height="64"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <accessibility key="accessibilityConfiguration">
@@ -1843,7 +1886,7 @@ If there are no tags selected, then the images taken will only be placed in the 
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Eko-TM-5m8">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Eko-TM-5m8" customClass="AttributeAnswerTextView" customModule="PhotoArchive" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="101" width="414" height="120"/>
                                             <color key="backgroundColor" red="0.94023235100000002" green="0.94023235100000002" blue="0.94023235100000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1899,6 +1942,25 @@ If there are no tags selected, then the images taken will only be placed in the 
                 <exit id="eLO-sw-m1i" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2833" y="1639"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="mPX-1Q-xq9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kyt-kx-a0W" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="tabBarIconSettings" id="qNm-w9-6po"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eTm-Qq-1cT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="iTV-i6-hhX" kind="relationship" relationship="rootViewController" id="kOA-hb-Ohy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X0w-Jr-Z2i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="995.65217391304361" y="3237.2282608695655"/>
         </scene>
     </scenes>
     <resources>

@@ -211,7 +211,7 @@ class TaggingAppOverviewCollectionViewController: UICollectionViewController {
         // Executes if cell has already been selected
         if global.shared.appImages.contains(object) {
             cell.layer.borderWidth = 3
-            cell.layer.borderColor = UIColor.blue.cgColor
+            cell.layer.borderColor = ThemeManager.applyCellOutline(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as! Int)
         }
         // Executes if cell has not yet been selected
         else {

@@ -57,6 +57,12 @@ class TaggingGalleryOverviewImageViewViewController: UIViewController {
                       height: imageView.bounds.height * scale)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        view.backgroundColor = ThemeManager.applyBackground(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as! Int)
+    }
+    
 
     /*
     // MARK: - Navigation

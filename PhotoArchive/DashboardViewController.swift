@@ -93,6 +93,8 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         
         // Updates permissions
         updatePermissions()
+        
+        view.backgroundColor = ThemeManager.applyBackground(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as! Int)
     }
     
     // Function is specifically called if the application is interrupted

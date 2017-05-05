@@ -158,6 +158,12 @@ class LoginViewController: UIViewController {
         // Logs in the user immediately, if not using the app for the first time
         quickLogin()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        view.backgroundColor = ThemeManager.applyBackground(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as! Int)
+    }
 
     /*
     // MARK: - Navigation

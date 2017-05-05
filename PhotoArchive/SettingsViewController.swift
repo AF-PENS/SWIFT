@@ -16,16 +16,6 @@ class SettingsViewController: UIViewController {
     
     var defaults = UserDefaults()
     
-    @IBOutlet weak var themeSelectionControlOutlet: UISegmentedControl!
-    
-    @IBAction func themeSelectionControlAction(_ sender: Any) {
-        defaults.set(themeSelectionControlOutlet.selectedSegmentIndex, forKey: UD.themeIndex)
-        
-        UILabel.appearance().backgroundColor = UIColor.black
-        
-        // Refresh the entire view
-    }
-    
     @IBAction func autoImageDeleteAction(_ sender: Any) {
         
         let tempString = imageExpiresIn.text!
@@ -36,6 +26,12 @@ class SettingsViewController: UIViewController {
         }
         
         defaults.set(autoImageDeleteOutlet.isOn, forKey: UD.isAutoImageExpires)
+    }
+    
+    @IBAction func logoutAction(_ sender: Any) {
+        defaults.set(false, forKey: UD.rememberMe)
+        
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func imageExpiresInEditingDidEndAction(_ sender: Any) {
@@ -81,9 +77,6 @@ class SettingsViewController: UIViewController {
         
         // Establish defaults object to load persistent data
         defaults = UserDefaults.standard
-        
-        // Sets the segmented control to the current active theme
-        themeSelectionControlOutlet.selectedSegmentIndex = defaults.object(forKey: UD.themeIndex) as! Int
     }
 
     override func didReceiveMemoryWarning() {
@@ -91,8 +84,15 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: animated);
+        super.viewWillDisappear(animated)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
         
         // Gets whether automatic image delete is turned on
         autoImageDeleteOutlet.isOn = defaults.object(forKey: UD.isAutoImageExpires) as! Bool
@@ -103,6 +103,8 @@ class SettingsViewController: UIViewController {
         
         // Sets the wifi only setting
         wifiOnlyOutlet.isOn = defaults.object(forKey: UD.isWIFIOnly) as! Bool
+        
+        view.backgroundColor = ThemeManager.applyBackground(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as! Int)
     }
     
     func dismissKeyboard() {

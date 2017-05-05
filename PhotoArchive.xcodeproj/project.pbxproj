@@ -58,6 +58,15 @@
 		E5B852BE1EB6C23600A752E7 /* CameraObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B852BD1EB6C23600A752E7 /* CameraObject.swift */; };
 		E5CF3D571EA99C2500E0698C /* TaggingSelectedContextsAttributesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF3D561EA99C2500E0698C /* TaggingSelectedContextsAttributesTableViewController.swift */; };
 		E5CF3D591EA99C3200E0698C /* TaggingSelectedContextsAttributesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF3D581EA99C3200E0698C /* TaggingSelectedContextsAttributesTableViewCell.swift */; };
+		E5DB87661EBAE4EC008D40FB /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DB87651EBAE4EC008D40FB /* ThemeManager.swift */; };
+		E5DB87681EBAEB8C008D40FB /* SettingsThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DB87671EBAEB8C008D40FB /* SettingsThemeViewController.swift */; };
+		E5DB876C1EBAEF81008D40FB /* HeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DB876B1EBAEF81008D40FB /* HeaderLabel.swift */; };
+		E5DB876E1EBC3917008D40FB /* ContextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DB876D1EBC3917008D40FB /* ContextLabel.swift */; };
+		E5DB87701EBC3BF4008D40FB /* TagLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DB876F1EBC3BF4008D40FB /* TagLabel.swift */; };
+		E5DB87741EBC58A3008D40FB /* AttributeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DB87731EBC58A3008D40FB /* AttributeLabel.swift */; };
+		E5DB87761EBC58CF008D40FB /* AttributeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DB87751EBC58CF008D40FB /* AttributeTextView.swift */; };
+		E5DB87781EBC590D008D40FB /* AttributeAnswerTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DB87771EBC590D008D40FB /* AttributeAnswerTextView.swift */; };
+		E5DB877A1EBC611E008D40FB /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DB87791EBC611E008D40FB /* Button.swift */; };
 		E5DC52911EAD8F7200D5FE66 /* TaggingGalleryOverviewImageViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DC52901EAD8F7200D5FE66 /* TaggingGalleryOverviewImageViewViewController.swift */; };
 		E5E31D241E9DB18F00DFC3A7 /* HistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E31D231E9DB18F00DFC3A7 /* HistoryCollectionViewCell.swift */; };
 		E5E31D261E9DB52300DFC3A7 /* HistoryImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E31D251E9DB52300DFC3A7 /* HistoryImageViewController.swift */; };
@@ -141,6 +150,15 @@
 		E5B852BD1EB6C23600A752E7 /* CameraObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraObject.swift; sourceTree = "<group>"; };
 		E5CF3D561EA99C2500E0698C /* TaggingSelectedContextsAttributesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingSelectedContextsAttributesTableViewController.swift; sourceTree = "<group>"; };
 		E5CF3D581EA99C3200E0698C /* TaggingSelectedContextsAttributesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingSelectedContextsAttributesTableViewCell.swift; sourceTree = "<group>"; };
+		E5DB87651EBAE4EC008D40FB /* ThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		E5DB87671EBAEB8C008D40FB /* SettingsThemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsThemeViewController.swift; sourceTree = "<group>"; };
+		E5DB876B1EBAEF81008D40FB /* HeaderLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderLabel.swift; sourceTree = "<group>"; };
+		E5DB876D1EBC3917008D40FB /* ContextLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextLabel.swift; sourceTree = "<group>"; };
+		E5DB876F1EBC3BF4008D40FB /* TagLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagLabel.swift; sourceTree = "<group>"; };
+		E5DB87731EBC58A3008D40FB /* AttributeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeLabel.swift; sourceTree = "<group>"; };
+		E5DB87751EBC58CF008D40FB /* AttributeTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeTextView.swift; sourceTree = "<group>"; };
+		E5DB87771EBC590D008D40FB /* AttributeAnswerTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeAnswerTextView.swift; sourceTree = "<group>"; };
+		E5DB87791EBC611E008D40FB /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		E5DC52901EAD8F7200D5FE66 /* TaggingGalleryOverviewImageViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingGalleryOverviewImageViewViewController.swift; sourceTree = "<group>"; };
 		E5E31D231E9DB18F00DFC3A7 /* HistoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		E5E31D251E9DB52300DFC3A7 /* HistoryImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryImageViewController.swift; sourceTree = "<group>"; };
@@ -251,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				E52EF2C41E3B136800FF37D2 /* PhotoArchive */,
+				E5DB876A1EBAEF44008D40FB /* Settings */,
 				E52EF2DB1E3B136800FF37D2 /* PhotoArchiveTests */,
 				E52EF2E61E3B136800FF37D2 /* PhotoArchiveUITests */,
 				E52EF2C31E3B136800FF37D2 /* Products */,
@@ -273,18 +292,17 @@
 			isa = PBXGroup;
 			children = (
 				E54B42891EA8415D0049BA9F /* Models */,
-				E52EF2C51E3B136800FF37D2 /* AppDelegate.swift */,
+				E5DB87691EBAEF11008D40FB /* Visuals */,
 				E52EF2CB1E3B136800FF37D2 /* Main.storyboard */,
-				E52EF2CE1E3B136800FF37D2 /* Assets.xcassets */,
 				E52EF2D01E3B136800FF37D2 /* LaunchScreen.storyboard */,
 				E52EF2D31E3B136800FF37D2 /* Info.plist */,
+				E52EF2C51E3B136800FF37D2 /* AppDelegate.swift */,
 				E52EF2F91E3B18BE00FF37D2 /* LoginViewController.swift */,
 				E52EF2FB1E3B1E2E00FF37D2 /* TabBarController.swift */,
 				E51414281E53ED15000A2E3D /* Dashboard */,
 				E51414291E53ED1C000A2E3D /* Tagging */,
 				E573F3371EB05C4400603222 /* Camera */,
 				E5E31D1C1E9DAEE900DFC3A7 /* History */,
-				E52EF3051E3B224E00FF37D2 /* SettingsViewController.swift */,
 			);
 			path = PhotoArchive;
 			sourceTree = "<group>";
@@ -359,6 +377,32 @@
 				E5CF3D581EA99C3200E0698C /* TaggingSelectedContextsAttributesTableViewCell.swift */,
 			);
 			name = TaggingSelected;
+			sourceTree = "<group>";
+		};
+		E5DB87691EBAEF11008D40FB /* Visuals */ = {
+			isa = PBXGroup;
+			children = (
+				E52EF2CE1E3B136800FF37D2 /* Assets.xcassets */,
+				E5DB87651EBAE4EC008D40FB /* ThemeManager.swift */,
+				E5DB876B1EBAEF81008D40FB /* HeaderLabel.swift */,
+				E5DB876D1EBC3917008D40FB /* ContextLabel.swift */,
+				E5DB876F1EBC3BF4008D40FB /* TagLabel.swift */,
+				E5DB87731EBC58A3008D40FB /* AttributeLabel.swift */,
+				E5DB87751EBC58CF008D40FB /* AttributeTextView.swift */,
+				E5DB87771EBC590D008D40FB /* AttributeAnswerTextView.swift */,
+				E5DB87791EBC611E008D40FB /* Button.swift */,
+			);
+			name = Visuals;
+			sourceTree = "<group>";
+		};
+		E5DB876A1EBAEF44008D40FB /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E52EF3051E3B224E00FF37D2 /* SettingsViewController.swift */,
+				E5DB87671EBAEB8C008D40FB /* SettingsThemeViewController.swift */,
+			);
+			name = Settings;
+			path = PhotoArchive;
 			sourceTree = "<group>";
 		};
 		E5E31D1C1E9DAEE900DFC3A7 /* History */ = {
@@ -519,15 +563,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5DB876C1EBAEF81008D40FB /* HeaderLabel.swift in Sources */,
 				E573F3471EB142B900603222 /* TaggingAppOverviewImageViewViewController.swift in Sources */,
 				E5DC52911EAD8F7200D5FE66 /* TaggingGalleryOverviewImageViewViewController.swift in Sources */,
+				E5DB87741EBC58A3008D40FB /* AttributeLabel.swift in Sources */,
 				E5839AE21EA71D3100B25C70 /* HistoryAttributeTableViewController.swift in Sources */,
 				E573F3451EB1429C00603222 /* TaggingAppOverviewCollectionViewCell.swift in Sources */,
 				E52EF2FA1E3B18BE00FF37D2 /* LoginViewController.swift in Sources */,
 				E52EF2FE1E3B21D600FF37D2 /* DashboardViewController.swift in Sources */,
 				E5E31D241E9DB18F00DFC3A7 /* HistoryCollectionViewCell.swift in Sources */,
 				E573F33B1EB05F2600603222 /* CameraTagTableViewCell.swift in Sources */,
+				E5DB877A1EBC611E008D40FB /* Button.swift in Sources */,
 				E5839AE41EA71D4E00B25C70 /* HistoryAttributeTableViewCell.swift in Sources */,
+				E5DB87661EBAE4EC008D40FB /* ThemeManager.swift in Sources */,
 				E597A15B1EAD895000CEF100 /* TaggingGalleryOverviewCollectionViewController.swift in Sources */,
 				E573F34D1EB1785400603222 /* CameraSelectedContextsAttributesTableViewCell.swift in Sources */,
 				E55B78F41E42FBE5001C7654 /* DashboardImageViewController.swift in Sources */,
@@ -544,9 +592,11 @@
 				E573F3411EB0643F00603222 /* CameraCollectionViewCell.swift in Sources */,
 				E5B852BA1EB2FA9200A752E7 /* Constants.swift in Sources */,
 				E5839AE01EA70C1200B25C70 /* AttributeTableTableViewController.swift in Sources */,
+				E5DB87701EBC3BF4008D40FB /* TagLabel.swift in Sources */,
 				E573F33F1EB05F7200603222 /* CameraAttributeTableViewCell.swift in Sources */,
 				E5839ADE1EA70BEA00B25C70 /* AttributeTableViewCell.swift in Sources */,
 				E5B852BE1EB6C23600A752E7 /* CameraObject.swift in Sources */,
+				E5DB876E1EBC3917008D40FB /* ContextLabel.swift in Sources */,
 				E54B42911EA842880049BA9F /* Context.swift in Sources */,
 				E573F33D1EB05F6400603222 /* CameraAttributeTableViewController.swift in Sources */,
 				E597A15D1EAD89CF00CEF100 /* TaggingGalleryOverviewCollectionViewCell.swift in Sources */,
@@ -555,14 +605,17 @@
 				E573F3431EB1428900603222 /* TaggingAppOverviewCollectionViewController.swift in Sources */,
 				E51414351E53F4AC000A2E3D /* TaggingGalleryCollectionViewCell.swift in Sources */,
 				E52EF3021E3B221E00FF37D2 /* CameraViewController.swift in Sources */,
+				E5DB87761EBC58CF008D40FB /* AttributeTextView.swift in Sources */,
 				E573F34B1EB1782500603222 /* CameraSelectedContextsAttributesTableTableViewController.swift in Sources */,
 				E5E31D2B1E9DC9EE00DFC3A7 /* HistoryTagTableViewCell.swift in Sources */,
+				E5DB87781EBC590D008D40FB /* AttributeAnswerTextView.swift in Sources */,
 				E58BC1B81EB94F5C00474FF5 /* Reachability.swift in Sources */,
 				E54B428D1EA8422F0049BA9F /* Global.swift in Sources */,
 				E589A5BD1E5D0F1400AF944F /* TaggingTableTableViewController.swift in Sources */,
 				E52EF3041E3B223800FF37D2 /* HistoryViewController.swift in Sources */,
 				E52EF2FC1E3B1E2E00FF37D2 /* TabBarController.swift in Sources */,
 				E514143C1E53F88B000A2E3D /* TaggingTagCollectionViewCell.swift in Sources */,
+				E5DB87681EBAEB8C008D40FB /* SettingsThemeViewController.swift in Sources */,
 				E513F7E11E43273C009C03B5 /* TaggingViewController.swift in Sources */,
 				E5CF3D591EA99C3200E0698C /* TaggingSelectedContextsAttributesTableViewCell.swift in Sources */,
 			);

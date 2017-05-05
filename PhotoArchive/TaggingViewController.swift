@@ -109,6 +109,7 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
     // Do any additional setup after loading the view
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     // Dispose of any resources that can be recreated
@@ -146,6 +147,8 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         // Refreshes the upload button
         refreshUploadButton()
+        
+        view.backgroundColor = ThemeManager.applyBackground(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as! Int)
     }
     
     // Asks your data source object for the number of items in the specified section
