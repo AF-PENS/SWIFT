@@ -107,7 +107,6 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.imagePaths.count
-//        return self.imageArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -121,26 +120,40 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         cell.imageView?.kf.indicatorType = .activity
         
-        cell.imageView?.kf.setImage(with: url, options: [.transition(.fade(0.2))],completionHandler: {
-            (image, error, cacheType, imageUrl) in
+        let image = ImageCache.default.retrieveImageInDiskCache(forKey: url!.absoluteString);
+        
+        if(image == nil){
+            cell.imageView?.kf.setImage(with: url, options: [.transition(.fade(0.2)),.forceRefresh],completionHandler: {
+                (image, error, cacheType, imageUrl) in
                 if(image != nil){
                     cell.isUserInteractionEnabled = true;
                 }
-        });
+            });
+        }else{
+            cell.imageView.image = image;
+            cell.isUserInteractionEnabled = true;
+        }
+        
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
-        ImageCache.default.retrieveImage(forKey: self.imagePaths[indexPath.row], options: nil) {
-            image, cacheType in
-            if let image = image {
-                self.imageForSeque = image;
-                self.titleForSeque = self.imageTitles[indexPath.row];
-                self.performSegue(withIdentifier: "historyShowImageSegue", sender: self)
-            }
-        }
+        
+        self.imageForSeque = ImageCache.default.retrieveImageInDiskCache(forKey: self.imagePaths[indexPath.row])
+        
+        self.titleForSeque = self.imageTitles[indexPath.row];
+        self.performSegue(withIdentifier: "historyShowImageSegue", sender: self)
+        
+//        ImageCache.default.retrieveImage(forKey: self.imagePaths[indexPath.row], options: nil) {
+//            image, cacheType in
+//            
+//            if let image = image {
+//                self.imageForSeque = image;
+//                self.titleForSeque = self.imageTitles[indexPath.row];
+//                self.performSegue(withIdentifier: "historyShowImageSegue", sender: self)
+//            }
+//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
