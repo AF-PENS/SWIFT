@@ -12,70 +12,58 @@ private let reuseIdentifier = "TaggingAppOverviewCollectionViewCell"
 
 class TaggingAppOverviewCollectionViewController: UICollectionViewController {
     
-    @IBOutlet weak var titleCounter: UINavigationItem!
-    @IBOutlet var deselectButtonOutlet: UIBarButtonItem!
-    @IBOutlet var selectButtonOutlet: UIBarButtonItem!
+    // The main outlets in this view controller
+    @IBOutlet weak var titleCounter: UINavigationItem!      // When selecting mode is on, displays the number of items selected
+    @IBOutlet var deselectButtonOutlet: UIBarButtonItem!    // When selecting mode is on, displays deselection of all items button
+    @IBOutlet var selectButtonOutlet: UIBarButtonItem!      // Allows user to select items
+    
+    // Selection mode tracker
     var selecting = false
     
+    // Default size for thumbnails for the view cells
     let thumbnailSize = CGSize(width: 80, height: 80)
     
-    // Establish FileManager object
-    let fileMngr = FileManager.default
-    
-    // Establish path to 'Documents'
-    var docURL: URL!
-    
+    // Holds all of the camera objects
     var cameraObjects = [CameraObject]()
     
+    // Allows the user to enter/exit selecting mode
     @IBAction func selectButton(_ sender: Any) {
         
-        // checks if selecting is being turned on or off first
+        // Executes if selecting is currently on, but user wants it off
         if selecting {
+            
+            // Sets selecting mode to off
             selecting = false
         }
+        // Executes if selecting is currently off, but user wants it on
         else {
+            
+            // Sets selecting mode to on
             selecting = true
         }
         
-        // if selecting was just turned on
-        if selecting {
-            
-            // clear out the right navigation bar, then add in 'select' and 'deselect' buttons
-            navigationItem.rightBarButtonItems?.removeAll()
-            navigationItem.rightBarButtonItems?.append(selectButtonOutlet)
-            navigationItem.rightBarButtonItems?.append(deselectButtonOutlet)
-            titleCounter.title = "\(global.shared.appImages.count) selected"
-            
-            collectionView?.allowsMultipleSelection = true
-        }
-            // if selecting was just turned off
-        else {
-            navigationItem.rightBarButtonItems?.removeAll()
-            navigationItem.rightBarButtonItems?.append(selectButtonOutlet)
-            titleCounter.title = ""
-            
-            collectionView?.allowsMultipleSelection = false
-        }
-        
+        reloadNavigationBar()
     }
+    
+    // Only visible when selecting mode is on; allows user to deselect all items
     @IBAction func deselectAllButton(_ sender: Any) {
+        
+        // Deselect all items currently selected
         global.shared.appImages.removeAll()
-        titleCounter.title = "\(global.shared.appImages.count) selected"
-        collectionView?.reloadData()
+        
+        // Refresh the navigation bar
+        reloadNavigationBar()
+        
+        // Reload all of the items which are currently visible
+        collectionView?.reloadItems(at: (collectionView?.indexPathsForVisibleItems)!)
     }
 
+    // Called after the controller's view is loaded into memory.
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        // Do any additional setup after loading the view.
-        navigationItem.rightBarButtonItems?.removeAll()
-        navigationItem.rightBarButtonItems?.append(selectButtonOutlet)
-        titleCounter.title = ""
-        
-        docURL = fileMngr.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        
-        
+        // Refresh the navigation bar
+        reloadNavigationBar()
         
         // Checks to see if 'CameraObject' array exists in memory
         if (PersistenceManager.loadNSArray(.CameraObjects) as? [CameraObject]) != nil {
@@ -84,122 +72,231 @@ class TaggingAppOverviewCollectionViewController: UICollectionViewController {
             cameraObjects = PersistenceManager.loadNSArray(.CameraObjects) as! [CameraObject]
         }
         
+        // Only executes deletion of images if the user has auto delete turned on
+        if UserDefaults.standard.object(forKey: UD.isAutoImageExpires) as! Bool {
+            
+            // Deletes elements which have expired
+            for object in cameraObjects {
+                
+                // Creates a format for a date
+                let dateFormatter = DateFormatter()
+                
+                // Adapts to the format in the string -- this is the string used for the file names
+                dateFormatter.dateFormat = "y-MM-dd-H-m-ss-SSSS"
+                
+                // Gets the date from the file name of the current object
+                let date = dateFormatter.date(from: object.imageName)!
+                
+                // Gets how many days until image expires from user settings -- based on the Settings page
+                let timeInterval = UserDefaults.standard.object(forKey: UD.imageExpiresIn) as! Int
+                
+                // Figures out the when image should expire
+                let expireDate = date.addingTimeInterval(TimeInterval(60 * 60 * 24 * timeInterval))
+                
+                // Executes if the expiration date has passed
+                if Date() > expireDate {
+                    
+                    // Removes the current object from the 'cameraObjects' array
+                    cameraObjects.remove(at: cameraObjects.index(of: object)!)
+                    
+                    // Establish FileManager object
+                    let fileMngr = FileManager.default
+                    
+                    // Establish path to 'Documents'
+                    let docURL = fileMngr.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                    
+                    // Gets the location of image from the appropriate 'UploaObject'
+                    let fullImageURL = docURL.appendingPathComponent(object.imageLocation)
+                    
+                    // Gets the location of thumbnail from the appropriate 'UploaObject'
+                    let thumbnailURL = docURL.appendingPathComponent(object.thumbnailLocation)
+                    
+                    // Deletes image from filesystem
+                    do {
+                        try fileMngr.removeItem(at: fullImageURL)
+                    } catch {
+                        print("There was an error  deleting this file.")
+                    }
+                    
+                    // Deletes thumbnail from filesystem
+                    do {
+                        try fileMngr.removeItem(at: thumbnailURL)
+                    } catch {
+                        print("There was an error  deleting this file.")
+                    }
+                }
+            }
+        }
+        
+        // Saves the UploadObjects to memory
+        PersistenceManager.saveNSArray(cameraObjects as NSArray, path: .CameraObjects)
     }
 
+    // Sent to the view controller when the app receives a memory warning.
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Reloads all items which should be in the collection view
+        if (PersistenceManager.loadNSArray(.CameraObjects) as? [CameraObject]) != nil {
+            
+            // Loads 'CameraObject' array
+            cameraObjects = PersistenceManager.loadNSArray(.CameraObjects) as! [CameraObject]
+        }
+        
+        // Reload entire collection view
+        collectionView!.reloadData()
+    }
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-//        let vc = segue.destination as! TaggingAppOverviewImageViewViewController
-//        
-//        let indexPaths = collectionView!.indexPathsForSelectedItems!
-//        let indexPath = indexPaths[0] as NSIndexPath
-//        
-//        vc.image = imageArray[(indexPath.row)]
         
+        // Gets the next view controller
+        let nextViewController = segue.destination as! TaggingAppOverviewImageViewViewController
+        
+        // Gets the indexPath of the selected cell
+        let indexPath = collectionView!.indexPathsForSelectedItems![0]
+        
+        // Passes in the obect to be displayed
+        nextViewController.cameraObject = cameraObjects[indexPath.row]
     }
     
+    // Prepares for a segue transition from the Attribute pages
+    @IBAction func unwindToTaggingAppOverviewCollectionView(segue:UIStoryboardSegue) {}
+    
 
-    // MARK: UICollectionViewDataSource
+    // MARK: - Collection View
 
+    // Asks your data source object for the number of sections in the collection view
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        
+        // There will only be 1 section in this collection view
         return 1
     }
 
-
+    // Asks your data source object for the number of items in the specified section.
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
+        
+        // Returns the total number of cells to display
         return cameraObjects.count
     }
 
+    // Asks your data source object for the cell that corresponds to the specified item in the collection view
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        // Cell which will be configured and displayed
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! TaggingAppOverviewCollectionViewCell
     
+        // The current object which will be displayed by this cell
         let object = cameraObjects[indexPath.row]
+        
+        // Establish FileManager object
+        let fileMngr = FileManager.default
+        
+        // Establish path to 'Documents'
+        let docURL = fileMngr.urls(for: .documentDirectory, in: .userDomainMask)[0]
 
+        // URL to the location of the thumbnail
+        let thumbnailURL = docURL.appendingPathComponent(object.thumbnailLocation)
         
-        // Configure the cell
-        
-        // Gets the location of the image
-        let thumbnailPath = docURL.appendingPathComponent(object.thumbnailLocation)
-        
-        // Imports the image
-        let thumbnailImage = UIImage(contentsOfFile: thumbnailPath.path)!
+        // Sets cell to display image
+        cell.imageView.image = UIImage(contentsOfFile: thumbnailURL.path)!
 
-        cell.imageView.image = thumbnailImage
-        
+        // Executes if cell has already been selected
         if global.shared.appImages.contains(object) {
             cell.layer.borderWidth = 3
-            cell.layer.borderColor = UIColor.blue.cgColor
+            cell.layer.borderColor = ThemeManager.applyCellOutline(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as! Int)
         }
+        // Executes if cell has not yet been selected
         else {
             cell.layer.borderWidth = 0
         }
     
+        // Returns configured cell
         return cell
     }
     
+    // Tells the delegate that the item at the specified index path was selected
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        // only execute if selecting is currently on
+        // Executes if selecting mode is on
         if selecting {
+            
+            // Establishes the object which was just selected
             let object = cameraObjects[indexPath.row]
             
-            // executes if global does not contain the asset
+            // Executes if cell has not yet been selected
             if !global.shared.appImages.contains(object) {
+                
+                // Selects the cell
                 global.shared.appImages.append(object)
             }
-                // executes if global does contain the asset
+            // Executes if cell has already been selected
             else {
+                
+                // Removes the cell from selection
                 global.shared.appImages.remove(at: global.shared.appImages.index(of: object)!)
             }
             
-            titleCounter.title = "\(global.shared.appImages.count) selected"
+            // Refresh the navigation bar
+            reloadNavigationBar()
+            
+            // Reload colleciton view at the current cell
             collectionView.reloadItems(at: [indexPath])
         }
+        // Executes if selecting mode is off
         else {
+            
+            // Performs a segue to view the image in full screen
             performSegue(withIdentifier: "TaggingAppOverviewImageViewSegue", sender: self)
         }
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
-    }
+    // MARK: - User Functions
+    
+    /**
+        Reloads the navigation bar. Should only be called when an item is selected or when user is switching between selecting modes.
     */
-
+    func reloadNavigationBar() {
+        
+        // Executes if selecting mode is on
+        if selecting {
+            
+            // Clears the navigation bar
+            navigationItem.rightBarButtonItems?.removeAll()
+            
+            // Adds selection button
+            navigationItem.rightBarButtonItems?.append(selectButtonOutlet)
+            
+            // Adds deslection button
+            navigationItem.rightBarButtonItems?.append(deselectButtonOutlet)
+            
+            // Updates title with total number of items selected
+            titleCounter.title = "\(global.shared.appImages.count) selected"
+            
+            // Allows collection view to select multiple items
+            collectionView?.allowsMultipleSelection = true
+        }
+            // Executes if selection mode is off
+        else {
+            
+            // Clears navigation bar
+            navigationItem.rightBarButtonItems?.removeAll()
+            
+            // Adds selection button
+            navigationItem.rightBarButtonItems?.append(selectButtonOutlet)
+            
+            // Clears out title
+            titleCounter.title = ""
+            
+            // Disallows collection view to selection multiple items
+            collectionView?.allowsMultipleSelection = false
+        }
+    }
 }

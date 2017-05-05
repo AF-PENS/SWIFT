@@ -12,4 +12,8 @@ struct UD {
     static let username = "username"
     static let rememberMe = "rememberMe"
     static let rememberMeExpiresOn = "rememberMeExpiresOn"
+    static let imageExpiresIn = "imageExpiresIn"
+    static let isAutoImageExpires = "isAutoImageExpires"
+    static let isWIFIOnly = "isWIFIOnly"
+    static let themeIndex = "themeIndex"
 }

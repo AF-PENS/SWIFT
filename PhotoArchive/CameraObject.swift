@@ -34,6 +34,11 @@ class CameraObject: NSObject, NSCoding {
         print("longitude:         ", longitude)
     }
     
+    override func isEqual(_ object: Any?) -> Bool {
+        
+        return imageName == (object as? CameraObject)?.imageName
+    }
+    
     // MARK: - NSCoding
     func encode(with coder: NSCoder) {
         coder.encode(self.imageName, forKey: "imageName")
