@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             applicationURLString:"https://boephotoarchive-dev.azurewebsites.net"
         )
         
-        ThemeManager.applyTheme(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as! Int)
+        ThemeManager.applyTheme(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as? Int ?? 0)
         
         return true
     }

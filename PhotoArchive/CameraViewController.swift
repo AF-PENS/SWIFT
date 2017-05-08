@@ -74,7 +74,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         generateContextButtons()
         collectionView.reloadData()
         
-        view.backgroundColor = ThemeManager.applyBackground(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as! Int)
+        view.backgroundColor = ThemeManager.applyBackground(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as? Int ?? 0)
     }
     
     // Generates the buttons which contain the newly added contexts

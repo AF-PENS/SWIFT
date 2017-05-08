@@ -25,6 +25,96 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     // All objects to be uploaded
     var uploadObjects = [UploadObject]()
     
+    // Notification icon button
+    @IBOutlet weak var redirectButtonOutlet: UIButton!
+    
+    // Takes the user to the settings page
+    @IBAction func redirectButtonAction(_ sender: Any) {
+        
+        // Executes if the wifi is not turned on
+        if !isWIFIOn() {
+            
+            // Informs the user that wifi is turned off
+            UIApplication.shared.open((URL(string:"App-Prefs:root=WIFI")!), options: [:], completionHandler: nil)
+            
+        }
+            // Executes if the GPS is not turned on within the application
+        else if !isGPSOn() {
+            
+            // Informs the user that GPS is turned off
+            UIApplication.shared.open((URL(string:"App-Prefs:root=Privacy&path=LOCATION")!), options: [:], completionHandler: nil)
+        }
+            // Executes if the GPS is not turned on within the application
+        else if !isPhotosOn() {
+            
+            // Informs the user that there is no access to iPhone photos
+            UIApplication.shared.open((URL(string:"App-Prefs:root=Privacy&path=PHOTOS")!), options: [:], completionHandler: nil)
+        }
+            // Executes if the GPS is not turned on within the application
+        else if !isCameraOn() {
+            
+            // Informs user that camera functionality is not allowed
+            UIApplication.shared.open((URL(string:"App-Prefs:root=Privacy&path=CAMERA")!), options: [:], completionHandler: nil)
+        }
+            // Executes if everything is set up correctly
+        else {
+            redirectButtonOutlet.isHidden = true
+        }
+    }
+    
+    // Clears out all of the upload objects
+    @IBAction func clearUploadQueueAction(_ sender: Any) {
+        
+        // Loads 'UploadObjects' from persistent memory
+        if (PersistenceManager.loadNSArray(.UploadObjects) as? [UploadObject]) != nil {
+            uploadObjects = PersistenceManager.loadNSArray(.UploadObjects) as! [UploadObject]
+        }
+        
+        // Establish FileManager object
+        let fileMngr = FileManager.default
+        
+        // Establish path to 'Documents'
+        let docPath = fileMngr.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        
+        // Establish URL for 'UploadImages' in 'Documents'
+        let uploadImagesURL = docPath.appendingPathComponent("UploadImages")
+        
+        // Establish path for 'FullImage' in 'UploadImages'
+        let uploadFullImagePath = uploadImagesURL.appendingPathComponent("FullImage").path
+        
+        // Establish path for 'Thumbnail' in 'UploadImages'
+        let uploadThumbnailPath = uploadImagesURL.appendingPathComponent("Thumbnail").path
+        
+        // Delete everything in 'FullImage' directory within 'UploadImages' directory
+        do {
+            let filePaths = try fileMngr.contentsOfDirectory(atPath: uploadFullImagePath)
+            for filePath in filePaths {
+                try fileMngr.removeItem(atPath: uploadFullImagePath + "/" + filePath)
+            }
+        } catch {
+            print("Error deleting files in 'FullImage' directory")
+        }
+        
+        // Delete everything in 'Thumbnail' directory within 'UploadImages' directory
+        do {
+            let filePaths = try fileMngr.contentsOfDirectory(atPath: uploadThumbnailPath)
+            for filePath in filePaths {
+                try fileMngr.removeItem(atPath: uploadThumbnailPath + "/" + filePath)
+            }
+        } catch {
+            print("Error deleting files in 'Thumbnail' directory")
+        }
+        
+        // Removes all of the objects
+        uploadObjects.removeAll()
+        
+        // Saves the empty UploadObjects to memory
+        PersistenceManager.saveNSArray(uploadObjects as NSArray, path: .UploadObjects)
+        
+        // Reload the collectionView
+        collectionView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -94,7 +184,7 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         // Updates permissions
         updatePermissions()
         
-        view.backgroundColor = ThemeManager.applyBackground(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as! Int)
+        view.backgroundColor = ThemeManager.applyBackground(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as? Int ?? 0)
     }
     
     // Function is specifically called if the application is interrupted
@@ -180,7 +270,9 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         
         // Checks to see what the user has set on the Settings page
         // Executes if user has only wifi turned to on
-        if UserDefaults.standard.object(forKey: UD.isWIFIOnly) as! Bool {
+        let wifiOn = UserDefaults.standard.object(forKey: UD.isWIFIOnly) as? Bool
+        
+        if wifiOn != nil && wifiOn! == true {
             
             // Establish object to check status of wifi
             let reachability = Reachability()!
@@ -289,7 +381,8 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         }
         // Executes if everything is set up correctly
         else {
-            permissionStatusText.text = "Correct"
+            permissionStatusText.text = " Correct"
+            redirectButtonOutlet.isHidden = true
         }
     }
 }

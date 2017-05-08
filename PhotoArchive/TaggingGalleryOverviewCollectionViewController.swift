@@ -139,7 +139,7 @@ class TaggingGalleryOverviewCollectionViewController: UICollectionViewController
         
         if global.shared.galleryImages.contains(asset) {
             cell.layer.borderWidth = 3
-            cell.layer.borderColor = ThemeManager.applyCellOutline(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as! Int)
+            cell.layer.borderColor = ThemeManager.applyCellOutline(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as? Int ?? 0)
         }
         else {
             cell.layer.borderWidth = 0

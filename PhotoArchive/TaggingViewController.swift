@@ -148,7 +148,7 @@ class TaggingViewController: UIViewController, UICollectionViewDelegate, UIColle
         // Refreshes the upload button
         refreshUploadButton()
         
-        view.backgroundColor = ThemeManager.applyBackground(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as! Int)
+        view.backgroundColor = ThemeManager.applyBackground(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as? Int ?? 0)
     }
     
     // Asks your data source object for the number of items in the specified section

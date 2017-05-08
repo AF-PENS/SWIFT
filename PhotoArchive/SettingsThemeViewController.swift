@@ -16,7 +16,7 @@ class SettingsThemeViewController: UIViewController {
         // Do any additional setup after loading the view.
         segmentOutlet.selectedSegmentIndex = UserDefaults.standard.object(forKey: UD.themeIndex) as! Int
         
-        view.backgroundColor = ThemeManager.applyBackground(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as! Int)
+        view.backgroundColor = ThemeManager.applyBackground(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as? Int ?? 0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,7 +40,7 @@ class SettingsThemeViewController: UIViewController {
         
         ThemeManager.applyTheme(theme: segmentOutlet.selectedSegmentIndex)
 
-        view.backgroundColor = ThemeManager.applyBackground(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as! Int)
+        view.backgroundColor = ThemeManager.applyBackground(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as? Int ?? 0)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

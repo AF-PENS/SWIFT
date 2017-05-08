@@ -36,26 +36,26 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Permission Configuration Status:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ael-E4-1UV">
-                                <rect key="frame" x="20" y="89" width="216" height="17"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Permissions Status:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ael-E4-1UV">
+                                <rect key="frame" x="20" y="89" width="132" height="17"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FQN-3D-g9R">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="FQN-3D-g9R">
                                 <rect key="frame" x="386" y="89" width="8" height="17"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Photos to be uploaded:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OCy-F3-mx5">
-                                <rect key="frame" x="20" y="114" width="374" height="17"/>
+                                <rect key="frame" x="20" y="121" width="155" height="17"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="R1W-3Y-G1f">
-                                <rect key="frame" x="0.0" y="139" width="414" height="548"/>
+                                <rect key="frame" x="0.0" y="152" width="414" height="535"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="cwR-r5-f94">
                                     <size key="itemSize" width="80" height="80"/>
@@ -94,25 +94,50 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GRu-Xa-BTH" customClass="Button" customModule="PhotoArchive" customModuleProvider="target">
+                                <rect key="frame" x="301" y="114" width="93" height="30"/>
+                                <color key="backgroundColor" red="0.086274509799999996" green="0.24313725489999999" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title=" Clear Queue ">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearUploadQueueAction:" destination="9pv-A4-QxB" eventType="touchUpInside" id="e3B-zW-F8j"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoo-wU-dfp">
+                                <rect key="frame" x="356" y="86" width="22" height="22"/>
+                                <connections>
+                                    <action selector="redirectButtonAction:" destination="9pv-A4-QxB" eventType="touchUpInside" id="p1W-n6-Duf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="leadingMargin" secondItem="OCy-F3-mx5" secondAttribute="leading" id="1Ys-Jg-Sx0"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="FQN-3D-g9R" secondAttribute="trailing" id="85H-gd-lSw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GRu-Xa-BTH" secondAttribute="trailing" id="4tt-Nj-eOg"/>
+                            <constraint firstItem="R1W-3Y-G1f" firstAttribute="top" secondItem="GRu-Xa-BTH" secondAttribute="bottom" constant="8" id="6aG-sT-2GM"/>
+                            <constraint firstItem="zoo-wU-dfp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ael-E4-1UV" secondAttribute="trailing" constant="8" id="AGm-UE-W6h"/>
                             <constraint firstAttribute="trailingMargin" secondItem="R1W-3Y-G1f" secondAttribute="trailing" constant="-20" id="BZ4-i3-bXH"/>
+                            <constraint firstItem="GRu-Xa-BTH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OCy-F3-mx5" secondAttribute="trailing" constant="8" id="CIX-b5-hA3"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="R1W-3Y-G1f" secondAttribute="bottom" id="CtB-0P-bWr"/>
+                            <constraint firstItem="zoo-wU-dfp" firstAttribute="top" secondItem="50j-er-mQx" secondAttribute="bottom" constant="30" id="G96-0n-06a"/>
+                            <constraint firstItem="FQN-3D-g9R" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailingMargin" id="H12-7P-RPe"/>
                             <constraint firstAttribute="trailing" secondItem="50j-er-mQx" secondAttribute="trailing" id="JNT-9s-j5H"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="OCy-F3-mx5" secondAttribute="trailing" id="Kok-Yw-fhg"/>
+                            <constraint firstItem="GRu-Xa-BTH" firstAttribute="top" secondItem="zoo-wU-dfp" secondAttribute="bottom" constant="6" id="LQu-7u-pPH"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Ael-E4-1UV" secondAttribute="leading" id="Nng-ad-5EE"/>
                             <constraint firstItem="R1W-3Y-G1f" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-20" id="Pgv-Lj-Y1W"/>
                             <constraint firstItem="QTa-qD-9UA" firstAttribute="top" secondItem="50j-er-mQx" secondAttribute="bottom" constant="8" id="U4u-bm-97d"/>
                             <constraint firstItem="K8D-hL-C1l" firstAttribute="top" secondItem="50j-er-mQx" secondAttribute="bottom" constant="8" id="UuA-dV-953"/>
+                            <constraint firstItem="GRu-Xa-BTH" firstAttribute="top" secondItem="FQN-3D-g9R" secondAttribute="bottom" constant="8" id="Xmj-cJ-Gra"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QTa-qD-9UA" secondAttribute="trailing" id="dWQ-zL-WHq"/>
-                            <constraint firstItem="FQN-3D-g9R" firstAttribute="top" secondItem="QTa-qD-9UA" secondAttribute="bottom" constant="8" id="edA-2T-gLL"/>
+                            <constraint firstItem="OCy-F3-mx5" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="dq5-b4-BSK"/>
                             <constraint firstItem="50j-er-mQx" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="eqW-dR-kYK"/>
-                            <constraint firstItem="R1W-3Y-G1f" firstAttribute="top" secondItem="OCy-F3-mx5" secondAttribute="bottom" constant="8" id="gAF-Ia-8Ps"/>
+                            <constraint firstItem="FQN-3D-g9R" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zoo-wU-dfp" secondAttribute="trailing" constant="8" id="fMZ-2H-IfD"/>
+                            <constraint firstItem="OCy-F3-mx5" firstAttribute="top" secondItem="Ael-E4-1UV" secondAttribute="bottom" constant="15" id="gDQ-1D-gsx"/>
                             <constraint firstAttribute="leadingMargin" secondItem="K8D-hL-C1l" secondAttribute="leading" id="gLX-K3-KDw"/>
-                            <constraint firstItem="OCy-F3-mx5" firstAttribute="top" secondItem="Ael-E4-1UV" secondAttribute="bottom" constant="8" id="ifL-2k-lUJ"/>
+                            <constraint firstItem="GRu-Xa-BTH" firstAttribute="top" secondItem="Ael-E4-1UV" secondAttribute="bottom" constant="8" id="izt-nT-4oF"/>
+                            <constraint firstItem="FQN-3D-g9R" firstAttribute="top" secondItem="QTa-qD-9UA" secondAttribute="bottom" constant="8" id="jNg-3A-dZQ"/>
+                            <constraint firstItem="FQN-3D-g9R" firstAttribute="leading" secondItem="zoo-wU-dfp" secondAttribute="trailing" constant="8" id="jSr-LS-GWS"/>
                             <constraint firstItem="50j-er-mQx" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="jq5-YI-mh5"/>
                             <constraint firstItem="Ael-E4-1UV" firstAttribute="top" secondItem="K8D-hL-C1l" secondAttribute="bottom" constant="8" id="lpE-7v-XS5"/>
                         </constraints>
@@ -122,6 +147,7 @@
                     <connections>
                         <outlet property="collectionView" destination="R1W-3Y-G1f" id="dC8-57-fYR"/>
                         <outlet property="permissionStatusText" destination="FQN-3D-g9R" id="J4d-gM-6iK"/>
+                        <outlet property="redirectButtonOutlet" destination="zoo-wU-dfp" id="V5Z-Co-Kkw"/>
                         <outlet property="tagsStatusText" destination="QTa-qD-9UA" id="UF1-Ni-kob"/>
                         <segue destination="0Ow-h1-FwT" kind="show" identifier="dashboardShowImage" id="VBp-c1-gep"/>
                     </connections>

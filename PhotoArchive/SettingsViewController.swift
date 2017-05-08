@@ -104,7 +104,7 @@ class SettingsViewController: UIViewController {
         // Sets the wifi only setting
         wifiOnlyOutlet.isOn = defaults.object(forKey: UD.isWIFIOnly) as! Bool
         
-        view.backgroundColor = ThemeManager.applyBackground(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as! Int)
+        view.backgroundColor = ThemeManager.applyBackground(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as? Int ?? 0)
     }
     
     func dismissKeyboard() {
