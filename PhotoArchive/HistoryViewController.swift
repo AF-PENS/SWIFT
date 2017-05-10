@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import Kingfisher
 
 class HistoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var historyCollectionView: UICollectionView!
     
     var imageArray = [UIImage]();
+    var imageTitles = [String]();
+    var imagePaths = [String]();
+    
+    var imageForSeque: UIImage?
+    var titleForSeque: String?
     
     var blobClient: AZSCloudBlobClient = AZSCloudBlobClient();
     var blobContainer: AZSCloudBlobContainer = AZSCloudBlobContainer();
@@ -21,6 +27,10 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadImages();
+    }
+    
+    func loadImages(){
         let sas = "sv=2016-05-31&ss=b&srt=o&sp=rw&se=2027-02-24T00:00:00Z&st=2017-02-24T00:00:00Z&spr=https&sig=kChTx0B8faa43g%2F%2F2G5LIWBCOKMxq1eIgqOUn9Ds9s4%3D"
         
         let account = try! AZSCloudStorageAccount(fromConnectionString: "SharedAccessSignature=" + sas + ";BlobEndpoint=https://boephotostore.blob.core.windows.net")
@@ -36,8 +46,6 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
         let client = delegate.client!;
         
         let imageTable = client.table(withName: "Image");
-        
-        var imagePaths = [String]();
         
         //REPLACE WITH GLOBAL!
         let userID = "user";
@@ -56,6 +64,9 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
                 for img in imgResults {
                     var path = img["id"] as! String
                     
+                    //add path to titles list
+                    self.imageTitles.append(path);
+                    
                     path = path.replacingOccurrences(
                         of: "_",
                         with: "/",
@@ -69,42 +80,12 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
                         + "?"
                         + sas;
                     
-                    imagePaths.append(path);
+                    self.imagePaths.append(path);
                 }
                 
-                self.loadImages(paths: imagePaths);
-            }
-        })
-    }
-    
-    func loadImages(paths: [String]){
-//        var index = 0;
-        
-        for path in paths{
-                
-            DispatchQueue.main.async {
-                self.imageArray.append(UIImage(data: NSData(contentsOf: URL(string: path)!) as! Data)!)
                 self.historyCollectionView.reloadData()
             }
-            
-//            let image = blobContainer.blockBlobReference(fromName: path);
-//            
-//            image.downloadToData {
-//                (error, data) in
-//                    
-//                let uiImage = UIImage(data: data!)!
-//                
-//                print("Path: ", path, " At Index: ", index);
-//                
-//                self.imageArray.insert(uiImage, at: index)
-//                    
-//                DispatchQueue.main.async {
-//                    self.historyCollectionView.reloadData();
-//                }
-//                
-//                index += 1;
-//            }
-        }
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -127,43 +108,63 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.imageArray.count
+        return self.imagePaths.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "historyCell", for: indexPath) as! HistoryCollectionViewCell
         
-        cell.imageView?.image = self.imageArray[indexPath.row]
+        //prevent user interaction while loading
+        cell.isUserInteractionEnabled = false;
+        
+        let url = URL(string: self.imagePaths[indexPath.row]);
+        
+        cell.imageView?.kf.indicatorType = .activity
+        
+        let image = ImageCache.default.retrieveImageInDiskCache(forKey: url!.absoluteString);
+        
+        if(image == nil){
+            cell.imageView?.kf.setImage(with: url, options: [.transition(.fade(0.2)),.forceRefresh],completionHandler: {
+                (image, error, cacheType, imageUrl) in
+                if(image != nil){
+                    cell.isUserInteractionEnabled = true;
+                }
+            });
+        }else{
+            cell.imageView.image = image;
+            cell.isUserInteractionEnabled = true;
+        }
+        
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        self.imageForSeque = ImageCache.default.retrieveImageInDiskCache(forKey: self.imagePaths[indexPath.row])
+        
+        self.titleForSeque = self.imageTitles[indexPath.row];
         self.performSegue(withIdentifier: "historyShowImageSegue", sender: self)
+        
+//        ImageCache.default.retrieveImage(forKey: self.imagePaths[indexPath.row], options: nil) {
+//            image, cacheType in
+//            
+//            if let image = image {
+//                self.imageForSeque = image;
+//                self.titleForSeque = self.imageTitles[indexPath.row];
+//                self.performSegue(withIdentifier: "historyShowImageSegue", sender: self)
+//            }
+//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        
         if segue.identifier == "historyShowImageSegue"
         {
-            let indexPaths = self.historyCollectionView.indexPathsForSelectedItems!
-            let indexPath = indexPaths[0] as NSIndexPath
-            
             let vc = segue.destination as! HistoryImageViewController
-            vc.image = self.imageArray[indexPath.row]
+            
+            vc.image = self.imageForSeque!;
+            vc.title = self.titleForSeque!;
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

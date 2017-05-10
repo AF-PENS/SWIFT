@@ -1226,7 +1226,7 @@ If there are no tags selected, then the images taken will only be placed in the 
                     <navigationItem key="navigationItem" title="Title" id="94S-G1-Ddc">
                         <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="wkw-EK-m30">
                             <connections>
-                                <segue destination="Jpe-Wi-bi1" kind="show" id="BZp-PD-QKn"/>
+                                <segue destination="Jpe-Wi-bi1" kind="show" identifier="historyShowTagsSeque" id="QPn-cZ-Ehb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1290,6 +1290,7 @@ If there are no tags selected, then the images taken will only be placed in the 
                             <outlet property="delegate" destination="Jpe-Wi-bi1" id="Zao-dH-hw9"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="ohK-Mh-r9Q"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p8u-X5-yxD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -13,7 +13,10 @@ class HistoryTagTableViewController: UITableViewController {
     // Future note: May have to create a simple object/association which will tie together the titles and descriptions
     // because right now they are not
     // Array of strings with all of the Context Titles from the database
-    var contexts = ["A short", "AA medium title", "AAA very very very very very very very very long title and description", "Senior Design Meeting", "Project Alice", "Guardians of the Galaxy", "Water Permit", "Utility Permit", "Fleetmac Wood Concert", "Mayor Speech on 2/3", "Event - New Year 2017", "event - Chrisimas 2016", "Flood Damages", "Charter Planned Construction", "Project Sidewalk Restoration", "DocuDay LA 2/13", "LA Art Book Fair 2017", "Permit Applications", "Event - Valentine's Day 2017", "123456789", "0123456789", "9876543210"]
+    
+    var imageTitle: String!;
+    
+    var contexts = ["Loading..."]; //[Context]();
     
     // Array of string with all of the Context Descriptions from the database
     var contextsDetails = [String]()
@@ -95,7 +98,7 @@ class HistoryTagTableViewController: UITableViewController {
         
         // Configure the cell...
         cell.title.text = contexts[count]
-        cell.titledescription.text = "Default context detail"
+//        cell.titledescription.text = "Default context detail"
         
         return cell
     }
@@ -114,6 +117,7 @@ class HistoryTagTableViewController: UITableViewController {
         }
         
         vc.contextTitle.title = contexts[count]
+        vc.imageTitle = imageTitle;
     }
 
     /*

@@ -38,6 +38,8 @@ class AttributeTableTableViewController: UITableViewController, UITextViewDelega
     func updateAttributeList(attribute: Attribute){
         attributes.append(attribute);
         
+        attributes = attributes.sorted{$0.id.localizedCompare($1.id) == .orderedAscending}
+        
         self.tableView.reloadData()
         
     }
