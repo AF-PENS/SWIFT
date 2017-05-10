@@ -158,6 +158,12 @@ class LoginViewController: UIViewController {
         // Logs in the user immediately, if not using the app for the first time
         quickLogin()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        view.backgroundColor = ThemeManager.applyBackground(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as? Int ?? 0)
+    }
 
     /*
     // MARK: - Navigation
@@ -274,6 +280,18 @@ class LoginViewController: UIViewController {
         } catch {
             print("Error creating 'Thumbnail' directory.")
         }
+        
+        // Sets the wifi only upload setting to true by default
+        defaults.set(true, forKey: UD.isWIFIOnly)
+        
+        // Sets the setting for images to expire
+        defaults.set(true, forKey: UD.isAutoImageExpires)
+        
+        // Sets the time for when images will be deleted to the default 90 days
+        defaults.set(90, forKey: UD.imageExpiresIn)
+        
+        // Sets the starting theme of the app to default
+        defaults.set(0, forKey: UD.themeIndex)
     }
     
     /**
@@ -356,6 +374,18 @@ class LoginViewController: UIViewController {
         } catch {
             print("Error deleting files in 'Thumbnail' directory")
         }
+        
+        // Sets the wifi only upload setting to true by default
+        defaults.set(true, forKey: UD.isWIFIOnly)
+        
+        // Sets the setting for images to expire
+        defaults.set(true, forKey: UD.isAutoImageExpires)
+        
+        // Sets the time for when images will be deleted to the default 90 days
+        defaults.set(90, forKey: UD.imageExpiresIn)
+        
+        // Sets the starting theme of the app to default
+        defaults.set(0, forKey: UD.themeIndex)
     }
     
     /**

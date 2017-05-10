@@ -73,6 +73,8 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         generateContextButtons()
         collectionView.reloadData()
+        
+        view.backgroundColor = ThemeManager.applyBackground(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as? Int ?? 0)
     }
     
     // Generates the buttons which contain the newly added contexts
