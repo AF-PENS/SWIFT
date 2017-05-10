@@ -13,20 +13,61 @@ class HistoryAttributeTableViewController: UITableViewController {
     // The context we selected on the previous screen
     @IBOutlet weak var contextTitle: UINavigationItem!
     
-    // Attribute titles
-    var attributes = [String]()
+    var imageTitle: String!;
     
-    // Attribute descriptions
-    var descriptions = [String]()
+    // Attribute titles
+    var attributes = [String]();
+    
+    // Attribute values
+    var values = [String: String]();
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        
+        let client = delegate.client!;
+        
+        let icavTable = client.table(withName: "ICAV");
+        
+        let icavQuery = icavTable.query();
+        icavQuery.predicate = NSPredicate(format: "imageID == %@ and contextID == %@", imageTitle, contextTitle.title!);
+        icavQuery.selectFields = ["attributeID", "value"]
+        
+        icavQuery.read(completion: {
+            (result, error) in
+            if let err = error {
+                
+            } else if let attributeResults = result?.items {
+                for row in attributeResults {
+                    let attribute = row["attributeID"] as! String;
+                    let attributeValue = row["value"] as! String;
+                    
+                    
+                    self.updateAttributes(attribute: attribute, value: attributeValue);
+                }
+            }
+        })
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func updateAttributes(attribute: String, value: String){
+        print("Attribute: ", attribute);
+        print("Value: ", value);
+        
+        attributes.append(attribute);
+        
+        attributes = attributes.sorted{$0.localizedCompare($1) == .orderedAscending}
+        
+        values[attribute] = value;
+        
+        self.tableView.reloadData();
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,20 +83,19 @@ class HistoryAttributeTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // 10 for debug purposes -- the commented out line should be the actual code
-        return 10
-        // return attributes.count
+        return attributes.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryAttributeTableViewCell", for: indexPath) as! HistoryAttributeTableViewCell
         
-        // displays the title and the description of the attribute
-        cell.attributeTitle.text = "Title Goes Here"
-        cell.attributeDescription.text = "Description Goes Here"
-        cell.attributeAnswer.text = "Answer from Database Goes Here"
+        let attribute = attributes[indexPath.row];
         
+        // displays the title and the description of the attribute
+        cell.attributeTitle.text = attribute;
+//        cell.attributeDescription.text = "Description Goes Here"
+        cell.attributeAnswer.text = values[attribute];
         // prevents the cell from being selectable
         cell.selectionStyle = UITableViewCellSelectionStyle.none
 

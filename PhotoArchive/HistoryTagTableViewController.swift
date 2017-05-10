@@ -14,6 +14,8 @@ class HistoryTagTableViewController: UITableViewController {
     // because right now they are not
     // Array of strings with all of the Context Titles from the database
     
+    var imageTitle: String!;
+    
     var contexts = ["Loading..."]; //[Context]();
     
     // Array of string with all of the Context Descriptions from the database
@@ -96,7 +98,7 @@ class HistoryTagTableViewController: UITableViewController {
         
         // Configure the cell...
         cell.title.text = contexts[count]
-        cell.titledescription.text = "Default context detail"
+//        cell.titledescription.text = "Default context detail"
         
         return cell
     }
@@ -115,9 +117,7 @@ class HistoryTagTableViewController: UITableViewController {
         }
         
         vc.contextTitle.title = contexts[count]
-        
-//        TODO: set attributes
-//        vc.attributes = contexts[count].attributes;
+        vc.imageTitle = imageTitle;
     }
 
     /*

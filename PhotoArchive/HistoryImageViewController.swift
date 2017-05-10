@@ -66,6 +66,7 @@ class HistoryImageViewController: UIViewController {
             print(imageContexts);
             
             vc.contexts = imageContexts;
+            vc.imageTitle = self.title;
         }
     }
 }
