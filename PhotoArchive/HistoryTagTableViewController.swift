@@ -47,6 +47,9 @@ class HistoryTagTableViewController: UITableViewController {
         
         // Sorts keys into alphabetical order
         contextsSectionsSortedKeys = Array(contextsSections.keys).sorted(by: <)
+        
+        
+        self.tableView.reloadData();
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

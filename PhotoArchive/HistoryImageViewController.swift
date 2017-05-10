@@ -18,8 +18,6 @@ class HistoryImageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(self.title!);
 
         // Do any additional setup after loading the view.
         self.imageView.image = self.image
@@ -63,6 +61,20 @@ class HistoryImageViewController: UIViewController {
         view.backgroundColor = ThemeManager.applyBackground(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as? Int ?? 0)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "historyShowTagsSeque"
+        {
+            let vc = segue.destination as! HistoryTagTableViewController
+            
+            print(imageContexts);
+            
+            vc.contexts = imageContexts;
+            vc.imageTitle = self.title;
+        }
+    }
+}
+
 
     /*
     // MARK: - Navigation
@@ -80,4 +92,4 @@ class HistoryImageViewController: UIViewController {
             vc.imageTitle = self.title;
         }
     }
-}
+}*/
