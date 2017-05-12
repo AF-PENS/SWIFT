@@ -12,8 +12,6 @@ import Kingfisher
 class HistoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var historyCollectionView: UICollectionView!
-    
-    var imageArray = [UIImage]();
     var imageTitles = [String]();
     var imagePaths = [String]();
     var thumbnailPaths = [String]();
@@ -24,15 +22,14 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
     var blobClient: AZSCloudBlobClient = AZSCloudBlobClient();
     var blobContainer: AZSCloudBlobContainer = AZSCloudBlobContainer();
     
+    var imageTable: MSTable?
+    
+    let userID = UserDefaults.standard.string(forKey: UD.username)!
+    
+    let sas = "sv=2016-05-31&ss=b&srt=o&sp=rw&se=2027-02-24T00:00:00Z&st=2017-02-24T00:00:00Z&spr=https&sig=kChTx0B8faa43g%2F%2F2G5LIWBCOKMxq1eIgqOUn9Ds9s4%3D"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        loadImages();
-    }
-    
-    func loadImages(){
-        let sas = "sv=2016-05-31&ss=b&srt=o&sp=rw&se=2027-02-24T00:00:00Z&st=2017-02-24T00:00:00Z&spr=https&sig=kChTx0B8faa43g%2F%2F2G5LIWBCOKMxq1eIgqOUn9Ds9s4%3D"
         
         let account = try! AZSCloudStorageAccount(fromConnectionString: "SharedAccessSignature=" + sas + ";BlobEndpoint=https://boephotostore.blob.core.windows.net")
         
@@ -46,13 +43,15 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         let client = delegate.client!;
         
-        let imageTable = client.table(withName: "Image");
+        imageTable = client.table(withName: "Image");
         
-        let userID = UserDefaults.standard.string(forKey: UD.username)!
+        loadImages();
+    }
+    
+    func loadImages(){
+        let imgQuery = imageTable!.query();
         
-        let imgQuery = imageTable.query();
-        
-        imgQuery.order(byDescending: "createdAt");
+//        imgQuery.order(byDescending: "createdAt");
         
         imgQuery.predicate = NSPredicate(format: "userID == %@", userID);
         
@@ -64,40 +63,43 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
                 for img in imgResults {
                     let path = img["id"] as! String
                     
-                    //add path to titles list
-                    self.imageTitles.append(path);
+                    //if the path is not already in the list,
+                    if(!self.imageTitles.contains(path)){
+                        //add path to titles list firstly
+                        self.imageTitles.insert(path, at: 0)
+                        
+                        var imagePath = path.replacingOccurrences(
+                            of: "_",
+                            with: "/",
+                            options: NSString.CompareOptions.literal,
+                            range: path.range(of: "_")
+                        )
+                        
+                        imagePath = self.blobContainer.storageUri.primaryUri.absoluteString
+                            + "/"
+                            + imagePath
+                            + "?"
+                            + self.sas;
+                        
+                        var thumbnailPath = path.replacingOccurrences(
+                            of: "_",
+                            with: "/thumbnails/",
+                            options: NSString.CompareOptions.literal,
+                            range: path.range(of: "_")
+                        )
+                        
+                        thumbnailPath = self.blobContainer.storageUri.primaryUri.absoluteString
+                            + "/"
+                            + thumbnailPath
+                            + "?"
+                            + self.sas;
+                        
+                        self.imagePaths.insert(imagePath, at: 0)
+                        self.thumbnailPaths.insert(thumbnailPath, at: 0)
+                    }
                     
-                    var imagePath = path.replacingOccurrences(
-                        of: "_",
-                        with: "/",
-                        options: NSString.CompareOptions.literal,
-                        range: path.range(of: "_")
-                    )
-                    
-                    imagePath = self.blobContainer.storageUri.primaryUri.absoluteString
-                        + "/"
-                        + imagePath
-                        + "?"
-                        + sas;
-                    
-                    var thumbnailPath = path.replacingOccurrences(
-                        of: "_",
-                        with: "/thumbnails/",
-                        options: NSString.CompareOptions.literal,
-                        range: path.range(of: "_")
-                    )
-                    
-                    thumbnailPath = self.blobContainer.storageUri.primaryUri.absoluteString
-                        + "/"
-                        + thumbnailPath
-                        + "?"
-                        + sas;
-                    
-                    self.imagePaths.append(imagePath);
-                    self.thumbnailPaths.append(thumbnailPath);
+                    self.historyCollectionView.reloadData()
                 }
-                
-                self.historyCollectionView.reloadData()
             }
         })
     }
@@ -117,6 +119,8 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        loadImages();
         
         view.backgroundColor = ThemeManager.applyBackground(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as? Int ?? 0)
     }
