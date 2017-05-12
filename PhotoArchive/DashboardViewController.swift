@@ -25,6 +25,9 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     // All objects to be uploaded
     var uploadObjects = [UploadObject]()
     
+    // Used to determine if background upload is running
+    var uploading = false;
+    
     // Notification icon button
     @IBOutlet weak var redirectButtonOutlet: UIButton!
     
@@ -145,8 +148,6 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
             }
         })
         
-        
-        
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(DashboardViewController.applicationDidBecomeActive(_:)),
@@ -185,6 +186,261 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         updatePermissions()
         
         view.backgroundColor = ThemeManager.applyBackground(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as? Int ?? 0)
+        
+        print("Uploading: ", uploading);
+        
+        //try to upload
+        if(!uploading){
+            uploadToAzure();
+        }
+    }
+    
+    func uploadToAzure(){
+        self.uploading = true;
+        
+        //setup Azure information
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        
+        let client = delegate.client!;
+        
+        let imageTable = client.table(withName: "Image");
+        let icavTable = client.table(withName: "ICAV");
+        
+        let sas = "sv=2016-05-31&ss=b&srt=o&sp=rw&se=2027-02-24T00:00:00Z&st=2017-02-24T00:00:00Z&spr=https&sig=kChTx0B8faa43g%2F%2F2G5LIWBCOKMxq1eIgqOUn9Ds9s4%3D"
+        
+        let account = try! AZSCloudStorageAccount(fromConnectionString: "SharedAccessSignature=" + sas + ";BlobEndpoint=https://boephotostore.blob.core.windows.net")
+        
+        let blobClient = account.getBlobClient()!
+        
+        let blobContainer = blobClient.containerReference(
+            fromName:"photocontainer"
+        );
+        
+        //Establish FileManager object
+        let fileMngr = FileManager.default
+        
+        // Establish path to 'Documents'
+        let docURL = fileMngr.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        
+        let user = UserDefaults.standard.string(forKey: UD.username)!
+        
+        //initiate image table, check if initaited
+        //initiate icav table, check if initaited
+        //initiate img blob, check if initaited
+        //initiate thumb blob, check if initaited
+        
+        //check if they are all complete
+        //if complete, move to next image
+        
+        DispatchQueue.global(qos: .utility).async {
+            //Control booleans
+            var imageTableStarted = false;
+            var icavTableStarted = false;
+            var imageBlobStarted = false;
+            var thumbnailBlobStarted = false;
+            
+            var imageTableDone = false;
+            var icavTableDone = false;
+            var imageBlobDone = false;
+            var thumbnailBlobDone = false;
+            
+            //used to keep track of ICAV Row inserts
+            var rowCount = 0;
+            //will be updated to correct value on first pass
+            var totalRows = 0;
+            
+            while(self.isWIFIOn() && !self.uploadObjects.isEmpty){
+                //grab first image in list
+                let image = self.uploadObjects[0];
+                
+                //----BEGIN IMAGE TABLE SECTION----
+                if(!imageTableStarted){
+                    print("Image Started");
+                    
+                    imageTableStarted = true;
+                    
+                    let imageRow = [
+                        "id" : user + "_" + image.imageName,
+                        "userID" : user,
+                        "lat" : image.latitude,
+                        "lon" : image.longitude
+                    ] as [String : Any]
+                    
+                    imageTable.insert(imageRow, completion:{
+                        (result, error) in
+                        
+                        if let err = error as NSError? {
+                            let errorCode = (err.userInfo["com.Microsoft.MicrosoftAzureMobile.ErrorResponseKey"] as! HTTPURLResponse).statusCode;
+                            
+                            if(errorCode == 409){
+                                //image already exists, no use reinserting
+                                //we're pretty much done
+                                imageTableDone = true;
+                            }else{
+                                //some other error :/
+                                print("Error: ", err);
+                            }
+                            
+                        } else {
+                            //move on to ICAV
+                            imageTableDone = true;
+                        }
+                    })
+                    
+                    
+                }
+                //----END IMAGE TABLE SECTION----
+                
+                //----BEGIN ICAV TABLE SECTION----
+                if(!icavTableStarted && imageTableDone){
+                    print("ICAV Started");
+                    
+                    icavTableStarted = true;
+                    
+                    for context in image.contexts{
+                        for attribute in context.attributes{
+                            //update total rows
+                            totalRows += 1;
+                            
+                            let icavRow = [
+                                "imageID" : user + "_" + image.imageName,
+                                "contextID" : context.id,
+                                "attributeID" : attribute.id,
+                                "value" : attribute.value
+                                ] as [String : Any]
+                            
+                            icavTable.insert(icavRow, completion:{
+                                (result, error) in
+                                
+                                if let err = error as NSError?{
+                                    let errorCode = (err.userInfo["com.Microsoft.MicrosoftAzureMobile.ErrorResponseKey"] as! HTTPURLResponse).statusCode;
+                                    
+                                    if(errorCode == 409){
+                                        //image already exists, no use reinserting
+                                        //we're pretty much done
+                                        rowCount += 1;
+                                    }else{
+                                        //some other error :/
+                                        print("Error: ", err);
+                                    }
+                                    
+                                } else {
+                                    //inserted successfully
+                                    rowCount += 1;
+                                }
+                            })
+                        }
+                    }
+                }
+                
+                if(!icavTableDone){
+                    if(rowCount == totalRows){
+                        print("Finished with rows");
+                        icavTableDone = true;
+                    }
+                }
+                //----END ICAV TABLE SECTION----
+                
+                
+                //----BEGIN BLOB SECTION----
+                
+                //  ---Image Blob---
+                
+                if(!imageBlobStarted){
+                    print("Image Blob Started");
+                    
+                    imageBlobStarted = true;
+                    
+                    let imagePath = docURL.appendingPathComponent(image.imageLocation)
+                    let imageData = NSData(contentsOfFile: imagePath.path)!
+                    
+                    let imageReference = user + "/" + image.imageName;
+                    
+                    let imageBlob = blobContainer.blockBlobReference(fromName: imageReference);
+                    
+                    print("Image BLOB: " + imageReference);
+                    
+                    imageBlob.upload(from: imageData as Data, completionHandler: {
+                        (error) in
+                        if error != nil{
+                            print("Image Blob Error: ", error);
+                        }else{
+                            imageBlobDone = true;
+                        }
+                    })
+                    
+                }
+                
+                //  ---End Image Blob---
+                
+                //  ---Thumbnail Blob---
+                
+                if(!thumbnailBlobStarted){
+                    print("Thumbnail Blob Started");
+                    thumbnailBlobStarted = true;
+                    
+                    let thumbnailPath = docURL.appendingPathComponent(image.thumbnailLocation)
+                    
+                    // Grab image data
+                    let thumbnailData = NSData(contentsOfFile: thumbnailPath.path)!
+                    
+                    let thumbnailReference = user + "/thumbnails/" + image.imageName;
+                    
+                    let thumbnailBlob = blobContainer.blockBlobReference(fromName: thumbnailReference);
+                    
+                    thumbnailBlob.upload(from: thumbnailData as Data, completionHandler: {
+                        (error) in
+                        if error != nil{
+                            print("Thumbnail Blob Error: ", error);
+                        }else{
+                            thumbnailBlobDone = true;
+                        }
+                    })
+                }
+                
+                //  ---End Thumbnail Blob---
+                
+                //----END BLOB SECTION----
+                
+                //---ALL DONE SECTION---
+                
+                if(imageTableDone && icavTableDone && imageBlobDone && thumbnailBlobDone){
+                    
+                    DispatchQueue.main.async {
+                        if(!self.uploadObjects.isEmpty){
+                            self.uploadObjects.remove(at: 0);
+                            
+                            //update persistant version
+                            PersistenceManager.saveNSArray(self.uploadObjects as NSArray, path: .UploadObjects)
+                            
+                            self.collectionView.reloadData();
+                        }
+                    }
+                    
+                    //reset bools
+                    imageTableStarted = false;
+                    icavTableStarted = false;
+                    imageBlobStarted = false;
+                    thumbnailBlobStarted = false;
+                    
+                    imageTableDone = false;
+                    icavTableDone = false;
+                    imageBlobDone = false;
+                    thumbnailBlobDone = false;
+                }
+                
+                //sleep so application doesnt lag insanely
+                //sleep for .05 seconds
+                usleep(500);
+            }
+            
+            if(self.uploadObjects.isEmpty){
+                self.uploading = false;
+                print("Finally Done");
+            }else{
+                print("Upload Objects", self.uploadObjects.count);
+            }
+        }
     }
     
     // Function is specifically called if the application is interrupted
