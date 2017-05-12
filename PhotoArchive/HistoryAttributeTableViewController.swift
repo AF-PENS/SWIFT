@@ -94,7 +94,7 @@ class HistoryAttributeTableViewController: UITableViewController {
         
         // displays the title and the description of the attribute
         cell.attributeTitle.text = attribute;
-//        cell.attributeDescription.text = "Description Goes Here"
+        cell.attributeDescription.text = ""
         cell.attributeAnswer.text = values[attribute];
         // prevents the cell from being selectable
         cell.selectionStyle = UITableViewCellSelectionStyle.none

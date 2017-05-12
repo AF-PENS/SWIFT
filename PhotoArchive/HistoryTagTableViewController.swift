@@ -101,7 +101,7 @@ class HistoryTagTableViewController: UITableViewController {
         
         // Configure the cell...
         cell.title.text = contexts[count]
-//        cell.titledescription.text = "Default context detail"
+        cell.titledescription.text = ""
         
         return cell
     }
