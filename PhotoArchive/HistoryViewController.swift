@@ -18,7 +18,7 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
     var imagePaths = [String]();
     var thumbnailPaths = [String]();
     
-    var imageForSeque: UIImage?
+    var imageForSeque: String?
     var titleForSeque: String?
     
     var blobClient: AZSCloudBlobClient = AZSCloudBlobClient();
@@ -158,7 +158,7 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        self.imageForSeque = ImageCache.default.retrieveImageInDiskCache(forKey: self.imagePaths[indexPath.row])
+        self.imageForSeque = self.imagePaths[indexPath.row]
         
         self.titleForSeque = self.imageTitles[indexPath.row];
         self.performSegue(withIdentifier: "historyShowImageSegue", sender: self)
@@ -169,7 +169,7 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
         {
             let vc = segue.destination as! HistoryImageViewController
             
-            vc.image = self.imageForSeque!;
+            vc.imagePath = self.imageForSeque!;
             vc.title = self.titleForSeque!;
         }
     }

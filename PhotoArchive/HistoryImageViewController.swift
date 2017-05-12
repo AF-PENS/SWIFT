@@ -7,20 +7,31 @@
 //
 
 import UIKit
+import Kingfisher
 
 class HistoryImageViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
 
-    var image = UIImage()
+    var imagePath: String?;
     
     var imageContexts = [String]();
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        self.imageView.image = self.image
+        super.viewDidLoad();
+        
+        //load full image from kingfisher
+        let url = URL(string: self.imagePath!);
+        
+        self.imageView?.kf.indicatorType = .activity
+        
+        let image = ImageCache.default.retrieveImageInDiskCache(forKey: url!.absoluteString);
+        
+        if(image == nil){
+            self.imageView?.kf.setImage(with: url, options: [.transition(.fade(0.2)),.forceRefresh]);
+        }else{
+            self.imageView.image = image;
+        }
         
         let delegate = UIApplication.shared.delegate as! AppDelegate
         
