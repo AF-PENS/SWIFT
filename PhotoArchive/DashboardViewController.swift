@@ -187,10 +187,8 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         
         view.backgroundColor = ThemeManager.applyBackground(theme: UserDefaults.standard.object(forKey: UD.themeIndex) as? Int ?? 0)
         
-        print("Uploading: ", uploading);
-        
         //try to upload
-        if(!uploading){
+        if(!uploading && !self.uploadObjects.isEmpty){
             uploadToAzure();
         }
     }
@@ -255,7 +253,6 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
                 
                 //----BEGIN IMAGE TABLE SECTION----
                 if(!imageTableStarted){
-                    print("Image Started");
                     
                     imageTableStarted = true;
                     
@@ -293,7 +290,6 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
                 
                 //----BEGIN ICAV TABLE SECTION----
                 if(!icavTableStarted && imageTableDone){
-                    print("ICAV Started");
                     
                     icavTableStarted = true;
                     
@@ -321,7 +317,6 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
                                         rowCount += 1;
                                     }else{
                                         //some other error :/
-                                        print("Error: ", err);
                                     }
                                     
                                 } else {
@@ -335,7 +330,6 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
                 
                 if(!icavTableDone){
                     if(rowCount == totalRows){
-                        print("Finished with rows");
                         icavTableDone = true;
                     }
                 }
@@ -347,7 +341,6 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
                 //  ---Image Blob---
                 
                 if(!imageBlobStarted){
-                    print("Image Blob Started");
                     
                     imageBlobStarted = true;
                     
@@ -357,8 +350,6 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
                     let imageReference = user + "/" + image.imageName;
                     
                     let imageBlob = blobContainer.blockBlobReference(fromName: imageReference);
-                    
-                    print("Image BLOB: " + imageReference);
                     
                     imageBlob.upload(from: imageData as Data, completionHandler: {
                         (error) in
@@ -376,7 +367,6 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
                 //  ---Thumbnail Blob---
                 
                 if(!thumbnailBlobStarted){
-                    print("Thumbnail Blob Started");
                     thumbnailBlobStarted = true;
                     
                     let thumbnailPath = docURL.appendingPathComponent(image.thumbnailLocation)
@@ -436,9 +426,6 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
             
             if(self.uploadObjects.isEmpty){
                 self.uploading = false;
-                print("Finally Done");
-            }else{
-                print("Upload Objects", self.uploadObjects.count);
             }
         }
     }

@@ -16,6 +16,7 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
     var imageArray = [UIImage]();
     var imageTitles = [String]();
     var imagePaths = [String]();
+    var thumbnailPaths = [String]();
     
     var imageForSeque: UIImage?
     var titleForSeque: String?
@@ -47,8 +48,7 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         let imageTable = client.table(withName: "Image");
         
-        //REPLACE WITH GLOBAL!
-        let userID = "user";
+        let userID = UserDefaults.standard.string(forKey: UD.username)!
         
         let imgQuery = imageTable.query();
         
@@ -62,25 +62,39 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
                 print("Error ", err);
             } else if let imgResults = result?.items {
                 for img in imgResults {
-                    var path = img["id"] as! String
+                    let path = img["id"] as! String
                     
                     //add path to titles list
                     self.imageTitles.append(path);
                     
-                    path = path.replacingOccurrences(
+                    var imagePath = path.replacingOccurrences(
                         of: "_",
                         with: "/",
                         options: NSString.CompareOptions.literal,
                         range: path.range(of: "_")
                     )
                     
-                    path = self.blobContainer.storageUri.primaryUri.absoluteString
+                    imagePath = self.blobContainer.storageUri.primaryUri.absoluteString
                         + "/"
-                        + path
+                        + imagePath
                         + "?"
                         + sas;
                     
-                    self.imagePaths.append(path);
+                    var thumbnailPath = path.replacingOccurrences(
+                        of: "_",
+                        with: "/thumbnails/",
+                        options: NSString.CompareOptions.literal,
+                        range: path.range(of: "_")
+                    )
+                    
+                    thumbnailPath = self.blobContainer.storageUri.primaryUri.absoluteString
+                        + "/"
+                        + thumbnailPath
+                        + "?"
+                        + sas;
+                    
+                    self.imagePaths.append(imagePath);
+                    self.thumbnailPaths.append(thumbnailPath);
                 }
                 
                 self.historyCollectionView.reloadData()
@@ -118,7 +132,9 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
         //prevent user interaction while loading
         cell.isUserInteractionEnabled = false;
         
-        let url = URL(string: self.imagePaths[indexPath.row]);
+        
+        //here load thumbnails
+        let url = URL(string: self.thumbnailPaths[indexPath.row]);
         
         cell.imageView?.kf.indicatorType = .activity
         
@@ -146,16 +162,6 @@ class HistoryViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         self.titleForSeque = self.imageTitles[indexPath.row];
         self.performSegue(withIdentifier: "historyShowImageSegue", sender: self)
-        
-//        ImageCache.default.retrieveImage(forKey: self.imagePaths[indexPath.row], options: nil) {
-//            image, cacheType in
-//            
-//            if let image = image {
-//                self.imageForSeque = image;
-//                self.titleForSeque = self.imageTitles[indexPath.row];
-//                self.performSegue(withIdentifier: "historyShowImageSegue", sender: self)
-//            }
-//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

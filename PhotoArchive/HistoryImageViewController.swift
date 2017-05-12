@@ -67,8 +67,6 @@ class HistoryImageViewController: UIViewController {
         {
             let vc = segue.destination as! HistoryTagTableViewController
             
-            print(imageContexts);
-            
             vc.contexts = imageContexts;
             vc.imageTitle = self.title;
         }

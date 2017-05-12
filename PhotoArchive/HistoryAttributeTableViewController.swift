@@ -57,8 +57,6 @@ class HistoryAttributeTableViewController: UITableViewController {
     }
     
     func updateAttributes(attribute: String, value: String){
-        print("Attribute: ", attribute);
-        print("Value: ", value);
         
         attributes.append(attribute);
         
